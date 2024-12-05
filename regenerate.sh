@@ -1,6 +1,6 @@
 export PHP_POST_PROCESS_FILE="make cs"
 
-deffile=doc/openapi.yml
+deffile=openapi.yml
 
 rm -rf lib docs test README.md
 

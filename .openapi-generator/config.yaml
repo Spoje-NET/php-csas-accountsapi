@@ -6,8 +6,11 @@ additionalProperties:
   UserId: VitexSoftware
   RepoId: php-vitexsoftware-rbczpremiumapi
   infoEmail: vitezslav.dvorak@spojenet.cz
+  infoUrl: https://github.com/Spoje-NET/php-csas-webapi
+  infoDescription: PHP API client for CSAS WebAPI
+  apiVersion: 3.0.0
   allowUnicodeIdentifiers: true
-  artifactVersion: 3.0.0
+  artifactVersion: 0.1.0
   invokerPackage: Spoje-NET\php-csas-webapi
   modelPackage: Model
   variableNamingConvention: camelCase
