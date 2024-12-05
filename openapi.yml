@@ -1,0 +1,707 @@
+openapi: 3.1.0
+info:
+  title: Production Accounts API V3
+  description: API for managing production accounts.
+  version: 1.0.0
+servers:
+  - url: https://www.csas.cz/webapi/api/v3/accounts/
+paths:
+  /my/accounts:
+    get:
+      summary: Get account details
+      parameters:
+        - name: size
+          in: query
+          required: false
+          schema:
+            type: integer
+          description: Number of accounts to return
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: integer
+          description: Page number to return
+        - name: sort
+          in: query
+          required: false
+          schema:
+            type: string
+          description: Field to sort by
+        - name: order
+          in: query
+          required: false
+          schema:
+            type: string
+            enum: [asc, desc]
+          description: Sort order
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Account'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errorCode:
+                    type: string
+                    enum:
+                      - PARAMETER_INVALID
+                      - BAD_REQUEST
+                  message:
+                    type: string
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errorCode:
+                    type: string
+                    enum:
+                      - TOKEN_INVALID
+                      - CERTIFICATE_INVALID
+                      - KEY_UNAUTHORIZED
+                  message:
+                    type: string
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errorCode:
+                    type: string
+                    enum:
+                      - PAGE_NOT_FOUND
+                      - NOT_FOUND
+                  message:
+                    type: string
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errorCode:
+                    type: string
+                    enum:
+                      - METHOD_NOT_ALLOWED
+                  message:
+                    type: string
+        '412':
+          description: Precondition Failed
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errorCode:
+                    type: string
+                    enum:
+                      - KEY_DISABLED
+                  message:
+                    type: string
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errorCode:
+                    type: string
+                    enum:
+                      - REQUEST_QUOTA_EXCEEDED
+                  message:
+                    type: string
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errorCode:
+                    type: string
+                    enum:
+                      - INTERNAL_SERVER_ERROR
+                  message:
+                    type: string
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errorCode:
+                    type: string
+                    enum:
+                      - SERVICE_UNAVAILABLE
+                  message:
+                    type: string
+  /my/accounts/{id}/balance:
+    get:
+      summary: Get account balance
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Opaque system ID of the account
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountBalance'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errorCode:
+                    type: string
+                    enum:
+                      - PARAMETER_INVALID
+                      - BAD_REQUEST
+                  message:
+                    type: string
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errorCode:
+                    type: string
+                    enum:
+                      - TOKEN_INVALID
+                      - CERTIFICATE_INVALID
+                      - KEY_UNAUTHORIZED
+                  message:
+                    type: string
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errorCode:
+                    type: string
+                    enum:
+                      - PAGE_NOT_FOUND
+                      - NOT_FOUND
+                  message:
+                    type: string
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errorCode:
+                    type: string
+                    enum:
+                      - METHOD_NOT_ALLOWED
+                  message:
+                    type: string
+        '412':
+          description: Precondition Failed
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errorCode:
+                    type: string
+                    enum:
+                      - KEY_DISABLED
+                  message:
+                    type: string
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errorCode:
+                    type: string
+                    enum:
+                      - REQUEST_QUOTA_EXCEEDED
+                  message:
+                    type: string
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errorCode:
+                    type: string
+                    enum:
+                      - INTERNAL_SERVER_ERROR
+                  message:
+                    type: string
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errorCode:
+                    type: string
+                    enum:
+                      - SERVICE_UNAVAILABLE
+                  message:
+                    type: string
+  /my/accounts/{id}/transactions:
+    get:
+      summary: Overview of transactions
+      description: Paginated and optionally filtered (by dates) transaction list for given account.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Unique system identification of the client account
+        - name: fromDate
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date
+          description: Filter transactions starting from a specific day in UTC (yyyy-MM-dd)
+        - name: toDate
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date
+          description: Filter transactions up to the chosen day in UTC (yyyy-MM-dd)
+        - name: size
+          in: query
+          required: false
+          schema:
+            type: integer
+          description: Number of entries per page (max. 200)
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: integer
+          description: The desired page (indexed from zero)
+        - name: sort
+          in: query
+          required: false
+          schema:
+            type: string
+          description: One single field that should be used for sorting
+        - name: order
+          in: query
+          required: false
+          schema:
+            type: string
+            enum: [asc, desc]
+          description: Sort order
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionList'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errorCode:
+                    type: string
+                    enum:
+                      - PARAMETER_INVALID
+                      - DT01
+                      - BAD_REQUEST
+                      - MAX_TRANSACTIONS_EXCEEDED
+                  message:
+                    type: string
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errorCode:
+                    type: string
+                    enum:
+                      - SCA_REQUIRED
+                  message:
+                    type: string
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errorCode:
+                    type: string
+                    enum:
+                      - TOKEN_INVALID
+                      - CERTIFICATE_INVALID
+                      - KEY_UNAUTHORIZED
+                  message:
+                    type: string
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errorCode:
+                    type: string
+                    enum:
+                      - PAGE_NOT_FOUND
+                      - ID_NOT_FOUND
+                      - NOT_FOUND
+                  message:
+                    type: string
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errorCode:
+                    type: string
+                    enum:
+                      - METHOD_NOT_ALLOWED
+                  message:
+                    type: string
+        '412':
+          description: Precondition Failed
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errorCode:
+                    type: string
+                    enum:
+                      - KEY_DISABLED
+                  message:
+                    type: string
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errorCode:
+                    type: string
+                    enum:
+                      - REQUEST_QUOTA_EXCEEDED
+                  message:
+                    type: string
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errorCode:
+                    type: string
+                    enum:
+                      - INTERNAL_SERVER_ERROR
+                  message:
+                    type: string
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errorCode:
+                    type: string
+                    enum:
+                      - SERVICE_UNAVAILABLE
+                  message:
+                    type: string
+  /my/accounts/{id}/statements:
+    get:
+      summary: Get statements list
+      description: Obtain list of statements for a given account.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Unique system identification of the client account
+        - name: fromDate
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date
+          description: Date from which the statement history should be obtained (yyyy-MM-dd)
+        - name: toDate
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date
+          description: Date to which the statement history should be obtained (yyyy-MM-dd)
+        - name: format
+          in: query
+          required: false
+          schema:
+            type: string
+            enum: [pdf, xml, xml-data, abo-standard, abo-internal, abo-standard-extended, abo-internal-extended, csv-comma, csv-semicolon, mt940]
+          description: Selected statement format
+        - name: size
+          in: query
+          required: false
+          schema:
+            type: integer
+          description: Number of entries per page (max. 100)
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: integer
+          description: The desired page (indexed from zero)
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatementList'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errorCode:
+                    type: string
+                    enum:
+                      - PARAMETER_INVALID
+                      - DT01
+                  message:
+                    type: string
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errorCode:
+                    type: string
+                    enum:
+                      - TOKEN_INVALID
+                  message:
+                    type: string
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errorCode:
+                    type: string
+                    enum:
+                      - PAGE_NOT_FOUND
+                      - ID_NOT_FOUND
+                  message:
+                    type: string
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errorCode:
+                    type: string
+                    enum:
+                      - REQUEST_QUOTA_EXCEEDED
+                  message:
+                    type: string
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errorCode:
+                    type: string
+                    enum:
+                      - INTERNAL_SERVER_ERROR
+                  message:
+                    type: string
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errorCode:
+                    type: string
+                    enum:
+                      - SERVICE_UNAVAILABLE
+                  message:
+                    type: string
+
+components:
+  schemas:
+    Account:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique system ID of the client's account
+        status:
+          type: string
+          enum:
+            - BOOK
+            - PENDING
+          description: Status of the account
+        relatedAgents:
+          type: object
+          properties:
+            creditorAgent:
+              type: string
+              description: Information about the creditor's/recipient's bank
+            debtorAgent:
+              type: string
+              description: Information about the debtor's/payer's bank
+        currencyExchange:
+          type: object
+          properties:
+            targetCurrency:
+              type: string
+              description: Currency of the client's account
+            exchangeRate:
+              type: number
+              description: Exchange rate used during the conversion
+    AccountBalance:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Opaque system ID of the account
+        balance:
+          type: number
+          description: Current balance of the account
+        currency:
+          type: string
+          description: Currency of the account balance
+    TransactionList:
+      type: object
+      properties:
+        transactions:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                description: Unique system ID of the transaction
+              amount:
+                type: number
+                description: Amount of the transaction
+              currency:
+                type: string
+                description: Currency of the transaction
+              bookingDate:
+                type: string
+                format: date
+                description: Booking date of the transaction
+              description:
+                type: string
+                description: Description of the transaction
+    StatementList:
+      type: object
+      properties:
+        pageNumber:
+          type: number
+          description: Page number
+        pageCount:
+          type: number
+          description: Total number of pages
+        pageSize:
+          type: number
+          description: Number of entries per page
+        nextPage:
+          type: number
+          description: Next page number
+        accountStatements:
+          type: array
+          items:
+            type: object
+            properties:
+              accountStatementId:
+                type: string
+                description: Unique identifier of the account statement
+              year:
+                type: number
+                description: Year of the statement
+              month:
+                type: number
+                description: Month of the statement
+              sequenceNumber:
+                type: number
+                description: The account statement's sequence number
+              period:
+                type: object
+                properties:
+                  dateFrom:
+                    type: string
+                    format: date
+                    description: The start-date of the statement period
+                  dateTo:
+                    type: string
+                    format: date
+                    description: The end-date of the statement period
+              formats:
+                type: array
+                items:
+                  type: string
+                  enum: [pdf, xml, xml-data, abo-standard, abo-internal, abo-standard-extended, abo-internal-extended, csv-comma, csv-semicolon, mt940]
+                description: Available formats of the statement
