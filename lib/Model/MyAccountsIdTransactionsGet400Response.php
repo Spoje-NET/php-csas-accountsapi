@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  Spoje-NET\php-csas-webapi
+ * @package  SpojeNET\\CsasWebApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Spoje-NET\php-csas-webapi\Model;
+namespace SpojeNET\\CsasWebApi\Model;
 
 use \ArrayAccess;
-use \Spoje-NET\php-csas-webapi\ObjectSerializer;
+use \SpojeNET\\CsasWebApi\ObjectSerializer;
 
 /**
  * MyAccountsIdTransactionsGet400Response Class Doc Comment
  *
  * @category Class
- * @package  Spoje-NET\php-csas-webapi
+ * @package  SpojeNET\\CsasWebApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>

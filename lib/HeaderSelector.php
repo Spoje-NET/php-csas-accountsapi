@@ -4,7 +4,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  Spoje-NET\php-csas-webapi
+ * @package  SpojeNET\\CsasWebApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,13 +26,13 @@
  * Do not edit the class manually.
  */
 
-namespace Spoje-NET\php-csas-webapi;
+namespace SpojeNET\\CsasWebApi;
 
 /**
  * HeaderSelector Class Doc Comment
  *
  * @category Class
- * @package  Spoje-NET\php-csas-webapi
+ * @package  SpojeNET\\CsasWebApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */

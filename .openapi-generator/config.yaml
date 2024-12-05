@@ -3,14 +3,21 @@ templateDir: .openapi-generator/templates
 additionalProperties:
   packageName: Premium - Accounts API
   apiPackage: AccountsApi
-  UserId: VitexSoftware
+  licenseName: MIT
+  UserId: SpojeNet
   RepoId: php-vitexsoftware-rbczpremiumapi
   infoEmail: vitezslav.dvorak@spojenet.cz
   infoUrl: https://github.com/Spoje-NET/php-csas-webapi
-  infoDescription: PHP API client for CSAS WebAPI
+  artifactUrl: https://github.com/Spoje-NET/php-csas-webapi
+  appDescription: PHP API client for CSAS Premium Accounts WebAPI
   apiVersion: 3.0.0
   allowUnicodeIdentifiers: true
-  artifactVersion: 0.1.0
-  invokerPackage: Spoje-NET\php-csas-webapi
+  invokerPackage: SpojeNET\\CsasAccountsApi
   modelPackage: Model
+  developerOrganization: SpojeNET
+  developerOrganizationUrl: https://spojenet.cz
   variableNamingConvention: camelCase
+  composerPackageName: spojenet/csas-accountsapi
+#  composer.json.mustache:
+#      folder: .
+#      destinationFilename: composer.json

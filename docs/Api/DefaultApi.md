@@ -1,4 +1,4 @@
-# Spoje-NET\php-csas-webapi\DefaultApi
+# SpojeNET\\CsasWebApi\DefaultApi
 
 All URIs are relative to https://www.csas.cz/webapi/api/v3/accounts, except if the operation defines another base path.
 
@@ -13,7 +13,7 @@ All URIs are relative to https://www.csas.cz/webapi/api/v3/accounts, except if t
 ## `myAccountsGet()`
 
 ```php
-myAccountsGet($size, $page, $sort, $order): \Spoje-NET\php-csas-webapi\Model\Account
+myAccountsGet($size, $page, $sort, $order): \SpojeNET\\CsasWebApi\Model\Account
 ```
 
 Get account details
@@ -26,7 +26,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-$apiInstance = new Spoje-NET\php-csas-webapi\Api\DefaultApi(
+$apiInstance = new SpojeNET\\CsasWebApi\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
@@ -55,7 +55,7 @@ try {
 
 ### Return type
 
-[**\Spoje-NET\php-csas-webapi\Model\Account**](../Model/Account.md)
+[**\SpojeNET\\CsasWebApi\Model\Account**](../Model/Account.md)
 
 ### Authorization
 
@@ -73,7 +73,7 @@ No authorization required
 ## `myAccountsIdBalanceGet()`
 
 ```php
-myAccountsIdBalanceGet($id): \Spoje-NET\php-csas-webapi\Model\AccountBalance
+myAccountsIdBalanceGet($id): \SpojeNET\\CsasWebApi\Model\AccountBalance
 ```
 
 Get account balance
@@ -86,7 +86,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-$apiInstance = new Spoje-NET\php-csas-webapi\Api\DefaultApi(
+$apiInstance = new SpojeNET\\CsasWebApi\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
@@ -109,7 +109,7 @@ try {
 
 ### Return type
 
-[**\Spoje-NET\php-csas-webapi\Model\AccountBalance**](../Model/AccountBalance.md)
+[**\SpojeNET\\CsasWebApi\Model\AccountBalance**](../Model/AccountBalance.md)
 
 ### Authorization
 
@@ -127,7 +127,7 @@ No authorization required
 ## `myAccountsIdStatementsGet()`
 
 ```php
-myAccountsIdStatementsGet($id, $fromDate, $toDate, $format, $size, $page): \Spoje-NET\php-csas-webapi\Model\StatementList
+myAccountsIdStatementsGet($id, $fromDate, $toDate, $format, $size, $page): \SpojeNET\\CsasWebApi\Model\StatementList
 ```
 
 Get statements list
@@ -142,7 +142,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-$apiInstance = new Spoje-NET\php-csas-webapi\Api\DefaultApi(
+$apiInstance = new SpojeNET\\CsasWebApi\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
@@ -175,7 +175,7 @@ try {
 
 ### Return type
 
-[**\Spoje-NET\php-csas-webapi\Model\StatementList**](../Model/StatementList.md)
+[**\SpojeNET\\CsasWebApi\Model\StatementList**](../Model/StatementList.md)
 
 ### Authorization
 
@@ -193,7 +193,7 @@ No authorization required
 ## `myAccountsIdTransactionsGet()`
 
 ```php
-myAccountsIdTransactionsGet($id, $fromDate, $toDate, $size, $page, $sort, $order): \Spoje-NET\php-csas-webapi\Model\TransactionList
+myAccountsIdTransactionsGet($id, $fromDate, $toDate, $size, $page, $sort, $order): \SpojeNET\\CsasWebApi\Model\TransactionList
 ```
 
 Overview of transactions
@@ -208,7 +208,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-$apiInstance = new Spoje-NET\php-csas-webapi\Api\DefaultApi(
+$apiInstance = new SpojeNET\\CsasWebApi\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
@@ -243,7 +243,7 @@ try {
 
 ### Return type
 
-[**\Spoje-NET\php-csas-webapi\Model\TransactionList**](../Model/TransactionList.md)
+[**\SpojeNET\\CsasWebApi\Model\TransactionList**](../Model/TransactionList.md)
 
 ### Authorization
 

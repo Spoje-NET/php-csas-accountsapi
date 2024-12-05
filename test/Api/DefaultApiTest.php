@@ -4,7 +4,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  Spoje-NET\php-csas-webapi
+ * @package  SpojeNET\\CsasWebApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,18 +26,18 @@
  * Please update the test case below to test the endpoint.
  */
 
-namespace Spoje-NET\php-csas-webapi\Test\Api;
+namespace SpojeNET\\CsasWebApi\Test\Api;
 
-use \Spoje-NET\php-csas-webapi\Configuration;
-use \Spoje-NET\php-csas-webapi\ApiException;
-use \Spoje-NET\php-csas-webapi\ObjectSerializer;
+use \SpojeNET\\CsasWebApi\Configuration;
+use \SpojeNET\\CsasWebApi\ApiException;
+use \SpojeNET\\CsasWebApi\ObjectSerializer;
 use PHPUnit\Framework\TestCase;
 
 /**
  * DefaultApiTest Class Doc Comment
  *
  * @category Class
- * @package  Spoje-NET\php-csas-webapi
+ * @package  SpojeNET\\CsasWebApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
