@@ -1,11 +1,12 @@
 <?php
+
 /**
  * StatementListAccountStatementsInner
  *
  * PHP version 7.4
  *
  * @category Class
- * @package  SpojeNET\\CsasWebApi
+ * @package  SpojeNET\CsasAccountsApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +28,16 @@
  * Do not edit the class manually.
  */
 
-namespace SpojeNET\\CsasWebApi\Model;
+namespace SpojeNET\CsasAccountsApi\Model;
 
 use \ArrayAccess;
-use \SpojeNET\\CsasWebApi\ObjectSerializer;
+use \SpojeNET\CsasAccountsApi\ObjectSerializer;
 
 /**
  * StatementListAccountStatementsInner Class Doc Comment
  *
  * @category Class
- * @package  SpojeNET\\CsasWebApi
+ * @package  SpojeNET\CsasAccountsApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,7 +63,7 @@ class StatementListAccountStatementsInner implements ModelInterface, ArrayAccess
         'year' => 'float',
         'month' => 'float',
         'sequenceNumber' => 'float',
-        'period' => '\SpojeNET\\CsasWebApi\Model\StatementListAccountStatementsInnerPeriod',
+        'period' => '\SpojeNET\CsasAccountsApi\Model\StatementListAccountStatementsInnerPeriod',
         'formats' => 'string[]'
     ];
 
@@ -467,7 +468,7 @@ class StatementListAccountStatementsInner implements ModelInterface, ArrayAccess
     /**
      * Gets period
      *
-     * @return \SpojeNET\\CsasWebApi\Model\StatementListAccountStatementsInnerPeriod|null
+     * @return \SpojeNET\CsasAccountsApi\Model\StatementListAccountStatementsInnerPeriod|null
      */
     public function getPeriod()
     {
@@ -477,7 +478,7 @@ class StatementListAccountStatementsInner implements ModelInterface, ArrayAccess
     /**
      * Sets period
      *
-     * @param \SpojeNET\\CsasWebApi\Model\StatementListAccountStatementsInnerPeriod|null $period period
+     * @param \SpojeNET\CsasAccountsApi\Model\StatementListAccountStatementsInnerPeriod|null $period period
      *
      * @return self
      */
@@ -590,7 +591,7 @@ class StatementListAccountStatementsInner implements ModelInterface, ArrayAccess
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**

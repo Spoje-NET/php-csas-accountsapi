@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  SpojeNET\\CsasWebApi
+ * @package  SpojeNET\CsasAccountsApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,7 +27,7 @@
  * Please update the test case below to test the model.
  */
 
-namespace SpojeNET\\CsasWebApi\Test\Model;
+namespace SpojeNET\CsasAccountsApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
 
@@ -36,7 +36,7 @@ use PHPUnit\Framework\TestCase;
  *
  * @category    Class
  * @description StatementListAccountStatementsInner
- * @package     SpojeNET\\CsasWebApi
+ * @package     SpojeNET\CsasAccountsApi
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */

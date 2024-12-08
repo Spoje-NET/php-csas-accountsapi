@@ -1,10 +1,11 @@
 <?php
+
 /**
  * Configuration
  * PHP version 7.4
  *
  * @category Class
- * @package  SpojeNET\\CsasWebApi
+ * @package  SpojeNET\CsasAccountsApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,14 +27,14 @@
  * Do not edit the class manually.
  */
 
-namespace SpojeNET\\CsasWebApi;
+namespace SpojeNET\CsasAccountsApi;
 
 /**
  * Configuration Class Doc Comment
  * PHP version 7.4
  *
  * @category Class
- * @package  SpojeNET\\CsasWebApi
+ * @package  SpojeNET\CsasAccountsApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -430,7 +431,7 @@ class Configuration
      */
     public static function toDebugReport()
     {
-        $report  = 'PHP SDK (SpojeNET\\CsasWebApi) Debug Report:' . PHP_EOL;
+        $report  = 'PHP SDK (SpojeNET\CsasAccountsApi) Debug Report:' . PHP_EOL;
         $report .= '    OS: ' . php_uname() . PHP_EOL;
         $report .= '    PHP Version: ' . PHP_VERSION . PHP_EOL;
         $report .= '    The version of the OpenAPI document: 1.0.0' . PHP_EOL;

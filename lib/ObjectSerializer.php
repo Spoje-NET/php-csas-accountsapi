@@ -1,11 +1,12 @@
 <?php
+
 /**
  * ObjectSerializer
  *
  * PHP version 7.4
  *
  * @category Class
- * @package  SpojeNET\\CsasWebApi
+ * @package  SpojeNET\CsasAccountsApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +28,16 @@
  * Do not edit the class manually.
  */
 
-namespace SpojeNET\\CsasWebApi;
+namespace SpojeNET\CsasAccountsApi;
 
 use GuzzleHttp\Psr7\Utils;
-use SpojeNET\\CsasWebApi\Model\ModelInterface;
+use SpojeNET\CsasAccountsApi\Model\ModelInterface;
 
 /**
  * ObjectSerializer Class Doc Comment
  *
  * @category Class
- * @package  SpojeNET\\CsasWebApi
+ * @package  SpojeNET\CsasAccountsApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -104,7 +105,7 @@ class ObjectSerializer
                     }
                 }
             } else {
-                foreach($data as $property => $value) {
+                foreach ($data as $property => $value) {
                     $values[$property] = self::sanitizeForSerialization($value);
                 }
             }
@@ -140,7 +141,9 @@ class ObjectSerializer
      */
     public static function sanitizeTimestamp($timestamp)
     {
-        if (!is_string($timestamp)) return $timestamp;
+        if (!is_string($timestamp)) {
+            return $timestamp;
+        }
 
         return preg_replace('/(:\d{2}.\d{6})\d*/', '$1', $timestamp);
     }
@@ -190,16 +193,16 @@ class ObjectSerializer
             case 'float':
                 return $value !== 0 && $value !== 0.0;
 
-            # For boolean values, '' is considered empty
+                # For boolean values, '' is considered empty
             case 'bool':
             case 'boolean':
                 return !in_array($value, [false, 0], true);
 
-            # For string values, '' is considered empty.
+                # For string values, '' is considered empty.
             case 'string':
                 return $value === '';
 
-            # For all the other types, any value at this point can be considered empty.
+                # For all the other types, any value at this point can be considered empty.
             default:
                 return true;
         }
@@ -240,7 +243,7 @@ class ObjectSerializer
         }
 
         # Handle DateTime objects in query
-        if($openApiType === "\\DateTime" && $value instanceof \DateTime) {
+        if ($openApiType === "\\DateTime" && $value instanceof \DateTime) {
             return ["{$paramName}" => $value->format(self::$dateTimeFormat)];
         }
 
@@ -250,7 +253,9 @@ class ObjectSerializer
         // since \GuzzleHttp\Psr7\Query::build fails with nested arrays
         // need to flatten array first
         $flattenArray = function ($arr, $name, &$result = []) use (&$flattenArray, $style, $explode) {
-            if (!is_array($arr)) return $arr;
+            if (!is_array($arr)) {
+                return $arr;
+            }
 
             foreach ($arr as $k => $v) {
                 $prop = ($style === 'deepObject') ? $prop = "{$name}[{$k}]" : $k;
@@ -298,7 +303,7 @@ class ObjectSerializer
      */
     public static function convertBoolToQueryStringFormat(bool $value)
     {
-        if (Configuration::BOOLEAN_FORMAT_STRING == Configuration::getDefaultConfiguration()->getBooleanFormatForQueryString()) {
+        if (Configuration::BOOLEAN_FORMAT_STRING === Configuration::getDefaultConfiguration()->getBooleanFormatForQueryString()) {
             return $value ? 'true' : 'false';
         }
 
@@ -522,7 +527,7 @@ class ObjectSerializer
             // If a discriminator is defined and points to a valid subclass, use it.
             $discriminator = $class::DISCRIMINATOR;
             if (!empty($discriminator) && isset($data->{$discriminator}) && is_string($data->{$discriminator})) {
-                $subclass = '\SpojeNET\\CsasWebApi\Model\\' . $data->{$discriminator};
+                $subclass = '\SpojeNET\CsasAccountsApi\Model\\' . $data->{$discriminator};
                 if (is_subclass_of($subclass, $class)) {
                     $class = $subclass;
                 }
@@ -587,9 +592,9 @@ class ObjectSerializer
             throw new \InvalidArgumentException('Invalid type');
         }
 
-        $castBool = Configuration::BOOLEAN_FORMAT_INT == Configuration::getDefaultConfiguration()->getBooleanFormatForQueryString()
+        $castBool = Configuration::BOOLEAN_FORMAT_INT === Configuration::getDefaultConfiguration()->getBooleanFormatForQueryString()
             ? function ($v) { return (int) $v; }
-            : function ($v) { return $v ? 'true' : 'false'; };
+        : function ($v) { return $v ? 'true' : 'false'; };
 
         $qs = '';
         foreach ($params as $k => $v) {

@@ -1,11 +1,12 @@
 <?php
+
 /**
  * MyAccountsIdStatementsGet400Response
  *
  * PHP version 7.4
  *
  * @category Class
- * @package  SpojeNET\\CsasWebApi
+ * @package  SpojeNET\CsasAccountsApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +28,16 @@
  * Do not edit the class manually.
  */
 
-namespace SpojeNET\\CsasWebApi\Model;
+namespace SpojeNET\CsasAccountsApi\Model;
 
 use \ArrayAccess;
-use \SpojeNET\\CsasWebApi\ObjectSerializer;
+use \SpojeNET\CsasAccountsApi\ObjectSerializer;
 
 /**
  * MyAccountsIdStatementsGet400Response Class Doc Comment
  *
  * @category Class
- * @package  SpojeNET\\CsasWebApi
+ * @package  SpojeNET\CsasAccountsApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -448,7 +449,7 @@ class MyAccountsIdStatementsGet400Response implements ModelInterface, ArrayAcces
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**

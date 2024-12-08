@@ -1,11 +1,12 @@
 <?php
+
 /**
  * StatementList
  *
  * PHP version 7.4
  *
  * @category Class
- * @package  SpojeNET\\CsasWebApi
+ * @package  SpojeNET\CsasAccountsApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +28,16 @@
  * Do not edit the class manually.
  */
 
-namespace SpojeNET\\CsasWebApi\Model;
+namespace SpojeNET\CsasAccountsApi\Model;
 
 use \ArrayAccess;
-use \SpojeNET\\CsasWebApi\ObjectSerializer;
+use \SpojeNET\CsasAccountsApi\ObjectSerializer;
 
 /**
  * StatementList Class Doc Comment
  *
  * @category Class
- * @package  SpojeNET\\CsasWebApi
+ * @package  SpojeNET\CsasAccountsApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,7 +63,7 @@ class StatementList implements ModelInterface, ArrayAccess, \JsonSerializable
         'pageCount' => 'float',
         'pageSize' => 'float',
         'nextPage' => 'float',
-        'accountStatements' => '\SpojeNET\\CsasWebApi\Model\StatementListAccountStatementsInner[]'
+        'accountStatements' => '\SpojeNET\CsasAccountsApi\Model\StatementListAccountStatementsInner[]'
     ];
 
     /**
@@ -429,7 +430,7 @@ class StatementList implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets accountStatements
      *
-     * @return \SpojeNET\\CsasWebApi\Model\StatementListAccountStatementsInner[]|null
+     * @return \SpojeNET\CsasAccountsApi\Model\StatementListAccountStatementsInner[]|null
      */
     public function getAccountStatements()
     {
@@ -439,7 +440,7 @@ class StatementList implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets accountStatements
      *
-     * @param \SpojeNET\\CsasWebApi\Model\StatementListAccountStatementsInner[]|null $accountStatements accountStatements
+     * @param \SpojeNET\CsasAccountsApi\Model\StatementListAccountStatementsInner[]|null $accountStatements accountStatements
      *
      * @return self
      */
@@ -516,7 +517,7 @@ class StatementList implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**

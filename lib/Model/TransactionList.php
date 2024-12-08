@@ -1,11 +1,12 @@
 <?php
+
 /**
  * TransactionList
  *
  * PHP version 7.4
  *
  * @category Class
- * @package  SpojeNET\\CsasWebApi
+ * @package  SpojeNET\CsasAccountsApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +28,16 @@
  * Do not edit the class manually.
  */
 
-namespace SpojeNET\\CsasWebApi\Model;
+namespace SpojeNET\CsasAccountsApi\Model;
 
 use \ArrayAccess;
-use \SpojeNET\\CsasWebApi\ObjectSerializer;
+use \SpojeNET\CsasAccountsApi\ObjectSerializer;
 
 /**
  * TransactionList Class Doc Comment
  *
  * @category Class
- * @package  SpojeNET\\CsasWebApi
+ * @package  SpojeNET\CsasAccountsApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +59,7 @@ class TransactionList implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'transactions' => '\SpojeNET\\CsasWebApi\Model\TransactionListTransactionsInner[]'
+        'transactions' => '\SpojeNET\CsasAccountsApi\Model\TransactionListTransactionsInner[]'
     ];
 
     /**
@@ -293,7 +294,7 @@ class TransactionList implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets transactions
      *
-     * @return \SpojeNET\\CsasWebApi\Model\TransactionListTransactionsInner[]|null
+     * @return \SpojeNET\CsasAccountsApi\Model\TransactionListTransactionsInner[]|null
      */
     public function getTransactions()
     {
@@ -303,7 +304,7 @@ class TransactionList implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets transactions
      *
-     * @param \SpojeNET\\CsasWebApi\Model\TransactionListTransactionsInner[]|null $transactions transactions
+     * @param \SpojeNET\CsasAccountsApi\Model\TransactionListTransactionsInner[]|null $transactions transactions
      *
      * @return self
      */
@@ -380,7 +381,7 @@ class TransactionList implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
