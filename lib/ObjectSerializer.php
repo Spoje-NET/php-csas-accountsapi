@@ -6,7 +6,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  SpojeNET\CsasAccounts
+ * @package  SpojeNET\Csas
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -28,16 +28,16 @@
  * Do not edit the class manually.
  */
 
-namespace SpojeNET\CsasAccounts;
+namespace SpojeNET\Csas;
 
 use GuzzleHttp\Psr7\Utils;
-use SpojeNET\CsasAccounts\Model\ModelInterface;
+use SpojeNET\Csas\Model\ModelInterface;
 
 /**
  * ObjectSerializer Class Doc Comment
  *
  * @category Class
- * @package  SpojeNET\CsasAccounts
+ * @package  SpojeNET\Csas
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -527,7 +527,7 @@ class ObjectSerializer
             // If a discriminator is defined and points to a valid subclass, use it.
             $discriminator = $class::DISCRIMINATOR;
             if (!empty($discriminator) && isset($data->{$discriminator}) && is_string($data->{$discriminator})) {
-                $subclass = '\SpojeNET\CsasAccounts\Model\\' . $data->{$discriminator};
+                $subclass = '\SpojeNET\Csas\Model\\' . $data->{$discriminator};
                 if (is_subclass_of($subclass, $class)) {
                     $class = $subclass;
                 }

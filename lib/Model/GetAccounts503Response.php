@@ -6,7 +6,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  SpojeNET\CsasAccounts
+ * @package  SpojeNET\Csas
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -28,16 +28,16 @@
  * Do not edit the class manually.
  */
 
-namespace SpojeNET\CsasAccounts\Model;
+namespace SpojeNET\Csas\Model;
 
 use \ArrayAccess;
-use \SpojeNET\CsasAccounts\ObjectSerializer;
+use \SpojeNET\Csas\ObjectSerializer;
 
 /**
  * GetAccounts503Response Class Doc Comment
  *
  * @category Class
- * @package  SpojeNET\CsasAccounts
+ * @package  SpojeNET\Csas
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>

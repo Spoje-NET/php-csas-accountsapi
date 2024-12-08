@@ -6,7 +6,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  SpojeNET\CsasAccounts
+ * @package  SpojeNET\Csas
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -28,16 +28,16 @@
  * Do not edit the class manually.
  */
 
-namespace SpojeNET\CsasAccounts\Model;
+namespace SpojeNET\Csas\Model;
 
 use \ArrayAccess;
-use \SpojeNET\CsasAccounts\ObjectSerializer;
+use \SpojeNET\Csas\ObjectSerializer;
 
 /**
  * StatementListAccountStatementsInner Class Doc Comment
  *
  * @category Class
- * @package  SpojeNET\CsasAccounts
+ * @package  SpojeNET\Csas
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -63,7 +63,7 @@ class StatementListAccountStatementsInner implements ModelInterface, ArrayAccess
         'year' => 'float',
         'month' => 'float',
         'sequenceNumber' => 'float',
-        'period' => '\SpojeNET\CsasAccounts\Model\StatementListAccountStatementsInnerPeriod',
+        'period' => '\SpojeNET\Csas\Model\StatementListAccountStatementsInnerPeriod',
         'formats' => 'string[]'
     ];
 
@@ -468,7 +468,7 @@ class StatementListAccountStatementsInner implements ModelInterface, ArrayAccess
     /**
      * Gets period
      *
-     * @return \SpojeNET\CsasAccounts\Model\StatementListAccountStatementsInnerPeriod|null
+     * @return \SpojeNET\Csas\Model\StatementListAccountStatementsInnerPeriod|null
      */
     public function getPeriod()
     {
@@ -478,7 +478,7 @@ class StatementListAccountStatementsInner implements ModelInterface, ArrayAccess
     /**
      * Sets period
      *
-     * @param \SpojeNET\CsasAccounts\Model\StatementListAccountStatementsInnerPeriod|null $period period
+     * @param \SpojeNET\Csas\Model\StatementListAccountStatementsInnerPeriod|null $period period
      *
      * @return self
      */

@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  SpojeNET\CsasAccounts
+ * @package  SpojeNET\Csas
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,7 +27,7 @@
  * Do not edit the class manually.
  */
 
-namespace SpojeNET\CsasAccounts;
+namespace SpojeNET\Csas;
 
 use \Exception;
 
@@ -35,7 +35,7 @@ use \Exception;
  * ApiException Class Doc Comment
  *
  * @category Class
- * @package  SpojeNET\CsasAccounts
+ * @package  SpojeNET\Csas
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
