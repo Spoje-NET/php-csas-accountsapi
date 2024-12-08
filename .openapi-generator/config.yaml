@@ -2,7 +2,7 @@
 templateDir: .openapi-generator/templates
 additionalProperties:
   packageName: Premium - Accounts API
-  apiPackage: AccountsApi
+  apiPackage: Accounts
   licenseName: MIT
   UserId: SpojeNet
   RepoId: php-vitexsoftware-rbczpremiumapi
@@ -12,7 +12,7 @@ additionalProperties:
   appDescription: PHP API client for CSAS Premium Accounts WebAPI
   apiVersion: 3.0.0
   allowUnicodeIdentifiers: true
-  invokerPackage: SpojeNET\CsasAccountsApi
+  invokerPackage: SpojeNET\CsasAccounts
   modelPackage: Model
   developerOrganization: SpojeNET
   developerOrganizationUrl: https://spojenet.cz

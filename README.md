@@ -51,21 +51,18 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-$apiInstance = new SpojeNET\CsasAccountsApi\Api\DefaultApi(
+$apiInstance = new SpojeNET\CsasAccounts\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$size = 56; // int | Number of accounts to return
-$page = 56; // int | Page number to return
-$sort = 'sort_example'; // string | Field to sort by
-$order = 'order_example'; // string | Sort order
+$id = 'id_example'; // string | Opaque system ID of the account
 
 try {
-    $result = $apiInstance->myAccountsGet($size, $page, $sort, $order);
+    $result = $apiInstance->getAccountBalance($id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling DefaultApi->myAccountsGet: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling DefaultApi->getAccountBalance: ', $e->getMessage(), PHP_EOL;
 }
 
 ```
@@ -76,10 +73,10 @@ All URIs are relative to *https://www.csas.cz/webapi/api/v3/accounts*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*DefaultApi* | [**myAccountsGet**](docs/Api/DefaultApi.md#myaccountsget) | **GET** /my/accounts | Get account details
-*DefaultApi* | [**myAccountsIdBalanceGet**](docs/Api/DefaultApi.md#myaccountsidbalanceget) | **GET** /my/accounts/{id}/balance | Get account balance
-*DefaultApi* | [**myAccountsIdStatementsGet**](docs/Api/DefaultApi.md#myaccountsidstatementsget) | **GET** /my/accounts/{id}/statements | Get statements list
-*DefaultApi* | [**myAccountsIdTransactionsGet**](docs/Api/DefaultApi.md#myaccountsidtransactionsget) | **GET** /my/accounts/{id}/transactions | Overview of transactions
+*DefaultApi* | [**getAccountBalance**](docs/Api/DefaultApi.md#getaccountbalance) | **GET** /my/accounts/{id}/balance | Get account balance
+*DefaultApi* | [**getAccounts**](docs/Api/DefaultApi.md#getaccounts) | **GET** /my/accounts | Get account details
+*DefaultApi* | [**getStatements**](docs/Api/DefaultApi.md#getstatements) | **GET** /my/accounts/{id}/statements | Get statements list
+*DefaultApi* | [**getTransactions**](docs/Api/DefaultApi.md#gettransactions) | **GET** /my/accounts/{id}/transactions | Overview of transactions
 
 ## Models
 
@@ -87,20 +84,20 @@ Class | Method | HTTP request | Description
 - [AccountBalance](docs/Model/AccountBalance.md)
 - [AccountCurrencyExchange](docs/Model/AccountCurrencyExchange.md)
 - [AccountRelatedAgents](docs/Model/AccountRelatedAgents.md)
-- [MyAccountsGet400Response](docs/Model/MyAccountsGet400Response.md)
-- [MyAccountsGet403Response](docs/Model/MyAccountsGet403Response.md)
-- [MyAccountsGet404Response](docs/Model/MyAccountsGet404Response.md)
-- [MyAccountsGet405Response](docs/Model/MyAccountsGet405Response.md)
-- [MyAccountsGet412Response](docs/Model/MyAccountsGet412Response.md)
-- [MyAccountsGet429Response](docs/Model/MyAccountsGet429Response.md)
-- [MyAccountsGet500Response](docs/Model/MyAccountsGet500Response.md)
-- [MyAccountsGet503Response](docs/Model/MyAccountsGet503Response.md)
-- [MyAccountsIdStatementsGet400Response](docs/Model/MyAccountsIdStatementsGet400Response.md)
-- [MyAccountsIdStatementsGet403Response](docs/Model/MyAccountsIdStatementsGet403Response.md)
-- [MyAccountsIdStatementsGet404Response](docs/Model/MyAccountsIdStatementsGet404Response.md)
-- [MyAccountsIdTransactionsGet400Response](docs/Model/MyAccountsIdTransactionsGet400Response.md)
-- [MyAccountsIdTransactionsGet401Response](docs/Model/MyAccountsIdTransactionsGet401Response.md)
-- [MyAccountsIdTransactionsGet404Response](docs/Model/MyAccountsIdTransactionsGet404Response.md)
+- [GetAccounts400Response](docs/Model/GetAccounts400Response.md)
+- [GetAccounts403Response](docs/Model/GetAccounts403Response.md)
+- [GetAccounts404Response](docs/Model/GetAccounts404Response.md)
+- [GetAccounts405Response](docs/Model/GetAccounts405Response.md)
+- [GetAccounts412Response](docs/Model/GetAccounts412Response.md)
+- [GetAccounts429Response](docs/Model/GetAccounts429Response.md)
+- [GetAccounts500Response](docs/Model/GetAccounts500Response.md)
+- [GetAccounts503Response](docs/Model/GetAccounts503Response.md)
+- [GetStatements400Response](docs/Model/GetStatements400Response.md)
+- [GetStatements403Response](docs/Model/GetStatements403Response.md)
+- [GetStatements404Response](docs/Model/GetStatements404Response.md)
+- [GetTransactions400Response](docs/Model/GetTransactions400Response.md)
+- [GetTransactions401Response](docs/Model/GetTransactions401Response.md)
+- [GetTransactions404Response](docs/Model/GetTransactions404Response.md)
 - [StatementList](docs/Model/StatementList.md)
 - [StatementListAccountStatementsInner](docs/Model/StatementListAccountStatementsInner.md)
 - [StatementListAccountStatementsInnerPeriod](docs/Model/StatementListAccountStatementsInnerPeriod.md)

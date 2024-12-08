@@ -6,7 +6,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  SpojeNET\CsasAccountsApi
+ * @package  SpojeNET\CsasAccounts
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -28,16 +28,16 @@
  * Do not edit the class manually.
  */
 
-namespace SpojeNET\CsasAccountsApi\Model;
+namespace SpojeNET\CsasAccounts\Model;
 
 use \ArrayAccess;
-use \SpojeNET\CsasAccountsApi\ObjectSerializer;
+use \SpojeNET\CsasAccounts\ObjectSerializer;
 
 /**
  * Account Class Doc Comment
  *
  * @category Class
- * @package  SpojeNET\CsasAccountsApi
+ * @package  SpojeNET\CsasAccounts
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,8 +61,8 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'id' => 'string',
         'status' => 'string',
-        'relatedAgents' => '\SpojeNET\CsasAccountsApi\Model\AccountRelatedAgents',
-        'currencyExchange' => '\SpojeNET\CsasAccountsApi\Model\AccountCurrencyExchange'
+        'relatedAgents' => '\SpojeNET\CsasAccounts\Model\AccountRelatedAgents',
+        'currencyExchange' => '\SpojeNET\CsasAccounts\Model\AccountCurrencyExchange'
     ];
 
     /**
@@ -403,7 +403,7 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets relatedAgents
      *
-     * @return \SpojeNET\CsasAccountsApi\Model\AccountRelatedAgents|null
+     * @return \SpojeNET\CsasAccounts\Model\AccountRelatedAgents|null
      */
     public function getRelatedAgents()
     {
@@ -413,7 +413,7 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets relatedAgents
      *
-     * @param \SpojeNET\CsasAccountsApi\Model\AccountRelatedAgents|null $relatedAgents relatedAgents
+     * @param \SpojeNET\CsasAccounts\Model\AccountRelatedAgents|null $relatedAgents relatedAgents
      *
      * @return self
      */
@@ -430,7 +430,7 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets currencyExchange
      *
-     * @return \SpojeNET\CsasAccountsApi\Model\AccountCurrencyExchange|null
+     * @return \SpojeNET\CsasAccounts\Model\AccountCurrencyExchange|null
      */
     public function getCurrencyExchange()
     {
@@ -440,7 +440,7 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets currencyExchange
      *
-     * @param \SpojeNET\CsasAccountsApi\Model\AccountCurrencyExchange|null $currencyExchange currencyExchange
+     * @param \SpojeNET\CsasAccounts\Model\AccountCurrencyExchange|null $currencyExchange currencyExchange
      *
      * @return self
      */

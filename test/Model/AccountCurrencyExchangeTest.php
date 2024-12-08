@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  SpojeNET\CsasAccountsApi
+ * @package  SpojeNET\CsasAccounts
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,7 +27,7 @@
  * Please update the test case below to test the model.
  */
 
-namespace SpojeNET\CsasAccountsApi\Test\Model;
+namespace SpojeNET\CsasAccounts\Test\Model;
 
 use PHPUnit\Framework\TestCase;
 
@@ -36,7 +36,7 @@ use PHPUnit\Framework\TestCase;
  *
  * @category    Class
  * @description AccountCurrencyExchange
- * @package     SpojeNET\CsasAccountsApi
+ * @package     SpojeNET\CsasAccounts
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */

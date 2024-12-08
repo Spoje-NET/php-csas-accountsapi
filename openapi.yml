@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.0.0
 info:
   title: Production Accounts API V3
   description: API for managing production accounts.
@@ -9,6 +9,8 @@ paths:
   /my/accounts:
     get:
       summary: Get account details
+      description: Get a list of accounts for the authenticated user.
+      operationId: getAccounts
       parameters:
         - name: size
           in: query
@@ -153,6 +155,8 @@ paths:
   /my/accounts/{id}/balance:
     get:
       summary: Get account balance
+      description: Get the current balance of the account.
+      operationId: getAccountBalance
       parameters:
         - name: id
           in: path
@@ -279,6 +283,7 @@ paths:
     get:
       summary: Overview of transactions
       description: Paginated and optionally filtered (by dates) transaction list for given account.
+      operationId: getTransactions
       parameters:
         - name: id
           in: path
@@ -460,6 +465,7 @@ paths:
     get:
       summary: Get statements list
       description: Obtain list of statements for a given account.
+      operationId: getStatements
       parameters:
         - name: id
           in: path

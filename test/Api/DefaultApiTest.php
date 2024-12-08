@@ -4,7 +4,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  SpojeNET\CsasAccountsApi
+ * @package  SpojeNET\CsasAccounts
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,18 +26,18 @@
  * Please update the test case below to test the endpoint.
  */
 
-namespace SpojeNET\CsasAccountsApi\Test\Api;
+namespace SpojeNET\CsasAccounts\Test\Api;
 
-use \SpojeNET\CsasAccountsApi\Configuration;
-use \SpojeNET\CsasAccountsApi\ApiException;
-use \SpojeNET\CsasAccountsApi\ObjectSerializer;
+use \SpojeNET\CsasAccounts\Configuration;
+use \SpojeNET\CsasAccounts\ApiException;
+use \SpojeNET\CsasAccounts\ObjectSerializer;
 use PHPUnit\Framework\TestCase;
 
 /**
  * DefaultApiTest Class Doc Comment
  *
  * @category Class
- * @package  SpojeNET\CsasAccountsApi
+ * @package  SpojeNET\CsasAccounts
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -73,48 +73,48 @@ class DefaultApiTest extends TestCase
     }
 
     /**
-     * Test case for myAccountsGet
-     *
-     * Get account details.
-     *
-     */
-    public function testMyAccountsGet()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test case for myAccountsIdBalanceGet
+     * Test case for getAccountBalance
      *
      * Get account balance.
      *
      */
-    public function testMyAccountsIdBalanceGet()
+    public function testGetAccountBalance()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test case for myAccountsIdStatementsGet
+     * Test case for getAccounts
+     *
+     * Get account details.
+     *
+     */
+    public function testGetAccounts()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for getStatements
      *
      * Get statements list.
      *
      */
-    public function testMyAccountsIdStatementsGet()
+    public function testGetStatements()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test case for myAccountsIdTransactionsGet
+     * Test case for getTransactions
      *
      * Overview of transactions.
      *
      */
-    public function testMyAccountsIdTransactionsGet()
+    public function testGetTransactions()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

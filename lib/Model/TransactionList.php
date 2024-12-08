@@ -6,7 +6,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  SpojeNET\CsasAccountsApi
+ * @package  SpojeNET\CsasAccounts
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -28,16 +28,16 @@
  * Do not edit the class manually.
  */
 
-namespace SpojeNET\CsasAccountsApi\Model;
+namespace SpojeNET\CsasAccounts\Model;
 
 use \ArrayAccess;
-use \SpojeNET\CsasAccountsApi\ObjectSerializer;
+use \SpojeNET\CsasAccounts\ObjectSerializer;
 
 /**
  * TransactionList Class Doc Comment
  *
  * @category Class
- * @package  SpojeNET\CsasAccountsApi
+ * @package  SpojeNET\CsasAccounts
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class TransactionList implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'transactions' => '\SpojeNET\CsasAccountsApi\Model\TransactionListTransactionsInner[]'
+        'transactions' => '\SpojeNET\CsasAccounts\Model\TransactionListTransactionsInner[]'
     ];
 
     /**
@@ -294,7 +294,7 @@ class TransactionList implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets transactions
      *
-     * @return \SpojeNET\CsasAccountsApi\Model\TransactionListTransactionsInner[]|null
+     * @return \SpojeNET\CsasAccounts\Model\TransactionListTransactionsInner[]|null
      */
     public function getTransactions()
     {
@@ -304,7 +304,7 @@ class TransactionList implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets transactions
      *
-     * @param \SpojeNET\CsasAccountsApi\Model\TransactionListTransactionsInner[]|null $transactions transactions
+     * @param \SpojeNET\CsasAccounts\Model\TransactionListTransactionsInner[]|null $transactions transactions
      *
      * @return self
      */

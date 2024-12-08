@@ -1,22 +1,24 @@
-# SpojeNET\CsasAccountsApi\DefaultApi
+# SpojeNET\CsasAccounts\DefaultApi
 
 All URIs are relative to https://www.csas.cz/webapi/api/v3/accounts, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**myAccountsGet()**](DefaultApi.md#myAccountsGet) | **GET** /my/accounts | Get account details |
-| [**myAccountsIdBalanceGet()**](DefaultApi.md#myAccountsIdBalanceGet) | **GET** /my/accounts/{id}/balance | Get account balance |
-| [**myAccountsIdStatementsGet()**](DefaultApi.md#myAccountsIdStatementsGet) | **GET** /my/accounts/{id}/statements | Get statements list |
-| [**myAccountsIdTransactionsGet()**](DefaultApi.md#myAccountsIdTransactionsGet) | **GET** /my/accounts/{id}/transactions | Overview of transactions |
+| [**getAccountBalance()**](DefaultApi.md#getAccountBalance) | **GET** /my/accounts/{id}/balance | Get account balance |
+| [**getAccounts()**](DefaultApi.md#getAccounts) | **GET** /my/accounts | Get account details |
+| [**getStatements()**](DefaultApi.md#getStatements) | **GET** /my/accounts/{id}/statements | Get statements list |
+| [**getTransactions()**](DefaultApi.md#getTransactions) | **GET** /my/accounts/{id}/transactions | Overview of transactions |
 
 
-## `myAccountsGet()`
+## `getAccountBalance()`
 
 ```php
-myAccountsGet($size, $page, $sort, $order): \SpojeNET\CsasAccountsApi\Model\Account
+getAccountBalance($id): \SpojeNET\CsasAccounts\Model\AccountBalance
 ```
 
-Get account details
+Get account balance
+
+Get the current balance of the account.
 
 ### Example
 
@@ -26,7 +28,63 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-$apiInstance = new SpojeNET\CsasAccountsApi\Api\DefaultApi(
+$apiInstance = new SpojeNET\CsasAccounts\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$id = 'id_example'; // string | Opaque system ID of the account
+
+try {
+    $result = $apiInstance->getAccountBalance($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->getAccountBalance: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**| Opaque system ID of the account | |
+
+### Return type
+
+[**\SpojeNET\CsasAccounts\Model\AccountBalance**](../Model/AccountBalance.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getAccounts()`
+
+```php
+getAccounts($size, $page, $sort, $order): \SpojeNET\CsasAccounts\Model\Account
+```
+
+Get account details
+
+Get a list of accounts for the authenticated user.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new SpojeNET\CsasAccounts\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
@@ -37,10 +95,10 @@ $sort = 'sort_example'; // string | Field to sort by
 $order = 'order_example'; // string | Sort order
 
 try {
-    $result = $apiInstance->myAccountsGet($size, $page, $sort, $order);
+    $result = $apiInstance->getAccounts($size, $page, $sort, $order);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling DefaultApi->myAccountsGet: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling DefaultApi->getAccounts: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -55,7 +113,7 @@ try {
 
 ### Return type
 
-[**\SpojeNET\CsasAccountsApi\Model\Account**](../Model/Account.md)
+[**\SpojeNET\CsasAccounts\Model\Account**](../Model/Account.md)
 
 ### Authorization
 
@@ -70,64 +128,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `myAccountsIdBalanceGet()`
+## `getStatements()`
 
 ```php
-myAccountsIdBalanceGet($id): \SpojeNET\CsasAccountsApi\Model\AccountBalance
-```
-
-Get account balance
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-
-$apiInstance = new SpojeNET\CsasAccountsApi\Api\DefaultApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
-);
-$id = 'id_example'; // string | Opaque system ID of the account
-
-try {
-    $result = $apiInstance->myAccountsIdBalanceGet($id);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling DefaultApi->myAccountsIdBalanceGet: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **id** | **string**| Opaque system ID of the account | |
-
-### Return type
-
-[**\SpojeNET\CsasAccountsApi\Model\AccountBalance**](../Model/AccountBalance.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `myAccountsIdStatementsGet()`
-
-```php
-myAccountsIdStatementsGet($id, $fromDate, $toDate, $format, $size, $page): \SpojeNET\CsasAccountsApi\Model\StatementList
+getStatements($id, $fromDate, $toDate, $format, $size, $page): \SpojeNET\CsasAccounts\Model\StatementList
 ```
 
 Get statements list
@@ -142,7 +146,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-$apiInstance = new SpojeNET\CsasAccountsApi\Api\DefaultApi(
+$apiInstance = new SpojeNET\CsasAccounts\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
@@ -155,10 +159,10 @@ $size = 56; // int | Number of entries per page (max. 100)
 $page = 56; // int | The desired page (indexed from zero)
 
 try {
-    $result = $apiInstance->myAccountsIdStatementsGet($id, $fromDate, $toDate, $format, $size, $page);
+    $result = $apiInstance->getStatements($id, $fromDate, $toDate, $format, $size, $page);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling DefaultApi->myAccountsIdStatementsGet: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling DefaultApi->getStatements: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -175,7 +179,7 @@ try {
 
 ### Return type
 
-[**\SpojeNET\CsasAccountsApi\Model\StatementList**](../Model/StatementList.md)
+[**\SpojeNET\CsasAccounts\Model\StatementList**](../Model/StatementList.md)
 
 ### Authorization
 
@@ -190,10 +194,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `myAccountsIdTransactionsGet()`
+## `getTransactions()`
 
 ```php
-myAccountsIdTransactionsGet($id, $fromDate, $toDate, $size, $page, $sort, $order): \SpojeNET\CsasAccountsApi\Model\TransactionList
+getTransactions($id, $fromDate, $toDate, $size, $page, $sort, $order): \SpojeNET\CsasAccounts\Model\TransactionList
 ```
 
 Overview of transactions
@@ -208,7 +212,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-$apiInstance = new SpojeNET\CsasAccountsApi\Api\DefaultApi(
+$apiInstance = new SpojeNET\CsasAccounts\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
@@ -222,10 +226,10 @@ $sort = 'sort_example'; // string | One single field that should be used for sor
 $order = 'order_example'; // string | Sort order
 
 try {
-    $result = $apiInstance->myAccountsIdTransactionsGet($id, $fromDate, $toDate, $size, $page, $sort, $order);
+    $result = $apiInstance->getTransactions($id, $fromDate, $toDate, $size, $page, $sort, $order);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling DefaultApi->myAccountsIdTransactionsGet: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling DefaultApi->getTransactions: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -243,7 +247,7 @@ try {
 
 ### Return type
 
-[**\SpojeNET\CsasAccountsApi\Model\TransactionList**](../Model/TransactionList.md)
+[**\SpojeNET\CsasAccounts\Model\TransactionList**](../Model/TransactionList.md)
 
 ### Authorization
 
