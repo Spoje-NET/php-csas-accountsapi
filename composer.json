@@ -36,10 +36,17 @@
         "friendsofphp/php-cs-fixer": "^3.5"
     },
     "autoload": {
-        "psr-4": { "SpojeNET\\Csas\\" : "lib/" }
+        "psr-4": { 
+	    "SpojeNET\\Csas\\" : "lib/",
+	    "SpojeNET\\Csas\\Accounts\\" : "lib/Accounts/",
+	    "SpojeNET\\Csas\\Modes\\" : "lib/Model/"
+	}
     },
     "autoload-dev": {
-        "psr-4": { "SpojeNET\\Csas\\Test\\" : "test/" }
+        "psr-4": { 
+	    "SpojeNET\\Csas\\Test\\" : "test/",
+	    "SpojeNET\\Csas\\Test\\Accounts\\" : "test/Accounts/",
+	    "SpojeNET\\Csas\\Test\\Model\\" : "test/Model/"
     },
     "scripts": {
         "post-update-cmd": [
