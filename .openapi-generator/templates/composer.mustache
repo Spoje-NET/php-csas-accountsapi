@@ -41,17 +41,18 @@
         "friendsofphp/php-cs-fixer": "^3.5"
     },
     "autoload": {
-        "psr-4": { 
+        "psr-4": {
 	    "{{escapedInvokerPackage}}\\" : "{{srcBasePath}}/",
 	    "{{escapedInvokerPackage}}\\Accounts\\" : "{{srcBasePath}}/Accounts/",
 	    "{{escapedInvokerPackage}}\\Modes\\" : "{{srcBasePath}}/Model/"
 	}
     },
     "autoload-dev": {
-        "psr-4": { 
+        "psr-4": {
 	    "{{escapedInvokerPackage}}\\Test\\" : "{{testBasePath}}/",
 	    "{{escapedInvokerPackage}}\\Test\\Accounts\\" : "{{testBasePath}}/Accounts/",
 	    "{{escapedInvokerPackage}}\\Test\\Model\\" : "{{testBasePath}}/Model/"
+	}
     },
     "scripts": {
         "post-update-cmd": [
