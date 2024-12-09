@@ -55,7 +55,7 @@
 	}
     },
     "scripts": {
-        "post-update-cmd": [
+        "pre-update-cmd": [
             "npx openapi-generator-cli generate -i openapi.yml -g php --git-user-id Spoje-NET --git-repo-id php-csas-webapi -c .openapi-generator/config.yaml",
             "vendor/bin/php-cs-fixer fix --config=.php-cs-fixer.dist.php --diff --verbose --allow-risky=yes"
         ]
