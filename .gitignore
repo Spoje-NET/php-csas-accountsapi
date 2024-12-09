@@ -1,7 +1,6 @@
 # ref: https://github.com/github/gitignore/blob/master/Composer.gitignore
-# ref: https://mustache.github.io/mustache.5.html
 
-composer.phar
+comoser.lock
 /vendor/
 
 # Commit your application's lock file https://getcomposer.org/doc/01-basic-usage.md#commit-your-composer-lock-file-to-version-control
@@ -14,4 +13,4 @@ composer.phar
 
 # PHPUnit cache
 .phpunit.result.cache
-composer.lock
+/.env

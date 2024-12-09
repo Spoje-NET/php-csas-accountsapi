@@ -2,7 +2,7 @@
 
 API for managing production accounts.
 
-For more information, please visit [https://github.com/Spoje-NET/php-csas-webapi](https://github.com/Spoje-NET/php-csas-webapi).
+For more information, please visit [https://www.csas.cz/content/dam/cz/csas/www_csas_cz/dokumenty/obecne/how-to-connect-to-api-of-cs.pdf](https://www.csas.cz/content/dam/cz/csas/www_csas_cz/dokumenty/obecne/how-to-connect-to-api-of-cs.pdf).
 
 ## Installation & Usage
 

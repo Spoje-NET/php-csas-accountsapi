@@ -7,7 +7,7 @@ additionalProperties:
   UserId: SpojeNet
   RepoId: php-vitexsoftware-rbczpremiumapi
   infoEmail: vitezslav.dvorak@spojenet.cz
-  infoUrl: https://github.com/Spoje-NET/php-csas-webapi
+  infoUrl: https://www.csas.cz/content/dam/cz/csas/www_csas_cz/dokumenty/obecne/how-to-connect-to-api-of-cs.pdf
   artifactUrl: https://github.com/Spoje-NET/php-csas-webapi
   appDescription: PHP API client for CSAS Premium Accounts WebAPI
   apiVersion: 3.0.0

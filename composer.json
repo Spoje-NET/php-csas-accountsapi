@@ -13,7 +13,7 @@
         "Česká Spořitelna",
         "Spořka"
     ],
-    "homepage": "https://github.com/Spoje-NET/php-csas-webapi",
+    "homepage": "https://www.csas.cz/content/dam/cz/csas/www_csas_cz/dokumenty/obecne/how-to-connect-to-api-of-cs.pdf",
     "license": "MIT",
     "authors": [
         {
@@ -29,7 +29,7 @@
         "ext-mbstring": "*",
         "guzzlehttp/guzzle": "^7.3",
         "guzzlehttp/psr7": "^1.7 || ^2.0",
-        "vitexsoftware/ease-core": ">=1.41"
+        "vitexsoftware/ease-core": "^1.45"
     },
     "require-dev": {
         "phpunit/phpunit": "^8.0 || ^9.0",
