@@ -21,3 +21,7 @@ additionalProperties:
   composer.mustache:
       folder: .
       destinationFilename: composer.json
+  gitignore.mustache:
+      folder: .
+      destinationFilename: .gitignore
+
