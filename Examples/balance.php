@@ -7,7 +7,7 @@ $apiInstance = new \SpojeNET\Csas\Accounts\DefaultApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$id = 'id_example'; // string | Opaque system ID of the account
+$id = 'CZ1208000000000259459101'; // string | Opaque system ID of the account
 
 try {
     $result = $apiInstance->getAccountBalance($id);
