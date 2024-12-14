@@ -50,11 +50,20 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
+// Configure API key authorization: ApiKeyAuth
+$config = SpojeNET\Csas\Configuration::getDefaultConfiguration()->setApiKey('web-api-key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = SpojeNET\Csas\Configuration::getDefaultConfiguration()->setApiKeyPrefix('web-api-key', 'Bearer');
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = SpojeNET\Csas\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SpojeNET\Csas\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $id = 'id_example'; // string | Opaque system ID of the account
 
@@ -105,7 +114,18 @@ Class | Method | HTTP request | Description
 - [TransactionListTransactionsInner](docs/Model/TransactionListTransactionsInner.md)
 
 ## Authorization
-Endpoints do not require authorization.
+
+Authentication schemes defined for the API:
+### bearerAuth
+
+- **Type**: Bearer authentication (JWT)
+
+### ApiKeyAuth
+
+- **Type**: API key
+- **API key parameter name**: web-api-key
+- **Location**: HTTP header
+
 
 ## Tests
 

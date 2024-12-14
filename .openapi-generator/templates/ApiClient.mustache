@@ -72,10 +72,6 @@ class ApiClient extends \GuzzleHttp\Client
             $this->token = boolval(\Ease\Shared::cfg('SANDBOX_MODE'));
         }
 
-        $config['base_uri'] = ($this->sandBoxMode ? 'https://webapi.developers.erstegroup.com/api/csas/public/sandbox' : 'https://www.csas.cz/webapi/api') . '/v3/accounts/' ;
-        $config['headers']['web-api-key'] = $this->apiKey;
-        $config['headers']['authorization'] = 'Bearer '.$this->token;
-
         parent::__construct($config);
     }
 

@@ -16,8 +16,8 @@ $apiInstance = new \SpojeNET\Csas\Accounts\DefaultApi(new SpojeNET\Csas\ApiClien
 ));
 
 try {
-    $result = $apiInstance->getAccountBalance(Shr::cfg('ACCOUNT'));
+    $result = $apiInstance->getAccounts();
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling DefaultApi->getAccountBalance: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling DefaultApi->getAccounts: ', $e->getMessage(), PHP_EOL;
 }

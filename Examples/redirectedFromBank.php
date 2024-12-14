@@ -14,8 +14,7 @@ $redirectUri = Shr::cfg('REDIRECT_URI');
 
 $productionSite = 'https://bezpecnost.csas.cz/api/psd2/fl/oidc/v1';
 $sandboxSite = 'https://webapi.developers.erstegroup.com/api/csas/sandbox/v1/sandbox-idp';
-$idpLink = (strtolower(Shr::cfg('API_ENVIRONMENT', 'production')) === 'sandbox') ? $sandboxSite : $productionSite;
-
+$idpLink = Shr::cfg('SANDBOX_MODE', false) ? $sandboxSite : $productionSite;
 $tokenUrl = $idpLink . '/token';
 
 // Start session
@@ -55,7 +54,11 @@ if ($code) {
     if (isset($responseData['access_token'])) {
         // Store the access token in the session
         $_SESSION['access_token'] = $responseData['access_token'];
-        echo 'Access token obtained successfully!';
+        echo '<h2>Access token obtained successfully!</h2>';
+
+        echo 'access token:<textarea>' . $responseData['access_token'] . '</textarea>';
+        echo 'refresh token:<textarea>' . $responseData['refresh_token'] . '</textarea>';
+        var_dump($responseData);
     } else {
         echo 'Error obtaining access token!';
 

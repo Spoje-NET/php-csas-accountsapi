@@ -475,7 +475,11 @@ class Configuration
         return [
             [
                 "url" => "https://www.csas.cz/webapi/api/v3/accounts",
-                "description" => "No description provided",
+                "description" => "Production server",
+            ],
+            [
+                "url" => "https://webapi.developers.erstegroup.com/api/csas/public/sandbox/v3/accounts",
+                "description" => "Sandbox server",
             ]
         ];
     }

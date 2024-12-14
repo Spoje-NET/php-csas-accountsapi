@@ -27,11 +27,20 @@ Get the current balance of the account.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure API key authorization: ApiKeyAuth
+$config = SpojeNET\Csas\Configuration::getDefaultConfiguration()->setApiKey('web-api-key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = SpojeNET\Csas\Configuration::getDefaultConfiguration()->setApiKeyPrefix('web-api-key', 'Bearer');
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = SpojeNET\Csas\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SpojeNET\Csas\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $id = 'id_example'; // string | Opaque system ID of the account
 
@@ -55,7 +64,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../../README.md#ApiKeyAuth), [bearerAuth](../../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -83,11 +92,20 @@ Get a list of accounts for the authenticated user.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure API key authorization: ApiKeyAuth
+$config = SpojeNET\Csas\Configuration::getDefaultConfiguration()->setApiKey('web-api-key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = SpojeNET\Csas\Configuration::getDefaultConfiguration()->setApiKeyPrefix('web-api-key', 'Bearer');
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = SpojeNET\Csas\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SpojeNET\Csas\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $size = 56; // int | Number of accounts to return
 $page = 56; // int | Page number to return
@@ -117,7 +135,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../../README.md#ApiKeyAuth), [bearerAuth](../../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -145,11 +163,20 @@ Obtain list of statements for a given account.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure API key authorization: ApiKeyAuth
+$config = SpojeNET\Csas\Configuration::getDefaultConfiguration()->setApiKey('web-api-key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = SpojeNET\Csas\Configuration::getDefaultConfiguration()->setApiKeyPrefix('web-api-key', 'Bearer');
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = SpojeNET\Csas\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SpojeNET\Csas\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $id = 'id_example'; // string | Unique system identification of the client account
 $fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Date from which the statement history should be obtained (yyyy-MM-dd)
@@ -183,7 +210,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../../README.md#ApiKeyAuth), [bearerAuth](../../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -211,11 +238,20 @@ Paginated and optionally filtered (by dates) transaction list for given account.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure API key authorization: ApiKeyAuth
+$config = SpojeNET\Csas\Configuration::getDefaultConfiguration()->setApiKey('web-api-key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = SpojeNET\Csas\Configuration::getDefaultConfiguration()->setApiKeyPrefix('web-api-key', 'Bearer');
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = SpojeNET\Csas\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SpojeNET\Csas\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $id = 'id_example'; // string | Unique system identification of the client account
 $fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Filter transactions starting from a specific day in UTC (yyyy-MM-dd)
@@ -251,7 +287,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../../README.md#ApiKeyAuth), [bearerAuth](../../README.md#bearerAuth)
 
 ### HTTP request headers
 
