@@ -18,10 +18,14 @@ additionalProperties:
   developerOrganizationUrl: https://spojenet.cz
   variableNamingConvention: camelCase
   composerPackageName: spojenet/csas-accountsapi
+files:
   composer.mustache:
       folder: .
       destinationFilename: composer.json
   gitignore.mustache:
       folder: .
       destinationFilename: .gitignore
+  ApiClient.mustache:
+      folder: lib
+      destinationFilename: ApiClient.php
 

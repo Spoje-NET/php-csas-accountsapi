@@ -36,6 +36,7 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
+use SpojeNET\Csas\ApiClient;
 use SpojeNET\Csas\ApiException;
 use SpojeNET\Csas\Configuration;
 use SpojeNET\Csas\HeaderSelector;
@@ -71,6 +72,20 @@ class DefaultApi
      */
     protected $hostIndex;
 
+    /**
+     * ApiKey obtained from Developer Portal - when you registered your app with us.
+     *
+     * @link https://developers.erstegroup.com/portal/organizations/vitezslav-dvorak/applications/ Grab Your API key here
+     * @var string
+     */
+    protected string $apiKey;
+    protected string $token;
+
+    /**
+     * Use the /api/csas/public/sandbox/v3/* path for endpoints ?
+     */
+    protected $sandBoxMode = false;
+
     /** @var string[] $contentTypes **/
     public const contentTypes = [
         'getAccountBalance' => [
@@ -99,10 +114,49 @@ class DefaultApi
         HeaderSelector $selector = null,
         $hostIndex = 0
     ) {
-        $this->client = $client ?: new Client();
+        $this->client = $client ?: new ApiClient();
         $this->config = $config ?: Configuration::getDefaultConfiguration();
         $this->headerSelector = $selector ?: new HeaderSelector();
         $this->hostIndex = $hostIndex;
+        if (method_exists($this->client, 'getApiKey')) {
+            $config['headers']['web-api-key'] = $this->client->getApiKey();
+            $this->setApiKey($this->client->getApiKey());
+        }
+        if (method_exists($this->client, 'getAccessToken')) {
+            $config['headers']['authorization'] = 'Bearer '.$this->client->getAccessToken();
+            $this->setAccessToken($this->client->getAccessToken());
+        }
+        if (method_exists($this->client, 'getSandBoxMode')) {
+            $this->setSandBoxMode($this->client->getSandBoxMode());
+        }
+
+        $config['base_uri'] = ($this->sandBoxMode ? 'https://webapi.developers.erstegroup.com/api/csas/public/sandbox' : 'https://www.csas.cz/webapi/api') . '/v3/accounts/' ;
+
+    }
+
+    /**
+     * @param string $apiKey Set you API_KEY here
+     */
+    public function setApiKey(string $apiKey): void
+    {
+        $this->config->setApiKey('web-api-key', $apiKey);
+    }
+
+    /**
+     * @param string $token set access token
+     */
+    public function setAccessToken($token): void
+    {
+        $this->config->setAccessToken($token);
+    }
+
+    /**
+     * @param boolean $sandboxing Use mocking api for development purposes ?
+     */
+    public function setSandBoxMode(bool $sandboxing): void
+    {
+        $this->sandBoxMode = $sandboxing;
+        $this->config->setHost('https://'.($this->sandBoxMode ? 'webapi.developers.erstegroup.com' : 'www.csas.cz'));
     }
 
     /**
@@ -649,7 +703,7 @@ class DefaultApi
         }
 
 
-        $resourcePath = '/my/accounts/{id}/balance';
+        $resourcePath = ($this->sandBoxMode ? '/api/csas/public/sandbox' : '/webapi/api').'/v3/accounts/my/accounts/{id}/balance';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1249,7 +1303,7 @@ class DefaultApi
 
 
 
-        $resourcePath = '/my/accounts';
+        $resourcePath = ($this->sandBoxMode ? '/api/csas/public/sandbox' : '/webapi/api').'/v3/accounts/my/accounts';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1825,7 +1879,7 @@ class DefaultApi
 
 
 
-        $resourcePath = '/my/accounts/{id}/statements';
+        $resourcePath = ($this->sandBoxMode ? '/api/csas/public/sandbox' : '/webapi/api').'/v3/accounts/my/accounts/{id}/statements';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -2529,7 +2583,7 @@ class DefaultApi
 
 
 
-        $resourcePath = '/my/accounts/{id}/transactions';
+        $resourcePath = ($this->sandBoxMode ? '/api/csas/public/sandbox' : '/webapi/api').'/v3/accounts/my/accounts/{id}/transactions';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -2670,6 +2724,9 @@ class DefaultApi
                 throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
             }
         }
+
+        $options['headers']['web-api-key'] = $this->config->getApiKey('web-api-key');
+        $options['headers']['authorization'] = 'Bearer '.$this->config->getAccessToken();
 
         return $options;
     }

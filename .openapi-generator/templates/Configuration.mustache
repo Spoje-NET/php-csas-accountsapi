@@ -92,7 +92,7 @@ class Configuration
      *
      * @var string
      */
-    protected $userAgent = '{{{httpUserAgent}}}{{^httpUserAgent}}OpenAPI-Generator/{{{artifactVersion}}}{{^artifactVersion}}1.0.0{{/artifactVersion}}/PHP{{/httpUserAgent}}';
+    protected $userAgent = '{{{httpUserAgent}}}{{^httpUserAgent}}{{invokerPackage}}/{{{artifactVersion}}}{{^artifactVersion}}0.0.0{{/artifactVersion}}/PHP{{/httpUserAgent}}';
 
     /**
      * Debug switch (default set to false)
@@ -316,7 +316,7 @@ class Configuration
      */
     public function getUserAgent()
     {
-        return $this->userAgent;
+        return str_replace('0.0.0', \Ease\Shared::appVersion(), $this->userAgent);
     }
 
     /**

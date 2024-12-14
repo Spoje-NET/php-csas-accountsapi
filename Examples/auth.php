@@ -19,7 +19,7 @@ $idpLink = (strtolower(Shr::cfg('API_ENVIRONMENT', 'production')) === 'sandbox')
 $idpParams = [
     'client_id' => Shr::cfg('CLIENT_ID'),
     'response_type' => 'code',
-    'prompt'=>'consent',
+    'prompt' => 'consent',
     'redirect_uri' => Shr::cfg('REDIRECT_URI'),
     'state' => Fnc::randomString(),
     'scope' => implode('%20', [
@@ -32,7 +32,7 @@ $idpParams = [
 
 $idpUri = Fnc::addUrlParams($idpLink.'/auth', $idpParams);
 
-if(PHP_SAPI == 'cli'){
+if (PHP_SAPI === 'cli') {
     echo $idpUri;
 } else {
     echo '<a href='.$idpUri.'>'.$idpUri.'</a>';

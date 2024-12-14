@@ -102,7 +102,7 @@ class Configuration
      *
      * @var string
      */
-    protected $userAgent = 'OpenAPI-Generator/1.0.0/PHP';
+    protected $userAgent = 'SpojeNET\Csas/0.0.0/PHP';
 
     /**
      * Debug switch (default set to false)
@@ -326,7 +326,7 @@ class Configuration
      */
     public function getUserAgent()
     {
-        return $this->userAgent;
+        return str_replace('0.0.0', \Ease\Shared::appVersion(), $this->userAgent);
     }
 
     /**

@@ -5,6 +5,10 @@ info:
   version: 1.0.0
 servers:
   - url: https://www.csas.cz/webapi/api/v3/accounts/
+    description: Production server
+  - url: https://webapi.developers.erstegroup.com/api/csas/public/sandbox/v3/accounts/
+    description: Sandbox server
+
 paths:
   /my/accounts:
     get:
@@ -595,6 +599,15 @@ paths:
                     type: string
 
 components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: web-api-key
   schemas:
     Account:
       type: object
@@ -711,3 +724,7 @@ components:
                   type: string
                   enum: [pdf, xml, xml-data, abo-standard, abo-internal, abo-standard-extended, abo-internal-extended, csv-comma, csv-semicolon, mt940]
                 description: Available formats of the statement
+
+security:
+  - bearerAuth: []
+  - ApiKeyAuth: []

@@ -21,7 +21,7 @@ $tokenUrl = $idpLink . '/token';
 // Start session
 session_start();
 
-if (PHP_SAPI == 'cli') {
+if (PHP_SAPI === 'cli') {
     parse_str($argv[1], $params);
     $code = array_key_exists('code', $params) ? $params['code'] : '';
 } else {

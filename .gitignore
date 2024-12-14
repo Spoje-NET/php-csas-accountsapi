@@ -1,4 +1,5 @@
 # ref: https://github.com/github/gitignore/blob/master/Composer.gitignore
+# ref: https://mustache.github.io/mustache.5.html
 
 composer.phar
 /vendor/
@@ -13,3 +14,5 @@ composer.phar
 
 # PHPUnit cache
 .phpunit.result.cache
+composer.lock
+/.env
