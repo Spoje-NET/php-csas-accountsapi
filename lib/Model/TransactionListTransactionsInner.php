@@ -1,18 +1,20 @@
 <?php
 
+declare(strict_types=1);
+
 /**
- * TransactionListTransactionsInner
+ * This file is part of the CsasWebApi package
  *
- * PHP version 7.4
+ * https://github.com/Spoje-NET/php-csas-webapi
  *
- * @category Class
- * @package  SpojeNET\Csas
- * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ * (c) SpojeNetIT <http://spoje.net/>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 /**
- * Production Accounts API V3
+ * Production Accounts API V3.
  *
  * API for managing production accounts.
  *
@@ -30,79 +32,155 @@
 
 namespace SpojeNET\Csas\Model;
 
-use \ArrayAccess;
-use \SpojeNET\Csas\ObjectSerializer;
+use SpojeNET\Csas\ObjectSerializer;
 
 /**
- * TransactionListTransactionsInner Class Doc Comment
+ * TransactionListTransactionsInner Class Doc Comment.
  *
  * @category Class
- * @package  SpojeNET\Csas
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
+ *
  * @implements \ArrayAccess<string, mixed>
  */
-class TransactionListTransactionsInner implements ModelInterface, ArrayAccess, \JsonSerializable
+class TransactionListTransactionsInner implements \ArrayAccess, \JsonSerializable, ModelInterface
 {
     public const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
-    protected static $openAPIModelName = 'TransactionList_transactions_inner';
+     * The original name of the model.
+     */
+    protected static string $openAPIModelName = 'TransactionList_transactions_inner';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
-    protected static $openAPITypes = [
+     * Array of property to type mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     */
+    protected static array $openAPITypes = [
         'id' => 'string',
         'amount' => 'float',
         'currency' => 'string',
         'bookingDate' => '\DateTime',
-        'description' => 'string'
+        'description' => 'string',
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
-    protected static $openAPIFormats = [
+     * Array of property to format mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     *
+     * @phpstan-var array<string, string|null>
+     *
+     * @psalm-var array<string, string|null>
+     */
+    protected static array $openAPIFormats = [
         'id' => null,
         'amount' => null,
         'currency' => null,
         'bookingDate' => 'date',
-        'description' => null
+        'description' => null,
     ];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization.
+     *
+     * @var bool[]
+     */
     protected static array $openAPINullables = [
         'id' => false,
         'amount' => false,
         'currency' => false,
         'bookingDate' => false,
-        'description' => false
+        'description' => false,
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here.
+     *
+     * @var bool[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
-     * Array of property to type mappings. Used for (de)serialization
+     * Array of attributes where the key is the local name,
+     * and the value is the original name.
+     *
+     * @var string[]
+     */
+    protected static array $attributeMap = [
+        'id' => 'id',
+        'amount' => 'amount',
+        'currency' => 'currency',
+        'bookingDate' => 'bookingDate',
+        'description' => 'description',
+    ];
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses).
+     *
+     * @var string[]
+     */
+    protected static array $setters = [
+        'id' => 'setId',
+        'amount' => 'setAmount',
+        'currency' => 'setCurrency',
+        'bookingDate' => 'setBookingDate',
+        'description' => 'setDescription',
+    ];
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests).
+     *
+     * @var string[]
+     */
+    protected static array $getters = [
+        'id' => 'getId',
+        'amount' => 'getAmount',
+        'currency' => 'getCurrency',
+        'bookingDate' => 'getBookingDate',
+        'description' => 'getDescription',
+    ];
+
+    /**
+     * Associative array for storing property values.
+     *
+     * @var mixed[]
+     */
+    protected array $container = [];
+
+    /**
+     * Constructor.
+     *
+     * @param mixed[] $data Associated array of property values
+     *                      initializing the model
+     */
+    public function __construct(?array $data = null)
+    {
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('amount', $data ?? [], null);
+        $this->setIfExists('currency', $data ?? [], null);
+        $this->setIfExists('bookingDate', $data ?? [], null);
+        $this->setIfExists('description', $data ?? [], null);
+    }
+
+    /**
+     * Gets the string presentation of the object.
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return json_encode(
+            ObjectSerializer::sanitizeForSerialization($this),
+            \JSON_PRETTY_PRINT,
+        );
+    }
+
+    /**
+     * Array of property to type mappings. Used for (de)serialization.
      *
      * @return array
      */
@@ -112,7 +190,7 @@ class TransactionListTransactionsInner implements ModelInterface, ArrayAccess, \
     }
 
     /**
-     * Array of property to format mappings. Used for (de)serialization
+     * Array of property to format mappings. Used for (de)serialization.
      *
      * @return array
      */
@@ -122,40 +200,7 @@ class TransactionListTransactionsInner implements ModelInterface, ArrayAccess, \
     }
 
     /**
-     * Array of nullable properties
-     *
-     * @return array
-     */
-    protected static function openAPINullables(): array
-    {
-        return self::$openAPINullables;
-    }
-
-    /**
-     * Array of nullable field names deliberately set to null
-     *
-     * @return boolean[]
-     */
-    private function getOpenAPINullablesSetToNull(): array
-    {
-        return $this->openAPINullablesSetToNull;
-    }
-
-    /**
-     * Setter - Array of nullable field names deliberately set to null
-     *
-     * @param boolean[] $openAPINullablesSetToNull
-     */
-    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
-    {
-        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
-    }
-
-    /**
-     * Checks if a property is nullable
-     *
-     * @param string $property
-     * @return bool
+     * Checks if a property is nullable.
      */
     public static function isNullable(string $property): bool
     {
@@ -164,58 +209,15 @@ class TransactionListTransactionsInner implements ModelInterface, ArrayAccess, \
 
     /**
      * Checks if a nullable property is set to null.
-     *
-     * @param string $property
-     * @return bool
      */
     public function isNullableSetToNull(string $property): bool
     {
-        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
+        return \in_array($property, $this->getOpenAPINullablesSetToNull(), true);
     }
 
     /**
      * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @var string[]
-     */
-    protected static $attributeMap = [
-        'id' => 'id',
-        'amount' => 'amount',
-        'currency' => 'currency',
-        'bookingDate' => 'bookingDate',
-        'description' => 'description'
-    ];
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    protected static $setters = [
-        'id' => 'setId',
-        'amount' => 'setAmount',
-        'currency' => 'setCurrency',
-        'bookingDate' => 'setBookingDate',
-        'description' => 'setDescription'
-    ];
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    protected static $getters = [
-        'id' => 'getId',
-        'amount' => 'getAmount',
-        'currency' => 'getCurrency',
-        'bookingDate' => 'getBookingDate',
-        'description' => 'getDescription'
-    ];
-
-    /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
+     * and the value is the original name.
      *
      * @return array
      */
@@ -225,7 +227,7 @@ class TransactionListTransactionsInner implements ModelInterface, ArrayAccess, \
     }
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
+     * Array of attributes to setter functions (for deserialization of responses).
      *
      * @return array
      */
@@ -235,7 +237,7 @@ class TransactionListTransactionsInner implements ModelInterface, ArrayAccess, \
     }
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
+     * Array of attributes to getter functions (for serialization of requests).
      *
      * @return array
      */
@@ -254,47 +256,6 @@ class TransactionListTransactionsInner implements ModelInterface, ArrayAccess, \
         return self::$openAPIModelName;
     }
 
-
-    /**
-     * Associative array for storing property values
-     *
-     * @var mixed[]
-     */
-    protected $container = [];
-
-    /**
-     * Constructor
-     *
-     * @param mixed[] $data Associated array of property values
-     *                      initializing the model
-     */
-    public function __construct(array $data = null)
-    {
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('amount', $data ?? [], null);
-        $this->setIfExists('currency', $data ?? [], null);
-        $this->setIfExists('bookingDate', $data ?? [], null);
-        $this->setIfExists('description', $data ?? [], null);
-    }
-
-    /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
-    private function setIfExists(string $variableName, array $fields, $defaultValue): void
-    {
-        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
-            $this->openAPINullablesSetToNull[] = $variableName;
-        }
-
-        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
-    }
-
     /**
      * Show all the invalid properties with reasons.
      *
@@ -302,27 +263,24 @@ class TransactionListTransactionsInner implements ModelInterface, ArrayAccess, \
      */
     public function listInvalidProperties()
     {
-        $invalidProperties = [];
-
-        return $invalidProperties;
+        return [];
     }
 
     /**
      * Validate all the properties in the model
-     * return true if all passed
+     * return true if all passed.
      *
      * @return bool True if all properties are valid
      */
     public function valid()
     {
-        return count($this->listInvalidProperties()) === 0;
+        return \count($this->listInvalidProperties()) === 0;
     }
 
-
     /**
-     * Gets id
+     * Gets id.
      *
-     * @return string|null
+     * @return null|string
      */
     public function getId()
     {
@@ -330,26 +288,27 @@ class TransactionListTransactionsInner implements ModelInterface, ArrayAccess, \
     }
 
     /**
-     * Sets id
+     * Sets id.
      *
-     * @param string|null $id Unique system ID of the transaction
+     * @param null|string $id Unique system ID of the transaction
      *
      * @return self
      */
     public function setId($id)
     {
-        if (is_null($id)) {
+        if (null === $id) {
             throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
+
         $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets amount
+     * Gets amount.
      *
-     * @return float|null
+     * @return null|float
      */
     public function getAmount()
     {
@@ -357,26 +316,27 @@ class TransactionListTransactionsInner implements ModelInterface, ArrayAccess, \
     }
 
     /**
-     * Sets amount
+     * Sets amount.
      *
-     * @param float|null $amount Amount of the transaction
+     * @param null|float $amount Amount of the transaction
      *
      * @return self
      */
     public function setAmount($amount)
     {
-        if (is_null($amount)) {
+        if (null === $amount) {
             throw new \InvalidArgumentException('non-nullable amount cannot be null');
         }
+
         $this->container['amount'] = $amount;
 
         return $this;
     }
 
     /**
-     * Gets currency
+     * Gets currency.
      *
-     * @return string|null
+     * @return null|string
      */
     public function getCurrency()
     {
@@ -384,26 +344,27 @@ class TransactionListTransactionsInner implements ModelInterface, ArrayAccess, \
     }
 
     /**
-     * Sets currency
+     * Sets currency.
      *
-     * @param string|null $currency Currency of the transaction
+     * @param null|string $currency Currency of the transaction
      *
      * @return self
      */
     public function setCurrency($currency)
     {
-        if (is_null($currency)) {
+        if (null === $currency) {
             throw new \InvalidArgumentException('non-nullable currency cannot be null');
         }
+
         $this->container['currency'] = $currency;
 
         return $this;
     }
 
     /**
-     * Gets bookingDate
+     * Gets bookingDate.
      *
-     * @return \DateTime|null
+     * @return null|\DateTime
      */
     public function getBookingDate()
     {
@@ -411,26 +372,27 @@ class TransactionListTransactionsInner implements ModelInterface, ArrayAccess, \
     }
 
     /**
-     * Sets bookingDate
+     * Sets bookingDate.
      *
-     * @param \DateTime|null $bookingDate Booking date of the transaction
+     * @param null|\DateTime $bookingDate Booking date of the transaction
      *
      * @return self
      */
     public function setBookingDate($bookingDate)
     {
-        if (is_null($bookingDate)) {
+        if (null === $bookingDate) {
             throw new \InvalidArgumentException('non-nullable bookingDate cannot be null');
         }
+
         $this->container['bookingDate'] = $bookingDate;
 
         return $this;
     }
 
     /**
-     * Gets description
+     * Gets description.
      *
-     * @return string|null
+     * @return null|string
      */
     public function getDescription()
     {
@@ -438,17 +400,18 @@ class TransactionListTransactionsInner implements ModelInterface, ArrayAccess, \
     }
 
     /**
-     * Sets description
+     * Sets description.
      *
-     * @param string|null $description Description of the transaction
+     * @param null|string $description Description of the transaction
      *
      * @return self
      */
     public function setDescription($description)
     {
-        if (is_null($description)) {
+        if (null === $description) {
             throw new \InvalidArgumentException('non-nullable description cannot be null');
         }
+
         $this->container['description'] = $description;
 
         return $this;
@@ -456,9 +419,7 @@ class TransactionListTransactionsInner implements ModelInterface, ArrayAccess, \
     /**
      * Returns true if offset exists. False otherwise.
      *
-     * @param integer $offset Offset
-     *
-     * @return boolean
+     * @param int $offset Offset
      */
     public function offsetExists($offset): bool
     {
@@ -468,9 +429,9 @@ class TransactionListTransactionsInner implements ModelInterface, ArrayAccess, \
     /**
      * Gets offset.
      *
-     * @param integer $offset Offset
+     * @param int $offset Offset
      *
-     * @return mixed|null
+     * @return null|mixed
      */
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
@@ -481,14 +442,12 @@ class TransactionListTransactionsInner implements ModelInterface, ArrayAccess, \
     /**
      * Sets value based on offset.
      *
-     * @param int|null $offset Offset
+     * @param null|int $offset Offset
      * @param mixed    $value  Value to be set
-     *
-     * @return void
      */
     public function offsetSet($offset, $value): void
     {
-        if (is_null($offset)) {
+        if (null === $offset) {
             $this->container[] = $value;
         } else {
             $this->container[$offset] = $value;
@@ -498,9 +457,7 @@ class TransactionListTransactionsInner implements ModelInterface, ArrayAccess, \
     /**
      * Unsets offset.
      *
-     * @param integer $offset Offset
-     *
-     * @return void
+     * @param int $offset Offset
      */
     public function offsetUnset($offset): void
     {
@@ -509,10 +466,11 @@ class TransactionListTransactionsInner implements ModelInterface, ArrayAccess, \
 
     /**
      * Serializes the object to a value that can be serialized natively by json_encode().
-     * @link https://www.php.net/manual/en/jsonserializable.jsonserialize.php
      *
-     * @return mixed Returns data which can be serialized by json_encode(), which is a value
-     * of any type other than a resource.
+     * @see https://www.php.net/manual/en/jsonserializable.jsonserialize.php
+     *
+     * @return mixed returns data which can be serialized by json_encode(), which is a value
+     *               of any type other than a resource
      */
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
@@ -521,20 +479,7 @@ class TransactionListTransactionsInner implements ModelInterface, ArrayAccess, \
     }
 
     /**
-     * Gets the string presentation of the object
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        return json_encode(
-            ObjectSerializer::sanitizeForSerialization($this),
-            JSON_PRETTY_PRINT
-        );
-    }
-
-    /**
-     * Gets a header-safe presentation of the object
+     * Gets a header-safe presentation of the object.
      *
      * @return string
      */
@@ -542,6 +487,48 @@ class TransactionListTransactionsInner implements ModelInterface, ArrayAccess, \
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
+
+    /**
+     * Array of nullable properties.
+     */
+    protected static function openAPINullables(): array
+    {
+        return self::$openAPINullables;
+    }
+
+    /**
+     * Array of nullable field names deliberately set to null.
+     *
+     * @return bool[]
+     */
+    private function getOpenAPINullablesSetToNull(): array
+    {
+        return $this->openAPINullablesSetToNull;
+    }
+
+    /**
+     * Setter - Array of nullable field names deliberately set to null.
+     *
+     * @param bool[] $openAPINullablesSetToNull
+     */
+    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
+    {
+        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
+    }
+
+    /**
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array.
+     *
+     * @param mixed $defaultValue
+     */
+    private function setIfExists(string $variableName, array $fields, $defaultValue): void
+    {
+        if (self::isNullable($variableName) && \array_key_exists($variableName, $fields) && null === $fields[$variableName]) {
+            $this->openAPINullablesSetToNull[] = $variableName;
+        }
+
+        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
+    }
 }
-
-

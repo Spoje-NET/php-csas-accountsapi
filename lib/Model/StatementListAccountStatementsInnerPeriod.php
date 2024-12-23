@@ -1,18 +1,20 @@
 <?php
 
+declare(strict_types=1);
+
 /**
- * StatementListAccountStatementsInnerPeriod
+ * This file is part of the CsasWebApi package
  *
- * PHP version 7.4
+ * https://github.com/Spoje-NET/php-csas-webapi
  *
- * @category Class
- * @package  SpojeNET\Csas
- * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ * (c) SpojeNetIT <http://spoje.net/>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 /**
- * Production Accounts API V3
+ * Production Accounts API V3.
  *
  * API for managing production accounts.
  *
@@ -30,70 +32,134 @@
 
 namespace SpojeNET\Csas\Model;
 
-use \ArrayAccess;
-use \SpojeNET\Csas\ObjectSerializer;
+use SpojeNET\Csas\ObjectSerializer;
 
 /**
- * StatementListAccountStatementsInnerPeriod Class Doc Comment
+ * StatementListAccountStatementsInnerPeriod Class Doc Comment.
  *
  * @category Class
- * @package  SpojeNET\Csas
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
+ *
  * @implements \ArrayAccess<string, mixed>
  */
-class StatementListAccountStatementsInnerPeriod implements ModelInterface, ArrayAccess, \JsonSerializable
+class StatementListAccountStatementsInnerPeriod implements \ArrayAccess, \JsonSerializable, ModelInterface
 {
     public const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
-    protected static $openAPIModelName = 'StatementList_accountStatements_inner_period';
+     * The original name of the model.
+     */
+    protected static string $openAPIModelName = 'StatementList_accountStatements_inner_period';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
-    protected static $openAPITypes = [
+     * Array of property to type mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     */
+    protected static array $openAPITypes = [
         'dateFrom' => '\DateTime',
-        'dateTo' => '\DateTime'
+        'dateTo' => '\DateTime',
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
-    protected static $openAPIFormats = [
+     * Array of property to format mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     *
+     * @phpstan-var array<string, string|null>
+     *
+     * @psalm-var array<string, string|null>
+     */
+    protected static array $openAPIFormats = [
         'dateFrom' => 'date',
-        'dateTo' => 'date'
+        'dateTo' => 'date',
     ];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization.
+     *
+     * @var bool[]
+     */
     protected static array $openAPINullables = [
         'dateFrom' => false,
-        'dateTo' => false
+        'dateTo' => false,
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here.
+     *
+     * @var bool[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
-     * Array of property to type mappings. Used for (de)serialization
+     * Array of attributes where the key is the local name,
+     * and the value is the original name.
+     *
+     * @var string[]
+     */
+    protected static array $attributeMap = [
+        'dateFrom' => 'dateFrom',
+        'dateTo' => 'dateTo',
+    ];
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses).
+     *
+     * @var string[]
+     */
+    protected static array $setters = [
+        'dateFrom' => 'setDateFrom',
+        'dateTo' => 'setDateTo',
+    ];
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests).
+     *
+     * @var string[]
+     */
+    protected static array $getters = [
+        'dateFrom' => 'getDateFrom',
+        'dateTo' => 'getDateTo',
+    ];
+
+    /**
+     * Associative array for storing property values.
+     *
+     * @var mixed[]
+     */
+    protected array $container = [];
+
+    /**
+     * Constructor.
+     *
+     * @param mixed[] $data Associated array of property values
+     *                      initializing the model
+     */
+    public function __construct(?array $data = null)
+    {
+        $this->setIfExists('dateFrom', $data ?? [], null);
+        $this->setIfExists('dateTo', $data ?? [], null);
+    }
+
+    /**
+     * Gets the string presentation of the object.
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return json_encode(
+            ObjectSerializer::sanitizeForSerialization($this),
+            \JSON_PRETTY_PRINT,
+        );
+    }
+
+    /**
+     * Array of property to type mappings. Used for (de)serialization.
      *
      * @return array
      */
@@ -103,7 +169,7 @@ class StatementListAccountStatementsInnerPeriod implements ModelInterface, Array
     }
 
     /**
-     * Array of property to format mappings. Used for (de)serialization
+     * Array of property to format mappings. Used for (de)serialization.
      *
      * @return array
      */
@@ -113,40 +179,7 @@ class StatementListAccountStatementsInnerPeriod implements ModelInterface, Array
     }
 
     /**
-     * Array of nullable properties
-     *
-     * @return array
-     */
-    protected static function openAPINullables(): array
-    {
-        return self::$openAPINullables;
-    }
-
-    /**
-     * Array of nullable field names deliberately set to null
-     *
-     * @return boolean[]
-     */
-    private function getOpenAPINullablesSetToNull(): array
-    {
-        return $this->openAPINullablesSetToNull;
-    }
-
-    /**
-     * Setter - Array of nullable field names deliberately set to null
-     *
-     * @param boolean[] $openAPINullablesSetToNull
-     */
-    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
-    {
-        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
-    }
-
-    /**
-     * Checks if a property is nullable
-     *
-     * @param string $property
-     * @return bool
+     * Checks if a property is nullable.
      */
     public static function isNullable(string $property): bool
     {
@@ -155,49 +188,15 @@ class StatementListAccountStatementsInnerPeriod implements ModelInterface, Array
 
     /**
      * Checks if a nullable property is set to null.
-     *
-     * @param string $property
-     * @return bool
      */
     public function isNullableSetToNull(string $property): bool
     {
-        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
+        return \in_array($property, $this->getOpenAPINullablesSetToNull(), true);
     }
 
     /**
      * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @var string[]
-     */
-    protected static $attributeMap = [
-        'dateFrom' => 'dateFrom',
-        'dateTo' => 'dateTo'
-    ];
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    protected static $setters = [
-        'dateFrom' => 'setDateFrom',
-        'dateTo' => 'setDateTo'
-    ];
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    protected static $getters = [
-        'dateFrom' => 'getDateFrom',
-        'dateTo' => 'getDateTo'
-    ];
-
-    /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
+     * and the value is the original name.
      *
      * @return array
      */
@@ -207,7 +206,7 @@ class StatementListAccountStatementsInnerPeriod implements ModelInterface, Array
     }
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
+     * Array of attributes to setter functions (for deserialization of responses).
      *
      * @return array
      */
@@ -217,7 +216,7 @@ class StatementListAccountStatementsInnerPeriod implements ModelInterface, Array
     }
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
+     * Array of attributes to getter functions (for serialization of requests).
      *
      * @return array
      */
@@ -236,44 +235,6 @@ class StatementListAccountStatementsInnerPeriod implements ModelInterface, Array
         return self::$openAPIModelName;
     }
 
-
-    /**
-     * Associative array for storing property values
-     *
-     * @var mixed[]
-     */
-    protected $container = [];
-
-    /**
-     * Constructor
-     *
-     * @param mixed[] $data Associated array of property values
-     *                      initializing the model
-     */
-    public function __construct(array $data = null)
-    {
-        $this->setIfExists('dateFrom', $data ?? [], null);
-        $this->setIfExists('dateTo', $data ?? [], null);
-    }
-
-    /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
-    private function setIfExists(string $variableName, array $fields, $defaultValue): void
-    {
-        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
-            $this->openAPINullablesSetToNull[] = $variableName;
-        }
-
-        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
-    }
-
     /**
      * Show all the invalid properties with reasons.
      *
@@ -281,27 +242,24 @@ class StatementListAccountStatementsInnerPeriod implements ModelInterface, Array
      */
     public function listInvalidProperties()
     {
-        $invalidProperties = [];
-
-        return $invalidProperties;
+        return [];
     }
 
     /**
      * Validate all the properties in the model
-     * return true if all passed
+     * return true if all passed.
      *
      * @return bool True if all properties are valid
      */
     public function valid()
     {
-        return count($this->listInvalidProperties()) === 0;
+        return \count($this->listInvalidProperties()) === 0;
     }
 
-
     /**
-     * Gets dateFrom
+     * Gets dateFrom.
      *
-     * @return \DateTime|null
+     * @return null|\DateTime
      */
     public function getDateFrom()
     {
@@ -309,26 +267,27 @@ class StatementListAccountStatementsInnerPeriod implements ModelInterface, Array
     }
 
     /**
-     * Sets dateFrom
+     * Sets dateFrom.
      *
-     * @param \DateTime|null $dateFrom The start-date of the statement period
+     * @param null|\DateTime $dateFrom The start-date of the statement period
      *
      * @return self
      */
     public function setDateFrom($dateFrom)
     {
-        if (is_null($dateFrom)) {
+        if (null === $dateFrom) {
             throw new \InvalidArgumentException('non-nullable dateFrom cannot be null');
         }
+
         $this->container['dateFrom'] = $dateFrom;
 
         return $this;
     }
 
     /**
-     * Gets dateTo
+     * Gets dateTo.
      *
-     * @return \DateTime|null
+     * @return null|\DateTime
      */
     public function getDateTo()
     {
@@ -336,17 +295,18 @@ class StatementListAccountStatementsInnerPeriod implements ModelInterface, Array
     }
 
     /**
-     * Sets dateTo
+     * Sets dateTo.
      *
-     * @param \DateTime|null $dateTo The end-date of the statement period
+     * @param null|\DateTime $dateTo The end-date of the statement period
      *
      * @return self
      */
     public function setDateTo($dateTo)
     {
-        if (is_null($dateTo)) {
+        if (null === $dateTo) {
             throw new \InvalidArgumentException('non-nullable dateTo cannot be null');
         }
+
         $this->container['dateTo'] = $dateTo;
 
         return $this;
@@ -354,9 +314,7 @@ class StatementListAccountStatementsInnerPeriod implements ModelInterface, Array
     /**
      * Returns true if offset exists. False otherwise.
      *
-     * @param integer $offset Offset
-     *
-     * @return boolean
+     * @param int $offset Offset
      */
     public function offsetExists($offset): bool
     {
@@ -366,9 +324,9 @@ class StatementListAccountStatementsInnerPeriod implements ModelInterface, Array
     /**
      * Gets offset.
      *
-     * @param integer $offset Offset
+     * @param int $offset Offset
      *
-     * @return mixed|null
+     * @return null|mixed
      */
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
@@ -379,14 +337,12 @@ class StatementListAccountStatementsInnerPeriod implements ModelInterface, Array
     /**
      * Sets value based on offset.
      *
-     * @param int|null $offset Offset
+     * @param null|int $offset Offset
      * @param mixed    $value  Value to be set
-     *
-     * @return void
      */
     public function offsetSet($offset, $value): void
     {
-        if (is_null($offset)) {
+        if (null === $offset) {
             $this->container[] = $value;
         } else {
             $this->container[$offset] = $value;
@@ -396,9 +352,7 @@ class StatementListAccountStatementsInnerPeriod implements ModelInterface, Array
     /**
      * Unsets offset.
      *
-     * @param integer $offset Offset
-     *
-     * @return void
+     * @param int $offset Offset
      */
     public function offsetUnset($offset): void
     {
@@ -407,10 +361,11 @@ class StatementListAccountStatementsInnerPeriod implements ModelInterface, Array
 
     /**
      * Serializes the object to a value that can be serialized natively by json_encode().
-     * @link https://www.php.net/manual/en/jsonserializable.jsonserialize.php
      *
-     * @return mixed Returns data which can be serialized by json_encode(), which is a value
-     * of any type other than a resource.
+     * @see https://www.php.net/manual/en/jsonserializable.jsonserialize.php
+     *
+     * @return mixed returns data which can be serialized by json_encode(), which is a value
+     *               of any type other than a resource
      */
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
@@ -419,20 +374,7 @@ class StatementListAccountStatementsInnerPeriod implements ModelInterface, Array
     }
 
     /**
-     * Gets the string presentation of the object
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        return json_encode(
-            ObjectSerializer::sanitizeForSerialization($this),
-            JSON_PRETTY_PRINT
-        );
-    }
-
-    /**
-     * Gets a header-safe presentation of the object
+     * Gets a header-safe presentation of the object.
      *
      * @return string
      */
@@ -440,6 +382,48 @@ class StatementListAccountStatementsInnerPeriod implements ModelInterface, Array
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
+
+    /**
+     * Array of nullable properties.
+     */
+    protected static function openAPINullables(): array
+    {
+        return self::$openAPINullables;
+    }
+
+    /**
+     * Array of nullable field names deliberately set to null.
+     *
+     * @return bool[]
+     */
+    private function getOpenAPINullablesSetToNull(): array
+    {
+        return $this->openAPINullablesSetToNull;
+    }
+
+    /**
+     * Setter - Array of nullable field names deliberately set to null.
+     *
+     * @param bool[] $openAPINullablesSetToNull
+     */
+    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
+    {
+        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
+    }
+
+    /**
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array.
+     *
+     * @param mixed $defaultValue
+     */
+    private function setIfExists(string $variableName, array $fields, $defaultValue): void
+    {
+        if (self::isNullable($variableName) && \array_key_exists($variableName, $fields) && null === $fields[$variableName]) {
+            $this->openAPINullablesSetToNull[] = $variableName;
+        }
+
+        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
+    }
 }
-
-

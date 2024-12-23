@@ -1,17 +1,20 @@
 <?php
 
+declare(strict_types=1);
+
 /**
- * DefaultApi
- * PHP version 7.4+
+ * This file is part of the CsasWebApi package
  *
- * @category Class
- * @package  SpojeNET\Csas
- * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ * https://github.com/Spoje-NET/php-csas-webapi
+ *
+ * (c) SpojeNetIT <http://spoje.net/>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 /**
- * Production Accounts API V3
+ * Production Accounts API V3.
  *
  * API for managing production accounts.
  *
@@ -43,50 +46,19 @@ use SpojeNET\Csas\HeaderSelector;
 use SpojeNET\Csas\ObjectSerializer;
 
 /**
- * DefaultApi Class Doc Comment
+ * DefaultApi Class Doc Comment.
  *
  * @category Class
- * @package  SpojeNET\Csas
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class DefaultApi
 {
     /**
-     * @var ClientInterface
+     * @var string[] *
      */
-    protected $client;
-
-    /**
-     * @var Configuration
-     */
-    protected $config;
-
-    /**
-     * @var HeaderSelector
-     */
-    protected $headerSelector;
-
-    /**
-     * @var int Host index
-     */
-    protected $hostIndex;
-
-    /**
-     * ApiKey obtained from Developer Portal - when you registered your app with us.
-     *
-     * @link https://developers.erstegroup.com/portal/organizations/vitezslav-dvorak/applications/ Grab Your API key here
-     * @var string
-     */
-    protected string $apiKey;
-    protected string $token;
-
-    /**
-     * Use the /api/csas/public/sandbox/v3/* path for endpoints ?
-     */
-    protected $sandBoxMode = false;
-
-    /** @var string[] $contentTypes **/
     public const contentTypes = [
         'getAccountBalance' => [
             'application/json',
@@ -102,36 +74,59 @@ class DefaultApi
         ],
     ];
 
+    protected ClientInterface $client;
+
+    protected Configuration $config;
+
+    protected HeaderSelector $headerSelector;
+
     /**
-     * @param ClientInterface $client
-     * @param Configuration   $config
-     * @param HeaderSelector  $selector
-     * @param int             $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
+     * @var int Host index
+     */
+    protected int $hostIndex;
+
+    /**
+     * ApiKey obtained from Developer Portal - when you registered your app with us.
+     *
+     * @see https://developers.erstegroup.com/portal/organizations/vitezslav-dvorak/applications/ Grab Your API key here
+     */
+    protected string $apiKey;
+    protected string $token;
+
+    /**
+     * Use the /api/csas/public/sandbox/v3/* path for endpoints ?
+     */
+    protected $sandBoxMode = false;
+
+    /**
+     * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
-        ClientInterface $client = null,
-        Configuration $config = null,
-        HeaderSelector $selector = null,
+        ?ClientInterface $client = null,
+        ?Configuration $config = null,
+        ?HeaderSelector $selector = null,
         $hostIndex = 0
     ) {
         $this->client = $client ?: new ApiClient();
         $this->config = $config ?: Configuration::getDefaultConfiguration();
         $this->headerSelector = $selector ?: new HeaderSelector();
         $this->hostIndex = $hostIndex;
+
         if (method_exists($this->client, 'getApiKey')) {
             $config['headers']['web-api-key'] = $this->client->getApiKey();
             $this->setApiKey($this->client->getApiKey());
         }
+
         if (method_exists($this->client, 'getAccessToken')) {
             $config['headers']['authorization'] = 'Bearer '.$this->client->getAccessToken();
             $this->setAccessToken($this->client->getAccessToken());
         }
+
         if (method_exists($this->client, 'getSandBoxMode')) {
             $this->setSandBoxMode($this->client->getSandBoxMode());
         }
 
-        $config['base_uri'] = ($this->sandBoxMode ? 'https://webapi.developers.erstegroup.com/api/csas/public/sandbox' : 'https://www.csas.cz/webapi/api') . '/v3/accounts/' ;
-
+        $config['base_uri'] = ($this->sandBoxMode ? 'https://webapi.developers.erstegroup.com/api/csas/public/sandbox' : 'https://www.csas.cz/webapi/api').'/v3/accounts/';
     }
 
     /**
@@ -151,7 +146,7 @@ class DefaultApi
     }
 
     /**
-     * @param boolean $sandboxing Use mocking api for development purposes ?
+     * @param bool $sandboxing Use mocking api for development purposes ?
      */
     public function setSandBoxMode(bool $sandboxing): void
     {
@@ -160,7 +155,7 @@ class DefaultApi
     }
 
     /**
-     * Set the host index
+     * Set the host index.
      *
      * @param int $hostIndex Host index (required)
      */
@@ -170,7 +165,7 @@ class DefaultApi
     }
 
     /**
-     * Get the host index
+     * Get the host index.
      *
      * @return int Host index
      */
@@ -188,33 +183,36 @@ class DefaultApi
     }
 
     /**
-     * Operation getAccountBalance
+     * Operation getAccountBalance.
      *
      * Get account balance
      *
-     * @param  string $id Opaque system ID of the account (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAccountBalance'] to see the possible values for this operation
+     * @param string $id          Opaque system ID of the account (required)
+     * @param string $contentType The value for the Content-Type header. Check self::contentTypes['getAccountBalance'] to see the possible values for this operation
      *
-     * @throws \SpojeNET\Csas\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
+     * @throws \SpojeNET\Csas\ApiException on non-2xx response or if the response body is not in the expected format
+     *
      * @return \SpojeNET\Csas\Model\AccountBalance|\SpojeNET\Csas\Model\GetAccounts400Response|\SpojeNET\Csas\Model\GetAccounts403Response|\SpojeNET\Csas\Model\GetAccounts404Response|\SpojeNET\Csas\Model\GetAccounts405Response|\SpojeNET\Csas\Model\GetAccounts412Response|\SpojeNET\Csas\Model\GetAccounts429Response|\SpojeNET\Csas\Model\GetAccounts500Response|\SpojeNET\Csas\Model\GetAccounts503Response
      */
     public function getAccountBalance($id, string $contentType = self::contentTypes['getAccountBalance'][0])
     {
-        list($response) = $this->getAccountBalanceWithHttpInfo($id, $contentType);
+        [$response] = $this->getAccountBalanceWithHttpInfo($id, $contentType);
+
         return $response;
     }
 
     /**
-     * Operation getAccountBalanceWithHttpInfo
+     * Operation getAccountBalanceWithHttpInfo.
      *
      * Get account balance
      *
-     * @param  string $id Opaque system ID of the account (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAccountBalance'] to see the possible values for this operation
+     * @param string $id          Opaque system ID of the account (required)
+     * @param string $contentType The value for the Content-Type header. Check self::contentTypes['getAccountBalance'] to see the possible values for this operation
      *
-     * @throws \SpojeNET\Csas\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
+     * @throws \SpojeNET\Csas\ApiException on non-2xx response or if the response body is not in the expected format
+     *
      * @return array of \SpojeNET\Csas\Model\AccountBalance|\SpojeNET\Csas\Model\GetAccounts400Response|\SpojeNET\Csas\Model\GetAccounts403Response|\SpojeNET\Csas\Model\GetAccounts404Response|\SpojeNET\Csas\Model\GetAccounts405Response|\SpojeNET\Csas\Model\GetAccounts412Response|\SpojeNET\Csas\Model\GetAccounts429Response|\SpojeNET\Csas\Model\GetAccounts500Response|\SpojeNET\Csas\Model\GetAccounts503Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAccountBalanceWithHttpInfo($id, string $contentType = self::contentTypes['getAccountBalance'][0])
@@ -223,6 +221,7 @@ class DefaultApi
 
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
@@ -230,38 +229,38 @@ class DefaultApi
                     "[{$e->getCode()}] {$e->getMessage()}",
                     (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null,
                 );
             } catch (ConnectException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
                     (int) $e->getCode(),
                     null,
-                    null
+                    null,
                 );
             }
 
             $statusCode = $response->getStatusCode();
 
-
             switch ($statusCode) {
                 case 200:
                     if ('\SpojeNET\Csas\Model\AccountBalance' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
+
                         if ('\SpojeNET\Csas\Model\AccountBalance' !== 'string') {
                             try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                                $content = json_decode($content, false, 512, \JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
                                 throw new ApiException(
                                     sprintf(
                                         'Error JSON decoding server response (%s)',
-                                        $request->getUri()
+                                        $request->getUri(),
                                     ),
                                     $statusCode,
                                     $response->getHeaders(),
-                                    $content
+                                    $content,
                                 );
                             }
                         }
@@ -270,25 +269,26 @@ class DefaultApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpojeNET\Csas\Model\AccountBalance', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 case 400:
                     if ('\SpojeNET\Csas\Model\GetAccounts400Response' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
+
                         if ('\SpojeNET\Csas\Model\GetAccounts400Response' !== 'string') {
                             try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                                $content = json_decode($content, false, 512, \JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
                                 throw new ApiException(
                                     sprintf(
                                         'Error JSON decoding server response (%s)',
-                                        $request->getUri()
+                                        $request->getUri(),
                                     ),
                                     $statusCode,
                                     $response->getHeaders(),
-                                    $content
+                                    $content,
                                 );
                             }
                         }
@@ -297,25 +297,26 @@ class DefaultApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpojeNET\Csas\Model\GetAccounts400Response', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 case 403:
                     if ('\SpojeNET\Csas\Model\GetAccounts403Response' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
+
                         if ('\SpojeNET\Csas\Model\GetAccounts403Response' !== 'string') {
                             try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                                $content = json_decode($content, false, 512, \JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
                                 throw new ApiException(
                                     sprintf(
                                         'Error JSON decoding server response (%s)',
-                                        $request->getUri()
+                                        $request->getUri(),
                                     ),
                                     $statusCode,
                                     $response->getHeaders(),
-                                    $content
+                                    $content,
                                 );
                             }
                         }
@@ -324,25 +325,26 @@ class DefaultApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpojeNET\Csas\Model\GetAccounts403Response', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 case 404:
                     if ('\SpojeNET\Csas\Model\GetAccounts404Response' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
+
                         if ('\SpojeNET\Csas\Model\GetAccounts404Response' !== 'string') {
                             try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                                $content = json_decode($content, false, 512, \JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
                                 throw new ApiException(
                                     sprintf(
                                         'Error JSON decoding server response (%s)',
-                                        $request->getUri()
+                                        $request->getUri(),
                                     ),
                                     $statusCode,
                                     $response->getHeaders(),
-                                    $content
+                                    $content,
                                 );
                             }
                         }
@@ -351,25 +353,26 @@ class DefaultApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpojeNET\Csas\Model\GetAccounts404Response', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 case 405:
                     if ('\SpojeNET\Csas\Model\GetAccounts405Response' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
+
                         if ('\SpojeNET\Csas\Model\GetAccounts405Response' !== 'string') {
                             try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                                $content = json_decode($content, false, 512, \JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
                                 throw new ApiException(
                                     sprintf(
                                         'Error JSON decoding server response (%s)',
-                                        $request->getUri()
+                                        $request->getUri(),
                                     ),
                                     $statusCode,
                                     $response->getHeaders(),
-                                    $content
+                                    $content,
                                 );
                             }
                         }
@@ -378,25 +381,26 @@ class DefaultApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpojeNET\Csas\Model\GetAccounts405Response', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 case 412:
                     if ('\SpojeNET\Csas\Model\GetAccounts412Response' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
+
                         if ('\SpojeNET\Csas\Model\GetAccounts412Response' !== 'string') {
                             try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                                $content = json_decode($content, false, 512, \JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
                                 throw new ApiException(
                                     sprintf(
                                         'Error JSON decoding server response (%s)',
-                                        $request->getUri()
+                                        $request->getUri(),
                                     ),
                                     $statusCode,
                                     $response->getHeaders(),
-                                    $content
+                                    $content,
                                 );
                             }
                         }
@@ -405,25 +409,26 @@ class DefaultApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpojeNET\Csas\Model\GetAccounts412Response', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 case 429:
                     if ('\SpojeNET\Csas\Model\GetAccounts429Response' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
+
                         if ('\SpojeNET\Csas\Model\GetAccounts429Response' !== 'string') {
                             try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                                $content = json_decode($content, false, 512, \JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
                                 throw new ApiException(
                                     sprintf(
                                         'Error JSON decoding server response (%s)',
-                                        $request->getUri()
+                                        $request->getUri(),
                                     ),
                                     $statusCode,
                                     $response->getHeaders(),
-                                    $content
+                                    $content,
                                 );
                             }
                         }
@@ -432,25 +437,26 @@ class DefaultApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpojeNET\Csas\Model\GetAccounts429Response', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 case 500:
                     if ('\SpojeNET\Csas\Model\GetAccounts500Response' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
+
                         if ('\SpojeNET\Csas\Model\GetAccounts500Response' !== 'string') {
                             try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                                $content = json_decode($content, false, 512, \JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
                                 throw new ApiException(
                                     sprintf(
                                         'Error JSON decoding server response (%s)',
-                                        $request->getUri()
+                                        $request->getUri(),
                                     ),
                                     $statusCode,
                                     $response->getHeaders(),
-                                    $content
+                                    $content,
                                 );
                             }
                         }
@@ -459,25 +465,26 @@ class DefaultApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpojeNET\Csas\Model\GetAccounts500Response', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 case 503:
                     if ('\SpojeNET\Csas\Model\GetAccounts503Response' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
+
                         if ('\SpojeNET\Csas\Model\GetAccounts503Response' !== 'string') {
                             try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                                $content = json_decode($content, false, 512, \JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
                                 throw new ApiException(
                                     sprintf(
                                         'Error JSON decoding server response (%s)',
-                                        $request->getUri()
+                                        $request->getUri(),
                                     ),
                                     $statusCode,
                                     $response->getHeaders(),
-                                    $content
+                                    $content,
                                 );
                             }
                         }
@@ -486,7 +493,7 @@ class DefaultApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpojeNET\Csas\Model\GetAccounts503Response', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
             }
 
@@ -495,31 +502,33 @@ class DefaultApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        (string) $request->getUri()
+                        (string) $request->getUri(),
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    (string) $response->getBody()
+                    (string) $response->getBody(),
                 );
             }
 
             $returnType = '\SpojeNET\Csas\Model\AccountBalance';
+
             if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
+                $content = $response->getBody(); // stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
+
                 if ($returnType !== 'string') {
                     try {
-                        $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                        $content = json_decode($content, false, 512, \JSON_THROW_ON_ERROR);
                     } catch (\JsonException $exception) {
                         throw new ApiException(
                             sprintf(
                                 'Error JSON decoding server response (%s)',
-                                $request->getUri()
+                                $request->getUri(),
                             ),
                             $statusCode,
                             $response->getHeaders(),
-                            $content
+                            $content,
                         );
                     }
                 }
@@ -528,118 +537,129 @@ class DefaultApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\SpojeNET\Csas\Model\AccountBalance',
-                        $e->getResponseHeaders()
+                        $e->getResponseHeaders(),
                     );
                     $e->setResponseObject($data);
+
                     break;
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\SpojeNET\Csas\Model\GetAccounts400Response',
-                        $e->getResponseHeaders()
+                        $e->getResponseHeaders(),
                     );
                     $e->setResponseObject($data);
+
                     break;
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\SpojeNET\Csas\Model\GetAccounts403Response',
-                        $e->getResponseHeaders()
+                        $e->getResponseHeaders(),
                     );
                     $e->setResponseObject($data);
+
                     break;
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\SpojeNET\Csas\Model\GetAccounts404Response',
-                        $e->getResponseHeaders()
+                        $e->getResponseHeaders(),
                     );
                     $e->setResponseObject($data);
+
                     break;
                 case 405:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\SpojeNET\Csas\Model\GetAccounts405Response',
-                        $e->getResponseHeaders()
+                        $e->getResponseHeaders(),
                     );
                     $e->setResponseObject($data);
+
                     break;
                 case 412:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\SpojeNET\Csas\Model\GetAccounts412Response',
-                        $e->getResponseHeaders()
+                        $e->getResponseHeaders(),
                     );
                     $e->setResponseObject($data);
+
                     break;
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\SpojeNET\Csas\Model\GetAccounts429Response',
-                        $e->getResponseHeaders()
+                        $e->getResponseHeaders(),
                     );
                     $e->setResponseObject($data);
+
                     break;
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\SpojeNET\Csas\Model\GetAccounts500Response',
-                        $e->getResponseHeaders()
+                        $e->getResponseHeaders(),
                     );
                     $e->setResponseObject($data);
+
                     break;
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\SpojeNET\Csas\Model\GetAccounts503Response',
-                        $e->getResponseHeaders()
+                        $e->getResponseHeaders(),
                     );
                     $e->setResponseObject($data);
+
                     break;
             }
+
             throw $e;
         }
     }
 
     /**
-     * Operation getAccountBalanceAsync
+     * Operation getAccountBalanceAsync.
      *
      * Get account balance
      *
-     * @param  string $id Opaque system ID of the account (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAccountBalance'] to see the possible values for this operation
+     * @param string $id          Opaque system ID of the account (required)
+     * @param string $contentType The value for the Content-Type header. Check self::contentTypes['getAccountBalance'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
+     *
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function getAccountBalanceAsync($id, string $contentType = self::contentTypes['getAccountBalance'][0])
     {
         return $this->getAccountBalanceAsyncWithHttpInfo($id, $contentType)
             ->then(
-                function ($response) {
+                static function ($response) {
                     return $response[0];
-                }
+                },
             );
     }
 
     /**
-     * Operation getAccountBalanceAsyncWithHttpInfo
+     * Operation getAccountBalanceAsyncWithHttpInfo.
      *
      * Get account balance
      *
-     * @param  string $id Opaque system ID of the account (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAccountBalance'] to see the possible values for this operation
+     * @param string $id          Opaque system ID of the account (required)
+     * @param string $contentType The value for the Content-Type header. Check self::contentTypes['getAccountBalance'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
+     *
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function getAccountBalanceAsyncWithHttpInfo($id, string $contentType = self::contentTypes['getAccountBalance'][0])
@@ -650,11 +670,12 @@ class DefaultApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
+                static function ($response) use ($returnType) {
                     if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
+
                         if ($returnType !== 'string') {
                             $content = json_decode($content);
                         }
@@ -663,45 +684,45 @@ class DefaultApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
-                function ($exception) {
+                static function ($exception): void {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
                             $statusCode,
-                            $exception->getRequest()->getUri()
+                            $exception->getRequest()->getUri(),
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        (string) $response->getBody()
+                        (string) $response->getBody(),
                     );
-                }
+                },
             );
     }
 
     /**
-     * Create request for operation 'getAccountBalance'
+     * Create request for operation 'getAccountBalance'.
      *
-     * @param  string $id Opaque system ID of the account (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAccountBalance'] to see the possible values for this operation
+     * @param string $id          Opaque system ID of the account (required)
+     * @param string $contentType The value for the Content-Type header. Check self::contentTypes['getAccountBalance'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
+     *
      * @return \GuzzleHttp\Psr7\Request
      */
     public function getAccountBalanceRequest($id, string $contentType = self::contentTypes['getAccountBalance'][0])
     {
-
         // verify the required parameter 'id' is set
-        if ($id === null || (is_array($id) && count($id) === 0)) {
+        if ($id === null || (\is_array($id) && \count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling getAccountBalance'
+                'Missing the required parameter $id when calling getAccountBalance',
             );
         }
-
 
         $resourcePath = ($this->sandBoxMode ? '/api/csas/public/sandbox' : '/webapi/api').'/v3/accounts/my/accounts/{id}/balance';
         $formParams = [];
@@ -710,42 +731,41 @@ class DefaultApi
         $httpBody = '';
         $multipart = false;
 
-
-
         // path params
         if ($id !== null) {
             $resourcePath = str_replace(
-                '{' . 'id' . '}',
+                '{id}',
                 ObjectSerializer::toPathValue($id),
-                $resourcePath
+                $resourcePath,
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
+            ['application/json'],
             $contentType,
-            $multipart
+            $multipart,
         );
 
         // for model (json/xml)
-        if (count($formParams) > 0) {
+        if (\count($formParams) > 0) {
             if ($multipart) {
                 $multipartContents = [];
+
                 foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    $formParamValueItems = \is_array($formParamValue) ? $formParamValue : [$formParamValue];
+
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
+
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
+                // if Content-Type contains "application/json", json_encode the form parameters
                 $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
             } else {
                 // for HTTP post (form)
@@ -755,15 +775,18 @@ class DefaultApi
 
         // this endpoint requires API key authentication
         $apiKey = $this->config->getApiKeyWithPrefix('web-api-key');
+
         if ($apiKey !== null) {
             $headers['web-api-key'] = $apiKey;
         }
+
         // this endpoint requires Bearer (JWT) authentication (access token)
         if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+            $headers['Authorization'] = 'Bearer '.$this->config->getAccessToken();
         }
 
         $defaultHeaders = [];
+
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
@@ -771,53 +794,57 @@ class DefaultApi
         $headers = array_merge(
             $defaultHeaders,
             $headerParams,
-            $headers
+            $headers,
         );
 
         $operationHost = $this->config->getHost();
         $query = ObjectSerializer::buildQuery($queryParams);
+
         return new Request(
             'GET',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost.$resourcePath.($query ? "?{$query}" : ''),
             $headers,
-            $httpBody
+            $httpBody,
         );
     }
 
     /**
-     * Operation getAccounts
+     * Operation getAccounts.
      *
      * Get account details
      *
-     * @param  int $size Number of accounts to return (optional)
-     * @param  int $page Page number to return (optional)
-     * @param  string $sort Field to sort by (optional)
-     * @param  string $order Sort order (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAccounts'] to see the possible values for this operation
+     * @param int    $size        Number of accounts to return (optional)
+     * @param int    $page        Page number to return (optional)
+     * @param string $sort        Field to sort by (optional)
+     * @param string $order       Sort order (optional)
+     * @param string $contentType The value for the Content-Type header. Check self::contentTypes['getAccounts'] to see the possible values for this operation
      *
-     * @throws \SpojeNET\Csas\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
+     * @throws \SpojeNET\Csas\ApiException on non-2xx response or if the response body is not in the expected format
+     *
      * @return \SpojeNET\Csas\Model\Account|\SpojeNET\Csas\Model\GetAccounts400Response|\SpojeNET\Csas\Model\GetAccounts403Response|\SpojeNET\Csas\Model\GetAccounts404Response|\SpojeNET\Csas\Model\GetAccounts405Response|\SpojeNET\Csas\Model\GetAccounts412Response|\SpojeNET\Csas\Model\GetAccounts429Response|\SpojeNET\Csas\Model\GetAccounts500Response|\SpojeNET\Csas\Model\GetAccounts503Response
      */
     public function getAccounts($size = null, $page = null, $sort = null, $order = null, string $contentType = self::contentTypes['getAccounts'][0])
     {
-        list($response) = $this->getAccountsWithHttpInfo($size, $page, $sort, $order, $contentType);
+        [$response] = $this->getAccountsWithHttpInfo($size, $page, $sort, $order, $contentType);
+
         return $response;
     }
 
     /**
-     * Operation getAccountsWithHttpInfo
+     * Operation getAccountsWithHttpInfo.
      *
      * Get account details
      *
-     * @param  int $size Number of accounts to return (optional)
-     * @param  int $page Page number to return (optional)
-     * @param  string $sort Field to sort by (optional)
-     * @param  string $order Sort order (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAccounts'] to see the possible values for this operation
+     * @param int    $size        Number of accounts to return (optional)
+     * @param int    $page        Page number to return (optional)
+     * @param string $sort        Field to sort by (optional)
+     * @param string $order       Sort order (optional)
+     * @param string $contentType The value for the Content-Type header. Check self::contentTypes['getAccounts'] to see the possible values for this operation
      *
-     * @throws \SpojeNET\Csas\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
+     * @throws \SpojeNET\Csas\ApiException on non-2xx response or if the response body is not in the expected format
+     *
      * @return array of \SpojeNET\Csas\Model\Account|\SpojeNET\Csas\Model\GetAccounts400Response|\SpojeNET\Csas\Model\GetAccounts403Response|\SpojeNET\Csas\Model\GetAccounts404Response|\SpojeNET\Csas\Model\GetAccounts405Response|\SpojeNET\Csas\Model\GetAccounts412Response|\SpojeNET\Csas\Model\GetAccounts429Response|\SpojeNET\Csas\Model\GetAccounts500Response|\SpojeNET\Csas\Model\GetAccounts503Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAccountsWithHttpInfo($size = null, $page = null, $sort = null, $order = null, string $contentType = self::contentTypes['getAccounts'][0])
@@ -826,6 +853,7 @@ class DefaultApi
 
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
@@ -833,38 +861,38 @@ class DefaultApi
                     "[{$e->getCode()}] {$e->getMessage()}",
                     (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null,
                 );
             } catch (ConnectException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
                     (int) $e->getCode(),
                     null,
-                    null
+                    null,
                 );
             }
 
             $statusCode = $response->getStatusCode();
 
-
             switch ($statusCode) {
                 case 200:
                     if ('\SpojeNET\Csas\Model\Account' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
+
                         if ('\SpojeNET\Csas\Model\Account' !== 'string') {
                             try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                                $content = json_decode($content, false, 512, \JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
                                 throw new ApiException(
                                     sprintf(
                                         'Error JSON decoding server response (%s)',
-                                        $request->getUri()
+                                        $request->getUri(),
                                     ),
                                     $statusCode,
                                     $response->getHeaders(),
-                                    $content
+                                    $content,
                                 );
                             }
                         }
@@ -873,25 +901,26 @@ class DefaultApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpojeNET\Csas\Model\Account', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 case 400:
                     if ('\SpojeNET\Csas\Model\GetAccounts400Response' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
+
                         if ('\SpojeNET\Csas\Model\GetAccounts400Response' !== 'string') {
                             try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                                $content = json_decode($content, false, 512, \JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
                                 throw new ApiException(
                                     sprintf(
                                         'Error JSON decoding server response (%s)',
-                                        $request->getUri()
+                                        $request->getUri(),
                                     ),
                                     $statusCode,
                                     $response->getHeaders(),
-                                    $content
+                                    $content,
                                 );
                             }
                         }
@@ -900,25 +929,26 @@ class DefaultApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpojeNET\Csas\Model\GetAccounts400Response', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 case 403:
                     if ('\SpojeNET\Csas\Model\GetAccounts403Response' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
+
                         if ('\SpojeNET\Csas\Model\GetAccounts403Response' !== 'string') {
                             try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                                $content = json_decode($content, false, 512, \JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
                                 throw new ApiException(
                                     sprintf(
                                         'Error JSON decoding server response (%s)',
-                                        $request->getUri()
+                                        $request->getUri(),
                                     ),
                                     $statusCode,
                                     $response->getHeaders(),
-                                    $content
+                                    $content,
                                 );
                             }
                         }
@@ -927,25 +957,26 @@ class DefaultApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpojeNET\Csas\Model\GetAccounts403Response', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 case 404:
                     if ('\SpojeNET\Csas\Model\GetAccounts404Response' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
+
                         if ('\SpojeNET\Csas\Model\GetAccounts404Response' !== 'string') {
                             try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                                $content = json_decode($content, false, 512, \JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
                                 throw new ApiException(
                                     sprintf(
                                         'Error JSON decoding server response (%s)',
-                                        $request->getUri()
+                                        $request->getUri(),
                                     ),
                                     $statusCode,
                                     $response->getHeaders(),
-                                    $content
+                                    $content,
                                 );
                             }
                         }
@@ -954,25 +985,26 @@ class DefaultApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpojeNET\Csas\Model\GetAccounts404Response', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 case 405:
                     if ('\SpojeNET\Csas\Model\GetAccounts405Response' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
+
                         if ('\SpojeNET\Csas\Model\GetAccounts405Response' !== 'string') {
                             try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                                $content = json_decode($content, false, 512, \JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
                                 throw new ApiException(
                                     sprintf(
                                         'Error JSON decoding server response (%s)',
-                                        $request->getUri()
+                                        $request->getUri(),
                                     ),
                                     $statusCode,
                                     $response->getHeaders(),
-                                    $content
+                                    $content,
                                 );
                             }
                         }
@@ -981,25 +1013,26 @@ class DefaultApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpojeNET\Csas\Model\GetAccounts405Response', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 case 412:
                     if ('\SpojeNET\Csas\Model\GetAccounts412Response' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
+
                         if ('\SpojeNET\Csas\Model\GetAccounts412Response' !== 'string') {
                             try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                                $content = json_decode($content, false, 512, \JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
                                 throw new ApiException(
                                     sprintf(
                                         'Error JSON decoding server response (%s)',
-                                        $request->getUri()
+                                        $request->getUri(),
                                     ),
                                     $statusCode,
                                     $response->getHeaders(),
-                                    $content
+                                    $content,
                                 );
                             }
                         }
@@ -1008,25 +1041,26 @@ class DefaultApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpojeNET\Csas\Model\GetAccounts412Response', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 case 429:
                     if ('\SpojeNET\Csas\Model\GetAccounts429Response' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
+
                         if ('\SpojeNET\Csas\Model\GetAccounts429Response' !== 'string') {
                             try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                                $content = json_decode($content, false, 512, \JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
                                 throw new ApiException(
                                     sprintf(
                                         'Error JSON decoding server response (%s)',
-                                        $request->getUri()
+                                        $request->getUri(),
                                     ),
                                     $statusCode,
                                     $response->getHeaders(),
-                                    $content
+                                    $content,
                                 );
                             }
                         }
@@ -1035,25 +1069,26 @@ class DefaultApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpojeNET\Csas\Model\GetAccounts429Response', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 case 500:
                     if ('\SpojeNET\Csas\Model\GetAccounts500Response' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
+
                         if ('\SpojeNET\Csas\Model\GetAccounts500Response' !== 'string') {
                             try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                                $content = json_decode($content, false, 512, \JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
                                 throw new ApiException(
                                     sprintf(
                                         'Error JSON decoding server response (%s)',
-                                        $request->getUri()
+                                        $request->getUri(),
                                     ),
                                     $statusCode,
                                     $response->getHeaders(),
-                                    $content
+                                    $content,
                                 );
                             }
                         }
@@ -1062,25 +1097,26 @@ class DefaultApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpojeNET\Csas\Model\GetAccounts500Response', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 case 503:
                     if ('\SpojeNET\Csas\Model\GetAccounts503Response' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
+
                         if ('\SpojeNET\Csas\Model\GetAccounts503Response' !== 'string') {
                             try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                                $content = json_decode($content, false, 512, \JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
                                 throw new ApiException(
                                     sprintf(
                                         'Error JSON decoding server response (%s)',
-                                        $request->getUri()
+                                        $request->getUri(),
                                     ),
                                     $statusCode,
                                     $response->getHeaders(),
-                                    $content
+                                    $content,
                                 );
                             }
                         }
@@ -1089,7 +1125,7 @@ class DefaultApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpojeNET\Csas\Model\GetAccounts503Response', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
             }
 
@@ -1098,31 +1134,33 @@ class DefaultApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        (string) $request->getUri()
+                        (string) $request->getUri(),
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    (string) $response->getBody()
+                    (string) $response->getBody(),
                 );
             }
 
             $returnType = '\SpojeNET\Csas\Model\Account';
+
             if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
+                $content = $response->getBody(); // stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
+
                 if ($returnType !== 'string') {
                     try {
-                        $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                        $content = json_decode($content, false, 512, \JSON_THROW_ON_ERROR);
                     } catch (\JsonException $exception) {
                         throw new ApiException(
                             sprintf(
                                 'Error JSON decoding server response (%s)',
-                                $request->getUri()
+                                $request->getUri(),
                             ),
                             $statusCode,
                             $response->getHeaders(),
-                            $content
+                            $content,
                         );
                     }
                 }
@@ -1131,124 +1169,135 @@ class DefaultApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\SpojeNET\Csas\Model\Account',
-                        $e->getResponseHeaders()
+                        $e->getResponseHeaders(),
                     );
                     $e->setResponseObject($data);
+
                     break;
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\SpojeNET\Csas\Model\GetAccounts400Response',
-                        $e->getResponseHeaders()
+                        $e->getResponseHeaders(),
                     );
                     $e->setResponseObject($data);
+
                     break;
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\SpojeNET\Csas\Model\GetAccounts403Response',
-                        $e->getResponseHeaders()
+                        $e->getResponseHeaders(),
                     );
                     $e->setResponseObject($data);
+
                     break;
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\SpojeNET\Csas\Model\GetAccounts404Response',
-                        $e->getResponseHeaders()
+                        $e->getResponseHeaders(),
                     );
                     $e->setResponseObject($data);
+
                     break;
                 case 405:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\SpojeNET\Csas\Model\GetAccounts405Response',
-                        $e->getResponseHeaders()
+                        $e->getResponseHeaders(),
                     );
                     $e->setResponseObject($data);
+
                     break;
                 case 412:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\SpojeNET\Csas\Model\GetAccounts412Response',
-                        $e->getResponseHeaders()
+                        $e->getResponseHeaders(),
                     );
                     $e->setResponseObject($data);
+
                     break;
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\SpojeNET\Csas\Model\GetAccounts429Response',
-                        $e->getResponseHeaders()
+                        $e->getResponseHeaders(),
                     );
                     $e->setResponseObject($data);
+
                     break;
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\SpojeNET\Csas\Model\GetAccounts500Response',
-                        $e->getResponseHeaders()
+                        $e->getResponseHeaders(),
                     );
                     $e->setResponseObject($data);
+
                     break;
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\SpojeNET\Csas\Model\GetAccounts503Response',
-                        $e->getResponseHeaders()
+                        $e->getResponseHeaders(),
                     );
                     $e->setResponseObject($data);
+
                     break;
             }
+
             throw $e;
         }
     }
 
     /**
-     * Operation getAccountsAsync
+     * Operation getAccountsAsync.
      *
      * Get account details
      *
-     * @param  int $size Number of accounts to return (optional)
-     * @param  int $page Page number to return (optional)
-     * @param  string $sort Field to sort by (optional)
-     * @param  string $order Sort order (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAccounts'] to see the possible values for this operation
+     * @param int    $size        Number of accounts to return (optional)
+     * @param int    $page        Page number to return (optional)
+     * @param string $sort        Field to sort by (optional)
+     * @param string $order       Sort order (optional)
+     * @param string $contentType The value for the Content-Type header. Check self::contentTypes['getAccounts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
+     *
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function getAccountsAsync($size = null, $page = null, $sort = null, $order = null, string $contentType = self::contentTypes['getAccounts'][0])
     {
         return $this->getAccountsAsyncWithHttpInfo($size, $page, $sort, $order, $contentType)
             ->then(
-                function ($response) {
+                static function ($response) {
                     return $response[0];
-                }
+                },
             );
     }
 
     /**
-     * Operation getAccountsAsyncWithHttpInfo
+     * Operation getAccountsAsyncWithHttpInfo.
      *
      * Get account details
      *
-     * @param  int $size Number of accounts to return (optional)
-     * @param  int $page Page number to return (optional)
-     * @param  string $sort Field to sort by (optional)
-     * @param  string $order Sort order (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAccounts'] to see the possible values for this operation
+     * @param int    $size        Number of accounts to return (optional)
+     * @param int    $page        Page number to return (optional)
+     * @param string $sort        Field to sort by (optional)
+     * @param string $order       Sort order (optional)
+     * @param string $contentType The value for the Content-Type header. Check self::contentTypes['getAccounts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
+     *
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function getAccountsAsyncWithHttpInfo($size = null, $page = null, $sort = null, $order = null, string $contentType = self::contentTypes['getAccounts'][0])
@@ -1259,11 +1308,12 @@ class DefaultApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
+                static function ($response) use ($returnType) {
                     if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
+
                         if ($returnType !== 'string') {
                             $content = json_decode($content);
                         }
@@ -1272,46 +1322,42 @@ class DefaultApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
-                function ($exception) {
+                static function ($exception): void {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
                             $statusCode,
-                            $exception->getRequest()->getUri()
+                            $exception->getRequest()->getUri(),
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        (string) $response->getBody()
+                        (string) $response->getBody(),
                     );
-                }
+                },
             );
     }
 
     /**
-     * Create request for operation 'getAccounts'
+     * Create request for operation 'getAccounts'.
      *
-     * @param  int $size Number of accounts to return (optional)
-     * @param  int $page Page number to return (optional)
-     * @param  string $sort Field to sort by (optional)
-     * @param  string $order Sort order (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAccounts'] to see the possible values for this operation
+     * @param int    $size        Number of accounts to return (optional)
+     * @param int    $page        Page number to return (optional)
+     * @param string $sort        Field to sort by (optional)
+     * @param string $order       Sort order (optional)
+     * @param string $contentType The value for the Content-Type header. Check self::contentTypes['getAccounts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
+     *
      * @return \GuzzleHttp\Psr7\Request
      */
     public function getAccountsRequest($size = null, $page = null, $sort = null, $order = null, string $contentType = self::contentTypes['getAccounts'][0])
     {
-
-
-
-
-
-
         $resourcePath = ($this->sandBoxMode ? '/api/csas/public/sandbox' : '/webapi/api').'/v3/accounts/my/accounts';
         $formParams = [];
         $queryParams = [];
@@ -1326,7 +1372,7 @@ class DefaultApi
             'integer', // openApiType
             'form', // style
             true, // explode
-            false // required
+            false, // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -1335,7 +1381,7 @@ class DefaultApi
             'integer', // openApiType
             'form', // style
             true, // explode
-            false // required
+            false, // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -1344,7 +1390,7 @@ class DefaultApi
             'string', // openApiType
             'form', // style
             true, // explode
-            false // required
+            false, // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -1353,36 +1399,35 @@ class DefaultApi
             'string', // openApiType
             'form', // style
             true, // explode
-            false // required
+            false, // required
         ) ?? []);
 
-
-
-
         $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
+            ['application/json'],
             $contentType,
-            $multipart
+            $multipart,
         );
 
         // for model (json/xml)
-        if (count($formParams) > 0) {
+        if (\count($formParams) > 0) {
             if ($multipart) {
                 $multipartContents = [];
+
                 foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    $formParamValueItems = \is_array($formParamValue) ? $formParamValue : [$formParamValue];
+
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
+
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
+                // if Content-Type contains "application/json", json_encode the form parameters
                 $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
             } else {
                 // for HTTP post (form)
@@ -1392,15 +1437,18 @@ class DefaultApi
 
         // this endpoint requires API key authentication
         $apiKey = $this->config->getApiKeyWithPrefix('web-api-key');
+
         if ($apiKey !== null) {
             $headers['web-api-key'] = $apiKey;
         }
+
         // this endpoint requires Bearer (JWT) authentication (access token)
         if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+            $headers['Authorization'] = 'Bearer '.$this->config->getAccessToken();
         }
 
         $defaultHeaders = [];
+
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
@@ -1408,57 +1456,61 @@ class DefaultApi
         $headers = array_merge(
             $defaultHeaders,
             $headerParams,
-            $headers
+            $headers,
         );
 
         $operationHost = $this->config->getHost();
         $query = ObjectSerializer::buildQuery($queryParams);
+
         return new Request(
             'GET',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost.$resourcePath.($query ? "?{$query}" : ''),
             $headers,
-            $httpBody
+            $httpBody,
         );
     }
 
     /**
-     * Operation getStatements
+     * Operation getStatements.
      *
      * Get statements list
      *
-     * @param  string $id Unique system identification of the client account (required)
-     * @param  \DateTime $fromDate Date from which the statement history should be obtained (yyyy-MM-dd) (optional)
-     * @param  \DateTime $toDate Date to which the statement history should be obtained (yyyy-MM-dd) (optional)
-     * @param  string $format Selected statement format (optional)
-     * @param  int $size Number of entries per page (max. 100) (optional)
-     * @param  int $page The desired page (indexed from zero) (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getStatements'] to see the possible values for this operation
+     * @param string    $id          Unique system identification of the client account (required)
+     * @param \DateTime $fromDate    Date from which the statement history should be obtained (yyyy-MM-dd) (optional)
+     * @param \DateTime $toDate      Date to which the statement history should be obtained (yyyy-MM-dd) (optional)
+     * @param string    $format      Selected statement format (optional)
+     * @param int       $size        Number of entries per page (max. 100) (optional)
+     * @param int       $page        The desired page (indexed from zero) (optional)
+     * @param string    $contentType The value for the Content-Type header. Check self::contentTypes['getStatements'] to see the possible values for this operation
      *
-     * @throws \SpojeNET\Csas\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \SpojeNET\Csas\Model\StatementList|\SpojeNET\Csas\Model\GetStatements400Response|\SpojeNET\Csas\Model\GetStatements403Response|\SpojeNET\Csas\Model\GetStatements404Response|\SpojeNET\Csas\Model\GetAccounts429Response|\SpojeNET\Csas\Model\GetAccounts500Response|\SpojeNET\Csas\Model\GetAccounts503Response
+     * @throws \SpojeNET\Csas\ApiException on non-2xx response or if the response body is not in the expected format
+     *
+     * @return \SpojeNET\Csas\Model\GetAccounts429Response|\SpojeNET\Csas\Model\GetAccounts500Response|\SpojeNET\Csas\Model\GetAccounts503Response|\SpojeNET\Csas\Model\GetStatements400Response|\SpojeNET\Csas\Model\GetStatements403Response|\SpojeNET\Csas\Model\GetStatements404Response|\SpojeNET\Csas\Model\StatementList
      */
     public function getStatements($id, $fromDate = null, $toDate = null, $format = null, $size = null, $page = null, string $contentType = self::contentTypes['getStatements'][0])
     {
-        list($response) = $this->getStatementsWithHttpInfo($id, $fromDate, $toDate, $format, $size, $page, $contentType);
+        [$response] = $this->getStatementsWithHttpInfo($id, $fromDate, $toDate, $format, $size, $page, $contentType);
+
         return $response;
     }
 
     /**
-     * Operation getStatementsWithHttpInfo
+     * Operation getStatementsWithHttpInfo.
      *
      * Get statements list
      *
-     * @param  string $id Unique system identification of the client account (required)
-     * @param  \DateTime $fromDate Date from which the statement history should be obtained (yyyy-MM-dd) (optional)
-     * @param  \DateTime $toDate Date to which the statement history should be obtained (yyyy-MM-dd) (optional)
-     * @param  string $format Selected statement format (optional)
-     * @param  int $size Number of entries per page (max. 100) (optional)
-     * @param  int $page The desired page (indexed from zero) (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getStatements'] to see the possible values for this operation
+     * @param string    $id          Unique system identification of the client account (required)
+     * @param \DateTime $fromDate    Date from which the statement history should be obtained (yyyy-MM-dd) (optional)
+     * @param \DateTime $toDate      Date to which the statement history should be obtained (yyyy-MM-dd) (optional)
+     * @param string    $format      Selected statement format (optional)
+     * @param int       $size        Number of entries per page (max. 100) (optional)
+     * @param int       $page        The desired page (indexed from zero) (optional)
+     * @param string    $contentType The value for the Content-Type header. Check self::contentTypes['getStatements'] to see the possible values for this operation
      *
-     * @throws \SpojeNET\Csas\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
+     * @throws \SpojeNET\Csas\ApiException on non-2xx response or if the response body is not in the expected format
+     *
      * @return array of \SpojeNET\Csas\Model\StatementList|\SpojeNET\Csas\Model\GetStatements400Response|\SpojeNET\Csas\Model\GetStatements403Response|\SpojeNET\Csas\Model\GetStatements404Response|\SpojeNET\Csas\Model\GetAccounts429Response|\SpojeNET\Csas\Model\GetAccounts500Response|\SpojeNET\Csas\Model\GetAccounts503Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function getStatementsWithHttpInfo($id, $fromDate = null, $toDate = null, $format = null, $size = null, $page = null, string $contentType = self::contentTypes['getStatements'][0])
@@ -1467,6 +1519,7 @@ class DefaultApi
 
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
@@ -1474,38 +1527,38 @@ class DefaultApi
                     "[{$e->getCode()}] {$e->getMessage()}",
                     (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null,
                 );
             } catch (ConnectException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
                     (int) $e->getCode(),
                     null,
-                    null
+                    null,
                 );
             }
 
             $statusCode = $response->getStatusCode();
 
-
             switch ($statusCode) {
                 case 200:
                     if ('\SpojeNET\Csas\Model\StatementList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
+
                         if ('\SpojeNET\Csas\Model\StatementList' !== 'string') {
                             try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                                $content = json_decode($content, false, 512, \JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
                                 throw new ApiException(
                                     sprintf(
                                         'Error JSON decoding server response (%s)',
-                                        $request->getUri()
+                                        $request->getUri(),
                                     ),
                                     $statusCode,
                                     $response->getHeaders(),
-                                    $content
+                                    $content,
                                 );
                             }
                         }
@@ -1514,25 +1567,26 @@ class DefaultApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpojeNET\Csas\Model\StatementList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 case 400:
                     if ('\SpojeNET\Csas\Model\GetStatements400Response' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
+
                         if ('\SpojeNET\Csas\Model\GetStatements400Response' !== 'string') {
                             try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                                $content = json_decode($content, false, 512, \JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
                                 throw new ApiException(
                                     sprintf(
                                         'Error JSON decoding server response (%s)',
-                                        $request->getUri()
+                                        $request->getUri(),
                                     ),
                                     $statusCode,
                                     $response->getHeaders(),
-                                    $content
+                                    $content,
                                 );
                             }
                         }
@@ -1541,25 +1595,26 @@ class DefaultApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpojeNET\Csas\Model\GetStatements400Response', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 case 403:
                     if ('\SpojeNET\Csas\Model\GetStatements403Response' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
+
                         if ('\SpojeNET\Csas\Model\GetStatements403Response' !== 'string') {
                             try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                                $content = json_decode($content, false, 512, \JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
                                 throw new ApiException(
                                     sprintf(
                                         'Error JSON decoding server response (%s)',
-                                        $request->getUri()
+                                        $request->getUri(),
                                     ),
                                     $statusCode,
                                     $response->getHeaders(),
-                                    $content
+                                    $content,
                                 );
                             }
                         }
@@ -1568,25 +1623,26 @@ class DefaultApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpojeNET\Csas\Model\GetStatements403Response', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 case 404:
                     if ('\SpojeNET\Csas\Model\GetStatements404Response' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
+
                         if ('\SpojeNET\Csas\Model\GetStatements404Response' !== 'string') {
                             try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                                $content = json_decode($content, false, 512, \JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
                                 throw new ApiException(
                                     sprintf(
                                         'Error JSON decoding server response (%s)',
-                                        $request->getUri()
+                                        $request->getUri(),
                                     ),
                                     $statusCode,
                                     $response->getHeaders(),
-                                    $content
+                                    $content,
                                 );
                             }
                         }
@@ -1595,25 +1651,26 @@ class DefaultApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpojeNET\Csas\Model\GetStatements404Response', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 case 429:
                     if ('\SpojeNET\Csas\Model\GetAccounts429Response' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
+
                         if ('\SpojeNET\Csas\Model\GetAccounts429Response' !== 'string') {
                             try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                                $content = json_decode($content, false, 512, \JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
                                 throw new ApiException(
                                     sprintf(
                                         'Error JSON decoding server response (%s)',
-                                        $request->getUri()
+                                        $request->getUri(),
                                     ),
                                     $statusCode,
                                     $response->getHeaders(),
-                                    $content
+                                    $content,
                                 );
                             }
                         }
@@ -1622,25 +1679,26 @@ class DefaultApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpojeNET\Csas\Model\GetAccounts429Response', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 case 500:
                     if ('\SpojeNET\Csas\Model\GetAccounts500Response' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
+
                         if ('\SpojeNET\Csas\Model\GetAccounts500Response' !== 'string') {
                             try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                                $content = json_decode($content, false, 512, \JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
                                 throw new ApiException(
                                     sprintf(
                                         'Error JSON decoding server response (%s)',
-                                        $request->getUri()
+                                        $request->getUri(),
                                     ),
                                     $statusCode,
                                     $response->getHeaders(),
-                                    $content
+                                    $content,
                                 );
                             }
                         }
@@ -1649,25 +1707,26 @@ class DefaultApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpojeNET\Csas\Model\GetAccounts500Response', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 case 503:
                     if ('\SpojeNET\Csas\Model\GetAccounts503Response' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
+
                         if ('\SpojeNET\Csas\Model\GetAccounts503Response' !== 'string') {
                             try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                                $content = json_decode($content, false, 512, \JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
                                 throw new ApiException(
                                     sprintf(
                                         'Error JSON decoding server response (%s)',
-                                        $request->getUri()
+                                        $request->getUri(),
                                     ),
                                     $statusCode,
                                     $response->getHeaders(),
-                                    $content
+                                    $content,
                                 );
                             }
                         }
@@ -1676,7 +1735,7 @@ class DefaultApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpojeNET\Csas\Model\GetAccounts503Response', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
             }
 
@@ -1685,31 +1744,33 @@ class DefaultApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        (string) $request->getUri()
+                        (string) $request->getUri(),
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    (string) $response->getBody()
+                    (string) $response->getBody(),
                 );
             }
 
             $returnType = '\SpojeNET\Csas\Model\StatementList';
+
             if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
+                $content = $response->getBody(); // stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
+
                 if ($returnType !== 'string') {
                     try {
-                        $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                        $content = json_decode($content, false, 512, \JSON_THROW_ON_ERROR);
                     } catch (\JsonException $exception) {
                         throw new ApiException(
                             sprintf(
                                 'Error JSON decoding server response (%s)',
-                                $request->getUri()
+                                $request->getUri(),
                             ),
                             $statusCode,
                             $response->getHeaders(),
-                            $content
+                            $content,
                         );
                     }
                 }
@@ -1718,112 +1779,121 @@ class DefaultApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\SpojeNET\Csas\Model\StatementList',
-                        $e->getResponseHeaders()
+                        $e->getResponseHeaders(),
                     );
                     $e->setResponseObject($data);
+
                     break;
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\SpojeNET\Csas\Model\GetStatements400Response',
-                        $e->getResponseHeaders()
+                        $e->getResponseHeaders(),
                     );
                     $e->setResponseObject($data);
+
                     break;
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\SpojeNET\Csas\Model\GetStatements403Response',
-                        $e->getResponseHeaders()
+                        $e->getResponseHeaders(),
                     );
                     $e->setResponseObject($data);
+
                     break;
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\SpojeNET\Csas\Model\GetStatements404Response',
-                        $e->getResponseHeaders()
+                        $e->getResponseHeaders(),
                     );
                     $e->setResponseObject($data);
+
                     break;
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\SpojeNET\Csas\Model\GetAccounts429Response',
-                        $e->getResponseHeaders()
+                        $e->getResponseHeaders(),
                     );
                     $e->setResponseObject($data);
+
                     break;
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\SpojeNET\Csas\Model\GetAccounts500Response',
-                        $e->getResponseHeaders()
+                        $e->getResponseHeaders(),
                     );
                     $e->setResponseObject($data);
+
                     break;
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\SpojeNET\Csas\Model\GetAccounts503Response',
-                        $e->getResponseHeaders()
+                        $e->getResponseHeaders(),
                     );
                     $e->setResponseObject($data);
+
                     break;
             }
+
             throw $e;
         }
     }
 
     /**
-     * Operation getStatementsAsync
+     * Operation getStatementsAsync.
      *
      * Get statements list
      *
-     * @param  string $id Unique system identification of the client account (required)
-     * @param  \DateTime $fromDate Date from which the statement history should be obtained (yyyy-MM-dd) (optional)
-     * @param  \DateTime $toDate Date to which the statement history should be obtained (yyyy-MM-dd) (optional)
-     * @param  string $format Selected statement format (optional)
-     * @param  int $size Number of entries per page (max. 100) (optional)
-     * @param  int $page The desired page (indexed from zero) (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getStatements'] to see the possible values for this operation
+     * @param string    $id          Unique system identification of the client account (required)
+     * @param \DateTime $fromDate    Date from which the statement history should be obtained (yyyy-MM-dd) (optional)
+     * @param \DateTime $toDate      Date to which the statement history should be obtained (yyyy-MM-dd) (optional)
+     * @param string    $format      Selected statement format (optional)
+     * @param int       $size        Number of entries per page (max. 100) (optional)
+     * @param int       $page        The desired page (indexed from zero) (optional)
+     * @param string    $contentType The value for the Content-Type header. Check self::contentTypes['getStatements'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
+     *
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function getStatementsAsync($id, $fromDate = null, $toDate = null, $format = null, $size = null, $page = null, string $contentType = self::contentTypes['getStatements'][0])
     {
         return $this->getStatementsAsyncWithHttpInfo($id, $fromDate, $toDate, $format, $size, $page, $contentType)
             ->then(
-                function ($response) {
+                static function ($response) {
                     return $response[0];
-                }
+                },
             );
     }
 
     /**
-     * Operation getStatementsAsyncWithHttpInfo
+     * Operation getStatementsAsyncWithHttpInfo.
      *
      * Get statements list
      *
-     * @param  string $id Unique system identification of the client account (required)
-     * @param  \DateTime $fromDate Date from which the statement history should be obtained (yyyy-MM-dd) (optional)
-     * @param  \DateTime $toDate Date to which the statement history should be obtained (yyyy-MM-dd) (optional)
-     * @param  string $format Selected statement format (optional)
-     * @param  int $size Number of entries per page (max. 100) (optional)
-     * @param  int $page The desired page (indexed from zero) (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getStatements'] to see the possible values for this operation
+     * @param string    $id          Unique system identification of the client account (required)
+     * @param \DateTime $fromDate    Date from which the statement history should be obtained (yyyy-MM-dd) (optional)
+     * @param \DateTime $toDate      Date to which the statement history should be obtained (yyyy-MM-dd) (optional)
+     * @param string    $format      Selected statement format (optional)
+     * @param int       $size        Number of entries per page (max. 100) (optional)
+     * @param int       $page        The desired page (indexed from zero) (optional)
+     * @param string    $contentType The value for the Content-Type header. Check self::contentTypes['getStatements'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
+     *
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function getStatementsAsyncWithHttpInfo($id, $fromDate = null, $toDate = null, $format = null, $size = null, $page = null, string $contentType = self::contentTypes['getStatements'][0])
@@ -1834,11 +1904,12 @@ class DefaultApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
+                static function ($response) use ($returnType) {
                     if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
+
                         if ($returnType !== 'string') {
                             $content = json_decode($content);
                         }
@@ -1847,55 +1918,50 @@ class DefaultApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
-                function ($exception) {
+                static function ($exception): void {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
                             $statusCode,
-                            $exception->getRequest()->getUri()
+                            $exception->getRequest()->getUri(),
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        (string) $response->getBody()
+                        (string) $response->getBody(),
                     );
-                }
+                },
             );
     }
 
     /**
-     * Create request for operation 'getStatements'
+     * Create request for operation 'getStatements'.
      *
-     * @param  string $id Unique system identification of the client account (required)
-     * @param  \DateTime $fromDate Date from which the statement history should be obtained (yyyy-MM-dd) (optional)
-     * @param  \DateTime $toDate Date to which the statement history should be obtained (yyyy-MM-dd) (optional)
-     * @param  string $format Selected statement format (optional)
-     * @param  int $size Number of entries per page (max. 100) (optional)
-     * @param  int $page The desired page (indexed from zero) (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getStatements'] to see the possible values for this operation
+     * @param string    $id          Unique system identification of the client account (required)
+     * @param \DateTime $fromDate    Date from which the statement history should be obtained (yyyy-MM-dd) (optional)
+     * @param \DateTime $toDate      Date to which the statement history should be obtained (yyyy-MM-dd) (optional)
+     * @param string    $format      Selected statement format (optional)
+     * @param int       $size        Number of entries per page (max. 100) (optional)
+     * @param int       $page        The desired page (indexed from zero) (optional)
+     * @param string    $contentType The value for the Content-Type header. Check self::contentTypes['getStatements'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
+     *
      * @return \GuzzleHttp\Psr7\Request
      */
     public function getStatementsRequest($id, $fromDate = null, $toDate = null, $format = null, $size = null, $page = null, string $contentType = self::contentTypes['getStatements'][0])
     {
-
         // verify the required parameter 'id' is set
-        if ($id === null || (is_array($id) && count($id) === 0)) {
+        if ($id === null || (\is_array($id) && \count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling getStatements'
+                'Missing the required parameter $id when calling getStatements',
             );
         }
-
-
-
-
-
-
 
         $resourcePath = ($this->sandBoxMode ? '/api/csas/public/sandbox' : '/webapi/api').'/v3/accounts/my/accounts/{id}/statements';
         $formParams = [];
@@ -1911,7 +1977,7 @@ class DefaultApi
             'string', // openApiType
             'form', // style
             true, // explode
-            false // required
+            false, // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -1920,7 +1986,7 @@ class DefaultApi
             'string', // openApiType
             'form', // style
             true, // explode
-            false // required
+            false, // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -1929,7 +1995,7 @@ class DefaultApi
             'string', // openApiType
             'form', // style
             true, // explode
-            false // required
+            false, // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -1938,7 +2004,7 @@ class DefaultApi
             'integer', // openApiType
             'form', // style
             true, // explode
-            false // required
+            false, // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -1947,44 +2013,44 @@ class DefaultApi
             'integer', // openApiType
             'form', // style
             true, // explode
-            false // required
+            false, // required
         ) ?? []);
-
 
         // path params
         if ($id !== null) {
             $resourcePath = str_replace(
-                '{' . 'id' . '}',
+                '{id}',
                 ObjectSerializer::toPathValue($id),
-                $resourcePath
+                $resourcePath,
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
+            ['application/json'],
             $contentType,
-            $multipart
+            $multipart,
         );
 
         // for model (json/xml)
-        if (count($formParams) > 0) {
+        if (\count($formParams) > 0) {
             if ($multipart) {
                 $multipartContents = [];
+
                 foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    $formParamValueItems = \is_array($formParamValue) ? $formParamValue : [$formParamValue];
+
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
+
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
+                // if Content-Type contains "application/json", json_encode the form parameters
                 $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
             } else {
                 // for HTTP post (form)
@@ -1994,15 +2060,18 @@ class DefaultApi
 
         // this endpoint requires API key authentication
         $apiKey = $this->config->getApiKeyWithPrefix('web-api-key');
+
         if ($apiKey !== null) {
             $headers['web-api-key'] = $apiKey;
         }
+
         // this endpoint requires Bearer (JWT) authentication (access token)
         if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+            $headers['Authorization'] = 'Bearer '.$this->config->getAccessToken();
         }
 
         $defaultHeaders = [];
+
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
@@ -2010,59 +2079,63 @@ class DefaultApi
         $headers = array_merge(
             $defaultHeaders,
             $headerParams,
-            $headers
+            $headers,
         );
 
         $operationHost = $this->config->getHost();
         $query = ObjectSerializer::buildQuery($queryParams);
+
         return new Request(
             'GET',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost.$resourcePath.($query ? "?{$query}" : ''),
             $headers,
-            $httpBody
+            $httpBody,
         );
     }
 
     /**
-     * Operation getTransactions
+     * Operation getTransactions.
      *
      * Overview of transactions
      *
-     * @param  string $id Unique system identification of the client account (required)
-     * @param  \DateTime $fromDate Filter transactions starting from a specific day in UTC (yyyy-MM-dd) (optional)
-     * @param  \DateTime $toDate Filter transactions up to the chosen day in UTC (yyyy-MM-dd) (optional)
-     * @param  int $size Number of entries per page (max. 200) (optional)
-     * @param  int $page The desired page (indexed from zero) (optional)
-     * @param  string $sort One single field that should be used for sorting (optional)
-     * @param  string $order Sort order (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTransactions'] to see the possible values for this operation
+     * @param string    $id          Unique system identification of the client account (required)
+     * @param \DateTime $fromDate    Filter transactions starting from a specific day in UTC (yyyy-MM-dd) (optional)
+     * @param \DateTime $toDate      Filter transactions up to the chosen day in UTC (yyyy-MM-dd) (optional)
+     * @param int       $size        Number of entries per page (max. 200) (optional)
+     * @param int       $page        The desired page (indexed from zero) (optional)
+     * @param string    $sort        One single field that should be used for sorting (optional)
+     * @param string    $order       Sort order (optional)
+     * @param string    $contentType The value for the Content-Type header. Check self::contentTypes['getTransactions'] to see the possible values for this operation
      *
-     * @throws \SpojeNET\Csas\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \SpojeNET\Csas\Model\TransactionList|\SpojeNET\Csas\Model\GetTransactions400Response|\SpojeNET\Csas\Model\GetTransactions401Response|\SpojeNET\Csas\Model\GetAccounts403Response|\SpojeNET\Csas\Model\GetTransactions404Response|\SpojeNET\Csas\Model\GetAccounts405Response|\SpojeNET\Csas\Model\GetAccounts412Response|\SpojeNET\Csas\Model\GetAccounts429Response|\SpojeNET\Csas\Model\GetAccounts500Response|\SpojeNET\Csas\Model\GetAccounts503Response
+     * @throws \SpojeNET\Csas\ApiException on non-2xx response or if the response body is not in the expected format
+     *
+     * @return \SpojeNET\Csas\Model\GetAccounts403Response|\SpojeNET\Csas\Model\GetAccounts405Response|\SpojeNET\Csas\Model\GetAccounts412Response|\SpojeNET\Csas\Model\GetAccounts429Response|\SpojeNET\Csas\Model\GetAccounts500Response|\SpojeNET\Csas\Model\GetAccounts503Response|\SpojeNET\Csas\Model\GetTransactions400Response|\SpojeNET\Csas\Model\GetTransactions401Response|\SpojeNET\Csas\Model\GetTransactions404Response|\SpojeNET\Csas\Model\TransactionList
      */
     public function getTransactions($id, $fromDate = null, $toDate = null, $size = null, $page = null, $sort = null, $order = null, string $contentType = self::contentTypes['getTransactions'][0])
     {
-        list($response) = $this->getTransactionsWithHttpInfo($id, $fromDate, $toDate, $size, $page, $sort, $order, $contentType);
+        [$response] = $this->getTransactionsWithHttpInfo($id, $fromDate, $toDate, $size, $page, $sort, $order, $contentType);
+
         return $response;
     }
 
     /**
-     * Operation getTransactionsWithHttpInfo
+     * Operation getTransactionsWithHttpInfo.
      *
      * Overview of transactions
      *
-     * @param  string $id Unique system identification of the client account (required)
-     * @param  \DateTime $fromDate Filter transactions starting from a specific day in UTC (yyyy-MM-dd) (optional)
-     * @param  \DateTime $toDate Filter transactions up to the chosen day in UTC (yyyy-MM-dd) (optional)
-     * @param  int $size Number of entries per page (max. 200) (optional)
-     * @param  int $page The desired page (indexed from zero) (optional)
-     * @param  string $sort One single field that should be used for sorting (optional)
-     * @param  string $order Sort order (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTransactions'] to see the possible values for this operation
+     * @param string    $id          Unique system identification of the client account (required)
+     * @param \DateTime $fromDate    Filter transactions starting from a specific day in UTC (yyyy-MM-dd) (optional)
+     * @param \DateTime $toDate      Filter transactions up to the chosen day in UTC (yyyy-MM-dd) (optional)
+     * @param int       $size        Number of entries per page (max. 200) (optional)
+     * @param int       $page        The desired page (indexed from zero) (optional)
+     * @param string    $sort        One single field that should be used for sorting (optional)
+     * @param string    $order       Sort order (optional)
+     * @param string    $contentType The value for the Content-Type header. Check self::contentTypes['getTransactions'] to see the possible values for this operation
      *
-     * @throws \SpojeNET\Csas\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
+     * @throws \SpojeNET\Csas\ApiException on non-2xx response or if the response body is not in the expected format
+     *
      * @return array of \SpojeNET\Csas\Model\TransactionList|\SpojeNET\Csas\Model\GetTransactions400Response|\SpojeNET\Csas\Model\GetTransactions401Response|\SpojeNET\Csas\Model\GetAccounts403Response|\SpojeNET\Csas\Model\GetTransactions404Response|\SpojeNET\Csas\Model\GetAccounts405Response|\SpojeNET\Csas\Model\GetAccounts412Response|\SpojeNET\Csas\Model\GetAccounts429Response|\SpojeNET\Csas\Model\GetAccounts500Response|\SpojeNET\Csas\Model\GetAccounts503Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function getTransactionsWithHttpInfo($id, $fromDate = null, $toDate = null, $size = null, $page = null, $sort = null, $order = null, string $contentType = self::contentTypes['getTransactions'][0])
@@ -2071,6 +2144,7 @@ class DefaultApi
 
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
@@ -2078,38 +2152,38 @@ class DefaultApi
                     "[{$e->getCode()}] {$e->getMessage()}",
                     (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null,
                 );
             } catch (ConnectException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
                     (int) $e->getCode(),
                     null,
-                    null
+                    null,
                 );
             }
 
             $statusCode = $response->getStatusCode();
 
-
             switch ($statusCode) {
                 case 200:
                     if ('\SpojeNET\Csas\Model\TransactionList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
+
                         if ('\SpojeNET\Csas\Model\TransactionList' !== 'string') {
                             try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                                $content = json_decode($content, false, 512, \JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
                                 throw new ApiException(
                                     sprintf(
                                         'Error JSON decoding server response (%s)',
-                                        $request->getUri()
+                                        $request->getUri(),
                                     ),
                                     $statusCode,
                                     $response->getHeaders(),
-                                    $content
+                                    $content,
                                 );
                             }
                         }
@@ -2118,25 +2192,26 @@ class DefaultApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpojeNET\Csas\Model\TransactionList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 case 400:
                     if ('\SpojeNET\Csas\Model\GetTransactions400Response' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
+
                         if ('\SpojeNET\Csas\Model\GetTransactions400Response' !== 'string') {
                             try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                                $content = json_decode($content, false, 512, \JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
                                 throw new ApiException(
                                     sprintf(
                                         'Error JSON decoding server response (%s)',
-                                        $request->getUri()
+                                        $request->getUri(),
                                     ),
                                     $statusCode,
                                     $response->getHeaders(),
-                                    $content
+                                    $content,
                                 );
                             }
                         }
@@ -2145,25 +2220,26 @@ class DefaultApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpojeNET\Csas\Model\GetTransactions400Response', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 case 401:
                     if ('\SpojeNET\Csas\Model\GetTransactions401Response' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
+
                         if ('\SpojeNET\Csas\Model\GetTransactions401Response' !== 'string') {
                             try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                                $content = json_decode($content, false, 512, \JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
                                 throw new ApiException(
                                     sprintf(
                                         'Error JSON decoding server response (%s)',
-                                        $request->getUri()
+                                        $request->getUri(),
                                     ),
                                     $statusCode,
                                     $response->getHeaders(),
-                                    $content
+                                    $content,
                                 );
                             }
                         }
@@ -2172,25 +2248,26 @@ class DefaultApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpojeNET\Csas\Model\GetTransactions401Response', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 case 403:
                     if ('\SpojeNET\Csas\Model\GetAccounts403Response' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
+
                         if ('\SpojeNET\Csas\Model\GetAccounts403Response' !== 'string') {
                             try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                                $content = json_decode($content, false, 512, \JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
                                 throw new ApiException(
                                     sprintf(
                                         'Error JSON decoding server response (%s)',
-                                        $request->getUri()
+                                        $request->getUri(),
                                     ),
                                     $statusCode,
                                     $response->getHeaders(),
-                                    $content
+                                    $content,
                                 );
                             }
                         }
@@ -2199,25 +2276,26 @@ class DefaultApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpojeNET\Csas\Model\GetAccounts403Response', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 case 404:
                     if ('\SpojeNET\Csas\Model\GetTransactions404Response' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
+
                         if ('\SpojeNET\Csas\Model\GetTransactions404Response' !== 'string') {
                             try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                                $content = json_decode($content, false, 512, \JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
                                 throw new ApiException(
                                     sprintf(
                                         'Error JSON decoding server response (%s)',
-                                        $request->getUri()
+                                        $request->getUri(),
                                     ),
                                     $statusCode,
                                     $response->getHeaders(),
-                                    $content
+                                    $content,
                                 );
                             }
                         }
@@ -2226,25 +2304,26 @@ class DefaultApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpojeNET\Csas\Model\GetTransactions404Response', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 case 405:
                     if ('\SpojeNET\Csas\Model\GetAccounts405Response' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
+
                         if ('\SpojeNET\Csas\Model\GetAccounts405Response' !== 'string') {
                             try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                                $content = json_decode($content, false, 512, \JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
                                 throw new ApiException(
                                     sprintf(
                                         'Error JSON decoding server response (%s)',
-                                        $request->getUri()
+                                        $request->getUri(),
                                     ),
                                     $statusCode,
                                     $response->getHeaders(),
-                                    $content
+                                    $content,
                                 );
                             }
                         }
@@ -2253,25 +2332,26 @@ class DefaultApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpojeNET\Csas\Model\GetAccounts405Response', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 case 412:
                     if ('\SpojeNET\Csas\Model\GetAccounts412Response' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
+
                         if ('\SpojeNET\Csas\Model\GetAccounts412Response' !== 'string') {
                             try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                                $content = json_decode($content, false, 512, \JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
                                 throw new ApiException(
                                     sprintf(
                                         'Error JSON decoding server response (%s)',
-                                        $request->getUri()
+                                        $request->getUri(),
                                     ),
                                     $statusCode,
                                     $response->getHeaders(),
-                                    $content
+                                    $content,
                                 );
                             }
                         }
@@ -2280,25 +2360,26 @@ class DefaultApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpojeNET\Csas\Model\GetAccounts412Response', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 case 429:
                     if ('\SpojeNET\Csas\Model\GetAccounts429Response' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
+
                         if ('\SpojeNET\Csas\Model\GetAccounts429Response' !== 'string') {
                             try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                                $content = json_decode($content, false, 512, \JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
                                 throw new ApiException(
                                     sprintf(
                                         'Error JSON decoding server response (%s)',
-                                        $request->getUri()
+                                        $request->getUri(),
                                     ),
                                     $statusCode,
                                     $response->getHeaders(),
-                                    $content
+                                    $content,
                                 );
                             }
                         }
@@ -2307,25 +2388,26 @@ class DefaultApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpojeNET\Csas\Model\GetAccounts429Response', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 case 500:
                     if ('\SpojeNET\Csas\Model\GetAccounts500Response' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
+
                         if ('\SpojeNET\Csas\Model\GetAccounts500Response' !== 'string') {
                             try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                                $content = json_decode($content, false, 512, \JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
                                 throw new ApiException(
                                     sprintf(
                                         'Error JSON decoding server response (%s)',
-                                        $request->getUri()
+                                        $request->getUri(),
                                     ),
                                     $statusCode,
                                     $response->getHeaders(),
-                                    $content
+                                    $content,
                                 );
                             }
                         }
@@ -2334,25 +2416,26 @@ class DefaultApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpojeNET\Csas\Model\GetAccounts500Response', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 case 503:
                     if ('\SpojeNET\Csas\Model\GetAccounts503Response' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
+
                         if ('\SpojeNET\Csas\Model\GetAccounts503Response' !== 'string') {
                             try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                                $content = json_decode($content, false, 512, \JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
                                 throw new ApiException(
                                     sprintf(
                                         'Error JSON decoding server response (%s)',
-                                        $request->getUri()
+                                        $request->getUri(),
                                     ),
                                     $statusCode,
                                     $response->getHeaders(),
-                                    $content
+                                    $content,
                                 );
                             }
                         }
@@ -2361,7 +2444,7 @@ class DefaultApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpojeNET\Csas\Model\GetAccounts503Response', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
             }
 
@@ -2370,31 +2453,33 @@ class DefaultApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        (string) $request->getUri()
+                        (string) $request->getUri(),
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    (string) $response->getBody()
+                    (string) $response->getBody(),
                 );
             }
 
             $returnType = '\SpojeNET\Csas\Model\TransactionList';
+
             if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
+                $content = $response->getBody(); // stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
+
                 if ($returnType !== 'string') {
                     try {
-                        $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                        $content = json_decode($content, false, 512, \JSON_THROW_ON_ERROR);
                     } catch (\JsonException $exception) {
                         throw new ApiException(
                             sprintf(
                                 'Error JSON decoding server response (%s)',
-                                $request->getUri()
+                                $request->getUri(),
                             ),
                             $statusCode,
                             $response->getHeaders(),
-                            $content
+                            $content,
                         );
                     }
                 }
@@ -2403,138 +2488,150 @@ class DefaultApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\SpojeNET\Csas\Model\TransactionList',
-                        $e->getResponseHeaders()
+                        $e->getResponseHeaders(),
                     );
                     $e->setResponseObject($data);
+
                     break;
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\SpojeNET\Csas\Model\GetTransactions400Response',
-                        $e->getResponseHeaders()
+                        $e->getResponseHeaders(),
                     );
                     $e->setResponseObject($data);
+
                     break;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\SpojeNET\Csas\Model\GetTransactions401Response',
-                        $e->getResponseHeaders()
+                        $e->getResponseHeaders(),
                     );
                     $e->setResponseObject($data);
+
                     break;
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\SpojeNET\Csas\Model\GetAccounts403Response',
-                        $e->getResponseHeaders()
+                        $e->getResponseHeaders(),
                     );
                     $e->setResponseObject($data);
+
                     break;
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\SpojeNET\Csas\Model\GetTransactions404Response',
-                        $e->getResponseHeaders()
+                        $e->getResponseHeaders(),
                     );
                     $e->setResponseObject($data);
+
                     break;
                 case 405:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\SpojeNET\Csas\Model\GetAccounts405Response',
-                        $e->getResponseHeaders()
+                        $e->getResponseHeaders(),
                     );
                     $e->setResponseObject($data);
+
                     break;
                 case 412:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\SpojeNET\Csas\Model\GetAccounts412Response',
-                        $e->getResponseHeaders()
+                        $e->getResponseHeaders(),
                     );
                     $e->setResponseObject($data);
+
                     break;
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\SpojeNET\Csas\Model\GetAccounts429Response',
-                        $e->getResponseHeaders()
+                        $e->getResponseHeaders(),
                     );
                     $e->setResponseObject($data);
+
                     break;
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\SpojeNET\Csas\Model\GetAccounts500Response',
-                        $e->getResponseHeaders()
+                        $e->getResponseHeaders(),
                     );
                     $e->setResponseObject($data);
+
                     break;
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\SpojeNET\Csas\Model\GetAccounts503Response',
-                        $e->getResponseHeaders()
+                        $e->getResponseHeaders(),
                     );
                     $e->setResponseObject($data);
+
                     break;
             }
+
             throw $e;
         }
     }
 
     /**
-     * Operation getTransactionsAsync
+     * Operation getTransactionsAsync.
      *
      * Overview of transactions
      *
-     * @param  string $id Unique system identification of the client account (required)
-     * @param  \DateTime $fromDate Filter transactions starting from a specific day in UTC (yyyy-MM-dd) (optional)
-     * @param  \DateTime $toDate Filter transactions up to the chosen day in UTC (yyyy-MM-dd) (optional)
-     * @param  int $size Number of entries per page (max. 200) (optional)
-     * @param  int $page The desired page (indexed from zero) (optional)
-     * @param  string $sort One single field that should be used for sorting (optional)
-     * @param  string $order Sort order (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTransactions'] to see the possible values for this operation
+     * @param string    $id          Unique system identification of the client account (required)
+     * @param \DateTime $fromDate    Filter transactions starting from a specific day in UTC (yyyy-MM-dd) (optional)
+     * @param \DateTime $toDate      Filter transactions up to the chosen day in UTC (yyyy-MM-dd) (optional)
+     * @param int       $size        Number of entries per page (max. 200) (optional)
+     * @param int       $page        The desired page (indexed from zero) (optional)
+     * @param string    $sort        One single field that should be used for sorting (optional)
+     * @param string    $order       Sort order (optional)
+     * @param string    $contentType The value for the Content-Type header. Check self::contentTypes['getTransactions'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
+     *
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function getTransactionsAsync($id, $fromDate = null, $toDate = null, $size = null, $page = null, $sort = null, $order = null, string $contentType = self::contentTypes['getTransactions'][0])
     {
         return $this->getTransactionsAsyncWithHttpInfo($id, $fromDate, $toDate, $size, $page, $sort, $order, $contentType)
             ->then(
-                function ($response) {
+                static function ($response) {
                     return $response[0];
-                }
+                },
             );
     }
 
     /**
-     * Operation getTransactionsAsyncWithHttpInfo
+     * Operation getTransactionsAsyncWithHttpInfo.
      *
      * Overview of transactions
      *
-     * @param  string $id Unique system identification of the client account (required)
-     * @param  \DateTime $fromDate Filter transactions starting from a specific day in UTC (yyyy-MM-dd) (optional)
-     * @param  \DateTime $toDate Filter transactions up to the chosen day in UTC (yyyy-MM-dd) (optional)
-     * @param  int $size Number of entries per page (max. 200) (optional)
-     * @param  int $page The desired page (indexed from zero) (optional)
-     * @param  string $sort One single field that should be used for sorting (optional)
-     * @param  string $order Sort order (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTransactions'] to see the possible values for this operation
+     * @param string    $id          Unique system identification of the client account (required)
+     * @param \DateTime $fromDate    Filter transactions starting from a specific day in UTC (yyyy-MM-dd) (optional)
+     * @param \DateTime $toDate      Filter transactions up to the chosen day in UTC (yyyy-MM-dd) (optional)
+     * @param int       $size        Number of entries per page (max. 200) (optional)
+     * @param int       $page        The desired page (indexed from zero) (optional)
+     * @param string    $sort        One single field that should be used for sorting (optional)
+     * @param string    $order       Sort order (optional)
+     * @param string    $contentType The value for the Content-Type header. Check self::contentTypes['getTransactions'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
+     *
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function getTransactionsAsyncWithHttpInfo($id, $fromDate = null, $toDate = null, $size = null, $page = null, $sort = null, $order = null, string $contentType = self::contentTypes['getTransactions'][0])
@@ -2545,11 +2642,12 @@ class DefaultApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
+                static function ($response) use ($returnType) {
                     if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
+
                         if ($returnType !== 'string') {
                             $content = json_decode($content);
                         }
@@ -2558,57 +2656,51 @@ class DefaultApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
-                function ($exception) {
+                static function ($exception): void {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
                             $statusCode,
-                            $exception->getRequest()->getUri()
+                            $exception->getRequest()->getUri(),
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        (string) $response->getBody()
+                        (string) $response->getBody(),
                     );
-                }
+                },
             );
     }
 
     /**
-     * Create request for operation 'getTransactions'
+     * Create request for operation 'getTransactions'.
      *
-     * @param  string $id Unique system identification of the client account (required)
-     * @param  \DateTime $fromDate Filter transactions starting from a specific day in UTC (yyyy-MM-dd) (optional)
-     * @param  \DateTime $toDate Filter transactions up to the chosen day in UTC (yyyy-MM-dd) (optional)
-     * @param  int $size Number of entries per page (max. 200) (optional)
-     * @param  int $page The desired page (indexed from zero) (optional)
-     * @param  string $sort One single field that should be used for sorting (optional)
-     * @param  string $order Sort order (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTransactions'] to see the possible values for this operation
+     * @param string    $id          Unique system identification of the client account (required)
+     * @param \DateTime $fromDate    Filter transactions starting from a specific day in UTC (yyyy-MM-dd) (optional)
+     * @param \DateTime $toDate      Filter transactions up to the chosen day in UTC (yyyy-MM-dd) (optional)
+     * @param int       $size        Number of entries per page (max. 200) (optional)
+     * @param int       $page        The desired page (indexed from zero) (optional)
+     * @param string    $sort        One single field that should be used for sorting (optional)
+     * @param string    $order       Sort order (optional)
+     * @param string    $contentType The value for the Content-Type header. Check self::contentTypes['getTransactions'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
+     *
      * @return \GuzzleHttp\Psr7\Request
      */
     public function getTransactionsRequest($id, $fromDate = null, $toDate = null, $size = null, $page = null, $sort = null, $order = null, string $contentType = self::contentTypes['getTransactions'][0])
     {
-
         // verify the required parameter 'id' is set
-        if ($id === null || (is_array($id) && count($id) === 0)) {
+        if ($id === null || (\is_array($id) && \count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling getTransactions'
+                'Missing the required parameter $id when calling getTransactions',
             );
         }
-
-
-
-
-
-
-
 
         $resourcePath = ($this->sandBoxMode ? '/api/csas/public/sandbox' : '/webapi/api').'/v3/accounts/my/accounts/{id}/transactions';
         $formParams = [];
@@ -2624,7 +2716,7 @@ class DefaultApi
             'string', // openApiType
             'form', // style
             true, // explode
-            false // required
+            false, // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -2633,7 +2725,7 @@ class DefaultApi
             'string', // openApiType
             'form', // style
             true, // explode
-            false // required
+            false, // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -2642,7 +2734,7 @@ class DefaultApi
             'integer', // openApiType
             'form', // style
             true, // explode
-            false // required
+            false, // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -2651,7 +2743,7 @@ class DefaultApi
             'integer', // openApiType
             'form', // style
             true, // explode
-            false // required
+            false, // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -2660,7 +2752,7 @@ class DefaultApi
             'string', // openApiType
             'form', // style
             true, // explode
-            false // required
+            false, // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -2669,44 +2761,44 @@ class DefaultApi
             'string', // openApiType
             'form', // style
             true, // explode
-            false // required
+            false, // required
         ) ?? []);
-
 
         // path params
         if ($id !== null) {
             $resourcePath = str_replace(
-                '{' . 'id' . '}',
+                '{id}',
                 ObjectSerializer::toPathValue($id),
-                $resourcePath
+                $resourcePath,
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
+            ['application/json'],
             $contentType,
-            $multipart
+            $multipart,
         );
 
         // for model (json/xml)
-        if (count($formParams) > 0) {
+        if (\count($formParams) > 0) {
             if ($multipart) {
                 $multipartContents = [];
+
                 foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    $formParamValueItems = \is_array($formParamValue) ? $formParamValue : [$formParamValue];
+
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
+
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
+                // if Content-Type contains "application/json", json_encode the form parameters
                 $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
             } else {
                 // for HTTP post (form)
@@ -2716,15 +2808,18 @@ class DefaultApi
 
         // this endpoint requires API key authentication
         $apiKey = $this->config->getApiKeyWithPrefix('web-api-key');
+
         if ($apiKey !== null) {
             $headers['web-api-key'] = $apiKey;
         }
+
         // this endpoint requires Bearer (JWT) authentication (access token)
         if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+            $headers['Authorization'] = 'Bearer '.$this->config->getAccessToken();
         }
 
         $defaultHeaders = [];
+
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
@@ -2732,32 +2827,36 @@ class DefaultApi
         $headers = array_merge(
             $defaultHeaders,
             $headerParams,
-            $headers
+            $headers,
         );
 
         $operationHost = $this->config->getHost();
         $query = ObjectSerializer::buildQuery($queryParams);
+
         return new Request(
             'GET',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost.$resourcePath.($query ? "?{$query}" : ''),
             $headers,
-            $httpBody
+            $httpBody,
         );
     }
 
     /**
-     * Create http client option
+     * Create http client option.
      *
      * @throws \RuntimeException on file opening failure
+     *
      * @return array of http client options
      */
     protected function createHttpClientOption()
     {
         $options = [];
+
         if ($this->config->getDebug()) {
-            $options[RequestOptions::DEBUG] = fopen($this->config->getDebugFile(), 'a');
+            $options[RequestOptions::DEBUG] = fopen($this->config->getDebugFile(), 'ab');
+
             if (!$options[RequestOptions::DEBUG]) {
-                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
+                throw new \RuntimeException('Failed to open the debug file: '.$this->config->getDebugFile());
             }
         }
 

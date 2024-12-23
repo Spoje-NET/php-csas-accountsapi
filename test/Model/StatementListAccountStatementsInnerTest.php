@@ -1,17 +1,20 @@
 <?php
+
+declare(strict_types=1);
+
 /**
- * StatementListAccountStatementsInnerTest
+ * This file is part of the CsasWebApi package
  *
- * PHP version 7.4
+ * https://github.com/Spoje-NET/php-csas-webapi
  *
- * @category Class
- * @package  SpojeNET\Csas
- * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ * (c) SpojeNetIT <http://spoje.net/>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 /**
- * Production Accounts API V3
+ * Production Accounts API V3.
  *
  * API for managing production accounts.
  *
@@ -32,103 +35,104 @@ namespace SpojeNET\Csas\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * StatementListAccountStatementsInnerTest Class Doc Comment
+ * StatementListAccountStatementsInnerTest Class Doc Comment.
  *
  * @category    Class
+ *
  * @description StatementListAccountStatementsInner
- * @package     SpojeNET\Csas
+ *
  * @author      OpenAPI Generator team
- * @link        https://openapi-generator.tech
+ *
+ * @see        https://openapi-generator.tech
  */
 class StatementListAccountStatementsInnerTest extends TestCase
 {
-
     /**
-     * Setup before running any test case
+     * Setup before running any test case.
      */
     public static function setUpBeforeClass(): void
     {
     }
 
     /**
-     * Setup before running each test case
-     */
-    public function setUp(): void
-    {
-    }
-
-    /**
-     * Clean up after running each test case
-     */
-    public function tearDown(): void
-    {
-    }
-
-    /**
-     * Clean up after running all test cases
+     * Clean up after running all test cases.
      */
     public static function tearDownAfterClass(): void
     {
     }
 
     /**
-     * Test "StatementListAccountStatementsInner"
+     * Setup before running each test case.
      */
-    public function testStatementListAccountStatementsInner()
+    protected function setUp(): void
+    {
+    }
+
+    /**
+     * Clean up after running each test case.
+     */
+    protected function tearDown(): void
+    {
+    }
+
+    /**
+     * Test "StatementListAccountStatementsInner".
+     */
+    public function testStatementListAccountStatementsInner(): void
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "accountStatementId"
+     * Test attribute "accountStatementId".
      */
-    public function testPropertyAccountStatementId()
+    public function testPropertyAccountStatementId(): void
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "year"
+     * Test attribute "year".
      */
-    public function testPropertyYear()
+    public function testPropertyYear(): void
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "month"
+     * Test attribute "month".
      */
-    public function testPropertyMonth()
+    public function testPropertyMonth(): void
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "sequenceNumber"
+     * Test attribute "sequenceNumber".
      */
-    public function testPropertySequenceNumber()
+    public function testPropertySequenceNumber(): void
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "period"
+     * Test attribute "period".
      */
-    public function testPropertyPeriod()
+    public function testPropertyPeriod(): void
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "formats"
+     * Test attribute "formats".
      */
-    public function testPropertyFormats()
+    public function testPropertyFormats(): void
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

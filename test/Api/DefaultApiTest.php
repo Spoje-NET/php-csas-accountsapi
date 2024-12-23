@@ -1,16 +1,20 @@
 <?php
+
+declare(strict_types=1);
+
 /**
- * DefaultApiTest
- * PHP version 7.4
+ * This file is part of the CsasWebApi package
  *
- * @category Class
- * @package  SpojeNET\Csas
- * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ * https://github.com/Spoje-NET/php-csas-webapi
+ *
+ * (c) SpojeNetIT <http://spoje.net/>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 /**
- * Production Accounts API V3
+ * Production Accounts API V3.
  *
  * API for managing production accounts.
  *
@@ -28,93 +32,86 @@
 
 namespace SpojeNET\Csas\Test\Api;
 
-use \SpojeNET\Csas\Configuration;
-use \SpojeNET\Csas\ApiException;
-use \SpojeNET\Csas\ObjectSerializer;
 use PHPUnit\Framework\TestCase;
 
 /**
- * DefaultApiTest Class Doc Comment
+ * DefaultApiTest Class Doc Comment.
  *
  * @category Class
- * @package  SpojeNET\Csas
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class DefaultApiTest extends TestCase
 {
-
     /**
-     * Setup before running any test cases
+     * Setup before running any test cases.
      */
     public static function setUpBeforeClass(): void
     {
     }
 
     /**
-     * Setup before running each test case
-     */
-    public function setUp(): void
-    {
-    }
-
-    /**
-     * Clean up after running each test case
-     */
-    public function tearDown(): void
-    {
-    }
-
-    /**
-     * Clean up after running all test cases
+     * Clean up after running all test cases.
      */
     public static function tearDownAfterClass(): void
     {
     }
 
     /**
-     * Test case for getAccountBalance
+     * Setup before running each test case.
+     */
+    protected function setUp(): void
+    {
+    }
+
+    /**
+     * Clean up after running each test case.
+     */
+    protected function tearDown(): void
+    {
+    }
+
+    /**
+     * Test case for getAccountBalance.
      *
      * Get account balance.
-     *
      */
-    public function testGetAccountBalance()
+    public function testGetAccountBalance(): void
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test case for getAccounts
+     * Test case for getAccounts.
      *
      * Get account details.
-     *
      */
-    public function testGetAccounts()
+    public function testGetAccounts(): void
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test case for getStatements
+     * Test case for getStatements.
      *
      * Get statements list.
-     *
      */
-    public function testGetStatements()
+    public function testGetStatements(): void
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test case for getTransactions
+     * Test case for getTransactions.
      *
      * Overview of transactions.
-     *
      */
-    public function testGetTransactions()
+    public function testGetTransactions(): void
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

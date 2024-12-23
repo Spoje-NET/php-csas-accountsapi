@@ -1,17 +1,20 @@
 <?php
+
+declare(strict_types=1);
+
 /**
- * StatementListAccountStatementsInnerPeriodTest
+ * This file is part of the CsasWebApi package
  *
- * PHP version 7.4
+ * https://github.com/Spoje-NET/php-csas-webapi
  *
- * @category Class
- * @package  SpojeNET\Csas
- * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ * (c) SpojeNetIT <http://spoje.net/>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 /**
- * Production Accounts API V3
+ * Production Accounts API V3.
  *
  * API for managing production accounts.
  *
@@ -32,67 +35,68 @@ namespace SpojeNET\Csas\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * StatementListAccountStatementsInnerPeriodTest Class Doc Comment
+ * StatementListAccountStatementsInnerPeriodTest Class Doc Comment.
  *
  * @category    Class
+ *
  * @description StatementListAccountStatementsInnerPeriod
- * @package     SpojeNET\Csas
+ *
  * @author      OpenAPI Generator team
- * @link        https://openapi-generator.tech
+ *
+ * @see        https://openapi-generator.tech
  */
 class StatementListAccountStatementsInnerPeriodTest extends TestCase
 {
-
     /**
-     * Setup before running any test case
+     * Setup before running any test case.
      */
     public static function setUpBeforeClass(): void
     {
     }
 
     /**
-     * Setup before running each test case
-     */
-    public function setUp(): void
-    {
-    }
-
-    /**
-     * Clean up after running each test case
-     */
-    public function tearDown(): void
-    {
-    }
-
-    /**
-     * Clean up after running all test cases
+     * Clean up after running all test cases.
      */
     public static function tearDownAfterClass(): void
     {
     }
 
     /**
-     * Test "StatementListAccountStatementsInnerPeriod"
+     * Setup before running each test case.
      */
-    public function testStatementListAccountStatementsInnerPeriod()
+    protected function setUp(): void
+    {
+    }
+
+    /**
+     * Clean up after running each test case.
+     */
+    protected function tearDown(): void
+    {
+    }
+
+    /**
+     * Test "StatementListAccountStatementsInnerPeriod".
+     */
+    public function testStatementListAccountStatementsInnerPeriod(): void
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "dateFrom"
+     * Test attribute "dateFrom".
      */
-    public function testPropertyDateFrom()
+    public function testPropertyDateFrom(): void
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "dateTo"
+     * Test attribute "dateTo".
      */
-    public function testPropertyDateTo()
+    public function testPropertyDateTo(): void
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

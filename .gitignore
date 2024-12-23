@@ -16,4 +16,3 @@ composer.phar
 .phpunit.result.cache
 composer.lock
 /.env
-/doc/
