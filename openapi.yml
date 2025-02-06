@@ -607,7 +607,7 @@ components:
     ApiKeyAuth:
       type: apiKey
       in: header
-      name: web-api-key
+      name: WEB-API-key
   schemas:
     Account:
       type: object

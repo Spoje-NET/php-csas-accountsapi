@@ -22,7 +22,7 @@ Shr::init([], \dirname(__DIR__).'/.env');
 $apiInstance = new \SpojeNET\Csas\Accounts\DefaultApi(new SpojeNET\Csas\ApiClient(
     [
         'apikey' => Shr::cfg('API_KEY'),
-        'token' => Shr::cfg('API_TOKEN'),
+        'token' => Shr::cfg('ACCESS_TOKEN'),
         'debug' => Shr::cfg('API_DEBUG', false),
         'sandbox' => Shr::cfg('SANDBOX_MODE'),
     ],

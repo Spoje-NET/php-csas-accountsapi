@@ -73,11 +73,8 @@ class DefaultApi
             'application/json',
         ],
     ];
-
     protected ClientInterface $client;
-
     protected Configuration $config;
-
     protected HeaderSelector $headerSelector;
 
     /**
@@ -113,7 +110,7 @@ class DefaultApi
         $this->hostIndex = $hostIndex;
 
         if (method_exists($this->client, 'getApiKey')) {
-            $config['headers']['web-api-key'] = $this->client->getApiKey();
+            $config['headers']['WEB-API-key'] = $this->client->getApiKey();
             $this->setApiKey($this->client->getApiKey());
         }
 
@@ -134,7 +131,7 @@ class DefaultApi
      */
     public function setApiKey(string $apiKey): void
     {
-        $this->config->setApiKey('web-api-key', $apiKey);
+        $this->config->setApiKey('WEB-API-key', $apiKey);
     }
 
     /**
@@ -774,10 +771,10 @@ class DefaultApi
         }
 
         // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('web-api-key');
+        $apiKey = $this->config->getApiKeyWithPrefix('WEB-API-key');
 
         if ($apiKey !== null) {
-            $headers['web-api-key'] = $apiKey;
+            $headers['WEB-API-key'] = $apiKey;
         }
 
         // this endpoint requires Bearer (JWT) authentication (access token)
@@ -1436,10 +1433,10 @@ class DefaultApi
         }
 
         // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('web-api-key');
+        $apiKey = $this->config->getApiKeyWithPrefix('WEB-API-key');
 
         if ($apiKey !== null) {
-            $headers['web-api-key'] = $apiKey;
+            $headers['WEB-API-key'] = $apiKey;
         }
 
         // this endpoint requires Bearer (JWT) authentication (access token)
@@ -2059,10 +2056,10 @@ class DefaultApi
         }
 
         // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('web-api-key');
+        $apiKey = $this->config->getApiKeyWithPrefix('WEB-API-key');
 
         if ($apiKey !== null) {
-            $headers['web-api-key'] = $apiKey;
+            $headers['WEB-API-key'] = $apiKey;
         }
 
         // this endpoint requires Bearer (JWT) authentication (access token)
@@ -2807,10 +2804,10 @@ class DefaultApi
         }
 
         // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('web-api-key');
+        $apiKey = $this->config->getApiKeyWithPrefix('WEB-API-key');
 
         if ($apiKey !== null) {
-            $headers['web-api-key'] = $apiKey;
+            $headers['WEB-API-key'] = $apiKey;
         }
 
         // this endpoint requires Bearer (JWT) authentication (access token)
@@ -2860,7 +2857,7 @@ class DefaultApi
             }
         }
 
-        $options['headers']['web-api-key'] = $this->config->getApiKey('web-api-key');
+        $options['headers']['WEB-API-key'] = $this->config->getApiKey('WEB-API-key');
         $options['headers']['authorization'] = 'Bearer '.$this->config->getAccessToken();
 
         return $options;

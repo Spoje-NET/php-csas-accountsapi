@@ -51,9 +51,9 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: ApiKeyAuth
-$config = SpojeNET\Csas\Configuration::getDefaultConfiguration()->setApiKey('web-api-key', 'YOUR_API_KEY');
+$config = SpojeNET\Csas\Configuration::getDefaultConfiguration()->setApiKey('WEB-API-key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = SpojeNET\Csas\Configuration::getDefaultConfiguration()->setApiKeyPrefix('web-api-key', 'Bearer');
+// $config = SpojeNET\Csas\Configuration::getDefaultConfiguration()->setApiKeyPrefix('WEB-API-key', 'Bearer');
 
 // Configure Bearer (JWT) authorization: bearerAuth
 $config = SpojeNET\Csas\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
@@ -123,7 +123,7 @@ Authentication schemes defined for the API:
 ### ApiKeyAuth
 
 - **Type**: API key
-- **API key parameter name**: web-api-key
+- **API key parameter name**: WEB-API-key
 - **Location**: HTTP header
 
 
