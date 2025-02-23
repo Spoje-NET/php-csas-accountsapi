@@ -35,7 +35,7 @@ namespace SpojeNET\Csas\Model;
 use SpojeNET\Csas\ObjectSerializer;
 
 /**
- * GetStatements403Response Class Doc Comment.
+ * GetAccountStatements200Response Class Doc Comment.
  *
  * @category Class
  *
@@ -45,15 +45,14 @@ use SpojeNET\Csas\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class GetStatements403Response implements \ArrayAccess, \JsonSerializable, ModelInterface
+class GetAccountStatements200Response implements \ArrayAccess, \JsonSerializable, ModelInterface
 {
     public const DISCRIMINATOR = null;
-    public const ERROR_CODE_TOKEN_INVALID = 'TOKEN_INVALID';
 
     /**
      * The original name of the model.
      */
-    protected static string $openAPIModelName = 'getStatements_403_response';
+    protected static string $openAPIModelName = 'getAccountStatements_200_response';
 
     /**
      * Array of property to type mappings. Used for (de)serialization.
@@ -61,8 +60,7 @@ class GetStatements403Response implements \ArrayAccess, \JsonSerializable, Model
      * @var string[]
      */
     protected static array $openAPITypes = [
-        'errorCode' => 'string',
-        'message' => 'string',
+        'statements' => '\SpojeNET\Csas\Model\GetAccountStatements200ResponseStatementsInner[]',
     ];
 
     /**
@@ -75,8 +73,7 @@ class GetStatements403Response implements \ArrayAccess, \JsonSerializable, Model
      * @psalm-var array<string, string|null>
      */
     protected static array $openAPIFormats = [
-        'errorCode' => null,
-        'message' => null,
+        'statements' => null,
     ];
 
     /**
@@ -85,8 +82,7 @@ class GetStatements403Response implements \ArrayAccess, \JsonSerializable, Model
      * @var bool[]
      */
     protected static array $openAPINullables = [
-        'errorCode' => false,
-        'message' => false,
+        'statements' => false,
     ];
 
     /**
@@ -103,8 +99,7 @@ class GetStatements403Response implements \ArrayAccess, \JsonSerializable, Model
      * @var string[]
      */
     protected static array $attributeMap = [
-        'errorCode' => 'errorCode',
-        'message' => 'message',
+        'statements' => 'statements',
     ];
 
     /**
@@ -113,8 +108,7 @@ class GetStatements403Response implements \ArrayAccess, \JsonSerializable, Model
      * @var string[]
      */
     protected static array $setters = [
-        'errorCode' => 'setErrorCode',
-        'message' => 'setMessage',
+        'statements' => 'setStatements',
     ];
 
     /**
@@ -123,8 +117,7 @@ class GetStatements403Response implements \ArrayAccess, \JsonSerializable, Model
      * @var string[]
      */
     protected static array $getters = [
-        'errorCode' => 'getErrorCode',
-        'message' => 'getMessage',
+        'statements' => 'getStatements',
     ];
 
     /**
@@ -142,8 +135,7 @@ class GetStatements403Response implements \ArrayAccess, \JsonSerializable, Model
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('errorCode', $data ?? [], null);
-        $this->setIfExists('message', $data ?? [], null);
+        $this->setIfExists('statements', $data ?? [], null);
     }
 
     /**
@@ -237,37 +229,13 @@ class GetStatements403Response implements \ArrayAccess, \JsonSerializable, Model
     }
 
     /**
-     * Gets allowable values of the enum.
-     *
-     * @return string[]
-     */
-    public function getErrorCodeAllowableValues()
-    {
-        return [
-            self::ERROR_CODE_TOKEN_INVALID,
-        ];
-    }
-
-    /**
      * Show all the invalid properties with reasons.
      *
      * @return array invalid properties with reasons
      */
     public function listInvalidProperties()
     {
-        $invalidProperties = [];
-
-        $allowedValues = $this->getErrorCodeAllowableValues();
-
-        if (null !== $this->container['errorCode'] && !\in_array($this->container['errorCode'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'errorCode', must be one of '%s'",
-                $this->container['errorCode'],
-                implode("', '", $allowedValues),
-            );
-        }
-
-        return $invalidProperties;
+        return [];
     }
 
     /**
@@ -282,69 +250,29 @@ class GetStatements403Response implements \ArrayAccess, \JsonSerializable, Model
     }
 
     /**
-     * Gets errorCode.
+     * Gets statements.
      *
-     * @return null|string
+     * @return null|\SpojeNET\Csas\Model\GetAccountStatements200ResponseStatementsInner[]
      */
-    public function getErrorCode()
+    public function getStatements()
     {
-        return $this->container['errorCode'];
+        return $this->container['statements'];
     }
 
     /**
-     * Sets errorCode.
+     * Sets statements.
      *
-     * @param null|string $errorCode errorCode
+     * @param null|\SpojeNET\Csas\Model\GetAccountStatements200ResponseStatementsInner[] $statements statements
      *
      * @return self
      */
-    public function setErrorCode($errorCode)
+    public function setStatements($statements)
     {
-        if (null === $errorCode) {
-            throw new \InvalidArgumentException('non-nullable errorCode cannot be null');
+        if (null === $statements) {
+            throw new \InvalidArgumentException('non-nullable statements cannot be null');
         }
 
-        $allowedValues = $this->getErrorCodeAllowableValues();
-
-        if (!\in_array($errorCode, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'errorCode', must be one of '%s'",
-                    $errorCode,
-                    implode("', '", $allowedValues),
-                ),
-            );
-        }
-
-        $this->container['errorCode'] = $errorCode;
-
-        return $this;
-    }
-
-    /**
-     * Gets message.
-     *
-     * @return null|string
-     */
-    public function getMessage()
-    {
-        return $this->container['message'];
-    }
-
-    /**
-     * Sets message.
-     *
-     * @param null|string $message message
-     *
-     * @return self
-     */
-    public function setMessage($message)
-    {
-        if (null === $message) {
-            throw new \InvalidArgumentException('non-nullable message cannot be null');
-        }
-
-        $this->container['message'] = $message;
+        $this->container['statements'] = $statements;
 
         return $this;
     }

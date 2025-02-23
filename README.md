@@ -83,8 +83,8 @@ All URIs are relative to *https://www.csas.cz/webapi/api/v3/accounts*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *DefaultApi* | [**getAccountBalance**](docs/Api/DefaultApi.md#getaccountbalance) | **GET** /my/accounts/{id}/balance | Get account balance
+*DefaultApi* | [**getAccountStatements**](docs/Api/DefaultApi.md#getaccountstatements) | **GET** /my/accounts/{id}/statements | Get account statements
 *DefaultApi* | [**getAccounts**](docs/Api/DefaultApi.md#getaccounts) | **GET** /my/accounts | Get account details
-*DefaultApi* | [**getStatements**](docs/Api/DefaultApi.md#getstatements) | **GET** /my/accounts/{id}/statements | Get statements list
 *DefaultApi* | [**getTransactions**](docs/Api/DefaultApi.md#gettransactions) | **GET** /my/accounts/{id}/transactions | Overview of transactions
 
 ## Models
@@ -103,12 +103,12 @@ Class | Method | HTTP request | Description
 - [GetAccountBalance200ResponseBalancesInnerDate](docs/Model/GetAccountBalance200ResponseBalancesInnerDate.md)
 - [GetAccountBalance200ResponseBalancesInnerType](docs/Model/GetAccountBalance200ResponseBalancesInnerType.md)
 - [GetAccountBalance200ResponseBalancesInnerTypeCodeOrProprietary](docs/Model/GetAccountBalance200ResponseBalancesInnerTypeCodeOrProprietary.md)
+- [GetAccountStatements200Response](docs/Model/GetAccountStatements200Response.md)
+- [GetAccountStatements200ResponseStatementsInner](docs/Model/GetAccountStatements200ResponseStatementsInner.md)
+- [GetAccountStatements200ResponseStatementsInnerPeriod](docs/Model/GetAccountStatements200ResponseStatementsInnerPeriod.md)
 - [GetAccounts200Response](docs/Model/GetAccounts200Response.md)
 - [GetAccounts403Response](docs/Model/GetAccounts403Response.md)
 - [GetAccounts403ResponseErrorsInner](docs/Model/GetAccounts403ResponseErrorsInner.md)
-- [GetStatements400Response](docs/Model/GetStatements400Response.md)
-- [GetStatements403Response](docs/Model/GetStatements403Response.md)
-- [GetStatements404Response](docs/Model/GetStatements404Response.md)
 - [GetTransactions400Response](docs/Model/GetTransactions400Response.md)
 - [GetTransactions401Response](docs/Model/GetTransactions401Response.md)
 - [GetTransactions403Response](docs/Model/GetTransactions403Response.md)
@@ -120,7 +120,6 @@ Class | Method | HTTP request | Description
 - [GetTransactions503Response](docs/Model/GetTransactions503Response.md)
 - [StatementList](docs/Model/StatementList.md)
 - [StatementListAccountStatementsInner](docs/Model/StatementListAccountStatementsInner.md)
-- [StatementListAccountStatementsInnerPeriod](docs/Model/StatementListAccountStatementsInnerPeriod.md)
 - [TransactionList](docs/Model/TransactionList.md)
 - [TransactionListTransactionsInner](docs/Model/TransactionListTransactionsInner.md)
 

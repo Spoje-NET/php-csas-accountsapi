@@ -35,17 +35,17 @@ namespace SpojeNET\Csas\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * GetStatements404ResponseTest Class Doc Comment.
+ * GetAccountStatements200ResponseStatementsInnerPeriodTest Class Doc Comment.
  *
  * @category    Class
  *
- * @description GetStatements404Response
+ * @description GetAccountStatements200ResponseStatementsInnerPeriod
  *
  * @author      OpenAPI Generator team
  *
  * @see        https://openapi-generator.tech
  */
-class GetStatements404ResponseTest extends TestCase
+class GetAccountStatements200ResponseStatementsInnerPeriodTest extends TestCase
 {
     /**
      * Setup before running any test case.
@@ -76,27 +76,27 @@ class GetStatements404ResponseTest extends TestCase
     }
 
     /**
-     * Test "GetStatements404Response".
+     * Test "GetAccountStatements200ResponseStatementsInnerPeriod".
      */
-    public function testGetStatements404Response(): void
+    public function testGetAccountStatements200ResponseStatementsInnerPeriod(): void
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "errorCode".
+     * Test attribute "dateFrom".
      */
-    public function testPropertyErrorCode(): void
+    public function testPropertyDateFrom(): void
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "message".
+     * Test attribute "dateTo".
      */
-    public function testPropertyMessage(): void
+    public function testPropertyDateTo(): void
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

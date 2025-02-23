@@ -35,7 +35,7 @@ namespace SpojeNET\Csas\Model;
 use SpojeNET\Csas\ObjectSerializer;
 
 /**
- * GetStatements404Response Class Doc Comment.
+ * GetAccountStatements200ResponseStatementsInner Class Doc Comment.
  *
  * @category Class
  *
@@ -45,16 +45,24 @@ use SpojeNET\Csas\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class GetStatements404Response implements \ArrayAccess, \JsonSerializable, ModelInterface
+class GetAccountStatements200ResponseStatementsInner implements \ArrayAccess, \JsonSerializable, ModelInterface
 {
     public const DISCRIMINATOR = null;
-    public const ERROR_CODE_PAGE_NOT_FOUND = 'PAGE_NOT_FOUND';
-    public const ERROR_CODE_ID_NOT_FOUND = 'ID_NOT_FOUND';
+    public const FORMATS_PDF = 'pdf';
+    public const FORMATS_XML = 'xml';
+    public const FORMATS_XML_DATA = 'xml-data';
+    public const FORMATS_ABO_STANDARD = 'abo-standard';
+    public const FORMATS_ABO_INTERNAL = 'abo-internal';
+    public const FORMATS_ABO_STANDARD_EXTENDED = 'abo-standard-extended';
+    public const FORMATS_ABO_INTERNAL_EXTENDED = 'abo-internal-extended';
+    public const FORMATS_CSV_COMMA = 'csv-comma';
+    public const FORMATS_CSV_SEMICOLON = 'csv-semicolon';
+    public const FORMATS_MT940 = 'mt940';
 
     /**
      * The original name of the model.
      */
-    protected static string $openAPIModelName = 'getStatements_404_response';
+    protected static string $openAPIModelName = 'getAccountStatements_200_response_statements_inner';
 
     /**
      * Array of property to type mappings. Used for (de)serialization.
@@ -62,8 +70,12 @@ class GetStatements404Response implements \ArrayAccess, \JsonSerializable, Model
      * @var string[]
      */
     protected static array $openAPITypes = [
-        'errorCode' => 'string',
-        'message' => 'string',
+        'id' => 'string',
+        'year' => 'float',
+        'month' => 'float',
+        'sequenceNumber' => 'float',
+        'period' => '\SpojeNET\Csas\Model\GetAccountStatements200ResponseStatementsInnerPeriod',
+        'formats' => 'string[]',
     ];
 
     /**
@@ -76,8 +88,12 @@ class GetStatements404Response implements \ArrayAccess, \JsonSerializable, Model
      * @psalm-var array<string, string|null>
      */
     protected static array $openAPIFormats = [
-        'errorCode' => null,
-        'message' => null,
+        'id' => null,
+        'year' => null,
+        'month' => null,
+        'sequenceNumber' => null,
+        'period' => null,
+        'formats' => null,
     ];
 
     /**
@@ -86,8 +102,12 @@ class GetStatements404Response implements \ArrayAccess, \JsonSerializable, Model
      * @var bool[]
      */
     protected static array $openAPINullables = [
-        'errorCode' => false,
-        'message' => false,
+        'id' => false,
+        'year' => false,
+        'month' => false,
+        'sequenceNumber' => false,
+        'period' => false,
+        'formats' => false,
     ];
 
     /**
@@ -104,8 +124,12 @@ class GetStatements404Response implements \ArrayAccess, \JsonSerializable, Model
      * @var string[]
      */
     protected static array $attributeMap = [
-        'errorCode' => 'errorCode',
-        'message' => 'message',
+        'id' => 'id',
+        'year' => 'year',
+        'month' => 'month',
+        'sequenceNumber' => 'sequenceNumber',
+        'period' => 'period',
+        'formats' => 'formats',
     ];
 
     /**
@@ -114,8 +138,12 @@ class GetStatements404Response implements \ArrayAccess, \JsonSerializable, Model
      * @var string[]
      */
     protected static array $setters = [
-        'errorCode' => 'setErrorCode',
-        'message' => 'setMessage',
+        'id' => 'setId',
+        'year' => 'setYear',
+        'month' => 'setMonth',
+        'sequenceNumber' => 'setSequenceNumber',
+        'period' => 'setPeriod',
+        'formats' => 'setFormats',
     ];
 
     /**
@@ -124,8 +152,12 @@ class GetStatements404Response implements \ArrayAccess, \JsonSerializable, Model
      * @var string[]
      */
     protected static array $getters = [
-        'errorCode' => 'getErrorCode',
-        'message' => 'getMessage',
+        'id' => 'getId',
+        'year' => 'getYear',
+        'month' => 'getMonth',
+        'sequenceNumber' => 'getSequenceNumber',
+        'period' => 'getPeriod',
+        'formats' => 'getFormats',
     ];
 
     /**
@@ -143,8 +175,12 @@ class GetStatements404Response implements \ArrayAccess, \JsonSerializable, Model
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('errorCode', $data ?? [], null);
-        $this->setIfExists('message', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('year', $data ?? [], null);
+        $this->setIfExists('month', $data ?? [], null);
+        $this->setIfExists('sequenceNumber', $data ?? [], null);
+        $this->setIfExists('period', $data ?? [], null);
+        $this->setIfExists('formats', $data ?? [], null);
     }
 
     /**
@@ -242,11 +278,19 @@ class GetStatements404Response implements \ArrayAccess, \JsonSerializable, Model
      *
      * @return string[]
      */
-    public function getErrorCodeAllowableValues()
+    public function getFormatsAllowableValues()
     {
         return [
-            self::ERROR_CODE_PAGE_NOT_FOUND,
-            self::ERROR_CODE_ID_NOT_FOUND,
+            self::FORMATS_PDF,
+            self::FORMATS_XML,
+            self::FORMATS_XML_DATA,
+            self::FORMATS_ABO_STANDARD,
+            self::FORMATS_ABO_INTERNAL,
+            self::FORMATS_ABO_STANDARD_EXTENDED,
+            self::FORMATS_ABO_INTERNAL_EXTENDED,
+            self::FORMATS_CSV_COMMA,
+            self::FORMATS_CSV_SEMICOLON,
+            self::FORMATS_MT940,
         ];
     }
 
@@ -257,19 +301,7 @@ class GetStatements404Response implements \ArrayAccess, \JsonSerializable, Model
      */
     public function listInvalidProperties()
     {
-        $invalidProperties = [];
-
-        $allowedValues = $this->getErrorCodeAllowableValues();
-
-        if (null !== $this->container['errorCode'] && !\in_array($this->container['errorCode'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'errorCode', must be one of '%s'",
-                $this->container['errorCode'],
-                implode("', '", $allowedValues),
-            );
-        }
-
-        return $invalidProperties;
+        return [];
     }
 
     /**
@@ -284,69 +316,180 @@ class GetStatements404Response implements \ArrayAccess, \JsonSerializable, Model
     }
 
     /**
-     * Gets errorCode.
+     * Gets id.
      *
      * @return null|string
      */
-    public function getErrorCode()
+    public function getId()
     {
-        return $this->container['errorCode'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets errorCode.
+     * Sets id.
      *
-     * @param null|string $errorCode errorCode
+     * @param null|string $id Unique identifier of the account statement
      *
      * @return self
      */
-    public function setErrorCode($errorCode)
+    public function setId($id)
     {
-        if (null === $errorCode) {
-            throw new \InvalidArgumentException('non-nullable errorCode cannot be null');
+        if (null === $id) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
 
-        $allowedValues = $this->getErrorCodeAllowableValues();
-
-        if (!\in_array($errorCode, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'errorCode', must be one of '%s'",
-                    $errorCode,
-                    implode("', '", $allowedValues),
-                ),
-            );
-        }
-
-        $this->container['errorCode'] = $errorCode;
+        $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets message.
+     * Gets year.
      *
-     * @return null|string
+     * @return null|float
      */
-    public function getMessage()
+    public function getYear()
     {
-        return $this->container['message'];
+        return $this->container['year'];
     }
 
     /**
-     * Sets message.
+     * Sets year.
      *
-     * @param null|string $message message
+     * @param null|float $year Year of the statement
      *
      * @return self
      */
-    public function setMessage($message)
+    public function setYear($year)
     {
-        if (null === $message) {
-            throw new \InvalidArgumentException('non-nullable message cannot be null');
+        if (null === $year) {
+            throw new \InvalidArgumentException('non-nullable year cannot be null');
         }
 
-        $this->container['message'] = $message;
+        $this->container['year'] = $year;
+
+        return $this;
+    }
+
+    /**
+     * Gets month.
+     *
+     * @return null|float
+     */
+    public function getMonth()
+    {
+        return $this->container['month'];
+    }
+
+    /**
+     * Sets month.
+     *
+     * @param null|float $month Month of the statement
+     *
+     * @return self
+     */
+    public function setMonth($month)
+    {
+        if (null === $month) {
+            throw new \InvalidArgumentException('non-nullable month cannot be null');
+        }
+
+        $this->container['month'] = $month;
+
+        return $this;
+    }
+
+    /**
+     * Gets sequenceNumber.
+     *
+     * @return null|float
+     */
+    public function getSequenceNumber()
+    {
+        return $this->container['sequenceNumber'];
+    }
+
+    /**
+     * Sets sequenceNumber.
+     *
+     * @param null|float $sequenceNumber The account statement's sequence number
+     *
+     * @return self
+     */
+    public function setSequenceNumber($sequenceNumber)
+    {
+        if (null === $sequenceNumber) {
+            throw new \InvalidArgumentException('non-nullable sequenceNumber cannot be null');
+        }
+
+        $this->container['sequenceNumber'] = $sequenceNumber;
+
+        return $this;
+    }
+
+    /**
+     * Gets period.
+     *
+     * @return null|\SpojeNET\Csas\Model\GetAccountStatements200ResponseStatementsInnerPeriod
+     */
+    public function getPeriod()
+    {
+        return $this->container['period'];
+    }
+
+    /**
+     * Sets period.
+     *
+     * @param null|\SpojeNET\Csas\Model\GetAccountStatements200ResponseStatementsInnerPeriod $period period
+     *
+     * @return self
+     */
+    public function setPeriod($period)
+    {
+        if (null === $period) {
+            throw new \InvalidArgumentException('non-nullable period cannot be null');
+        }
+
+        $this->container['period'] = $period;
+
+        return $this;
+    }
+
+    /**
+     * Gets formats.
+     *
+     * @return null|string[]
+     */
+    public function getFormats()
+    {
+        return $this->container['formats'];
+    }
+
+    /**
+     * Sets formats.
+     *
+     * @param null|string[] $formats Available formats of the statement
+     *
+     * @return self
+     */
+    public function setFormats($formats)
+    {
+        if (null === $formats) {
+            throw new \InvalidArgumentException('non-nullable formats cannot be null');
+        }
+
+        $allowedValues = $this->getFormatsAllowableValues();
+
+        if (array_diff($formats, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'formats', must be one of '%s'",
+                    implode("', '", $allowedValues),
+                ),
+            );
+        }
+
+        $this->container['formats'] = $formats;
 
         return $this;
     }

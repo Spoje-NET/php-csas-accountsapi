@@ -85,22 +85,22 @@ class DefaultApiTest extends TestCase
     }
 
     /**
-     * Test case for getAccounts.
+     * Test case for getAccountStatements.
      *
-     * Get account details.
+     * Get account statements.
      */
-    public function testGetAccounts(): void
+    public function testGetAccountStatements(): void
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test case for getStatements.
+     * Test case for getAccounts.
      *
-     * Get statements list.
+     * Get account details.
      */
-    public function testGetStatements(): void
+    public function testGetAccounts(): void
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

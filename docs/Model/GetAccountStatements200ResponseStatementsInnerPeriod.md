@@ -1,4 +1,4 @@
-# # StatementListAccountStatementsInnerPeriod
+# # GetAccountStatements200ResponseStatementsInnerPeriod
 
 ## Properties
 

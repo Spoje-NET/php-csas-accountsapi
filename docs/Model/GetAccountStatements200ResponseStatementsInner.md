@@ -1,10 +1,10 @@
-# # StatementListAccountStatementsInner
+# # GetAccountStatements200ResponseStatementsInner
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**accountStatementId** | **string** | Unique identifier of the account statement | [optional]
+**id** | **string** | Unique identifier of the account statement | [optional]
 **year** | **float** | Year of the statement | [optional]
 **month** | **float** | Month of the statement | [optional]
 **sequenceNumber** | **float** | The account statement&#39;s sequence number | [optional]

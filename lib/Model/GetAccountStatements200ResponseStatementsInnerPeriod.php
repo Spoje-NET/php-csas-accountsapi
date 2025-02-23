@@ -35,7 +35,7 @@ namespace SpojeNET\Csas\Model;
 use SpojeNET\Csas\ObjectSerializer;
 
 /**
- * StatementListAccountStatementsInnerPeriod Class Doc Comment.
+ * GetAccountStatements200ResponseStatementsInnerPeriod Class Doc Comment.
  *
  * @category Class
  *
@@ -45,14 +45,14 @@ use SpojeNET\Csas\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class StatementListAccountStatementsInnerPeriod implements \ArrayAccess, \JsonSerializable, ModelInterface
+class GetAccountStatements200ResponseStatementsInnerPeriod implements \ArrayAccess, \JsonSerializable, ModelInterface
 {
     public const DISCRIMINATOR = null;
 
     /**
      * The original name of the model.
      */
-    protected static string $openAPIModelName = 'StatementList_accountStatements_inner_period';
+    protected static string $openAPIModelName = 'getAccountStatements_200_response_statements_inner_period';
 
     /**
      * Array of property to type mappings. Used for (de)serialization.

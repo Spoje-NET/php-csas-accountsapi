@@ -74,7 +74,7 @@ class StatementListAccountStatementsInner implements \ArrayAccess, \JsonSerializ
         'year' => 'float',
         'month' => 'float',
         'sequenceNumber' => 'float',
-        'period' => '\SpojeNET\Csas\Model\StatementListAccountStatementsInnerPeriod',
+        'period' => '\SpojeNET\Csas\Model\GetAccountStatements200ResponseStatementsInnerPeriod',
         'formats' => 'string[]',
     ];
 
@@ -430,7 +430,7 @@ class StatementListAccountStatementsInner implements \ArrayAccess, \JsonSerializ
     /**
      * Gets period.
      *
-     * @return null|\SpojeNET\Csas\Model\StatementListAccountStatementsInnerPeriod
+     * @return null|\SpojeNET\Csas\Model\GetAccountStatements200ResponseStatementsInnerPeriod
      */
     public function getPeriod()
     {
@@ -440,7 +440,7 @@ class StatementListAccountStatementsInner implements \ArrayAccess, \JsonSerializ
     /**
      * Sets period.
      *
-     * @param null|\SpojeNET\Csas\Model\StatementListAccountStatementsInnerPeriod $period period
+     * @param null|\SpojeNET\Csas\Model\GetAccountStatements200ResponseStatementsInnerPeriod $period period
      *
      * @return self
      */
