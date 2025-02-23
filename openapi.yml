@@ -156,75 +156,226 @@ paths:
           schema:
             type: string
             format: date
-          description: Filter transactions starting from a specific day in UTC (yyyy-MM-dd)
+          description: Start date for filtering transactions
         - name: toDate
           in: query
           required: false
           schema:
             type: string
             format: date
-          description: Filter transactions up to the chosen day in UTC (yyyy-MM-dd)
-        - name: size
-          in: query
-          required: false
-          schema:
-            type: integer
-          description: Number of entries per page (max. 200)
-        - name: page
-          in: query
-          required: false
-          schema:
-            type: integer
-          description: The desired page (indexed from zero)
-        - name: sort
-          in: query
-          required: false
-          schema:
-            type: string
-          description: One single field that should be used for sorting
-        - name: order
-          in: query
-          required: false
-          schema:
-            type: string
-            enum: [asc, desc]
-          description: Sort order
+          description: End date for filtering transactions
       responses:
         '200':
-          description: Successful response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TransactionList'
-        '400':
-          description: Bad Request
+          description: A list of transactions
           content:
             application/json:
               schema:
                 type: object
                 properties:
-                  errorCode:
-                    type: string
-                    enum:
-                      - PARAMETER_INVALID
-                      - DT01
-                      - BAD_REQUEST
-                      - MAX_TRANSACTIONS_EXCEEDED
-                  message:
-                    type: string
-        '401':
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  errorCode:
-                    type: string
-                    enum:
-                      - SCA_REQUIRED
-                  message:
-                    type: string
+                  pageNumber:
+                    type: integer
+                    description: Current page number
+                  pageCount:
+                    type: integer
+                    description: Total number of pages
+                  pageSize:
+                    type: integer
+                    description: Number of transactions per page
+                  transactions:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        entryReference:
+                          type: string
+                          description: Unique transaction reference
+                        amount:
+                          type: object
+                          properties:
+                            value:
+                              type: number
+                              description: Transaction amount
+                            currency:
+                              type: string
+                              description: Transaction currency
+                        creditDebitIndicator:
+                          type: string
+                          description: Indicates if the transaction is a credit or debit
+                        status:
+                          type: string
+                          description: Status of the transaction
+                        bookingDate:
+                          type: object
+                          properties:
+                            date:
+                              type: string
+                              format: date
+                              description: Date when the transaction was booked
+                        valueDate:
+                          type: object
+                          properties:
+                            date:
+                              type: string
+                              format: date
+                              description: Date when the transaction was valued
+                        bankTransactionCode:
+                          type: object
+                          properties:
+                            proprietary:
+                              type: object
+                              properties:
+                                code:
+                                  type: integer
+                                  description: Proprietary code of the transaction
+                                issuer:
+                                  type: string
+                                  description: Issuer of the proprietary code
+                        entryDetails:
+                          type: object
+                          properties:
+                            transactionDetails:
+                              type: object
+                              properties:
+                                references:
+                                  type: object
+                                  properties:
+                                    accountServicerReference:
+                                      type: string
+                                      description: Reference provided by the account servicer
+                                    chequeNumber:
+                                      type: string
+                                      description: Cheque number
+                                amountDetails:
+                                  type: object
+                                  properties:
+                                    instructedAmount:
+                                      type: object
+                                      properties:
+                                        amount:
+                                          type: object
+                                          properties:
+                                            value:
+                                              type: number
+                                              description: Instructed amount value
+                                            currency:
+                                              type: string
+                                              description: Instructed amount currency
+                                    counterValueAmount:
+                                      type: object
+                                      properties:
+                                        amount:
+                                          type: object
+                                          properties:
+                                            value:
+                                              type: number
+                                              description: Counter value amount
+                                            currency:
+                                              type: string
+                                              description: Counter value currency
+                                        currencyExchange:
+                                          type: object
+                                          properties:
+                                            sourceCurrency:
+                                              type: string
+                                              description: Source currency
+                                            targetCurrency:
+                                              type: string
+                                              description: Target currency
+                                            exchangeRate:
+                                              type: number
+                                              description: Exchange rate used
+                                relatedParties:
+                                  type: object
+                                  properties:
+                                    debtor:
+                                      type: object
+                                      properties:
+                                        name:
+                                          type: string
+                                          description: Name of the debtor
+                                    debtorAccount:
+                                      type: object
+                                      properties:
+                                        identification:
+                                          type: object
+                                          properties:
+                                            iban:
+                                              type: string
+                                              description: IBAN of the debtor account
+                                            other:
+                                              type: object
+                                              properties:
+                                                identification:
+                                                  type: string
+                                                  description: Other identification of the debtor account
+                                    creditor:
+                                      type: object
+                                      properties:
+                                        name:
+                                          type: string
+                                          description: Name of the creditor
+                                    creditorAccount:
+                                      type: object
+                                      properties:
+                                        identification:
+                                          type: object
+                                          properties:
+                                            iban:
+                                              type: string
+                                              description: IBAN of the creditor account
+                                            other:
+                                              type: object
+                                              properties:
+                                                identification:
+                                                  type: string
+                                                  description: Other identification of the creditor account
+                                relatedAgents:
+                                  type: object
+                                  properties:
+                                    creditorAgent:
+                                      type: object
+                                      properties:
+                                        financialInstitutionIdentification:
+                                          type: object
+                                          properties:
+                                            bic:
+                                              type: string
+                                              description: BIC of the creditor agent
+                                    debtorAgent:
+                                      type: object
+                                      properties:
+                                        financialInstitutionIdentification:
+                                          type: object
+                                          properties:
+                                            bic:
+                                              type: string
+                                              description: BIC of the debtor agent
+                                remittanceInformation:
+                                  type: object
+                                  properties:
+                                    unstructured:
+                                      type: string
+                                      description: Unstructured remittance information
+                                    structured:
+                                      type: object
+                                      properties:
+                                        creditorReferenceInformation:
+                                          type: object
+                                          properties:
+                                            reference:
+                                              type: array
+                                              items:
+                                                type: string
+                                              description: Structured creditor reference information
+                                additionalTransactionInformation:
+                                  type: string
+                                  description: Additional information about the transaction
+                                additionalRemittanceInformation:
+                                  type: string
+                                  description: Additional remittance information
+                                additionalTransactionDescription:
+                                  type: string
+                                  description: Additional transaction description
         '403':
           description: Forbidden
           content:
@@ -232,94 +383,17 @@ paths:
               schema:
                 type: object
                 properties:
-                  errorCode:
-                    type: string
-                    enum:
-                      - TOKEN_INVALID
-                      - CERTIFICATE_INVALID
-                      - KEY_UNAUTHORIZED
-                  message:
-                    type: string
-        '404':
-          description: Not Found
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  errorCode:
-                    type: string
-                    enum:
-                      - PAGE_NOT_FOUND
-                      - ID_NOT_FOUND
-                      - NOT_FOUND
-                  message:
-                    type: string
-        '405':
-          description: Method Not Allowed
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  errorCode:
-                    type: string
-                    enum:
-                      - METHOD_NOT_ALLOWED
-                  message:
-                    type: string
-        '412':
-          description: Precondition Failed
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  errorCode:
-                    type: string
-                    enum:
-                      - KEY_DISABLED
-                  message:
-                    type: string
-        '429':
-          description: Too Many Requests
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  errorCode:
-                    type: string
-                    enum:
-                      - REQUEST_QUOTA_EXCEEDED
-                  message:
-                    type: string
-        '500':
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  errorCode:
-                    type: string
-                    enum:
-                      - INTERNAL_SERVER_ERROR
-                  message:
-                    type: string
-        '503':
-          description: Service Unavailable
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  errorCode:
-                    type: string
-                    enum:
-                      - SERVICE_UNAVAILABLE
-                  message:
-                    type: string
+                  status:
+                    type: integer
+                    example: 403
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        error:
+                          type: string
+                          example: TOKEN_INVALID
   /my/accounts/{id}/statements:
     get:
       summary: Get account statements

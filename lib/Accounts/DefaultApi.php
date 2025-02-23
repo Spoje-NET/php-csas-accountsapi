@@ -1297,22 +1297,18 @@ class DefaultApi
      * Overview of transactions
      *
      * @param string    $id          Unique system identification of the client account (required)
-     * @param \DateTime $fromDate    Filter transactions starting from a specific day in UTC (yyyy-MM-dd) (optional)
-     * @param \DateTime $toDate      Filter transactions up to the chosen day in UTC (yyyy-MM-dd) (optional)
-     * @param int       $size        Number of entries per page (max. 200) (optional)
-     * @param int       $page        The desired page (indexed from zero) (optional)
-     * @param string    $sort        One single field that should be used for sorting (optional)
-     * @param string    $order       Sort order (optional)
+     * @param \DateTime $fromDate    Start date for filtering transactions (optional)
+     * @param \DateTime $toDate      End date for filtering transactions (optional)
      * @param string    $contentType The value for the Content-Type header. Check self::contentTypes['getTransactions'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @throws \SpojeNET\Csas\ApiException on non-2xx response or if the response body is not in the expected format
      *
-     * @return \SpojeNET\Csas\Model\GetTransactions400Response|\SpojeNET\Csas\Model\GetTransactions401Response|\SpojeNET\Csas\Model\GetTransactions403Response|\SpojeNET\Csas\Model\GetTransactions404Response|\SpojeNET\Csas\Model\GetTransactions405Response|\SpojeNET\Csas\Model\GetTransactions412Response|\SpojeNET\Csas\Model\GetTransactions429Response|\SpojeNET\Csas\Model\GetTransactions500Response|\SpojeNET\Csas\Model\GetTransactions503Response|\SpojeNET\Csas\Model\TransactionList
+     * @return \SpojeNET\Csas\Model\GetAccounts403Response|\SpojeNET\Csas\Model\GetTransactions200Response
      */
-    public function getTransactions($id, $fromDate = null, $toDate = null, $size = null, $page = null, $sort = null, $order = null, string $contentType = self::contentTypes['getTransactions'][0])
+    public function getTransactions($id, $fromDate = null, $toDate = null, string $contentType = self::contentTypes['getTransactions'][0])
     {
-        [$response] = $this->getTransactionsWithHttpInfo($id, $fromDate, $toDate, $size, $page, $sort, $order, $contentType);
+        [$response] = $this->getTransactionsWithHttpInfo($id, $fromDate, $toDate, $contentType);
 
         return $response;
     }
@@ -1323,22 +1319,18 @@ class DefaultApi
      * Overview of transactions
      *
      * @param string    $id          Unique system identification of the client account (required)
-     * @param \DateTime $fromDate    Filter transactions starting from a specific day in UTC (yyyy-MM-dd) (optional)
-     * @param \DateTime $toDate      Filter transactions up to the chosen day in UTC (yyyy-MM-dd) (optional)
-     * @param int       $size        Number of entries per page (max. 200) (optional)
-     * @param int       $page        The desired page (indexed from zero) (optional)
-     * @param string    $sort        One single field that should be used for sorting (optional)
-     * @param string    $order       Sort order (optional)
+     * @param \DateTime $fromDate    Start date for filtering transactions (optional)
+     * @param \DateTime $toDate      End date for filtering transactions (optional)
      * @param string    $contentType The value for the Content-Type header. Check self::contentTypes['getTransactions'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @throws \SpojeNET\Csas\ApiException on non-2xx response or if the response body is not in the expected format
      *
-     * @return array of \SpojeNET\Csas\Model\TransactionList|\SpojeNET\Csas\Model\GetTransactions400Response|\SpojeNET\Csas\Model\GetTransactions401Response|\SpojeNET\Csas\Model\GetTransactions403Response|\SpojeNET\Csas\Model\GetTransactions404Response|\SpojeNET\Csas\Model\GetTransactions405Response|\SpojeNET\Csas\Model\GetTransactions412Response|\SpojeNET\Csas\Model\GetTransactions429Response|\SpojeNET\Csas\Model\GetTransactions500Response|\SpojeNET\Csas\Model\GetTransactions503Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpojeNET\Csas\Model\GetTransactions200Response|\SpojeNET\Csas\Model\GetAccounts403Response, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getTransactionsWithHttpInfo($id, $fromDate = null, $toDate = null, $size = null, $page = null, $sort = null, $order = null, string $contentType = self::contentTypes['getTransactions'][0])
+    public function getTransactionsWithHttpInfo($id, $fromDate = null, $toDate = null, string $contentType = self::contentTypes['getTransactions'][0])
     {
-        $request = $this->getTransactionsRequest($id, $fromDate, $toDate, $size, $page, $sort, $order, $contentType);
+        $request = $this->getTransactionsRequest($id, $fromDate, $toDate, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1365,12 +1357,12 @@ class DefaultApi
 
             switch ($statusCode) {
                 case 200:
-                    if ('\SpojeNET\Csas\Model\TransactionList' === '\SplFileObject') {
+                    if ('\SpojeNET\Csas\Model\GetTransactions200Response' === '\SplFileObject') {
                         $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
 
-                        if ('\SpojeNET\Csas\Model\TransactionList' !== 'string') {
+                        if ('\SpojeNET\Csas\Model\GetTransactions200Response' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, \JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -1388,73 +1380,17 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\SpojeNET\Csas\Model\TransactionList', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-                case 400:
-                    if ('\SpojeNET\Csas\Model\GetTransactions400Response' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-
-                        if ('\SpojeNET\Csas\Model\GetTransactions400Response' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, \JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri(),
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content,
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpojeNET\Csas\Model\GetTransactions400Response', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-                case 401:
-                    if ('\SpojeNET\Csas\Model\GetTransactions401Response' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-
-                        if ('\SpojeNET\Csas\Model\GetTransactions401Response' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, \JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri(),
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content,
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpojeNET\Csas\Model\GetTransactions401Response', []),
+                        ObjectSerializer::deserialize($content, '\SpojeNET\Csas\Model\GetTransactions200Response', []),
                         $response->getStatusCode(),
                         $response->getHeaders(),
                     ];
                 case 403:
-                    if ('\SpojeNET\Csas\Model\GetTransactions403Response' === '\SplFileObject') {
+                    if ('\SpojeNET\Csas\Model\GetAccounts403Response' === '\SplFileObject') {
                         $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
 
-                        if ('\SpojeNET\Csas\Model\GetTransactions403Response' !== 'string') {
+                        if ('\SpojeNET\Csas\Model\GetAccounts403Response' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, \JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -1472,175 +1408,7 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\SpojeNET\Csas\Model\GetTransactions403Response', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-                case 404:
-                    if ('\SpojeNET\Csas\Model\GetTransactions404Response' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-
-                        if ('\SpojeNET\Csas\Model\GetTransactions404Response' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, \JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri(),
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content,
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpojeNET\Csas\Model\GetTransactions404Response', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-                case 405:
-                    if ('\SpojeNET\Csas\Model\GetTransactions405Response' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-
-                        if ('\SpojeNET\Csas\Model\GetTransactions405Response' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, \JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri(),
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content,
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpojeNET\Csas\Model\GetTransactions405Response', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-                case 412:
-                    if ('\SpojeNET\Csas\Model\GetTransactions412Response' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-
-                        if ('\SpojeNET\Csas\Model\GetTransactions412Response' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, \JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri(),
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content,
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpojeNET\Csas\Model\GetTransactions412Response', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-                case 429:
-                    if ('\SpojeNET\Csas\Model\GetTransactions429Response' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-
-                        if ('\SpojeNET\Csas\Model\GetTransactions429Response' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, \JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri(),
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content,
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpojeNET\Csas\Model\GetTransactions429Response', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-                case 500:
-                    if ('\SpojeNET\Csas\Model\GetTransactions500Response' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-
-                        if ('\SpojeNET\Csas\Model\GetTransactions500Response' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, \JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri(),
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content,
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpojeNET\Csas\Model\GetTransactions500Response', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-                case 503:
-                    if ('\SpojeNET\Csas\Model\GetTransactions503Response' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-
-                        if ('\SpojeNET\Csas\Model\GetTransactions503Response' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, \JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri(),
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content,
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpojeNET\Csas\Model\GetTransactions503Response', []),
+                        ObjectSerializer::deserialize($content, '\SpojeNET\Csas\Model\GetAccounts403Response', []),
                         $response->getStatusCode(),
                         $response->getHeaders(),
                     ];
@@ -1659,7 +1427,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\SpojeNET\Csas\Model\TransactionList';
+            $returnType = '\SpojeNET\Csas\Model\GetTransactions200Response';
 
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); // stream goes to serializer
@@ -1693,25 +1461,7 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\SpojeNET\Csas\Model\TransactionList',
-                        $e->getResponseHeaders(),
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpojeNET\Csas\Model\GetTransactions400Response',
-                        $e->getResponseHeaders(),
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpojeNET\Csas\Model\GetTransactions401Response',
+                        '\SpojeNET\Csas\Model\GetTransactions200Response',
                         $e->getResponseHeaders(),
                     );
                     $e->setResponseObject($data);
@@ -1720,61 +1470,7 @@ class DefaultApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\SpojeNET\Csas\Model\GetTransactions403Response',
-                        $e->getResponseHeaders(),
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpojeNET\Csas\Model\GetTransactions404Response',
-                        $e->getResponseHeaders(),
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-                case 405:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpojeNET\Csas\Model\GetTransactions405Response',
-                        $e->getResponseHeaders(),
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-                case 412:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpojeNET\Csas\Model\GetTransactions412Response',
-                        $e->getResponseHeaders(),
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-                case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpojeNET\Csas\Model\GetTransactions429Response',
-                        $e->getResponseHeaders(),
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpojeNET\Csas\Model\GetTransactions500Response',
-                        $e->getResponseHeaders(),
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-                case 503:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpojeNET\Csas\Model\GetTransactions503Response',
+                        '\SpojeNET\Csas\Model\GetAccounts403Response',
                         $e->getResponseHeaders(),
                     );
                     $e->setResponseObject($data);
@@ -1792,21 +1488,17 @@ class DefaultApi
      * Overview of transactions
      *
      * @param string    $id          Unique system identification of the client account (required)
-     * @param \DateTime $fromDate    Filter transactions starting from a specific day in UTC (yyyy-MM-dd) (optional)
-     * @param \DateTime $toDate      Filter transactions up to the chosen day in UTC (yyyy-MM-dd) (optional)
-     * @param int       $size        Number of entries per page (max. 200) (optional)
-     * @param int       $page        The desired page (indexed from zero) (optional)
-     * @param string    $sort        One single field that should be used for sorting (optional)
-     * @param string    $order       Sort order (optional)
+     * @param \DateTime $fromDate    Start date for filtering transactions (optional)
+     * @param \DateTime $toDate      End date for filtering transactions (optional)
      * @param string    $contentType The value for the Content-Type header. Check self::contentTypes['getTransactions'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      *
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getTransactionsAsync($id, $fromDate = null, $toDate = null, $size = null, $page = null, $sort = null, $order = null, string $contentType = self::contentTypes['getTransactions'][0])
+    public function getTransactionsAsync($id, $fromDate = null, $toDate = null, string $contentType = self::contentTypes['getTransactions'][0])
     {
-        return $this->getTransactionsAsyncWithHttpInfo($id, $fromDate, $toDate, $size, $page, $sort, $order, $contentType)
+        return $this->getTransactionsAsyncWithHttpInfo($id, $fromDate, $toDate, $contentType)
             ->then(
                 static function ($response) {
                     return $response[0];
@@ -1820,22 +1512,18 @@ class DefaultApi
      * Overview of transactions
      *
      * @param string    $id          Unique system identification of the client account (required)
-     * @param \DateTime $fromDate    Filter transactions starting from a specific day in UTC (yyyy-MM-dd) (optional)
-     * @param \DateTime $toDate      Filter transactions up to the chosen day in UTC (yyyy-MM-dd) (optional)
-     * @param int       $size        Number of entries per page (max. 200) (optional)
-     * @param int       $page        The desired page (indexed from zero) (optional)
-     * @param string    $sort        One single field that should be used for sorting (optional)
-     * @param string    $order       Sort order (optional)
+     * @param \DateTime $fromDate    Start date for filtering transactions (optional)
+     * @param \DateTime $toDate      End date for filtering transactions (optional)
      * @param string    $contentType The value for the Content-Type header. Check self::contentTypes['getTransactions'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      *
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getTransactionsAsyncWithHttpInfo($id, $fromDate = null, $toDate = null, $size = null, $page = null, $sort = null, $order = null, string $contentType = self::contentTypes['getTransactions'][0])
+    public function getTransactionsAsyncWithHttpInfo($id, $fromDate = null, $toDate = null, string $contentType = self::contentTypes['getTransactions'][0])
     {
-        $returnType = '\SpojeNET\Csas\Model\TransactionList';
-        $request = $this->getTransactionsRequest($id, $fromDate, $toDate, $size, $page, $sort, $order, $contentType);
+        $returnType = '\SpojeNET\Csas\Model\GetTransactions200Response';
+        $request = $this->getTransactionsRequest($id, $fromDate, $toDate, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1879,19 +1567,15 @@ class DefaultApi
      * Create request for operation 'getTransactions'.
      *
      * @param string    $id          Unique system identification of the client account (required)
-     * @param \DateTime $fromDate    Filter transactions starting from a specific day in UTC (yyyy-MM-dd) (optional)
-     * @param \DateTime $toDate      Filter transactions up to the chosen day in UTC (yyyy-MM-dd) (optional)
-     * @param int       $size        Number of entries per page (max. 200) (optional)
-     * @param int       $page        The desired page (indexed from zero) (optional)
-     * @param string    $sort        One single field that should be used for sorting (optional)
-     * @param string    $order       Sort order (optional)
+     * @param \DateTime $fromDate    Start date for filtering transactions (optional)
+     * @param \DateTime $toDate      End date for filtering transactions (optional)
      * @param string    $contentType The value for the Content-Type header. Check self::contentTypes['getTransactions'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      *
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getTransactionsRequest($id, $fromDate = null, $toDate = null, $size = null, $page = null, $sort = null, $order = null, string $contentType = self::contentTypes['getTransactions'][0])
+    public function getTransactionsRequest($id, $fromDate = null, $toDate = null, string $contentType = self::contentTypes['getTransactions'][0])
     {
         // verify the required parameter 'id' is set
         if ($id === null || (\is_array($id) && \count($id) === 0)) {
@@ -1920,42 +1604,6 @@ class DefaultApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $toDate,
             'toDate', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false, // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $size,
-            'size', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false, // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $page,
-            'page', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false, // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $sort,
-            'sort', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false, // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $order,
-            'order', // param base name
             'string', // openApiType
             'form', // style
             true, // explode

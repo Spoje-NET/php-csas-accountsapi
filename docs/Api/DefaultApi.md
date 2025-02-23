@@ -210,7 +210,7 @@ try {
 ## `getTransactions()`
 
 ```php
-getTransactions($id, $fromDate, $toDate, $size, $page, $sort, $order): \SpojeNET\Csas\Model\TransactionList
+getTransactions($id, $fromDate, $toDate): \SpojeNET\Csas\Model\GetTransactions200Response
 ```
 
 Overview of transactions
@@ -240,15 +240,11 @@ $apiInstance = new SpojeNET\Csas\Api\DefaultApi(
     $config
 );
 $id = 'id_example'; // string | Unique system identification of the client account
-$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Filter transactions starting from a specific day in UTC (yyyy-MM-dd)
-$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Filter transactions up to the chosen day in UTC (yyyy-MM-dd)
-$size = 56; // int | Number of entries per page (max. 200)
-$page = 56; // int | The desired page (indexed from zero)
-$sort = 'sort_example'; // string | One single field that should be used for sorting
-$order = 'order_example'; // string | Sort order
+$fromDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Start date for filtering transactions
+$toDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | End date for filtering transactions
 
 try {
-    $result = $apiInstance->getTransactions($id, $fromDate, $toDate, $size, $page, $sort, $order);
+    $result = $apiInstance->getTransactions($id, $fromDate, $toDate);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getTransactions: ', $e->getMessage(), PHP_EOL;
@@ -260,16 +256,12 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **id** | **string**| Unique system identification of the client account | |
-| **fromDate** | **\DateTime**| Filter transactions starting from a specific day in UTC (yyyy-MM-dd) | [optional] |
-| **toDate** | **\DateTime**| Filter transactions up to the chosen day in UTC (yyyy-MM-dd) | [optional] |
-| **size** | **int**| Number of entries per page (max. 200) | [optional] |
-| **page** | **int**| The desired page (indexed from zero) | [optional] |
-| **sort** | **string**| One single field that should be used for sorting | [optional] |
-| **order** | **string**| Sort order | [optional] |
+| **fromDate** | **\DateTime**| Start date for filtering transactions | [optional] |
+| **toDate** | **\DateTime**| End date for filtering transactions | [optional] |
 
 ### Return type
 
-[**\SpojeNET\Csas\Model\TransactionList**](../Model/TransactionList.md)
+[**\SpojeNET\Csas\Model\GetTransactions200Response**](../Model/GetTransactions200Response.md)
 
 ### Authorization
 
