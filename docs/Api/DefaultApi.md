@@ -13,12 +13,12 @@ All URIs are relative to https://www.csas.cz/webapi/api/v3/accounts, except if t
 ## `getAccountBalance()`
 
 ```php
-getAccountBalance($id): \SpojeNET\Csas\Model\AccountBalance
+getAccountBalance($id): \SpojeNET\Csas\Model\GetAccountBalance200Response
 ```
 
 Get account balance
 
-Get the current balance of the account.
+Get the balance of a specific account by ID.
 
 ### Example
 
@@ -42,7 +42,7 @@ $apiInstance = new SpojeNET\Csas\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$id = 'id_example'; // string | Opaque system ID of the account
+$id = 'id_example'; // string | The ID of the account
 
 try {
     $result = $apiInstance->getAccountBalance($id);
@@ -56,11 +56,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **id** | **string**| Opaque system ID of the account | |
+| **id** | **string**| The ID of the account | |
 
 ### Return type
 
-[**\SpojeNET\Csas\Model\AccountBalance**](../Model/AccountBalance.md)
+[**\SpojeNET\Csas\Model\GetAccountBalance200Response**](../Model/GetAccountBalance200Response.md)
 
 ### Authorization
 

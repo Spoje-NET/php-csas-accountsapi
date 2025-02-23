@@ -35,7 +35,7 @@ namespace SpojeNET\Csas\Model;
 use SpojeNET\Csas\ObjectSerializer;
 
 /**
- * GetAccountBalance500Response Class Doc Comment.
+ * GetAccountBalance200Response Class Doc Comment.
  *
  * @category Class
  *
@@ -45,15 +45,14 @@ use SpojeNET\Csas\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class GetAccountBalance500Response implements \ArrayAccess, \JsonSerializable, ModelInterface
+class GetAccountBalance200Response implements \ArrayAccess, \JsonSerializable, ModelInterface
 {
     public const DISCRIMINATOR = null;
-    public const ERROR_CODE_INTERNAL_SERVER_ERROR = 'INTERNAL_SERVER_ERROR';
 
     /**
      * The original name of the model.
      */
-    protected static string $openAPIModelName = 'getAccountBalance_500_response';
+    protected static string $openAPIModelName = 'getAccountBalance_200_response';
 
     /**
      * Array of property to type mappings. Used for (de)serialization.
@@ -61,8 +60,7 @@ class GetAccountBalance500Response implements \ArrayAccess, \JsonSerializable, M
      * @var string[]
      */
     protected static array $openAPITypes = [
-        'errorCode' => 'string',
-        'message' => 'string',
+        'balances' => '\SpojeNET\Csas\Model\GetAccountBalance200ResponseBalancesInner[]',
     ];
 
     /**
@@ -75,8 +73,7 @@ class GetAccountBalance500Response implements \ArrayAccess, \JsonSerializable, M
      * @psalm-var array<string, string|null>
      */
     protected static array $openAPIFormats = [
-        'errorCode' => null,
-        'message' => null,
+        'balances' => null,
     ];
 
     /**
@@ -85,8 +82,7 @@ class GetAccountBalance500Response implements \ArrayAccess, \JsonSerializable, M
      * @var bool[]
      */
     protected static array $openAPINullables = [
-        'errorCode' => false,
-        'message' => false,
+        'balances' => false,
     ];
 
     /**
@@ -103,8 +99,7 @@ class GetAccountBalance500Response implements \ArrayAccess, \JsonSerializable, M
      * @var string[]
      */
     protected static array $attributeMap = [
-        'errorCode' => 'errorCode',
-        'message' => 'message',
+        'balances' => 'balances',
     ];
 
     /**
@@ -113,8 +108,7 @@ class GetAccountBalance500Response implements \ArrayAccess, \JsonSerializable, M
      * @var string[]
      */
     protected static array $setters = [
-        'errorCode' => 'setErrorCode',
-        'message' => 'setMessage',
+        'balances' => 'setBalances',
     ];
 
     /**
@@ -123,8 +117,7 @@ class GetAccountBalance500Response implements \ArrayAccess, \JsonSerializable, M
      * @var string[]
      */
     protected static array $getters = [
-        'errorCode' => 'getErrorCode',
-        'message' => 'getMessage',
+        'balances' => 'getBalances',
     ];
 
     /**
@@ -142,8 +135,7 @@ class GetAccountBalance500Response implements \ArrayAccess, \JsonSerializable, M
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('errorCode', $data ?? [], null);
-        $this->setIfExists('message', $data ?? [], null);
+        $this->setIfExists('balances', $data ?? [], null);
     }
 
     /**
@@ -237,37 +229,13 @@ class GetAccountBalance500Response implements \ArrayAccess, \JsonSerializable, M
     }
 
     /**
-     * Gets allowable values of the enum.
-     *
-     * @return string[]
-     */
-    public function getErrorCodeAllowableValues()
-    {
-        return [
-            self::ERROR_CODE_INTERNAL_SERVER_ERROR,
-        ];
-    }
-
-    /**
      * Show all the invalid properties with reasons.
      *
      * @return array invalid properties with reasons
      */
     public function listInvalidProperties()
     {
-        $invalidProperties = [];
-
-        $allowedValues = $this->getErrorCodeAllowableValues();
-
-        if (null !== $this->container['errorCode'] && !\in_array($this->container['errorCode'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'errorCode', must be one of '%s'",
-                $this->container['errorCode'],
-                implode("', '", $allowedValues),
-            );
-        }
-
-        return $invalidProperties;
+        return [];
     }
 
     /**
@@ -282,69 +250,29 @@ class GetAccountBalance500Response implements \ArrayAccess, \JsonSerializable, M
     }
 
     /**
-     * Gets errorCode.
+     * Gets balances.
      *
-     * @return null|string
+     * @return null|\SpojeNET\Csas\Model\GetAccountBalance200ResponseBalancesInner[]
      */
-    public function getErrorCode()
+    public function getBalances()
     {
-        return $this->container['errorCode'];
+        return $this->container['balances'];
     }
 
     /**
-     * Sets errorCode.
+     * Sets balances.
      *
-     * @param null|string $errorCode errorCode
+     * @param null|\SpojeNET\Csas\Model\GetAccountBalance200ResponseBalancesInner[] $balances balances
      *
      * @return self
      */
-    public function setErrorCode($errorCode)
+    public function setBalances($balances)
     {
-        if (null === $errorCode) {
-            throw new \InvalidArgumentException('non-nullable errorCode cannot be null');
+        if (null === $balances) {
+            throw new \InvalidArgumentException('non-nullable balances cannot be null');
         }
 
-        $allowedValues = $this->getErrorCodeAllowableValues();
-
-        if (!\in_array($errorCode, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'errorCode', must be one of '%s'",
-                    $errorCode,
-                    implode("', '", $allowedValues),
-                ),
-            );
-        }
-
-        $this->container['errorCode'] = $errorCode;
-
-        return $this;
-    }
-
-    /**
-     * Gets message.
-     *
-     * @return null|string
-     */
-    public function getMessage()
-    {
-        return $this->container['message'];
-    }
-
-    /**
-     * Sets message.
-     *
-     * @param null|string $message message
-     *
-     * @return self
-     */
-    public function setMessage($message)
-    {
-        if (null === $message) {
-            throw new \InvalidArgumentException('non-nullable message cannot be null');
-        }
-
-        $this->container['message'] = $message;
+        $this->container['balances'] = $balances;
 
         return $this;
     }

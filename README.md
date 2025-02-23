@@ -65,7 +65,7 @@ $apiInstance = new SpojeNET\Csas\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$id = 'id_example'; // string | Opaque system ID of the account
+$id = 'id_example'; // string | The ID of the account
 
 try {
     $result = $apiInstance->getAccountBalance($id);
@@ -97,14 +97,12 @@ Class | Method | HTTP request | Description
 - [AccountRelationship](docs/Model/AccountRelationship.md)
 - [AccountServicer](docs/Model/AccountServicer.md)
 - [AccountSuitableScope](docs/Model/AccountSuitableScope.md)
-- [GetAccountBalance400Response](docs/Model/GetAccountBalance400Response.md)
-- [GetAccountBalance403Response](docs/Model/GetAccountBalance403Response.md)
-- [GetAccountBalance404Response](docs/Model/GetAccountBalance404Response.md)
-- [GetAccountBalance405Response](docs/Model/GetAccountBalance405Response.md)
-- [GetAccountBalance412Response](docs/Model/GetAccountBalance412Response.md)
-- [GetAccountBalance429Response](docs/Model/GetAccountBalance429Response.md)
-- [GetAccountBalance500Response](docs/Model/GetAccountBalance500Response.md)
-- [GetAccountBalance503Response](docs/Model/GetAccountBalance503Response.md)
+- [GetAccountBalance200Response](docs/Model/GetAccountBalance200Response.md)
+- [GetAccountBalance200ResponseBalancesInner](docs/Model/GetAccountBalance200ResponseBalancesInner.md)
+- [GetAccountBalance200ResponseBalancesInnerAmount](docs/Model/GetAccountBalance200ResponseBalancesInnerAmount.md)
+- [GetAccountBalance200ResponseBalancesInnerDate](docs/Model/GetAccountBalance200ResponseBalancesInnerDate.md)
+- [GetAccountBalance200ResponseBalancesInnerType](docs/Model/GetAccountBalance200ResponseBalancesInnerType.md)
+- [GetAccountBalance200ResponseBalancesInnerTypeCodeOrProprietary](docs/Model/GetAccountBalance200ResponseBalancesInnerTypeCodeOrProprietary.md)
 - [GetAccounts200Response](docs/Model/GetAccounts200Response.md)
 - [GetAccounts403Response](docs/Model/GetAccounts403Response.md)
 - [GetAccounts403ResponseErrorsInner](docs/Model/GetAccounts403ResponseErrorsInner.md)
@@ -113,7 +111,13 @@ Class | Method | HTTP request | Description
 - [GetStatements404Response](docs/Model/GetStatements404Response.md)
 - [GetTransactions400Response](docs/Model/GetTransactions400Response.md)
 - [GetTransactions401Response](docs/Model/GetTransactions401Response.md)
+- [GetTransactions403Response](docs/Model/GetTransactions403Response.md)
 - [GetTransactions404Response](docs/Model/GetTransactions404Response.md)
+- [GetTransactions405Response](docs/Model/GetTransactions405Response.md)
+- [GetTransactions412Response](docs/Model/GetTransactions412Response.md)
+- [GetTransactions429Response](docs/Model/GetTransactions429Response.md)
+- [GetTransactions500Response](docs/Model/GetTransactions500Response.md)
+- [GetTransactions503Response](docs/Model/GetTransactions503Response.md)
 - [StatementList](docs/Model/StatementList.md)
 - [StatementListAccountStatementsInner](docs/Model/StatementListAccountStatementsInner.md)
 - [StatementListAccountStatementsInnerPeriod](docs/Model/StatementListAccountStatementsInnerPeriod.md)

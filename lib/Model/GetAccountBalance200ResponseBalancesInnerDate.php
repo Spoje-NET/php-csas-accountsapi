@@ -35,7 +35,7 @@ namespace SpojeNET\Csas\Model;
 use SpojeNET\Csas\ObjectSerializer;
 
 /**
- * GetAccountBalance429Response Class Doc Comment.
+ * GetAccountBalance200ResponseBalancesInnerDate Class Doc Comment.
  *
  * @category Class
  *
@@ -45,15 +45,14 @@ use SpojeNET\Csas\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class GetAccountBalance429Response implements \ArrayAccess, \JsonSerializable, ModelInterface
+class GetAccountBalance200ResponseBalancesInnerDate implements \ArrayAccess, \JsonSerializable, ModelInterface
 {
     public const DISCRIMINATOR = null;
-    public const ERROR_CODE_REQUEST_QUOTA_EXCEEDED = 'REQUEST_QUOTA_EXCEEDED';
 
     /**
      * The original name of the model.
      */
-    protected static string $openAPIModelName = 'getAccountBalance_429_response';
+    protected static string $openAPIModelName = 'getAccountBalance_200_response_balances_inner_date';
 
     /**
      * Array of property to type mappings. Used for (de)serialization.
@@ -61,8 +60,7 @@ class GetAccountBalance429Response implements \ArrayAccess, \JsonSerializable, M
      * @var string[]
      */
     protected static array $openAPITypes = [
-        'errorCode' => 'string',
-        'message' => 'string',
+        'dateTime' => '\DateTime',
     ];
 
     /**
@@ -75,8 +73,7 @@ class GetAccountBalance429Response implements \ArrayAccess, \JsonSerializable, M
      * @psalm-var array<string, string|null>
      */
     protected static array $openAPIFormats = [
-        'errorCode' => null,
-        'message' => null,
+        'dateTime' => 'date-time',
     ];
 
     /**
@@ -85,8 +82,7 @@ class GetAccountBalance429Response implements \ArrayAccess, \JsonSerializable, M
      * @var bool[]
      */
     protected static array $openAPINullables = [
-        'errorCode' => false,
-        'message' => false,
+        'dateTime' => false,
     ];
 
     /**
@@ -103,8 +99,7 @@ class GetAccountBalance429Response implements \ArrayAccess, \JsonSerializable, M
      * @var string[]
      */
     protected static array $attributeMap = [
-        'errorCode' => 'errorCode',
-        'message' => 'message',
+        'dateTime' => 'dateTime',
     ];
 
     /**
@@ -113,8 +108,7 @@ class GetAccountBalance429Response implements \ArrayAccess, \JsonSerializable, M
      * @var string[]
      */
     protected static array $setters = [
-        'errorCode' => 'setErrorCode',
-        'message' => 'setMessage',
+        'dateTime' => 'setDateTime',
     ];
 
     /**
@@ -123,8 +117,7 @@ class GetAccountBalance429Response implements \ArrayAccess, \JsonSerializable, M
      * @var string[]
      */
     protected static array $getters = [
-        'errorCode' => 'getErrorCode',
-        'message' => 'getMessage',
+        'dateTime' => 'getDateTime',
     ];
 
     /**
@@ -142,8 +135,7 @@ class GetAccountBalance429Response implements \ArrayAccess, \JsonSerializable, M
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('errorCode', $data ?? [], null);
-        $this->setIfExists('message', $data ?? [], null);
+        $this->setIfExists('dateTime', $data ?? [], null);
     }
 
     /**
@@ -237,37 +229,13 @@ class GetAccountBalance429Response implements \ArrayAccess, \JsonSerializable, M
     }
 
     /**
-     * Gets allowable values of the enum.
-     *
-     * @return string[]
-     */
-    public function getErrorCodeAllowableValues()
-    {
-        return [
-            self::ERROR_CODE_REQUEST_QUOTA_EXCEEDED,
-        ];
-    }
-
-    /**
      * Show all the invalid properties with reasons.
      *
      * @return array invalid properties with reasons
      */
     public function listInvalidProperties()
     {
-        $invalidProperties = [];
-
-        $allowedValues = $this->getErrorCodeAllowableValues();
-
-        if (null !== $this->container['errorCode'] && !\in_array($this->container['errorCode'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'errorCode', must be one of '%s'",
-                $this->container['errorCode'],
-                implode("', '", $allowedValues),
-            );
-        }
-
-        return $invalidProperties;
+        return [];
     }
 
     /**
@@ -282,69 +250,29 @@ class GetAccountBalance429Response implements \ArrayAccess, \JsonSerializable, M
     }
 
     /**
-     * Gets errorCode.
+     * Gets dateTime.
      *
-     * @return null|string
+     * @return null|\DateTime
      */
-    public function getErrorCode()
+    public function getDateTime()
     {
-        return $this->container['errorCode'];
+        return $this->container['dateTime'];
     }
 
     /**
-     * Sets errorCode.
+     * Sets dateTime.
      *
-     * @param null|string $errorCode errorCode
+     * @param null|\DateTime $dateTime dateTime
      *
      * @return self
      */
-    public function setErrorCode($errorCode)
+    public function setDateTime($dateTime)
     {
-        if (null === $errorCode) {
-            throw new \InvalidArgumentException('non-nullable errorCode cannot be null');
+        if (null === $dateTime) {
+            throw new \InvalidArgumentException('non-nullable dateTime cannot be null');
         }
 
-        $allowedValues = $this->getErrorCodeAllowableValues();
-
-        if (!\in_array($errorCode, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'errorCode', must be one of '%s'",
-                    $errorCode,
-                    implode("', '", $allowedValues),
-                ),
-            );
-        }
-
-        $this->container['errorCode'] = $errorCode;
-
-        return $this;
-    }
-
-    /**
-     * Gets message.
-     *
-     * @return null|string
-     */
-    public function getMessage()
-    {
-        return $this->container['message'];
-    }
-
-    /**
-     * Sets message.
-     *
-     * @param null|string $message message
-     *
-     * @return self
-     */
-    public function setMessage($message)
-    {
-        if (null === $message) {
-            throw new \InvalidArgumentException('non-nullable message cannot be null');
-        }
-
-        $this->container['message'] = $message;
+        $this->container['dateTime'] = $dateTime;
 
         return $this;
     }

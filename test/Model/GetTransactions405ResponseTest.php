@@ -35,17 +35,17 @@ namespace SpojeNET\Csas\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * GetAccountBalance503ResponseTest Class Doc Comment.
+ * GetTransactions405ResponseTest Class Doc Comment.
  *
  * @category    Class
  *
- * @description GetAccountBalance503Response
+ * @description GetTransactions405Response
  *
  * @author      OpenAPI Generator team
  *
  * @see        https://openapi-generator.tech
  */
-class GetAccountBalance503ResponseTest extends TestCase
+class GetTransactions405ResponseTest extends TestCase
 {
     /**
      * Setup before running any test case.
@@ -76,9 +76,9 @@ class GetAccountBalance503ResponseTest extends TestCase
     }
 
     /**
-     * Test "GetAccountBalance503Response".
+     * Test "GetTransactions405Response".
      */
-    public function testGetAccountBalance503Response(): void
+    public function testGetTransactions405Response(): void
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

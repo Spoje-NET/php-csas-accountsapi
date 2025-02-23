@@ -1,4 +1,4 @@
-# # GetAccountBalance400Response
+# # GetTransactions412Response
 
 ## Properties
 

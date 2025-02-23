@@ -35,7 +35,7 @@ namespace SpojeNET\Csas\Model;
 use SpojeNET\Csas\ObjectSerializer;
 
 /**
- * GetAccountBalance405Response Class Doc Comment.
+ * GetAccountBalance200ResponseBalancesInner Class Doc Comment.
  *
  * @category Class
  *
@@ -45,15 +45,14 @@ use SpojeNET\Csas\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class GetAccountBalance405Response implements \ArrayAccess, \JsonSerializable, ModelInterface
+class GetAccountBalance200ResponseBalancesInner implements \ArrayAccess, \JsonSerializable, ModelInterface
 {
     public const DISCRIMINATOR = null;
-    public const ERROR_CODE_METHOD_NOT_ALLOWED = 'METHOD_NOT_ALLOWED';
 
     /**
      * The original name of the model.
      */
-    protected static string $openAPIModelName = 'getAccountBalance_405_response';
+    protected static string $openAPIModelName = 'getAccountBalance_200_response_balances_inner';
 
     /**
      * Array of property to type mappings. Used for (de)serialization.
@@ -61,8 +60,10 @@ class GetAccountBalance405Response implements \ArrayAccess, \JsonSerializable, M
      * @var string[]
      */
     protected static array $openAPITypes = [
-        'errorCode' => 'string',
-        'message' => 'string',
+        'type' => '\SpojeNET\Csas\Model\GetAccountBalance200ResponseBalancesInnerType',
+        'amount' => '\SpojeNET\Csas\Model\GetAccountBalance200ResponseBalancesInnerAmount',
+        'creditDebitIndicator' => 'string',
+        'date' => '\SpojeNET\Csas\Model\GetAccountBalance200ResponseBalancesInnerDate',
     ];
 
     /**
@@ -75,8 +76,10 @@ class GetAccountBalance405Response implements \ArrayAccess, \JsonSerializable, M
      * @psalm-var array<string, string|null>
      */
     protected static array $openAPIFormats = [
-        'errorCode' => null,
-        'message' => null,
+        'type' => null,
+        'amount' => null,
+        'creditDebitIndicator' => null,
+        'date' => null,
     ];
 
     /**
@@ -85,8 +88,10 @@ class GetAccountBalance405Response implements \ArrayAccess, \JsonSerializable, M
      * @var bool[]
      */
     protected static array $openAPINullables = [
-        'errorCode' => false,
-        'message' => false,
+        'type' => false,
+        'amount' => false,
+        'creditDebitIndicator' => false,
+        'date' => false,
     ];
 
     /**
@@ -103,8 +108,10 @@ class GetAccountBalance405Response implements \ArrayAccess, \JsonSerializable, M
      * @var string[]
      */
     protected static array $attributeMap = [
-        'errorCode' => 'errorCode',
-        'message' => 'message',
+        'type' => 'type',
+        'amount' => 'amount',
+        'creditDebitIndicator' => 'creditDebitIndicator',
+        'date' => 'date',
     ];
 
     /**
@@ -113,8 +120,10 @@ class GetAccountBalance405Response implements \ArrayAccess, \JsonSerializable, M
      * @var string[]
      */
     protected static array $setters = [
-        'errorCode' => 'setErrorCode',
-        'message' => 'setMessage',
+        'type' => 'setType',
+        'amount' => 'setAmount',
+        'creditDebitIndicator' => 'setCreditDebitIndicator',
+        'date' => 'setDate',
     ];
 
     /**
@@ -123,8 +132,10 @@ class GetAccountBalance405Response implements \ArrayAccess, \JsonSerializable, M
      * @var string[]
      */
     protected static array $getters = [
-        'errorCode' => 'getErrorCode',
-        'message' => 'getMessage',
+        'type' => 'getType',
+        'amount' => 'getAmount',
+        'creditDebitIndicator' => 'getCreditDebitIndicator',
+        'date' => 'getDate',
     ];
 
     /**
@@ -142,8 +153,10 @@ class GetAccountBalance405Response implements \ArrayAccess, \JsonSerializable, M
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('errorCode', $data ?? [], null);
-        $this->setIfExists('message', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('amount', $data ?? [], null);
+        $this->setIfExists('creditDebitIndicator', $data ?? [], null);
+        $this->setIfExists('date', $data ?? [], null);
     }
 
     /**
@@ -237,37 +250,13 @@ class GetAccountBalance405Response implements \ArrayAccess, \JsonSerializable, M
     }
 
     /**
-     * Gets allowable values of the enum.
-     *
-     * @return string[]
-     */
-    public function getErrorCodeAllowableValues()
-    {
-        return [
-            self::ERROR_CODE_METHOD_NOT_ALLOWED,
-        ];
-    }
-
-    /**
      * Show all the invalid properties with reasons.
      *
      * @return array invalid properties with reasons
      */
     public function listInvalidProperties()
     {
-        $invalidProperties = [];
-
-        $allowedValues = $this->getErrorCodeAllowableValues();
-
-        if (null !== $this->container['errorCode'] && !\in_array($this->container['errorCode'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'errorCode', must be one of '%s'",
-                $this->container['errorCode'],
-                implode("', '", $allowedValues),
-            );
-        }
-
-        return $invalidProperties;
+        return [];
     }
 
     /**
@@ -282,69 +271,113 @@ class GetAccountBalance405Response implements \ArrayAccess, \JsonSerializable, M
     }
 
     /**
-     * Gets errorCode.
+     * Gets type.
      *
-     * @return null|string
+     * @return null|\SpojeNET\Csas\Model\GetAccountBalance200ResponseBalancesInnerType
      */
-    public function getErrorCode()
+    public function getType()
     {
-        return $this->container['errorCode'];
+        return $this->container['type'];
     }
 
     /**
-     * Sets errorCode.
+     * Sets type.
      *
-     * @param null|string $errorCode errorCode
+     * @param null|\SpojeNET\Csas\Model\GetAccountBalance200ResponseBalancesInnerType $type type
      *
      * @return self
      */
-    public function setErrorCode($errorCode)
+    public function setType($type)
     {
-        if (null === $errorCode) {
-            throw new \InvalidArgumentException('non-nullable errorCode cannot be null');
+        if (null === $type) {
+            throw new \InvalidArgumentException('non-nullable type cannot be null');
         }
 
-        $allowedValues = $this->getErrorCodeAllowableValues();
-
-        if (!\in_array($errorCode, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'errorCode', must be one of '%s'",
-                    $errorCode,
-                    implode("', '", $allowedValues),
-                ),
-            );
-        }
-
-        $this->container['errorCode'] = $errorCode;
+        $this->container['type'] = $type;
 
         return $this;
     }
 
     /**
-     * Gets message.
+     * Gets amount.
      *
-     * @return null|string
+     * @return null|\SpojeNET\Csas\Model\GetAccountBalance200ResponseBalancesInnerAmount
      */
-    public function getMessage()
+    public function getAmount()
     {
-        return $this->container['message'];
+        return $this->container['amount'];
     }
 
     /**
-     * Sets message.
+     * Sets amount.
      *
-     * @param null|string $message message
+     * @param null|\SpojeNET\Csas\Model\GetAccountBalance200ResponseBalancesInnerAmount $amount amount
      *
      * @return self
      */
-    public function setMessage($message)
+    public function setAmount($amount)
     {
-        if (null === $message) {
-            throw new \InvalidArgumentException('non-nullable message cannot be null');
+        if (null === $amount) {
+            throw new \InvalidArgumentException('non-nullable amount cannot be null');
         }
 
-        $this->container['message'] = $message;
+        $this->container['amount'] = $amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets creditDebitIndicator.
+     *
+     * @return null|string
+     */
+    public function getCreditDebitIndicator()
+    {
+        return $this->container['creditDebitIndicator'];
+    }
+
+    /**
+     * Sets creditDebitIndicator.
+     *
+     * @param null|string $creditDebitIndicator creditDebitIndicator
+     *
+     * @return self
+     */
+    public function setCreditDebitIndicator($creditDebitIndicator)
+    {
+        if (null === $creditDebitIndicator) {
+            throw new \InvalidArgumentException('non-nullable creditDebitIndicator cannot be null');
+        }
+
+        $this->container['creditDebitIndicator'] = $creditDebitIndicator;
+
+        return $this;
+    }
+
+    /**
+     * Gets date.
+     *
+     * @return null|\SpojeNET\Csas\Model\GetAccountBalance200ResponseBalancesInnerDate
+     */
+    public function getDate()
+    {
+        return $this->container['date'];
+    }
+
+    /**
+     * Sets date.
+     *
+     * @param null|\SpojeNET\Csas\Model\GetAccountBalance200ResponseBalancesInnerDate $date date
+     *
+     * @return self
+     */
+    public function setDate($date)
+    {
+        if (null === $date) {
+            throw new \InvalidArgumentException('non-nullable date cannot be null');
+        }
+
+        $this->container['date'] = $date;
 
         return $this;
     }

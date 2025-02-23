@@ -35,7 +35,7 @@ namespace SpojeNET\Csas\Model;
 use SpojeNET\Csas\ObjectSerializer;
 
 /**
- * GetAccountBalance412Response Class Doc Comment.
+ * GetTransactions412Response Class Doc Comment.
  *
  * @category Class
  *
@@ -45,7 +45,7 @@ use SpojeNET\Csas\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class GetAccountBalance412Response implements \ArrayAccess, \JsonSerializable, ModelInterface
+class GetTransactions412Response implements \ArrayAccess, \JsonSerializable, ModelInterface
 {
     public const DISCRIMINATOR = null;
     public const ERROR_CODE_KEY_DISABLED = 'KEY_DISABLED';
@@ -53,7 +53,7 @@ class GetAccountBalance412Response implements \ArrayAccess, \JsonSerializable, M
     /**
      * The original name of the model.
      */
-    protected static string $openAPIModelName = 'getAccountBalance_412_response';
+    protected static string $openAPIModelName = 'getTransactions_412_response';
 
     /**
      * Array of property to type mappings. Used for (de)serialization.

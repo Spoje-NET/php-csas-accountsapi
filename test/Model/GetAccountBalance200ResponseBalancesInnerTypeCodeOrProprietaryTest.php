@@ -35,17 +35,17 @@ namespace SpojeNET\Csas\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * GetAccountBalance412ResponseTest Class Doc Comment.
+ * GetAccountBalance200ResponseBalancesInnerTypeCodeOrProprietaryTest Class Doc Comment.
  *
  * @category    Class
  *
- * @description GetAccountBalance412Response
+ * @description GetAccountBalance200ResponseBalancesInnerTypeCodeOrProprietary
  *
  * @author      OpenAPI Generator team
  *
  * @see        https://openapi-generator.tech
  */
-class GetAccountBalance412ResponseTest extends TestCase
+class GetAccountBalance200ResponseBalancesInnerTypeCodeOrProprietaryTest extends TestCase
 {
     /**
      * Setup before running any test case.
@@ -76,27 +76,18 @@ class GetAccountBalance412ResponseTest extends TestCase
     }
 
     /**
-     * Test "GetAccountBalance412Response".
+     * Test "GetAccountBalance200ResponseBalancesInnerTypeCodeOrProprietary".
      */
-    public function testGetAccountBalance412Response(): void
+    public function testGetAccountBalance200ResponseBalancesInnerTypeCodeOrProprietary(): void
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "errorCode".
+     * Test attribute "code".
      */
-    public function testPropertyErrorCode(): void
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "message".
-     */
-    public function testPropertyMessage(): void
+    public function testPropertyCode(): void
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
