@@ -37,6 +37,7 @@ class ApiClient extends \GuzzleHttp\Client
      * ClientID obtained from Developer Portal - when you registered your app with us.
      */
     protected string $apiKey;
+
     protected string $token;
 
     /**

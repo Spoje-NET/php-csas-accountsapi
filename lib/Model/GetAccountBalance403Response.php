@@ -35,7 +35,7 @@ namespace SpojeNET\Csas\Model;
 use SpojeNET\Csas\ObjectSerializer;
 
 /**
- * GetAccounts500Response Class Doc Comment.
+ * GetAccountBalance403Response Class Doc Comment.
  *
  * @category Class
  *
@@ -45,15 +45,17 @@ use SpojeNET\Csas\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class GetAccounts500Response implements \ArrayAccess, \JsonSerializable, ModelInterface
+class GetAccountBalance403Response implements \ArrayAccess, \JsonSerializable, ModelInterface
 {
     public const DISCRIMINATOR = null;
-    public const ERROR_CODE_INTERNAL_SERVER_ERROR = 'INTERNAL_SERVER_ERROR';
+    public const ERROR_CODE_TOKEN_INVALID = 'TOKEN_INVALID';
+    public const ERROR_CODE_CERTIFICATE_INVALID = 'CERTIFICATE_INVALID';
+    public const ERROR_CODE_KEY_UNAUTHORIZED = 'KEY_UNAUTHORIZED';
 
     /**
      * The original name of the model.
      */
-    protected static string $openAPIModelName = 'getAccounts_500_response';
+    protected static string $openAPIModelName = 'getAccountBalance_403_response';
 
     /**
      * Array of property to type mappings. Used for (de)serialization.
@@ -244,7 +246,9 @@ class GetAccounts500Response implements \ArrayAccess, \JsonSerializable, ModelIn
     public function getErrorCodeAllowableValues()
     {
         return [
-            self::ERROR_CODE_INTERNAL_SERVER_ERROR,
+            self::ERROR_CODE_TOKEN_INVALID,
+            self::ERROR_CODE_CERTIFICATE_INVALID,
+            self::ERROR_CODE_KEY_UNAUTHORIZED,
         ];
     }
 

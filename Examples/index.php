@@ -1,373 +1,428 @@
 <?php
 /**
- * Start the PHP development server from root with the command: php -S localhost:80 -t Examples/
+ * Start the PHP development server from root with the command: php -S localhost:80 -t Examples/.
  */
-require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__.'/../vendor/autoload.php';
 
 // For better show response problems
 class ResponseException extends Exception
 {
-  private array $context;
+    private array $context;
 
-  public function __construct(string $message, int $code, array $context) {
-    parent::__construct($message, $code);
-    $this->context = $context;
-  }
+    public function __construct(string $message, int $code, array $context)
+    {
+        parent::__construct($message, $code);
+        $this->context = $context;
+    }
 
-  public function getContext(): array
-  {
-    return $this->context;
-  }
+    public function getContext(): array
+    {
+        return $this->context;
+    }
 }
 
 // Persistent storage
 class Storage
 {
-  private ?array $values = null;
-  private SplFileInfo $file;
+    private ?array $values = null;
+    private SplFileInfo $file;
 
-  public function __construct(SplFileInfo $file)
-  {
-    $this->file = $file;
-  }
-
-  public function __destruct()
-  {
-    if (isset($this->values)) {
-      file_put_contents($this->file->getPathname(), serialize($this->values));
+    public function __construct(SplFileInfo $file)
+    {
+        $this->file = $file;
     }
-  }
 
-  /**
-   * @return mixed
-   */
-  public function read(string $key)
-  {
-    $this->values ??= unserialize(@file_get_contents($this->file->getPathname()) ?: 'a:0:{}');
+    public function __destruct()
+    {
+        if (isset($this->values)) {
+            file_put_contents($this->file->getPathname(), serialize($this->values));
+        }
+    }
 
-    return $this->values[$key] ?? null;
-  }
+    /**
+     * @return mixed
+     */
+    public function read(string $key)
+    {
+        $this->values ??= unserialize(@file_get_contents($this->file->getPathname()) ?: 'a:0:{}');
 
-  /**
-   * @param mixed $value
-   */
-  public function write(string $key, $value): void
-  {
-    $this->values[$key] = $value;
-  }
+        return $this->values[$key] ?? null;
+    }
+
+    /**
+     * @param mixed $value
+     */
+    public function write(string $key, $value): void
+    {
+        $this->values[$key] = $value;
+    }
 }
-
 
 // Initialization *****************************************************************************************************
 const AccessTokenKey = 'accessToken';
 const RefreshTokenKey = 'refreshToken';
-define('RootDir', dirname(__DIR__));
-Ease\Shared::init([], RootDir . '/.env');
+\define('RootDir', \dirname(__DIR__));
+Ease\Shared::init([], RootDir.'/.env');
 // global instance for token storage
-$storage = new Storage(new SplFileInfo(RootDir . '/.storage'));
+$storage = new Storage(new SplFileInfo(RootDir.'/.storage'));
 
 // Checks config ******************************************************************************************************
-if (empty(Ease\Shared::cfg('API_KEY'))) throw new RuntimeException('Missing API_KEY');
-if (empty(Ease\Shared::cfg('CLIENT_ID'))) throw new RuntimeException('Missing CLIENT_ID');
-if (empty(Ease\Shared::cfg('CLIENT_SECRET'))) throw new RuntimeException('Missing CLIENT_SECRET');
-if (empty(Ease\Shared::cfg('REDIRECT_URI'))) throw new RuntimeException('Missing REDIRECT_URI');
+if (empty(Ease\Shared::cfg('API_KEY'))) {
+    throw new RuntimeException('Missing API_KEY');
+}
+
+if (empty(Ease\Shared::cfg('CLIENT_ID'))) {
+    throw new RuntimeException('Missing CLIENT_ID');
+}
+
+if (empty(Ease\Shared::cfg('CLIENT_SECRET'))) {
+    throw new RuntimeException('Missing CLIENT_SECRET');
+}
+
+if (empty(Ease\Shared::cfg('REDIRECT_URI'))) {
+    throw new RuntimeException('Missing REDIRECT_URI');
+}
+
 // for this example must be REDIRECT_URI=http://localhost/redirectedFromBank, don't forget changed in Erste Group system
-if (Ease\Shared::cfg('REDIRECT_URI') !== 'http://localhost/redirectedFromBank') throw new RuntimeException('Invalid REDIRECT_URI for this example');
+if (Ease\Shared::cfg('REDIRECT_URI') !== 'http://localhost/redirectedFromBank') {
+    throw new RuntimeException('Invalid REDIRECT_URI for this example');
+}
 
 // Sandbox URLs *******************************************************************************************************
 const CsasSandboxUrl = 'https://webapi.developers.erstegroup.com/api/csas';
-const CsasOAuthUrl = CsasSandboxUrl . '/sandbox/v1/sandbox-idp';
-const CsasAccountsUrl = CsasSandboxUrl . '/public/sandbox/v3/accounts';
-
+const CsasOAuthUrl = CsasSandboxUrl.'/sandbox/v1/sandbox-idp';
+const CsasAccountsUrl = CsasSandboxUrl.'/public/sandbox/v3/accounts';
 
 // Utilities **********************************************************************************************************
 
 /**
- * Just for fancy
+ * Just for fancy.
  */
 function writeLabel(string $label): void
 {
-  static $level = 2;
-  echo "<h{$level}>{$label}</h{$level}>";
-  if ($level < 5) $level++;
+    static $level = 2;
+    echo "<h{$level}>{$label}</h{$level}>";
+
+    if ($level < 5) {
+        ++$level;
+    }
 }
 
 /**
- * For better show output
+ * For better show output.
+ *
+ * @param mixed $output
  */
 function writeOutput($output): void
 {
-  $output = is_string($output) ? $output : var_export($output, true);
-  echo "<pre>\n{$output}</pre>";
+    $output = \is_string($output) ? $output : var_export($output, true);
+    echo "<pre>\n{$output}</pre>";
 }
 
 /**
- * For fancy show money
+ * For fancy show money.
  */
 function formatMoney(?float $amount, string $currency): string
 {
-  if ($amount === null) return '';
+    if ($amount === null) {
+        return '';
+    }
 
-  $thinSpace = "\xE2\x80\x89";
-  $nonBreakSpace = "\xC2\xA0";
+    $thinSpace = "\xE2\x80\x89";
+    $nonBreakSpace = "\xC2\xA0";
 
-  return number_format($amount, 2, '.', $thinSpace) . $nonBreakSpace . $currency;
+    return number_format($amount, 2, '.', $thinSpace).$nonBreakSpace.$currency;
 }
 
 /**
- * This function replacing some HTTP client to send requests
+ * This function replacing some HTTP client to send requests.
  *
- * @param non-empty-string $method "GET"|"POST"
- * @param array<non-empty-string, string|int>|null $data
- * @param array<non-empty-string, string>|null $headers
- * @return string|array<non-empty-string, mixed>
- * @throws InvalidArgumentException|ResponseException|JsonException
+ * @param non-empty-string                         $method  "GET"|"POST"
+ * @param null|array<non-empty-string, int|string> $data
+ * @param null|array<non-empty-string, string>     $headers
+ *
+ * @throws InvalidArgumentException|JsonException|ResponseException
+ *
+ * @return array<non-empty-string, mixed>|string
  */
 function sendRequest(string $method, string $url, ?array $data = null, ?array $headers = null)
 {
-  $ch = curl_init();
+    $ch = curl_init();
 
-  switch (strtoupper($method)) {
-    case 'GET':
-      curl_setopt($ch, CURLOPT_HTTPGET, true);
-      $url .= isset($data) ? ('?' . http_build_query($data)) : '';
-      break;
-    case 'POST':
-      if (empty($data)) throw new InvalidArgumentException('Data for POST missing');
-      curl_setopt($ch, CURLOPT_POST, true);
-      curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
-      break;
-    default:
-      throw new InvalidArgumentException("Unknown method, given '{$method}'");
-  }
+    switch (strtoupper($method)) {
+        case 'GET':
+            curl_setopt($ch, \CURLOPT_HTTPGET, true);
+            $url .= isset($data) ? ('?'.http_build_query($data)) : '';
 
-  if (!empty($headers)) {
-    $hdrs = [];
-    foreach ($headers as $name => $value) {
-      $hdrs[] = "{$name}: {$value}";
+            break;
+        case 'POST':
+            if (empty($data)) {
+                throw new InvalidArgumentException('Data for POST missing');
+            }
+
+            curl_setopt($ch, \CURLOPT_POST, true);
+            curl_setopt($ch, \CURLOPT_POSTFIELDS, http_build_query($data));
+
+            break;
+
+        default:
+            throw new InvalidArgumentException("Unknown method, given '{$method}'");
     }
-    curl_setopt($ch, CURLOPT_HTTPHEADER, $hdrs);
-  }
 
-  curl_setopt($ch, CURLOPT_URL, $url);
-  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    if (!empty($headers)) {
+        $hdrs = [];
 
-  $response = curl_exec($ch);
-  $info = curl_getinfo($ch);
-  $errMsg = curl_error($ch);
-  $errCode = curl_errno($ch);
+        foreach ($headers as $name => $value) {
+            $hdrs[] = "{$name}: {$value}";
+        }
 
-  curl_close($ch);
+        curl_setopt($ch, \CURLOPT_HTTPHEADER, $hdrs);
+    }
 
-  if ($errCode > 0) throw new ResponseException($errMsg, $errCode, $info);
+    curl_setopt($ch, \CURLOPT_URL, $url);
+    curl_setopt($ch, \CURLOPT_RETURNTRANSFER, true);
 
-  if (preg_match('~application/json~', $info['content_type']) !== false) {
-    $response = json_decode($response, true, 512, JSON_THROW_ON_ERROR);
-  }
+    $response = curl_exec($ch);
+    $info = curl_getinfo($ch);
+    $errMsg = curl_error($ch);
+    $errCode = curl_errno($ch);
 
-  if ($info['http_code'] != 200) {
-    $isArray = is_array($response);
-    writeOutput($response);
-    $message = $isArray ? ($response['error_description'] ?? trim(array_reduce($response['errors'] ?? [], fn(string $carry, array $err) => $carry . ' ' . $err['error'] ?? '', '')) ?: 'Unknown error') : $response;
-    $code = $isArray ? ($response['error_code'] ?? $response['status'] ?? 0) : $info['http_code'];
-    throw new ResponseException($message, (int)$code, ['headers' => $headers, 'data' => $data, 'CURL' => $info]);
-  }
+    curl_close($ch);
 
-  return $response;
+    if ($errCode > 0) {
+        throw new ResponseException($errMsg, $errCode, $info);
+    }
+
+    if (preg_match('~application/json~', $info['content_type']) !== false) {
+        $response = json_decode($response, true, 512, \JSON_THROW_ON_ERROR);
+    }
+
+    if ($info['http_code'] !== 200) {
+        $isArray = \is_array($response);
+        writeOutput($response);
+        $message = $isArray ? ($response['error_description'] ?? trim(array_reduce($response['errors'] ?? [], static fn (string $carry, array $err) => $carry.' '.$err['error'] ?? '', '')) ?: 'Unknown error') : $response;
+        $code = $isArray ? ($response['error_code'] ?? $response['status'] ?? 0) : $info['http_code'];
+
+        throw new ResponseException($message, (int) $code, ['headers' => $headers, 'data' => $data, 'CURL' => $info]);
+    }
+
+    return $response;
 }
 
 /**
- * Basic headers with authorization
+ * Basic headers with authorization.
  */
 function createAuthHeaders(): array
 {
-  return [
-    'WEB-API-key' => Ease\Shared::cfg('API_KEY'),
-    'Authorization' => 'Bearer ' . loadAccessToken(),
-    'Content-Type' => 'application/json',
-  ];
+    return [
+        'WEB-API-key' => Ease\Shared::cfg('API_KEY'),
+        'Authorization' => 'Bearer '.loadAccessToken(),
+        'Content-Type' => 'application/json',
+    ];
 }
-
 
 // Work with tokens ***************************************************************************************************
 
 function saveAccessToken(string $token, int $secondsExpiration): void
 {
-  global $storage;
+    global $storage;
 
-  if (empty($token)) throw new InvalidArgumentException('Access token cannot be empty');
-  if ($token <= 0) throw new InvalidArgumentException("Seconds of expiration must be greater than 0, given {$secondsExpiration}");
+    if (empty($token)) {
+        throw new InvalidArgumentException('Access token cannot be empty');
+    }
 
-  $storage->write(AccessTokenKey, [$token, new DateTimeImmutable("+{$secondsExpiration} seconds")]);
+    if ($token <= 0) {
+        throw new InvalidArgumentException("Seconds of expiration must be greater than 0, given {$secondsExpiration}");
+    }
+
+    $storage->write(AccessTokenKey, [$token, new DateTimeImmutable("+{$secondsExpiration} seconds")]);
 }
 
 function saveRefreshToken(string $token): void
 {
-  global $storage;
+    global $storage;
 
-  if (empty($token)) throw new InvalidArgumentException('Refresh token cannot be empty');
+    if (empty($token)) {
+        throw new InvalidArgumentException('Refresh token cannot be empty');
+    }
 
-  $storage->write(RefreshTokenKey, $token);
+    $storage->write(RefreshTokenKey, $token);
 }
 
 function readAccessToken(): ?string
 {
-  global $storage;
+    global $storage;
 
-  /** @var string|null $token */
-  /** @var DateTimeImmutable|null $expiration */
-  [$token, $expiration] = (array)$storage->read(AccessTokenKey) + [null, null];
+    /** @var null|string $token */
+    /** @var null|DateTimeImmutable $expiration */
+    [$token, $expiration] = (array) $storage->read(AccessTokenKey) + [null, null];
 
-  if ($expiration === null || $expiration->getTimestamp() < time()) return null;
+    if ($expiration === null || $expiration->getTimestamp() < time()) {
+        return null;
+    }
 
-  return $token;
+    return $token;
 }
 
 function readRefreshToken(): ?string
 {
-  global $storage;
-  return $storage->read(RefreshTokenKey);
+    global $storage;
+
+    return $storage->read(RefreshTokenKey);
 }
 
 /**
- * Complete logic for obtaining an access token, including renewal after expiration
+ * Complete logic for obtaining an access token, including renewal after expiration.
  */
 function loadAccessToken(): ?string
 {
-  $accessToken = readAccessToken();
-
-  if (empty($accessToken)) {
-    $refreshToken = readRefreshToken();
-
-    if (empty($refreshToken)) throw new RuntimeException('Refresh token not found, authorization required');
-
-    $data = [
-      'client_id' => Ease\Shared::cfg('CLIENT_ID'),
-      'client_secret' => Ease\Shared::cfg('CLIENT_SECRET'),
-      'grant_type' => 'refresh_token',
-      'refresh_token' => $refreshToken,
-    ];
-
-    $response = sendRequest('POST', CsasOAuthUrl . '/token', $data);
-
-    if (!array_key_exists('access_token', $response)) throw new ResponseException('Missing access token in response from bank', 404, $response);
-
-    saveAccessToken($response['access_token'], $response['expires_in'] ?? 300);
-
     $accessToken = readAccessToken();
-  }
 
-  return $accessToken;
+    if (empty($accessToken)) {
+        $refreshToken = readRefreshToken();
+
+        if (empty($refreshToken)) {
+            throw new RuntimeException('Refresh token not found, authorization required');
+        }
+
+        $data = [
+            'client_id' => Ease\Shared::cfg('CLIENT_ID'),
+            'client_secret' => Ease\Shared::cfg('CLIENT_SECRET'),
+            'grant_type' => 'refresh_token',
+            'refresh_token' => $refreshToken,
+        ];
+
+        $response = sendRequest('POST', CsasOAuthUrl.'/token', $data);
+
+        if (!\array_key_exists('access_token', $response)) {
+            throw new ResponseException('Missing access token in response from bank', 404, $response);
+        }
+
+        saveAccessToken($response['access_token'], $response['expires_in'] ?? 300);
+
+        $accessToken = readAccessToken();
+    }
+
+    return $accessToken;
 }
-
 
 // Router's handlers for page *****************************************************************************************
 
 /**
- * Default handler showing whether authorization is required
+ * Default handler showing whether authorization is required.
  */
 function status(): void
 {
-  writeLabel('Status');
-  writeLabel(readRefreshToken()
+    writeLabel('Status');
+    writeLabel(
+        readRefreshToken()
     ? '✅ <small>No authorization needed</small>'
-    : '⚠️ <small>Authorization required</small>'
-  );
+    : '⚠️ <small>Authorization required</small>',
+    );
 }
 
 /**
- * Handler for creating an authorization URL and redirects to it
+ * Handler for creating an authorization URL and redirects to it.
  */
 function redirectToAuth(): void
 {
-  writeLabel('Redirect to authorization');
+    writeLabel('Redirect to authorization');
 
-  $url = CsasOAuthUrl . '/auth?' . http_build_query([
-    'client_id' => Ease\Shared::cfg('CLIENT_ID'),
-    'response_type' => 'code',
-    'redirect_uri' => Ease\Shared::cfg('REDIRECT_URI'),
-    'state' => Ease\Functions::randomString(),
-    'access_type' => 'offline',
-    'scope' => implode('%20', [
-      'siblings.accounts',
-      // 'siblings.payments',
-      // 'AISP',
-      // 'PISP'
-    ]),
-  ]);
-  header("Location: {$url}");
+    $url = CsasOAuthUrl.'/auth?'.http_build_query([
+        'client_id' => Ease\Shared::cfg('CLIENT_ID'),
+        'response_type' => 'code',
+        'redirect_uri' => Ease\Shared::cfg('REDIRECT_URI'),
+        'state' => Ease\Functions::randomString(),
+        'access_type' => 'offline',
+        'scope' => implode('%20', [
+            'siblings.accounts',
+            // 'siblings.payments',
+            // 'AISP',
+            // 'PISP'
+        ]),
+    ]);
+    header("Location: {$url}");
 }
 
 /**
- * After authorization, this handler processes the request and stores the tokens
+ * After authorization, this handler processes the request and stores the tokens.
  */
 function handleRedirectFromBank(): void
 {
-  writeLabel('Processing redirect from bank');
+    writeLabel('Processing redirect from bank');
 
-  // check URL params
-  if (!array_key_exists('code', $_GET)) throw new Exception('Missing authorization code in URL');
+    // check URL params
+    if (!\array_key_exists('code', $_GET)) {
+        throw new Exception('Missing authorization code in URL');
+    }
 
-  $data = [
-    'client_id' => Ease\Shared::cfg('CLIENT_ID'),
-    'client_secret' => Ease\Shared::cfg('CLIENT_SECRET'),
-    'grant_type' => 'authorization_code',
-    'code' => $_GET['code'],
-    'redirect_uri' => Ease\Shared::cfg('REDIRECT_URI'),
-  ];
+    $data = [
+        'client_id' => Ease\Shared::cfg('CLIENT_ID'),
+        'client_secret' => Ease\Shared::cfg('CLIENT_SECRET'),
+        'grant_type' => 'authorization_code',
+        'code' => $_GET['code'],
+        'redirect_uri' => Ease\Shared::cfg('REDIRECT_URI'),
+    ];
 
-  $response = sendRequest('POST', CsasOAuthUrl . '/token', $data);
+    $response = sendRequest('POST', CsasOAuthUrl.'/token', $data);
 
-  if (!array_key_exists('refresh_token', $response)) throw new ResponseException('Missing refresh token in response from bank', 404, $response);
-  if (!array_key_exists('access_token', $response)) throw new ResponseException('Missing access token in response from bank', 404, $response);
+    if (!\array_key_exists('refresh_token', $response)) {
+        throw new ResponseException('Missing refresh token in response from bank', 404, $response);
+    }
 
-  saveRefreshToken($response['refresh_token']);
-  saveAccessToken($response['access_token'], $response['expires_in'] ?? 300);
+    if (!\array_key_exists('access_token', $response)) {
+        throw new ResponseException('Missing access token in response from bank', 404, $response);
+    }
 
-  writeLabel('Scope');
-  writeOutput($response['scope']);
+    saveRefreshToken($response['refresh_token']);
+    saveAccessToken($response['access_token'], $response['expires_in'] ?? 300);
+
+    writeLabel('Scope');
+    writeOutput($response['scope']);
 }
 
 /**
- * Handler for listing available accounts
+ * Handler for listing available accounts.
  */
 function listAccounts(): void
 {
-  writeLabel('List accounts');
+    writeLabel('List accounts');
 
-  $data = [
-    'size' => 10,
-    'page' => 0,
-    'sort' => 'iban',
-    'order' => 'asc',
-  ];
-  $headers = createAuthHeaders();
-  $response = sendRequest('GET', CsasAccountsUrl . '/my/accounts', $data, $headers);
+    $data = [
+        'size' => 10,
+        'page' => 0,
+        'sort' => 'iban',
+        'order' => 'asc',
+    ];
+    $headers = createAuthHeaders();
+    $response = sendRequest('GET', CsasAccountsUrl.'/my/accounts', $data, $headers);
 
-  class Account
-  {
-    public string $id;
-    public string $iban;
-    public string $code;
-    public string $currency;
-    public string $name;
-    public string $product;
+    class Account
+    {
+        public string $id;
+        public string $iban;
+        public string $code;
+        public string $currency;
+        public string $name;
+        public string $product;
 
-    public function __construct(array $data) {
-      $this->id = $data['id'] ?? 'MISSING';
-      $this->iban = $data['identification']['iban'] ?? 'MISSING';
-      $this->code = $data['identification']['other'] ?? 'MISSING';
-      $this->currency = $data['currency'];
-      $this->name = $data['nameI18N'] ?? 'MISSING';
-      $this->product = $data['productI18N'] ?? 'MISSING';
+        public function __construct(array $data)
+        {
+            $this->id = $data['id'] ?? 'MISSING';
+            $this->iban = $data['identification']['iban'] ?? 'MISSING';
+            $this->code = $data['identification']['other'] ?? 'MISSING';
+            $this->currency = $data['currency'];
+            $this->name = $data['nameI18N'] ?? 'MISSING';
+            $this->product = $data['productI18N'] ?? 'MISSING';
+        }
     }
-  }
 
-  echo '<table>';
-  echo '<tr><th>Name</th><th>Product</th><th>IBAN</th><th>Currency</th><th></th></tr>';
-  foreach ($response['accounts'] as $accountData) {
-    $act = new Account($accountData);
-    echo <<<TABLE
+    echo '<table>';
+    echo '<tr><th>Name</th><th>Product</th><th>IBAN</th><th>Currency</th><th></th></tr>';
+
+    foreach ($response['accounts'] as $accountData) {
+        $act = new Account($accountData);
+        echo <<<TABLE
       <tr>
         <td>{$act->name}</td>
         <td>{$act->product}</td>
@@ -376,120 +431,134 @@ function listAccounts(): void
         <td><a href="/detail?id={$act->id}">info</a></td>
       </tr>
       TABLE;
-  }
-  echo '</table>';
+    }
+
+    echo '</table>';
 }
 
 /**
- * Handler for show balance and listing transaction of selected account
+ * Handler for show balance and listing transaction of selected account.
  */
 function accountDetail(): void
 {
-  writeLabel('Detail account');
+    writeLabel('Detail account');
 
-  $accountId = $_GET['id'] ?? '';
+    $accountId = $_GET['id'] ?? '';
 
-  if (preg_match('~^[0-9A-F]{40}$~', $accountId) === false) throw new RuntimeException('Invalid account id');
-
-  // Balance
-  writeLabel('Balance');
-  $headers = createAuthHeaders();
-  $response = sendRequest('GET', CsasAccountsUrl . "/my/accounts/{$accountId}/balance", null, $headers);
-
-  $balance = array_pop($response['balances']) ?? null;
-  if (empty($balance)) {
-    echo '<p>🤷‍♂️</p>';
-  } else {
-    $amount = $balance['amount']['value'];
-    if ($balance['creditDebitIndicator'] === 'DBIT') $amount *= -1;
-    $money = formatMoney($amount, $balance['amount']['currency']);
-    echo "<p>{$money}</p>";
-  }
-
-  // Transactions
-  writeLabel('Transactions');
-  $data = [
-    'fromDate' => date('Y-m-d', strtotime('-1 month')),
-    'toDate' => date('Y-m-d'),
-    'size' => 20,
-    'page' => 0,
-    'sort' => 'bookingdate',
-    'order' => 'desc',
-  ];
-  $response = sendRequest('GET', CsasAccountsUrl . "/my/accounts/{$accountId}/transactions", $data, $headers);
-
-  class Transaction {
-    public string $booked;
-    public ?float $amount;
-    public string $currency;
-    public string $description;
-
-    public function __construct(array $data) {
-      $this->booked = $data['bookingDate']['date'] ?? 'MISSING';
-      $this->currency = $data['amount']['currency'] ?? 'MISSING';
-      $this->description = $data['entryDetails']['transactionDetails']['additionalTransactionInformation'] ?? '🤷‍♂️';
-
-      $this->amount = $data['amount']['value'] ?? null;
-      if (isset($this->amount) && $data['creditDebitIndicator'] === 'DBIT') $this->amount *= -1;
+    if (preg_match('~^[0-9A-F]{40}$~', $accountId) === false) {
+        throw new RuntimeException('Invalid account id');
     }
-  }
 
-  echo '<table>';
-  echo '<tr><th>Booked</th><th>Amount</th><th>Description</th></tr>';
-  foreach ($response['transactions'] as $transactionData) {
-    $trn = new Transaction($transactionData);
-    $money = formatMoney($trn->amount, $trn->currency);
+    // Balance
+    writeLabel('Balance');
+    $headers = createAuthHeaders();
+    $response = sendRequest('GET', CsasAccountsUrl."/my/accounts/{$accountId}/balance", null, $headers);
 
-    echo <<<TABLE
+    $balance = array_pop($response['balances']) ?? null;
+
+    if (empty($balance)) {
+        echo '<p>🤷‍♂️</p>';
+    } else {
+        $amount = $balance['amount']['value'];
+
+        if ($balance['creditDebitIndicator'] === 'DBIT') {
+            $amount *= -1;
+        }
+
+        $money = formatMoney($amount, $balance['amount']['currency']);
+        echo "<p>{$money}</p>";
+    }
+
+    // Transactions
+    writeLabel('Transactions');
+    $data = [
+        'fromDate' => date('Y-m-d', strtotime('-1 month')),
+        'toDate' => date('Y-m-d'),
+        'size' => 20,
+        'page' => 0,
+        'sort' => 'bookingdate',
+        'order' => 'desc',
+    ];
+    $response = sendRequest('GET', CsasAccountsUrl."/my/accounts/{$accountId}/transactions", $data, $headers);
+
+    class Transaction
+    {
+        public string $booked;
+        public ?float $amount;
+        public string $currency;
+        public string $description;
+
+        public function __construct(array $data)
+        {
+            $this->booked = $data['bookingDate']['date'] ?? 'MISSING';
+            $this->currency = $data['amount']['currency'] ?? 'MISSING';
+            $this->description = $data['entryDetails']['transactionDetails']['additionalTransactionInformation'] ?? '🤷‍♂️';
+
+            $this->amount = $data['amount']['value'] ?? null;
+
+            if (isset($this->amount) && $data['creditDebitIndicator'] === 'DBIT') {
+                $this->amount *= -1;
+            }
+        }
+    }
+
+    echo '<table>';
+    echo '<tr><th>Booked</th><th>Amount</th><th>Description</th></tr>';
+
+    foreach ($response['transactions'] as $transactionData) {
+        $trn = new Transaction($transactionData);
+        $money = formatMoney($trn->amount, $trn->currency);
+
+        echo <<<TABLE
       <tr>
         <td class="mono">{$trn->booked}</td>
         <td style="text-align:right">{$money}</td>
         <td>{$trn->description}</td>
       </tr>
       TABLE;
-  }
-  echo '</table>';
-}
+    }
 
+    echo '</table>';
+}
 
 // Application logic **************************************************************************************************
 function run(): void
 {
-  try {
-    /**
-     * Router must cover all required paths
-     * @var array<string, callable> $routerByUrlPath
-     */
-    $routerByUrlPath = [
-      '/' => fn() => status(),
-      '/auth' => fn() => redirectToAuth(),
-      '/redirectedFromBank' => fn() => handleRedirectFromBank(),
-      '/accounts' => fn() => listAccounts(),
-      '/detail' => fn() => accountDetail(),
-    ];
+    try {
+        /**
+         * Router must cover all required paths.
+         *
+         * @var array<string, callable> $routerByUrlPath
+         */
+        $routerByUrlPath = [
+            '/' => static fn () => status(),
+            '/auth' => static fn () => redirectToAuth(),
+            '/redirectedFromBank' => static fn () => handleRedirectFromBank(),
+            '/accounts' => static fn () => listAccounts(),
+            '/detail' => static fn () => accountDetail(),
+        ];
 
-    $path = $_SERVER['PATH_INFO'] ?? '/';
-    $action = $routerByUrlPath[$path] ?? null;
+        $path = $_SERVER['PATH_INFO'] ?? '/';
+        $action = $routerByUrlPath[$path] ?? null;
 
-    if (empty($action)) throw new Exception("Action for path missing, given '{$path}'");
+        if (empty($action)) {
+            throw new Exception("Action for path missing, given '{$path}'");
+        }
 
-    $action();
-
-  } catch (ResponseException $exc) {
-    writeLabel("Response error [{$exc->getCode()}]: <small>{$exc->getMessage()}</small>");
-    writeLabel('Context');
-    writeOutput($exc->getContext());
-    writeLabel('Trace');
-    writeOutput(str_replace(RootDir . '/', '', $exc->getTraceAsString()));
-
-  } catch (Throwable $exc) {
-    $error = get_class($exc);
-    writeLabel("{$error}: <small>{$exc->getMessage()}</small>");
-    writeLabel('Trace');
-    writeOutput(str_replace(RootDir . '/', '', $exc->getTraceAsString()));
-  }
+        $action();
+    } catch (ResponseException $exc) {
+        writeLabel("Response error [{$exc->getCode()}]: <small>{$exc->getMessage()}</small>");
+        writeLabel('Context');
+        writeOutput($exc->getContext());
+        writeLabel('Trace');
+        writeOutput(str_replace(RootDir.'/', '', $exc->getTraceAsString()));
+    } catch (Throwable $exc) {
+        $error = \get_class($exc);
+        writeLabel("{$error}: <small>{$exc->getMessage()}</small>");
+        writeLabel('Trace');
+        writeOutput(str_replace(RootDir.'/', '', $exc->getTraceAsString()));
+    }
 }
-
 
 // HTML ***************************************************************************************************************
 ?>

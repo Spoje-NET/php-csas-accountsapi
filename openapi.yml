@@ -28,40 +28,27 @@ paths:
           schema:
             type: integer
           description: Page number to return
-        - name: sort
-          in: query
-          required: false
-          schema:
-            type: string
-          description: Field to sort by
-        - name: order
-          in: query
-          required: false
-          schema:
-            type: string
-            enum: [asc, desc]
-          description: Sort order
       responses:
         '200':
-          description: Successful response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Account'
-        '400':
-          description: Bad Request
+          description: A list of accounts
           content:
             application/json:
               schema:
                 type: object
                 properties:
-                  errorCode:
-                    type: string
-                    enum:
-                      - PARAMETER_INVALID
-                      - BAD_REQUEST
-                  message:
-                    type: string
+                  pageNumber:
+                    type: integer
+                    description: Current page number
+                  pageCount:
+                    type: integer
+                    description: Total number of pages
+                  pageSize:
+                    type: integer
+                    description: Number of accounts per page
+                  accounts:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Account'
         '403':
           description: Forbidden
           content:
@@ -69,93 +56,17 @@ paths:
               schema:
                 type: object
                 properties:
-                  errorCode:
-                    type: string
-                    enum:
-                      - TOKEN_INVALID
-                      - CERTIFICATE_INVALID
-                      - KEY_UNAUTHORIZED
-                  message:
-                    type: string
-        '404':
-          description: Not Found
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  errorCode:
-                    type: string
-                    enum:
-                      - PAGE_NOT_FOUND
-                      - NOT_FOUND
-                  message:
-                    type: string
-        '405':
-          description: Method Not Allowed
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  errorCode:
-                    type: string
-                    enum:
-                      - METHOD_NOT_ALLOWED
-                  message:
-                    type: string
-        '412':
-          description: Precondition Failed
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  errorCode:
-                    type: string
-                    enum:
-                      - KEY_DISABLED
-                  message:
-                    type: string
-        '429':
-          description: Too Many Requests
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  errorCode:
-                    type: string
-                    enum:
-                      - REQUEST_QUOTA_EXCEEDED
-                  message:
-                    type: string
-        '500':
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  errorCode:
-                    type: string
-                    enum:
-                      - INTERNAL_SERVER_ERROR
-                  message:
-                    type: string
-        '503':
-          description: Service Unavailable
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  errorCode:
-                    type: string
-                    enum:
-                      - SERVICE_UNAVAILABLE
-                  message:
-                    type: string
+                  status:
+                    type: integer
+                    example: 403
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        error:
+                          type: string
+                          example: TOKEN_INVALID
   /my/accounts/{id}/balance:
     get:
       summary: Get account balance
@@ -615,6 +526,56 @@ components:
         id:
           type: string
           description: Unique system ID of the client's account
+        identification:
+          type: object
+          properties:
+            iban:
+              type: string
+              description: International Bank Account Number
+            other:
+              type: string
+              description: Other account identification
+        currency:
+          type: string
+          description: Currency of the account
+        servicer:
+          type: object
+          properties:
+            bankCode:
+              type: string
+              description: Bank code
+            countryCode:
+              type: string
+              description: Country code
+            bic:
+              type: string
+              description: Bank Identifier Code
+        nameI18N:
+          type: string
+          description: Internationalized name of the account
+        productI18N:
+          type: string
+          description: Internationalized product name
+        ownersNames:
+          type: array
+          items:
+            type: string
+          description: List of account owners' names
+        relationship:
+          type: object
+          properties:
+            isOwner:
+              type: boolean
+              description: Indicates if the authenticated user is the owner of the account
+        suitableScope:
+          type: object
+          properties:
+            AISP:
+              type: string
+              description: Account Information Service Provider scope
+            PISP:
+              type: string
+              description: Payment Initiation Service Provider scope
         status:
           type: string
           enum:

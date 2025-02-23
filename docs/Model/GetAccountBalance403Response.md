@@ -1,4 +1,4 @@
-# # GetAccounts405Response
+# # GetAccountBalance403Response
 
 ## Properties
 

@@ -1,10 +1,10 @@
-# # GetAccounts403Response
+# # AccountSuitableScope
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**status** | **int** |  | [optional]
-**errors** | [**\SpojeNET\Csas\Model\GetAccounts403ResponseErrorsInner[]**](GetAccounts403ResponseErrorsInner.md) |  | [optional]
+**aISP** | **string** | Account Information Service Provider scope | [optional]
+**pISP** | **string** | Payment Initiation Service Provider scope | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

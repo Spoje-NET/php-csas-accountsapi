@@ -78,7 +78,7 @@ try {
 ## `getAccounts()`
 
 ```php
-getAccounts($size, $page, $sort, $order): \SpojeNET\Csas\Model\Account
+getAccounts($size, $page): \SpojeNET\Csas\Model\GetAccounts200Response
 ```
 
 Get account details
@@ -109,11 +109,9 @@ $apiInstance = new SpojeNET\Csas\Api\DefaultApi(
 );
 $size = 56; // int | Number of accounts to return
 $page = 56; // int | Page number to return
-$sort = 'sort_example'; // string | Field to sort by
-$order = 'order_example'; // string | Sort order
 
 try {
-    $result = $apiInstance->getAccounts($size, $page, $sort, $order);
+    $result = $apiInstance->getAccounts($size, $page);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getAccounts: ', $e->getMessage(), PHP_EOL;
@@ -126,12 +124,10 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **size** | **int**| Number of accounts to return | [optional] |
 | **page** | **int**| Page number to return | [optional] |
-| **sort** | **string**| Field to sort by | [optional] |
-| **order** | **string**| Sort order | [optional] |
 
 ### Return type
 
-[**\SpojeNET\Csas\Model\Account**](../Model/Account.md)
+[**\SpojeNET\Csas\Model\GetAccounts200Response**](../Model/GetAccounts200Response.md)
 
 ### Authorization
 

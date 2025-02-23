@@ -35,7 +35,7 @@ namespace SpojeNET\Csas\Model;
 use SpojeNET\Csas\ObjectSerializer;
 
 /**
- * GetAccounts412Response Class Doc Comment.
+ * AccountRelationship Class Doc Comment.
  *
  * @category Class
  *
@@ -45,15 +45,14 @@ use SpojeNET\Csas\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class GetAccounts412Response implements \ArrayAccess, \JsonSerializable, ModelInterface
+class AccountRelationship implements \ArrayAccess, \JsonSerializable, ModelInterface
 {
     public const DISCRIMINATOR = null;
-    public const ERROR_CODE_KEY_DISABLED = 'KEY_DISABLED';
 
     /**
      * The original name of the model.
      */
-    protected static string $openAPIModelName = 'getAccounts_412_response';
+    protected static string $openAPIModelName = 'Account_relationship';
 
     /**
      * Array of property to type mappings. Used for (de)serialization.
@@ -61,8 +60,7 @@ class GetAccounts412Response implements \ArrayAccess, \JsonSerializable, ModelIn
      * @var string[]
      */
     protected static array $openAPITypes = [
-        'errorCode' => 'string',
-        'message' => 'string',
+        'isOwner' => 'bool',
     ];
 
     /**
@@ -75,8 +73,7 @@ class GetAccounts412Response implements \ArrayAccess, \JsonSerializable, ModelIn
      * @psalm-var array<string, string|null>
      */
     protected static array $openAPIFormats = [
-        'errorCode' => null,
-        'message' => null,
+        'isOwner' => null,
     ];
 
     /**
@@ -85,8 +82,7 @@ class GetAccounts412Response implements \ArrayAccess, \JsonSerializable, ModelIn
      * @var bool[]
      */
     protected static array $openAPINullables = [
-        'errorCode' => false,
-        'message' => false,
+        'isOwner' => false,
     ];
 
     /**
@@ -103,8 +99,7 @@ class GetAccounts412Response implements \ArrayAccess, \JsonSerializable, ModelIn
      * @var string[]
      */
     protected static array $attributeMap = [
-        'errorCode' => 'errorCode',
-        'message' => 'message',
+        'isOwner' => 'isOwner',
     ];
 
     /**
@@ -113,8 +108,7 @@ class GetAccounts412Response implements \ArrayAccess, \JsonSerializable, ModelIn
      * @var string[]
      */
     protected static array $setters = [
-        'errorCode' => 'setErrorCode',
-        'message' => 'setMessage',
+        'isOwner' => 'setIsOwner',
     ];
 
     /**
@@ -123,8 +117,7 @@ class GetAccounts412Response implements \ArrayAccess, \JsonSerializable, ModelIn
      * @var string[]
      */
     protected static array $getters = [
-        'errorCode' => 'getErrorCode',
-        'message' => 'getMessage',
+        'isOwner' => 'getIsOwner',
     ];
 
     /**
@@ -142,8 +135,7 @@ class GetAccounts412Response implements \ArrayAccess, \JsonSerializable, ModelIn
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('errorCode', $data ?? [], null);
-        $this->setIfExists('message', $data ?? [], null);
+        $this->setIfExists('isOwner', $data ?? [], null);
     }
 
     /**
@@ -237,37 +229,13 @@ class GetAccounts412Response implements \ArrayAccess, \JsonSerializable, ModelIn
     }
 
     /**
-     * Gets allowable values of the enum.
-     *
-     * @return string[]
-     */
-    public function getErrorCodeAllowableValues()
-    {
-        return [
-            self::ERROR_CODE_KEY_DISABLED,
-        ];
-    }
-
-    /**
      * Show all the invalid properties with reasons.
      *
      * @return array invalid properties with reasons
      */
     public function listInvalidProperties()
     {
-        $invalidProperties = [];
-
-        $allowedValues = $this->getErrorCodeAllowableValues();
-
-        if (null !== $this->container['errorCode'] && !\in_array($this->container['errorCode'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'errorCode', must be one of '%s'",
-                $this->container['errorCode'],
-                implode("', '", $allowedValues),
-            );
-        }
-
-        return $invalidProperties;
+        return [];
     }
 
     /**
@@ -282,69 +250,29 @@ class GetAccounts412Response implements \ArrayAccess, \JsonSerializable, ModelIn
     }
 
     /**
-     * Gets errorCode.
+     * Gets isOwner.
      *
-     * @return null|string
+     * @return null|bool
      */
-    public function getErrorCode()
+    public function getIsOwner()
     {
-        return $this->container['errorCode'];
+        return $this->container['isOwner'];
     }
 
     /**
-     * Sets errorCode.
+     * Sets isOwner.
      *
-     * @param null|string $errorCode errorCode
+     * @param null|bool $isOwner Indicates if the authenticated user is the owner of the account
      *
      * @return self
      */
-    public function setErrorCode($errorCode)
+    public function setIsOwner($isOwner)
     {
-        if (null === $errorCode) {
-            throw new \InvalidArgumentException('non-nullable errorCode cannot be null');
+        if (null === $isOwner) {
+            throw new \InvalidArgumentException('non-nullable isOwner cannot be null');
         }
 
-        $allowedValues = $this->getErrorCodeAllowableValues();
-
-        if (!\in_array($errorCode, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'errorCode', must be one of '%s'",
-                    $errorCode,
-                    implode("', '", $allowedValues),
-                ),
-            );
-        }
-
-        $this->container['errorCode'] = $errorCode;
-
-        return $this;
-    }
-
-    /**
-     * Gets message.
-     *
-     * @return null|string
-     */
-    public function getMessage()
-    {
-        return $this->container['message'];
-    }
-
-    /**
-     * Sets message.
-     *
-     * @param null|string $message message
-     *
-     * @return self
-     */
-    public function setMessage($message)
-    {
-        if (null === $message) {
-            throw new \InvalidArgumentException('non-nullable message cannot be null');
-        }
-
-        $this->container['message'] = $message;
+        $this->container['isOwner'] = $isOwner;
 
         return $this;
     }

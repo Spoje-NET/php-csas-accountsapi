@@ -35,17 +35,17 @@ namespace SpojeNET\Csas\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * GetAccounts404ResponseTest Class Doc Comment.
+ * GetAccounts200ResponseTest Class Doc Comment.
  *
  * @category    Class
  *
- * @description GetAccounts404Response
+ * @description GetAccounts200Response
  *
  * @author      OpenAPI Generator team
  *
  * @see        https://openapi-generator.tech
  */
-class GetAccounts404ResponseTest extends TestCase
+class GetAccounts200ResponseTest extends TestCase
 {
     /**
      * Setup before running any test case.
@@ -76,27 +76,45 @@ class GetAccounts404ResponseTest extends TestCase
     }
 
     /**
-     * Test "GetAccounts404Response".
+     * Test "GetAccounts200Response".
      */
-    public function testGetAccounts404Response(): void
+    public function testGetAccounts200Response(): void
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "errorCode".
+     * Test attribute "pageNumber".
      */
-    public function testPropertyErrorCode(): void
+    public function testPropertyPageNumber(): void
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "message".
+     * Test attribute "pageCount".
      */
-    public function testPropertyMessage(): void
+    public function testPropertyPageCount(): void
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "pageSize".
+     */
+    public function testPropertyPageSize(): void
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "accounts".
+     */
+    public function testPropertyAccounts(): void
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

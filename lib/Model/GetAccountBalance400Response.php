@@ -35,7 +35,7 @@ namespace SpojeNET\Csas\Model;
 use SpojeNET\Csas\ObjectSerializer;
 
 /**
- * GetAccounts403Response Class Doc Comment.
+ * GetAccountBalance400Response Class Doc Comment.
  *
  * @category Class
  *
@@ -45,14 +45,16 @@ use SpojeNET\Csas\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class GetAccounts403Response implements \ArrayAccess, \JsonSerializable, ModelInterface
+class GetAccountBalance400Response implements \ArrayAccess, \JsonSerializable, ModelInterface
 {
     public const DISCRIMINATOR = null;
+    public const ERROR_CODE_PARAMETER_INVALID = 'PARAMETER_INVALID';
+    public const ERROR_CODE_BAD_REQUEST = 'BAD_REQUEST';
 
     /**
      * The original name of the model.
      */
-    protected static string $openAPIModelName = 'getAccounts_403_response';
+    protected static string $openAPIModelName = 'getAccountBalance_400_response';
 
     /**
      * Array of property to type mappings. Used for (de)serialization.
@@ -60,8 +62,8 @@ class GetAccounts403Response implements \ArrayAccess, \JsonSerializable, ModelIn
      * @var string[]
      */
     protected static array $openAPITypes = [
-        'status' => 'int',
-        'errors' => '\SpojeNET\Csas\Model\GetAccounts403ResponseErrorsInner[]',
+        'errorCode' => 'string',
+        'message' => 'string',
     ];
 
     /**
@@ -74,8 +76,8 @@ class GetAccounts403Response implements \ArrayAccess, \JsonSerializable, ModelIn
      * @psalm-var array<string, string|null>
      */
     protected static array $openAPIFormats = [
-        'status' => null,
-        'errors' => null,
+        'errorCode' => null,
+        'message' => null,
     ];
 
     /**
@@ -84,8 +86,8 @@ class GetAccounts403Response implements \ArrayAccess, \JsonSerializable, ModelIn
      * @var bool[]
      */
     protected static array $openAPINullables = [
-        'status' => false,
-        'errors' => false,
+        'errorCode' => false,
+        'message' => false,
     ];
 
     /**
@@ -102,8 +104,8 @@ class GetAccounts403Response implements \ArrayAccess, \JsonSerializable, ModelIn
      * @var string[]
      */
     protected static array $attributeMap = [
-        'status' => 'status',
-        'errors' => 'errors',
+        'errorCode' => 'errorCode',
+        'message' => 'message',
     ];
 
     /**
@@ -112,8 +114,8 @@ class GetAccounts403Response implements \ArrayAccess, \JsonSerializable, ModelIn
      * @var string[]
      */
     protected static array $setters = [
-        'status' => 'setStatus',
-        'errors' => 'setErrors',
+        'errorCode' => 'setErrorCode',
+        'message' => 'setMessage',
     ];
 
     /**
@@ -122,8 +124,8 @@ class GetAccounts403Response implements \ArrayAccess, \JsonSerializable, ModelIn
      * @var string[]
      */
     protected static array $getters = [
-        'status' => 'getStatus',
-        'errors' => 'getErrors',
+        'errorCode' => 'getErrorCode',
+        'message' => 'getMessage',
     ];
 
     /**
@@ -141,8 +143,8 @@ class GetAccounts403Response implements \ArrayAccess, \JsonSerializable, ModelIn
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('status', $data ?? [], null);
-        $this->setIfExists('errors', $data ?? [], null);
+        $this->setIfExists('errorCode', $data ?? [], null);
+        $this->setIfExists('message', $data ?? [], null);
     }
 
     /**
@@ -236,13 +238,38 @@ class GetAccounts403Response implements \ArrayAccess, \JsonSerializable, ModelIn
     }
 
     /**
+     * Gets allowable values of the enum.
+     *
+     * @return string[]
+     */
+    public function getErrorCodeAllowableValues()
+    {
+        return [
+            self::ERROR_CODE_PARAMETER_INVALID,
+            self::ERROR_CODE_BAD_REQUEST,
+        ];
+    }
+
+    /**
      * Show all the invalid properties with reasons.
      *
      * @return array invalid properties with reasons
      */
     public function listInvalidProperties()
     {
-        return [];
+        $invalidProperties = [];
+
+        $allowedValues = $this->getErrorCodeAllowableValues();
+
+        if (null !== $this->container['errorCode'] && !\in_array($this->container['errorCode'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'errorCode', must be one of '%s'",
+                $this->container['errorCode'],
+                implode("', '", $allowedValues),
+            );
+        }
+
+        return $invalidProperties;
     }
 
     /**
@@ -257,57 +284,69 @@ class GetAccounts403Response implements \ArrayAccess, \JsonSerializable, ModelIn
     }
 
     /**
-     * Gets status.
+     * Gets errorCode.
      *
-     * @return null|int
+     * @return null|string
      */
-    public function getStatus()
+    public function getErrorCode()
     {
-        return $this->container['status'];
+        return $this->container['errorCode'];
     }
 
     /**
-     * Sets status.
+     * Sets errorCode.
      *
-     * @param null|int $status status
+     * @param null|string $errorCode errorCode
      *
      * @return self
      */
-    public function setStatus($status)
+    public function setErrorCode($errorCode)
     {
-        if (null === $status) {
-            throw new \InvalidArgumentException('non-nullable status cannot be null');
+        if (null === $errorCode) {
+            throw new \InvalidArgumentException('non-nullable errorCode cannot be null');
         }
 
-        $this->container['status'] = $status;
+        $allowedValues = $this->getErrorCodeAllowableValues();
+
+        if (!\in_array($errorCode, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'errorCode', must be one of '%s'",
+                    $errorCode,
+                    implode("', '", $allowedValues),
+                ),
+            );
+        }
+
+        $this->container['errorCode'] = $errorCode;
 
         return $this;
     }
 
     /**
-     * Gets errors.
+     * Gets message.
      *
-     * @return null|\SpojeNET\Csas\Model\GetAccounts403ResponseErrorsInner[]
+     * @return null|string
      */
-    public function getErrors()
+    public function getMessage()
     {
-        return $this->container['errors'];
+        return $this->container['message'];
     }
 
     /**
-     * Sets errors.
+     * Sets message.
      *
-     * @param null|\SpojeNET\Csas\Model\GetAccounts403ResponseErrorsInner[] $errors errors
+     * @param null|string $message message
      *
      * @return self
      */
-    public function setErrors($errors)
+    public function setMessage($message)
     {
-        if (null === $errors) {
-            throw new \InvalidArgumentException('non-nullable errors cannot be null');
+        if (null === $message) {
+            throw new \InvalidArgumentException('non-nullable message cannot be null');
         }
 
-        $this->container['errors'] = $errors;
+        $this->container['message'] = $message;
 
         return $this;
     }

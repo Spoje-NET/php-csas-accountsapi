@@ -94,6 +94,78 @@ class AccountTest extends TestCase
     }
 
     /**
+     * Test attribute "identification".
+     */
+    public function testPropertyIdentification(): void
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "currency".
+     */
+    public function testPropertyCurrency(): void
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "servicer".
+     */
+    public function testPropertyServicer(): void
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "nameI18N".
+     */
+    public function testPropertyNameI18N(): void
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "productI18N".
+     */
+    public function testPropertyProductI18N(): void
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "ownersNames".
+     */
+    public function testPropertyOwnersNames(): void
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "relationship".
+     */
+    public function testPropertyRelationship(): void
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "suitableScope".
+     */
+    public function testPropertySuitableScope(): void
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "status".
      */
     public function testPropertyStatus(): void

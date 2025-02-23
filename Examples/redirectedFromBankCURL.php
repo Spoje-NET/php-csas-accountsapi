@@ -73,7 +73,7 @@ if ($code) {
         var_dump($responseData);
 
         echo '<h2> Výměna CODE za Access Token a Refresh Token </h2>';
-        
+
         curl_setopt($ch, \CURLOPT_URL, $idpLink.'/token');
         curl_setopt($ch, \CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, \CURLOPT_HEADER, false);
@@ -87,9 +87,9 @@ if ($code) {
             'refresh_token' => $responseData['refresh_token'],
         ];
 
-        echo  '<h3>Token Request</h3>';
+        echo '<h3>Token Request</h3>';
         var_dump($postFields);
-        
+
         curl_setopt($ch, \CURLOPT_POSTFIELDS, http_build_query($postFields));
 
         curl_setopt($ch, \CURLOPT_HTTPHEADER, [
@@ -97,19 +97,17 @@ if ($code) {
         ]);
 
         $response = curl_exec($ch);
-        
 
-        echo  '<h3>Token Response</h3>';
+        echo '<h3>Token Response</h3>';
         var_dump(curl_getinfo($ch));
-        
+
         curl_close($ch);
-        
-        $responseData  = json_decode($response,true);
-        
+
+        $responseData = json_decode($response, true);
+
         var_dump($responseData);
-        
+
         echo 'access token:<textarea>'.$responseData['access_token'].'</textarea>';
-        
     } else {
         echo 'Error obtaining access token!';
 

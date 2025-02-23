@@ -35,7 +35,7 @@ namespace SpojeNET\Csas\Model;
 use SpojeNET\Csas\ObjectSerializer;
 
 /**
- * GetAccounts400Response Class Doc Comment.
+ * GetAccountBalance429Response Class Doc Comment.
  *
  * @category Class
  *
@@ -45,16 +45,15 @@ use SpojeNET\Csas\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class GetAccounts400Response implements \ArrayAccess, \JsonSerializable, ModelInterface
+class GetAccountBalance429Response implements \ArrayAccess, \JsonSerializable, ModelInterface
 {
     public const DISCRIMINATOR = null;
-    public const ERROR_CODE_PARAMETER_INVALID = 'PARAMETER_INVALID';
-    public const ERROR_CODE_BAD_REQUEST = 'BAD_REQUEST';
+    public const ERROR_CODE_REQUEST_QUOTA_EXCEEDED = 'REQUEST_QUOTA_EXCEEDED';
 
     /**
      * The original name of the model.
      */
-    protected static string $openAPIModelName = 'getAccounts_400_response';
+    protected static string $openAPIModelName = 'getAccountBalance_429_response';
 
     /**
      * Array of property to type mappings. Used for (de)serialization.
@@ -245,8 +244,7 @@ class GetAccounts400Response implements \ArrayAccess, \JsonSerializable, ModelIn
     public function getErrorCodeAllowableValues()
     {
         return [
-            self::ERROR_CODE_PARAMETER_INVALID,
-            self::ERROR_CODE_BAD_REQUEST,
+            self::ERROR_CODE_REQUEST_QUOTA_EXCEEDED,
         ];
     }
 

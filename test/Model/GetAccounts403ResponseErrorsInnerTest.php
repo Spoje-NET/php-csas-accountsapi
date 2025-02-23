@@ -35,17 +35,17 @@ namespace SpojeNET\Csas\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * GetAccounts403ResponseTest Class Doc Comment.
+ * GetAccounts403ResponseErrorsInnerTest Class Doc Comment.
  *
  * @category    Class
  *
- * @description GetAccounts403Response
+ * @description GetAccounts403ResponseErrorsInner
  *
  * @author      OpenAPI Generator team
  *
  * @see        https://openapi-generator.tech
  */
-class GetAccounts403ResponseTest extends TestCase
+class GetAccounts403ResponseErrorsInnerTest extends TestCase
 {
     /**
      * Setup before running any test case.
@@ -76,27 +76,18 @@ class GetAccounts403ResponseTest extends TestCase
     }
 
     /**
-     * Test "GetAccounts403Response".
+     * Test "GetAccounts403ResponseErrorsInner".
      */
-    public function testGetAccounts403Response(): void
+    public function testGetAccounts403ResponseErrorsInner(): void
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "status".
+     * Test attribute "error".
      */
-    public function testPropertyStatus(): void
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "errors".
-     */
-    public function testPropertyErrors(): void
+    public function testPropertyError(): void
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

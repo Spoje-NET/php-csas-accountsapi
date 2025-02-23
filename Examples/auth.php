@@ -35,12 +35,12 @@ $idpParams = [
     'redirect_uri' => Shr::cfg('REDIRECT_URI'),
     'state' => Fnc::randomString(),
     'access_type' => 'offline',
-//    'scope' => implode('%20', [
-//        'siblings.accounts',
-//        //        'siblings.payments',
-//        //        'AISP',
-//        //        'PISP'
-//    ]),
+    //    'scope' => implode('%20', [
+    //        'siblings.accounts',
+    //        //        'siblings.payments',
+    //        //        'AISP',
+    //        //        'PISP'
+    //    ]),
 ];
 
 session_start();
@@ -53,4 +53,3 @@ if (\PHP_SAPI === 'cli') {
 } else {
     echo '<a href='.$idpUri.'>'.$idpUri.'</a>';
 }
-

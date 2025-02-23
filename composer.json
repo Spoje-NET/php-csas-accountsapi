@@ -29,8 +29,7 @@
         "ext-mbstring": "*",
         "guzzlehttp/guzzle": "^7.3",
         "guzzlehttp/psr7": "^1.7 || ^2.0",
-        "vitexsoftware/ease-core": "^1.45",
-        "league/oauth2-client": "^2.8"
+        "vitexsoftware/ease-core": "^1.45"
     },
     "require-dev": {
         "phpunit/phpunit": "*",

@@ -63,6 +63,14 @@ class Account implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     protected static array $openAPITypes = [
         'id' => 'string',
+        'identification' => '\SpojeNET\Csas\Model\AccountIdentification',
+        'currency' => 'string',
+        'servicer' => '\SpojeNET\Csas\Model\AccountServicer',
+        'nameI18N' => 'string',
+        'productI18N' => 'string',
+        'ownersNames' => 'string[]',
+        'relationship' => '\SpojeNET\Csas\Model\AccountRelationship',
+        'suitableScope' => '\SpojeNET\Csas\Model\AccountSuitableScope',
         'status' => 'string',
         'relatedAgents' => '\SpojeNET\Csas\Model\AccountRelatedAgents',
         'currencyExchange' => '\SpojeNET\Csas\Model\AccountCurrencyExchange',
@@ -79,6 +87,14 @@ class Account implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     protected static array $openAPIFormats = [
         'id' => null,
+        'identification' => null,
+        'currency' => null,
+        'servicer' => null,
+        'nameI18N' => null,
+        'productI18N' => null,
+        'ownersNames' => null,
+        'relationship' => null,
+        'suitableScope' => null,
         'status' => null,
         'relatedAgents' => null,
         'currencyExchange' => null,
@@ -91,6 +107,14 @@ class Account implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     protected static array $openAPINullables = [
         'id' => false,
+        'identification' => false,
+        'currency' => false,
+        'servicer' => false,
+        'nameI18N' => false,
+        'productI18N' => false,
+        'ownersNames' => false,
+        'relationship' => false,
+        'suitableScope' => false,
         'status' => false,
         'relatedAgents' => false,
         'currencyExchange' => false,
@@ -111,6 +135,14 @@ class Account implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     protected static array $attributeMap = [
         'id' => 'id',
+        'identification' => 'identification',
+        'currency' => 'currency',
+        'servicer' => 'servicer',
+        'nameI18N' => 'nameI18N',
+        'productI18N' => 'productI18N',
+        'ownersNames' => 'ownersNames',
+        'relationship' => 'relationship',
+        'suitableScope' => 'suitableScope',
         'status' => 'status',
         'relatedAgents' => 'relatedAgents',
         'currencyExchange' => 'currencyExchange',
@@ -123,6 +155,14 @@ class Account implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     protected static array $setters = [
         'id' => 'setId',
+        'identification' => 'setIdentification',
+        'currency' => 'setCurrency',
+        'servicer' => 'setServicer',
+        'nameI18N' => 'setNameI18N',
+        'productI18N' => 'setProductI18N',
+        'ownersNames' => 'setOwnersNames',
+        'relationship' => 'setRelationship',
+        'suitableScope' => 'setSuitableScope',
         'status' => 'setStatus',
         'relatedAgents' => 'setRelatedAgents',
         'currencyExchange' => 'setCurrencyExchange',
@@ -135,6 +175,14 @@ class Account implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     protected static array $getters = [
         'id' => 'getId',
+        'identification' => 'getIdentification',
+        'currency' => 'getCurrency',
+        'servicer' => 'getServicer',
+        'nameI18N' => 'getNameI18N',
+        'productI18N' => 'getProductI18N',
+        'ownersNames' => 'getOwnersNames',
+        'relationship' => 'getRelationship',
+        'suitableScope' => 'getSuitableScope',
         'status' => 'getStatus',
         'relatedAgents' => 'getRelatedAgents',
         'currencyExchange' => 'getCurrencyExchange',
@@ -156,6 +204,14 @@ class Account implements \ArrayAccess, \JsonSerializable, ModelInterface
     public function __construct(?array $data = null)
     {
         $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('identification', $data ?? [], null);
+        $this->setIfExists('currency', $data ?? [], null);
+        $this->setIfExists('servicer', $data ?? [], null);
+        $this->setIfExists('nameI18N', $data ?? [], null);
+        $this->setIfExists('productI18N', $data ?? [], null);
+        $this->setIfExists('ownersNames', $data ?? [], null);
+        $this->setIfExists('relationship', $data ?? [], null);
+        $this->setIfExists('suitableScope', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('relatedAgents', $data ?? [], null);
         $this->setIfExists('currencyExchange', $data ?? [], null);
@@ -321,6 +377,230 @@ class Account implements \ArrayAccess, \JsonSerializable, ModelInterface
         }
 
         $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets identification.
+     *
+     * @return null|\SpojeNET\Csas\Model\AccountIdentification
+     */
+    public function getIdentification()
+    {
+        return $this->container['identification'];
+    }
+
+    /**
+     * Sets identification.
+     *
+     * @param null|\SpojeNET\Csas\Model\AccountIdentification $identification identification
+     *
+     * @return self
+     */
+    public function setIdentification($identification)
+    {
+        if (null === $identification) {
+            throw new \InvalidArgumentException('non-nullable identification cannot be null');
+        }
+
+        $this->container['identification'] = $identification;
+
+        return $this;
+    }
+
+    /**
+     * Gets currency.
+     *
+     * @return null|string
+     */
+    public function getCurrency()
+    {
+        return $this->container['currency'];
+    }
+
+    /**
+     * Sets currency.
+     *
+     * @param null|string $currency Currency of the account
+     *
+     * @return self
+     */
+    public function setCurrency($currency)
+    {
+        if (null === $currency) {
+            throw new \InvalidArgumentException('non-nullable currency cannot be null');
+        }
+
+        $this->container['currency'] = $currency;
+
+        return $this;
+    }
+
+    /**
+     * Gets servicer.
+     *
+     * @return null|\SpojeNET\Csas\Model\AccountServicer
+     */
+    public function getServicer()
+    {
+        return $this->container['servicer'];
+    }
+
+    /**
+     * Sets servicer.
+     *
+     * @param null|\SpojeNET\Csas\Model\AccountServicer $servicer servicer
+     *
+     * @return self
+     */
+    public function setServicer($servicer)
+    {
+        if (null === $servicer) {
+            throw new \InvalidArgumentException('non-nullable servicer cannot be null');
+        }
+
+        $this->container['servicer'] = $servicer;
+
+        return $this;
+    }
+
+    /**
+     * Gets nameI18N.
+     *
+     * @return null|string
+     */
+    public function getNameI18N()
+    {
+        return $this->container['nameI18N'];
+    }
+
+    /**
+     * Sets nameI18N.
+     *
+     * @param null|string $nameI18N Internationalized name of the account
+     *
+     * @return self
+     */
+    public function setNameI18N($nameI18N)
+    {
+        if (null === $nameI18N) {
+            throw new \InvalidArgumentException('non-nullable nameI18N cannot be null');
+        }
+
+        $this->container['nameI18N'] = $nameI18N;
+
+        return $this;
+    }
+
+    /**
+     * Gets productI18N.
+     *
+     * @return null|string
+     */
+    public function getProductI18N()
+    {
+        return $this->container['productI18N'];
+    }
+
+    /**
+     * Sets productI18N.
+     *
+     * @param null|string $productI18N Internationalized product name
+     *
+     * @return self
+     */
+    public function setProductI18N($productI18N)
+    {
+        if (null === $productI18N) {
+            throw new \InvalidArgumentException('non-nullable productI18N cannot be null');
+        }
+
+        $this->container['productI18N'] = $productI18N;
+
+        return $this;
+    }
+
+    /**
+     * Gets ownersNames.
+     *
+     * @return null|string[]
+     */
+    public function getOwnersNames()
+    {
+        return $this->container['ownersNames'];
+    }
+
+    /**
+     * Sets ownersNames.
+     *
+     * @param null|string[] $ownersNames List of account owners' names
+     *
+     * @return self
+     */
+    public function setOwnersNames($ownersNames)
+    {
+        if (null === $ownersNames) {
+            throw new \InvalidArgumentException('non-nullable ownersNames cannot be null');
+        }
+
+        $this->container['ownersNames'] = $ownersNames;
+
+        return $this;
+    }
+
+    /**
+     * Gets relationship.
+     *
+     * @return null|\SpojeNET\Csas\Model\AccountRelationship
+     */
+    public function getRelationship()
+    {
+        return $this->container['relationship'];
+    }
+
+    /**
+     * Sets relationship.
+     *
+     * @param null|\SpojeNET\Csas\Model\AccountRelationship $relationship relationship
+     *
+     * @return self
+     */
+    public function setRelationship($relationship)
+    {
+        if (null === $relationship) {
+            throw new \InvalidArgumentException('non-nullable relationship cannot be null');
+        }
+
+        $this->container['relationship'] = $relationship;
+
+        return $this;
+    }
+
+    /**
+     * Gets suitableScope.
+     *
+     * @return null|\SpojeNET\Csas\Model\AccountSuitableScope
+     */
+    public function getSuitableScope()
+    {
+        return $this->container['suitableScope'];
+    }
+
+    /**
+     * Sets suitableScope.
+     *
+     * @param null|\SpojeNET\Csas\Model\AccountSuitableScope $suitableScope suitableScope
+     *
+     * @return self
+     */
+    public function setSuitableScope($suitableScope)
+    {
+        if (null === $suitableScope) {
+            throw new \InvalidArgumentException('non-nullable suitableScope cannot be null');
+        }
+
+        $this->container['suitableScope'] = $suitableScope;
 
         return $this;
     }

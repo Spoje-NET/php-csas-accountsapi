@@ -35,7 +35,7 @@ namespace SpojeNET\Csas\Model;
 use SpojeNET\Csas\ObjectSerializer;
 
 /**
- * GetAccounts429Response Class Doc Comment.
+ * AccountIdentification Class Doc Comment.
  *
  * @category Class
  *
@@ -45,15 +45,14 @@ use SpojeNET\Csas\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class GetAccounts429Response implements \ArrayAccess, \JsonSerializable, ModelInterface
+class AccountIdentification implements \ArrayAccess, \JsonSerializable, ModelInterface
 {
     public const DISCRIMINATOR = null;
-    public const ERROR_CODE_REQUEST_QUOTA_EXCEEDED = 'REQUEST_QUOTA_EXCEEDED';
 
     /**
      * The original name of the model.
      */
-    protected static string $openAPIModelName = 'getAccounts_429_response';
+    protected static string $openAPIModelName = 'Account_identification';
 
     /**
      * Array of property to type mappings. Used for (de)serialization.
@@ -61,8 +60,8 @@ class GetAccounts429Response implements \ArrayAccess, \JsonSerializable, ModelIn
      * @var string[]
      */
     protected static array $openAPITypes = [
-        'errorCode' => 'string',
-        'message' => 'string',
+        'iban' => 'string',
+        'other' => 'string',
     ];
 
     /**
@@ -75,8 +74,8 @@ class GetAccounts429Response implements \ArrayAccess, \JsonSerializable, ModelIn
      * @psalm-var array<string, string|null>
      */
     protected static array $openAPIFormats = [
-        'errorCode' => null,
-        'message' => null,
+        'iban' => null,
+        'other' => null,
     ];
 
     /**
@@ -85,8 +84,8 @@ class GetAccounts429Response implements \ArrayAccess, \JsonSerializable, ModelIn
      * @var bool[]
      */
     protected static array $openAPINullables = [
-        'errorCode' => false,
-        'message' => false,
+        'iban' => false,
+        'other' => false,
     ];
 
     /**
@@ -103,8 +102,8 @@ class GetAccounts429Response implements \ArrayAccess, \JsonSerializable, ModelIn
      * @var string[]
      */
     protected static array $attributeMap = [
-        'errorCode' => 'errorCode',
-        'message' => 'message',
+        'iban' => 'iban',
+        'other' => 'other',
     ];
 
     /**
@@ -113,8 +112,8 @@ class GetAccounts429Response implements \ArrayAccess, \JsonSerializable, ModelIn
      * @var string[]
      */
     protected static array $setters = [
-        'errorCode' => 'setErrorCode',
-        'message' => 'setMessage',
+        'iban' => 'setIban',
+        'other' => 'setOther',
     ];
 
     /**
@@ -123,8 +122,8 @@ class GetAccounts429Response implements \ArrayAccess, \JsonSerializable, ModelIn
      * @var string[]
      */
     protected static array $getters = [
-        'errorCode' => 'getErrorCode',
-        'message' => 'getMessage',
+        'iban' => 'getIban',
+        'other' => 'getOther',
     ];
 
     /**
@@ -142,8 +141,8 @@ class GetAccounts429Response implements \ArrayAccess, \JsonSerializable, ModelIn
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('errorCode', $data ?? [], null);
-        $this->setIfExists('message', $data ?? [], null);
+        $this->setIfExists('iban', $data ?? [], null);
+        $this->setIfExists('other', $data ?? [], null);
     }
 
     /**
@@ -237,37 +236,13 @@ class GetAccounts429Response implements \ArrayAccess, \JsonSerializable, ModelIn
     }
 
     /**
-     * Gets allowable values of the enum.
-     *
-     * @return string[]
-     */
-    public function getErrorCodeAllowableValues()
-    {
-        return [
-            self::ERROR_CODE_REQUEST_QUOTA_EXCEEDED,
-        ];
-    }
-
-    /**
      * Show all the invalid properties with reasons.
      *
      * @return array invalid properties with reasons
      */
     public function listInvalidProperties()
     {
-        $invalidProperties = [];
-
-        $allowedValues = $this->getErrorCodeAllowableValues();
-
-        if (null !== $this->container['errorCode'] && !\in_array($this->container['errorCode'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'errorCode', must be one of '%s'",
-                $this->container['errorCode'],
-                implode("', '", $allowedValues),
-            );
-        }
-
-        return $invalidProperties;
+        return [];
     }
 
     /**
@@ -282,69 +257,57 @@ class GetAccounts429Response implements \ArrayAccess, \JsonSerializable, ModelIn
     }
 
     /**
-     * Gets errorCode.
+     * Gets iban.
      *
      * @return null|string
      */
-    public function getErrorCode()
+    public function getIban()
     {
-        return $this->container['errorCode'];
+        return $this->container['iban'];
     }
 
     /**
-     * Sets errorCode.
+     * Sets iban.
      *
-     * @param null|string $errorCode errorCode
+     * @param null|string $iban International Bank Account Number
      *
      * @return self
      */
-    public function setErrorCode($errorCode)
+    public function setIban($iban)
     {
-        if (null === $errorCode) {
-            throw new \InvalidArgumentException('non-nullable errorCode cannot be null');
+        if (null === $iban) {
+            throw new \InvalidArgumentException('non-nullable iban cannot be null');
         }
 
-        $allowedValues = $this->getErrorCodeAllowableValues();
-
-        if (!\in_array($errorCode, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'errorCode', must be one of '%s'",
-                    $errorCode,
-                    implode("', '", $allowedValues),
-                ),
-            );
-        }
-
-        $this->container['errorCode'] = $errorCode;
+        $this->container['iban'] = $iban;
 
         return $this;
     }
 
     /**
-     * Gets message.
+     * Gets other.
      *
      * @return null|string
      */
-    public function getMessage()
+    public function getOther()
     {
-        return $this->container['message'];
+        return $this->container['other'];
     }
 
     /**
-     * Sets message.
+     * Sets other.
      *
-     * @param null|string $message message
+     * @param null|string $other Other account identification
      *
      * @return self
      */
-    public function setMessage($message)
+    public function setOther($other)
     {
-        if (null === $message) {
-            throw new \InvalidArgumentException('non-nullable message cannot be null');
+        if (null === $other) {
+            throw new \InvalidArgumentException('non-nullable other cannot be null');
         }
 
-        $this->container['message'] = $message;
+        $this->container['other'] = $other;
 
         return $this;
     }

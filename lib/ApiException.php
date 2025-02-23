@@ -55,7 +55,7 @@ class ApiException extends \Exception
      *
      * @var null|string[][]
      */
-    protected ?array $responseHeaders = null;
+    protected ?array $responseHeaders;
 
     /**
      * The deserialized response object.

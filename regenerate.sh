@@ -9,3 +9,4 @@ rm -rf lib docs test README.md composer.json
 npx openapi-generator-cli generate -i ${deffile} -g php --git-user-id Spoje-NET --git-repo-id php-csas-webapi -c .openapi-generator/config.yaml #--enable-post-process-file
 
 make cs
+    

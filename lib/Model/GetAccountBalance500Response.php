@@ -35,7 +35,7 @@ namespace SpojeNET\Csas\Model;
 use SpojeNET\Csas\ObjectSerializer;
 
 /**
- * GetAccounts404Response Class Doc Comment.
+ * GetAccountBalance500Response Class Doc Comment.
  *
  * @category Class
  *
@@ -45,16 +45,15 @@ use SpojeNET\Csas\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class GetAccounts404Response implements \ArrayAccess, \JsonSerializable, ModelInterface
+class GetAccountBalance500Response implements \ArrayAccess, \JsonSerializable, ModelInterface
 {
     public const DISCRIMINATOR = null;
-    public const ERROR_CODE_PAGE_NOT_FOUND = 'PAGE_NOT_FOUND';
-    public const ERROR_CODE_NOT_FOUND = 'NOT_FOUND';
+    public const ERROR_CODE_INTERNAL_SERVER_ERROR = 'INTERNAL_SERVER_ERROR';
 
     /**
      * The original name of the model.
      */
-    protected static string $openAPIModelName = 'getAccounts_404_response';
+    protected static string $openAPIModelName = 'getAccountBalance_500_response';
 
     /**
      * Array of property to type mappings. Used for (de)serialization.
@@ -245,8 +244,7 @@ class GetAccounts404Response implements \ArrayAccess, \JsonSerializable, ModelIn
     public function getErrorCodeAllowableValues()
     {
         return [
-            self::ERROR_CODE_PAGE_NOT_FOUND,
-            self::ERROR_CODE_NOT_FOUND,
+            self::ERROR_CODE_INTERNAL_SERVER_ERROR,
         ];
     }
 

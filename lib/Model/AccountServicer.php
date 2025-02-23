@@ -35,7 +35,7 @@ namespace SpojeNET\Csas\Model;
 use SpojeNET\Csas\ObjectSerializer;
 
 /**
- * GetAccounts503Response Class Doc Comment.
+ * AccountServicer Class Doc Comment.
  *
  * @category Class
  *
@@ -45,15 +45,14 @@ use SpojeNET\Csas\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class GetAccounts503Response implements \ArrayAccess, \JsonSerializable, ModelInterface
+class AccountServicer implements \ArrayAccess, \JsonSerializable, ModelInterface
 {
     public const DISCRIMINATOR = null;
-    public const ERROR_CODE_SERVICE_UNAVAILABLE = 'SERVICE_UNAVAILABLE';
 
     /**
      * The original name of the model.
      */
-    protected static string $openAPIModelName = 'getAccounts_503_response';
+    protected static string $openAPIModelName = 'Account_servicer';
 
     /**
      * Array of property to type mappings. Used for (de)serialization.
@@ -61,8 +60,9 @@ class GetAccounts503Response implements \ArrayAccess, \JsonSerializable, ModelIn
      * @var string[]
      */
     protected static array $openAPITypes = [
-        'errorCode' => 'string',
-        'message' => 'string',
+        'bankCode' => 'string',
+        'countryCode' => 'string',
+        'bic' => 'string',
     ];
 
     /**
@@ -75,8 +75,9 @@ class GetAccounts503Response implements \ArrayAccess, \JsonSerializable, ModelIn
      * @psalm-var array<string, string|null>
      */
     protected static array $openAPIFormats = [
-        'errorCode' => null,
-        'message' => null,
+        'bankCode' => null,
+        'countryCode' => null,
+        'bic' => null,
     ];
 
     /**
@@ -85,8 +86,9 @@ class GetAccounts503Response implements \ArrayAccess, \JsonSerializable, ModelIn
      * @var bool[]
      */
     protected static array $openAPINullables = [
-        'errorCode' => false,
-        'message' => false,
+        'bankCode' => false,
+        'countryCode' => false,
+        'bic' => false,
     ];
 
     /**
@@ -103,8 +105,9 @@ class GetAccounts503Response implements \ArrayAccess, \JsonSerializable, ModelIn
      * @var string[]
      */
     protected static array $attributeMap = [
-        'errorCode' => 'errorCode',
-        'message' => 'message',
+        'bankCode' => 'bankCode',
+        'countryCode' => 'countryCode',
+        'bic' => 'bic',
     ];
 
     /**
@@ -113,8 +116,9 @@ class GetAccounts503Response implements \ArrayAccess, \JsonSerializable, ModelIn
      * @var string[]
      */
     protected static array $setters = [
-        'errorCode' => 'setErrorCode',
-        'message' => 'setMessage',
+        'bankCode' => 'setBankCode',
+        'countryCode' => 'setCountryCode',
+        'bic' => 'setBic',
     ];
 
     /**
@@ -123,8 +127,9 @@ class GetAccounts503Response implements \ArrayAccess, \JsonSerializable, ModelIn
      * @var string[]
      */
     protected static array $getters = [
-        'errorCode' => 'getErrorCode',
-        'message' => 'getMessage',
+        'bankCode' => 'getBankCode',
+        'countryCode' => 'getCountryCode',
+        'bic' => 'getBic',
     ];
 
     /**
@@ -142,8 +147,9 @@ class GetAccounts503Response implements \ArrayAccess, \JsonSerializable, ModelIn
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('errorCode', $data ?? [], null);
-        $this->setIfExists('message', $data ?? [], null);
+        $this->setIfExists('bankCode', $data ?? [], null);
+        $this->setIfExists('countryCode', $data ?? [], null);
+        $this->setIfExists('bic', $data ?? [], null);
     }
 
     /**
@@ -237,37 +243,13 @@ class GetAccounts503Response implements \ArrayAccess, \JsonSerializable, ModelIn
     }
 
     /**
-     * Gets allowable values of the enum.
-     *
-     * @return string[]
-     */
-    public function getErrorCodeAllowableValues()
-    {
-        return [
-            self::ERROR_CODE_SERVICE_UNAVAILABLE,
-        ];
-    }
-
-    /**
      * Show all the invalid properties with reasons.
      *
      * @return array invalid properties with reasons
      */
     public function listInvalidProperties()
     {
-        $invalidProperties = [];
-
-        $allowedValues = $this->getErrorCodeAllowableValues();
-
-        if (null !== $this->container['errorCode'] && !\in_array($this->container['errorCode'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'errorCode', must be one of '%s'",
-                $this->container['errorCode'],
-                implode("', '", $allowedValues),
-            );
-        }
-
-        return $invalidProperties;
+        return [];
     }
 
     /**
@@ -282,69 +264,85 @@ class GetAccounts503Response implements \ArrayAccess, \JsonSerializable, ModelIn
     }
 
     /**
-     * Gets errorCode.
+     * Gets bankCode.
      *
      * @return null|string
      */
-    public function getErrorCode()
+    public function getBankCode()
     {
-        return $this->container['errorCode'];
+        return $this->container['bankCode'];
     }
 
     /**
-     * Sets errorCode.
+     * Sets bankCode.
      *
-     * @param null|string $errorCode errorCode
+     * @param null|string $bankCode Bank code
      *
      * @return self
      */
-    public function setErrorCode($errorCode)
+    public function setBankCode($bankCode)
     {
-        if (null === $errorCode) {
-            throw new \InvalidArgumentException('non-nullable errorCode cannot be null');
+        if (null === $bankCode) {
+            throw new \InvalidArgumentException('non-nullable bankCode cannot be null');
         }
 
-        $allowedValues = $this->getErrorCodeAllowableValues();
-
-        if (!\in_array($errorCode, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'errorCode', must be one of '%s'",
-                    $errorCode,
-                    implode("', '", $allowedValues),
-                ),
-            );
-        }
-
-        $this->container['errorCode'] = $errorCode;
+        $this->container['bankCode'] = $bankCode;
 
         return $this;
     }
 
     /**
-     * Gets message.
+     * Gets countryCode.
      *
      * @return null|string
      */
-    public function getMessage()
+    public function getCountryCode()
     {
-        return $this->container['message'];
+        return $this->container['countryCode'];
     }
 
     /**
-     * Sets message.
+     * Sets countryCode.
      *
-     * @param null|string $message message
+     * @param null|string $countryCode Country code
      *
      * @return self
      */
-    public function setMessage($message)
+    public function setCountryCode($countryCode)
     {
-        if (null === $message) {
-            throw new \InvalidArgumentException('non-nullable message cannot be null');
+        if (null === $countryCode) {
+            throw new \InvalidArgumentException('non-nullable countryCode cannot be null');
         }
 
-        $this->container['message'] = $message;
+        $this->container['countryCode'] = $countryCode;
+
+        return $this;
+    }
+
+    /**
+     * Gets bic.
+     *
+     * @return null|string
+     */
+    public function getBic()
+    {
+        return $this->container['bic'];
+    }
+
+    /**
+     * Sets bic.
+     *
+     * @param null|string $bic Bank Identifier Code
+     *
+     * @return self
+     */
+    public function setBic($bic)
+    {
+        if (null === $bic) {
+            throw new \InvalidArgumentException('non-nullable bic cannot be null');
+        }
+
+        $this->container['bic'] = $bic;
 
         return $this;
     }

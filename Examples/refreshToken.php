@@ -92,9 +92,9 @@ if ($code) {
         ]);
 
         $response = curl_exec($ch);
-        
+
         var_dump(curl_getinfo($ch));
-        
+
         curl_close($ch);
 
         var_dump(json_decode($response));

@@ -35,7 +35,7 @@ namespace SpojeNET\Csas\Model;
 use SpojeNET\Csas\ObjectSerializer;
 
 /**
- * GetAccounts405Response Class Doc Comment.
+ * AccountSuitableScope Class Doc Comment.
  *
  * @category Class
  *
@@ -45,15 +45,14 @@ use SpojeNET\Csas\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class GetAccounts405Response implements \ArrayAccess, \JsonSerializable, ModelInterface
+class AccountSuitableScope implements \ArrayAccess, \JsonSerializable, ModelInterface
 {
     public const DISCRIMINATOR = null;
-    public const ERROR_CODE_METHOD_NOT_ALLOWED = 'METHOD_NOT_ALLOWED';
 
     /**
      * The original name of the model.
      */
-    protected static string $openAPIModelName = 'getAccounts_405_response';
+    protected static string $openAPIModelName = 'Account_suitableScope';
 
     /**
      * Array of property to type mappings. Used for (de)serialization.
@@ -61,8 +60,8 @@ class GetAccounts405Response implements \ArrayAccess, \JsonSerializable, ModelIn
      * @var string[]
      */
     protected static array $openAPITypes = [
-        'errorCode' => 'string',
-        'message' => 'string',
+        'aISP' => 'string',
+        'pISP' => 'string',
     ];
 
     /**
@@ -75,8 +74,8 @@ class GetAccounts405Response implements \ArrayAccess, \JsonSerializable, ModelIn
      * @psalm-var array<string, string|null>
      */
     protected static array $openAPIFormats = [
-        'errorCode' => null,
-        'message' => null,
+        'aISP' => null,
+        'pISP' => null,
     ];
 
     /**
@@ -85,8 +84,8 @@ class GetAccounts405Response implements \ArrayAccess, \JsonSerializable, ModelIn
      * @var bool[]
      */
     protected static array $openAPINullables = [
-        'errorCode' => false,
-        'message' => false,
+        'aISP' => false,
+        'pISP' => false,
     ];
 
     /**
@@ -103,8 +102,8 @@ class GetAccounts405Response implements \ArrayAccess, \JsonSerializable, ModelIn
      * @var string[]
      */
     protected static array $attributeMap = [
-        'errorCode' => 'errorCode',
-        'message' => 'message',
+        'aISP' => 'AISP',
+        'pISP' => 'PISP',
     ];
 
     /**
@@ -113,8 +112,8 @@ class GetAccounts405Response implements \ArrayAccess, \JsonSerializable, ModelIn
      * @var string[]
      */
     protected static array $setters = [
-        'errorCode' => 'setErrorCode',
-        'message' => 'setMessage',
+        'aISP' => 'setAISP',
+        'pISP' => 'setPISP',
     ];
 
     /**
@@ -123,8 +122,8 @@ class GetAccounts405Response implements \ArrayAccess, \JsonSerializable, ModelIn
      * @var string[]
      */
     protected static array $getters = [
-        'errorCode' => 'getErrorCode',
-        'message' => 'getMessage',
+        'aISP' => 'getAISP',
+        'pISP' => 'getPISP',
     ];
 
     /**
@@ -142,8 +141,8 @@ class GetAccounts405Response implements \ArrayAccess, \JsonSerializable, ModelIn
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('errorCode', $data ?? [], null);
-        $this->setIfExists('message', $data ?? [], null);
+        $this->setIfExists('aISP', $data ?? [], null);
+        $this->setIfExists('pISP', $data ?? [], null);
     }
 
     /**
@@ -237,37 +236,13 @@ class GetAccounts405Response implements \ArrayAccess, \JsonSerializable, ModelIn
     }
 
     /**
-     * Gets allowable values of the enum.
-     *
-     * @return string[]
-     */
-    public function getErrorCodeAllowableValues()
-    {
-        return [
-            self::ERROR_CODE_METHOD_NOT_ALLOWED,
-        ];
-    }
-
-    /**
      * Show all the invalid properties with reasons.
      *
      * @return array invalid properties with reasons
      */
     public function listInvalidProperties()
     {
-        $invalidProperties = [];
-
-        $allowedValues = $this->getErrorCodeAllowableValues();
-
-        if (null !== $this->container['errorCode'] && !\in_array($this->container['errorCode'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'errorCode', must be one of '%s'",
-                $this->container['errorCode'],
-                implode("', '", $allowedValues),
-            );
-        }
-
-        return $invalidProperties;
+        return [];
     }
 
     /**
@@ -282,69 +257,57 @@ class GetAccounts405Response implements \ArrayAccess, \JsonSerializable, ModelIn
     }
 
     /**
-     * Gets errorCode.
+     * Gets aISP.
      *
      * @return null|string
      */
-    public function getErrorCode()
+    public function getAISP()
     {
-        return $this->container['errorCode'];
+        return $this->container['aISP'];
     }
 
     /**
-     * Sets errorCode.
+     * Sets aISP.
      *
-     * @param null|string $errorCode errorCode
+     * @param null|string $aISP Account Information Service Provider scope
      *
      * @return self
      */
-    public function setErrorCode($errorCode)
+    public function setAISP($aISP)
     {
-        if (null === $errorCode) {
-            throw new \InvalidArgumentException('non-nullable errorCode cannot be null');
+        if (null === $aISP) {
+            throw new \InvalidArgumentException('non-nullable aISP cannot be null');
         }
 
-        $allowedValues = $this->getErrorCodeAllowableValues();
-
-        if (!\in_array($errorCode, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'errorCode', must be one of '%s'",
-                    $errorCode,
-                    implode("', '", $allowedValues),
-                ),
-            );
-        }
-
-        $this->container['errorCode'] = $errorCode;
+        $this->container['aISP'] = $aISP;
 
         return $this;
     }
 
     /**
-     * Gets message.
+     * Gets pISP.
      *
      * @return null|string
      */
-    public function getMessage()
+    public function getPISP()
     {
-        return $this->container['message'];
+        return $this->container['pISP'];
     }
 
     /**
-     * Sets message.
+     * Sets pISP.
      *
-     * @param null|string $message message
+     * @param null|string $pISP Payment Initiation Service Provider scope
      *
      * @return self
      */
-    public function setMessage($message)
+    public function setPISP($pISP)
     {
-        if (null === $message) {
-            throw new \InvalidArgumentException('non-nullable message cannot be null');
+        if (null === $pISP) {
+            throw new \InvalidArgumentException('non-nullable pISP cannot be null');
         }
 
-        $this->container['message'] = $message;
+        $this->container['pISP'] = $pISP;
 
         return $this;
     }
