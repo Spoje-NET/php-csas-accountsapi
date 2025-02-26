@@ -1,6 +1,13 @@
-php-spojenet-csas-accountsapi (0.1.0) UNRELEASED; urgency=low
+php-spojenet-csas-accountsapi (0.5.0) UNRELEASED; urgency=medium
 
+  * Debianized
+
+ -- vitex <info@vitexsoftware.cz>  Wed, 26 Feb 2025 16:33:24 +0100
+
+php-spojenet-csas-accountsapi (0.1.0) noble; urgency=low
+
+  [ Vítězslav Dvořák ]
   * Initial release. Closes: #nnnn
     <nnnn is the bug number of your ITP>
 
- -- Vítězslav Dvořák <info@vitexsoftware.cz>  Wed, 26 Feb 2025 10:04:09 +0100
+ -- vitex <info@vitexsoftware.cz>  Wed, 26 Feb 2025 16:33:15 +0100
