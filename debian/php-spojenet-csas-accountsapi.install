@@ -1,0 +1,4 @@
+lib/*.php		/usr/share/php/CSas/
+lib/Accounts/*.php	/usr/share/php/CSas/Accounts/
+lib/Model/*.php		/usr/share/php/CSas/Model/
+debian/composer.json    /usr/share/php/CSas/
