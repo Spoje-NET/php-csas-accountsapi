@@ -15,5 +15,5 @@
 #	dh_install --list-missing -X.pyc -X.pyo
 
 override_dh_install:
-	jq '.version = "'`dpkg-parsechangelog | sed -n 's/^Version: //p'| sed 's/~.*//'`'"'  debian/composer.json |sponge debian/composer.json
 	dh_install
+	jq '.version = "'`dpkg-parsechangelog | sed -n 's/^Version: //p'| sed 's/~.*//'`'"'  debian/composer.json |sponge debian/php-spojenet-csas-accountsapi/usr/share/php/CSas/composer.json

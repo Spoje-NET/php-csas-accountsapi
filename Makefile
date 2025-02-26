@@ -23,11 +23,8 @@ vendor: composer.json composer.lock ## Installs composer dependencies
 cs: ## Update Coding Standards
 	vendor/bin/php-cs-fixer fix --config=.php-cs-fixer.dist.php --diff --verbose --allow-risky=yes
 
-clean: ## Removes all generated files
+reset: ## Removes all generated files
 	rm -rf vendor
 	rm -f composer.lock
 	rm -f README.md
 	rm -rf lib docs
-
-
-
