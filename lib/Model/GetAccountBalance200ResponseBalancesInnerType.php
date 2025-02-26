@@ -6,7 +6,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  SpojeNET\Csas
+ * @package  SpojeNET\CSas
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -28,16 +28,16 @@
  * Do not edit the class manually.
  */
 
-namespace SpojeNET\Csas\Model;
+namespace SpojeNET\CSas\Model;
 
 use \ArrayAccess;
-use \SpojeNET\Csas\ObjectSerializer;
+use \SpojeNET\CSas\ObjectSerializer;
 
 /**
  * GetAccountBalance200ResponseBalancesInnerType Class Doc Comment
  *
  * @category Class
- * @package  SpojeNET\Csas
+ * @package  SpojeNET\CSas
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class GetAccountBalance200ResponseBalancesInnerType implements ModelInterface, A
       * @var string[]
       */
     protected static $openAPITypes = [
-        'codeOrProprietary' => '\SpojeNET\Csas\Model\GetAccountBalance200ResponseBalancesInnerTypeCodeOrProprietary'
+        'codeOrProprietary' => '\SpojeNET\CSas\Model\GetAccountBalance200ResponseBalancesInnerTypeCodeOrProprietary'
     ];
 
     /**
@@ -294,7 +294,7 @@ class GetAccountBalance200ResponseBalancesInnerType implements ModelInterface, A
     /**
      * Gets codeOrProprietary
      *
-     * @return \SpojeNET\Csas\Model\GetAccountBalance200ResponseBalancesInnerTypeCodeOrProprietary|null
+     * @return \SpojeNET\CSas\Model\GetAccountBalance200ResponseBalancesInnerTypeCodeOrProprietary|null
      */
     public function getCodeOrProprietary()
     {
@@ -304,7 +304,7 @@ class GetAccountBalance200ResponseBalancesInnerType implements ModelInterface, A
     /**
      * Sets codeOrProprietary
      *
-     * @param \SpojeNET\Csas\Model\GetAccountBalance200ResponseBalancesInnerTypeCodeOrProprietary|null $codeOrProprietary codeOrProprietary
+     * @param \SpojeNET\CSas\Model\GetAccountBalance200ResponseBalancesInnerTypeCodeOrProprietary|null $codeOrProprietary codeOrProprietary
      *
      * @return self
      */

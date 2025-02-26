@@ -6,7 +6,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  SpojeNET\Csas
+ * @package  SpojeNET\CSas
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -28,16 +28,16 @@
  * Do not edit the class manually.
  */
 
-namespace SpojeNET\Csas\Model;
+namespace SpojeNET\CSas\Model;
 
 use \ArrayAccess;
-use \SpojeNET\Csas\ObjectSerializer;
+use \SpojeNET\CSas\ObjectSerializer;
 
 /**
  * GetAccounts200Response Class Doc Comment
  *
  * @category Class
- * @package  SpojeNET\Csas
+ * @package  SpojeNET\CSas
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,7 +62,7 @@ class GetAccounts200Response implements ModelInterface, ArrayAccess, \JsonSerial
         'pageNumber' => 'int',
         'pageCount' => 'int',
         'pageSize' => 'int',
-        'accounts' => '\SpojeNET\Csas\Model\Account[]'
+        'accounts' => '\SpojeNET\CSas\Model\Account[]'
     ];
 
     /**
@@ -396,7 +396,7 @@ class GetAccounts200Response implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets accounts
      *
-     * @return \SpojeNET\Csas\Model\Account[]|null
+     * @return \SpojeNET\CSas\Model\Account[]|null
      */
     public function getAccounts()
     {
@@ -406,7 +406,7 @@ class GetAccounts200Response implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets accounts
      *
-     * @param \SpojeNET\Csas\Model\Account[]|null $accounts accounts
+     * @param \SpojeNET\CSas\Model\Account[]|null $accounts accounts
      *
      * @return self
      */

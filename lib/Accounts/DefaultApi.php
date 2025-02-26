@@ -5,7 +5,7 @@
  * PHP version 7.4+
  *
  * @category Class
- * @package  SpojeNET\Csas
+ * @package  SpojeNET\CSas
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,7 +27,7 @@
  * Do not edit the class manually.
  */
 
-namespace SpojeNET\Csas\Accounts;
+namespace SpojeNET\CSas\Accounts;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -36,17 +36,17 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use SpojeNET\Csas\ApiClient;
-use SpojeNET\Csas\ApiException;
-use SpojeNET\Csas\Configuration;
-use SpojeNET\Csas\HeaderSelector;
-use SpojeNET\Csas\ObjectSerializer;
+use SpojeNET\CSas\ApiClient;
+use SpojeNET\CSas\ApiException;
+use SpojeNET\CSas\Configuration;
+use SpojeNET\CSas\HeaderSelector;
+use SpojeNET\CSas\ObjectSerializer;
 
 /**
  * DefaultApi Class Doc Comment
  *
  * @category Class
- * @package  SpojeNET\Csas
+ * @package  SpojeNET\CSas
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -195,9 +195,9 @@ class DefaultApi
      * @param  string $id The ID of the account (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAccountBalance'] to see the possible values for this operation
      *
-     * @throws \SpojeNET\Csas\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \SpojeNET\CSas\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \SpojeNET\Csas\Model\GetAccountBalance200Response|\SpojeNET\Csas\Model\GetAccounts403Response
+     * @return \SpojeNET\CSas\Model\GetAccountBalance200Response|\SpojeNET\CSas\Model\GetAccounts403Response
      */
     public function getAccountBalance($id, string $contentType = self::contentTypes['getAccountBalance'][0])
     {
@@ -213,9 +213,9 @@ class DefaultApi
      * @param  string $id The ID of the account (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAccountBalance'] to see the possible values for this operation
      *
-     * @throws \SpojeNET\Csas\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \SpojeNET\CSas\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \SpojeNET\Csas\Model\GetAccountBalance200Response|\SpojeNET\Csas\Model\GetAccounts403Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpojeNET\CSas\Model\GetAccountBalance200Response|\SpojeNET\CSas\Model\GetAccounts403Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAccountBalanceWithHttpInfo($id, string $contentType = self::contentTypes['getAccountBalance'][0])
     {
@@ -246,11 +246,11 @@ class DefaultApi
 
             switch ($statusCode) {
                 case 200:
-                    if ('\SpojeNET\Csas\Model\GetAccountBalance200Response' === '\SplFileObject') {
+                    if ('\SpojeNET\CSas\Model\GetAccountBalance200Response' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\SpojeNET\Csas\Model\GetAccountBalance200Response' !== 'string') {
+                        if ('\SpojeNET\CSas\Model\GetAccountBalance200Response' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -268,16 +268,16 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\SpojeNET\Csas\Model\GetAccountBalance200Response', []),
+                        ObjectSerializer::deserialize($content, '\SpojeNET\CSas\Model\GetAccountBalance200Response', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\SpojeNET\Csas\Model\GetAccounts403Response' === '\SplFileObject') {
+                    if ('\SpojeNET\CSas\Model\GetAccounts403Response' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\SpojeNET\Csas\Model\GetAccounts403Response' !== 'string') {
+                        if ('\SpojeNET\CSas\Model\GetAccounts403Response' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -295,7 +295,7 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\SpojeNET\Csas\Model\GetAccounts403Response', []),
+                        ObjectSerializer::deserialize($content, '\SpojeNET\CSas\Model\GetAccounts403Response', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -314,7 +314,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\SpojeNET\Csas\Model\GetAccountBalance200Response';
+            $returnType = '\SpojeNET\CSas\Model\GetAccountBalance200Response';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -347,7 +347,7 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\SpojeNET\Csas\Model\GetAccountBalance200Response',
+                        '\SpojeNET\CSas\Model\GetAccountBalance200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -355,7 +355,7 @@ class DefaultApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\SpojeNET\Csas\Model\GetAccounts403Response',
+                        '\SpojeNET\CSas\Model\GetAccounts403Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -399,7 +399,7 @@ class DefaultApi
      */
     public function getAccountBalanceAsyncWithHttpInfo($id, string $contentType = self::contentTypes['getAccountBalance'][0])
     {
-        $returnType = '\SpojeNET\Csas\Model\GetAccountBalance200Response';
+        $returnType = '\SpojeNET\CSas\Model\GetAccountBalance200Response';
         $request = $this->getAccountBalanceRequest($id, $contentType);
 
         return $this->client
@@ -547,9 +547,9 @@ class DefaultApi
      * @param  string $id The ID of the account (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAccountStatements'] to see the possible values for this operation
      *
-     * @throws \SpojeNET\Csas\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \SpojeNET\CSas\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \SpojeNET\Csas\Model\GetAccountStatements200Response|\SpojeNET\Csas\Model\GetAccounts403Response
+     * @return \SpojeNET\CSas\Model\GetAccountStatements200Response|\SpojeNET\CSas\Model\GetAccounts403Response
      */
     public function getAccountStatements($id, string $contentType = self::contentTypes['getAccountStatements'][0])
     {
@@ -565,9 +565,9 @@ class DefaultApi
      * @param  string $id The ID of the account (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAccountStatements'] to see the possible values for this operation
      *
-     * @throws \SpojeNET\Csas\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \SpojeNET\CSas\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \SpojeNET\Csas\Model\GetAccountStatements200Response|\SpojeNET\Csas\Model\GetAccounts403Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpojeNET\CSas\Model\GetAccountStatements200Response|\SpojeNET\CSas\Model\GetAccounts403Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAccountStatementsWithHttpInfo($id, string $contentType = self::contentTypes['getAccountStatements'][0])
     {
@@ -598,11 +598,11 @@ class DefaultApi
 
             switch ($statusCode) {
                 case 200:
-                    if ('\SpojeNET\Csas\Model\GetAccountStatements200Response' === '\SplFileObject') {
+                    if ('\SpojeNET\CSas\Model\GetAccountStatements200Response' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\SpojeNET\Csas\Model\GetAccountStatements200Response' !== 'string') {
+                        if ('\SpojeNET\CSas\Model\GetAccountStatements200Response' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -620,16 +620,16 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\SpojeNET\Csas\Model\GetAccountStatements200Response', []),
+                        ObjectSerializer::deserialize($content, '\SpojeNET\CSas\Model\GetAccountStatements200Response', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\SpojeNET\Csas\Model\GetAccounts403Response' === '\SplFileObject') {
+                    if ('\SpojeNET\CSas\Model\GetAccounts403Response' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\SpojeNET\Csas\Model\GetAccounts403Response' !== 'string') {
+                        if ('\SpojeNET\CSas\Model\GetAccounts403Response' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -647,7 +647,7 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\SpojeNET\Csas\Model\GetAccounts403Response', []),
+                        ObjectSerializer::deserialize($content, '\SpojeNET\CSas\Model\GetAccounts403Response', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -666,7 +666,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\SpojeNET\Csas\Model\GetAccountStatements200Response';
+            $returnType = '\SpojeNET\CSas\Model\GetAccountStatements200Response';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -699,7 +699,7 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\SpojeNET\Csas\Model\GetAccountStatements200Response',
+                        '\SpojeNET\CSas\Model\GetAccountStatements200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -707,7 +707,7 @@ class DefaultApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\SpojeNET\Csas\Model\GetAccounts403Response',
+                        '\SpojeNET\CSas\Model\GetAccounts403Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -751,7 +751,7 @@ class DefaultApi
      */
     public function getAccountStatementsAsyncWithHttpInfo($id, string $contentType = self::contentTypes['getAccountStatements'][0])
     {
-        $returnType = '\SpojeNET\Csas\Model\GetAccountStatements200Response';
+        $returnType = '\SpojeNET\CSas\Model\GetAccountStatements200Response';
         $request = $this->getAccountStatementsRequest($id, $contentType);
 
         return $this->client
@@ -900,9 +900,9 @@ class DefaultApi
      * @param  int $page Page number to return (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAccounts'] to see the possible values for this operation
      *
-     * @throws \SpojeNET\Csas\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \SpojeNET\CSas\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \SpojeNET\Csas\Model\GetAccounts200Response|\SpojeNET\Csas\Model\GetAccounts403Response
+     * @return \SpojeNET\CSas\Model\GetAccounts200Response|\SpojeNET\CSas\Model\GetAccounts403Response
      */
     public function getAccounts($size = null, $page = null, string $contentType = self::contentTypes['getAccounts'][0])
     {
@@ -919,9 +919,9 @@ class DefaultApi
      * @param  int $page Page number to return (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAccounts'] to see the possible values for this operation
      *
-     * @throws \SpojeNET\Csas\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \SpojeNET\CSas\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \SpojeNET\Csas\Model\GetAccounts200Response|\SpojeNET\Csas\Model\GetAccounts403Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpojeNET\CSas\Model\GetAccounts200Response|\SpojeNET\CSas\Model\GetAccounts403Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAccountsWithHttpInfo($size = null, $page = null, string $contentType = self::contentTypes['getAccounts'][0])
     {
@@ -952,11 +952,11 @@ class DefaultApi
 
             switch ($statusCode) {
                 case 200:
-                    if ('\SpojeNET\Csas\Model\GetAccounts200Response' === '\SplFileObject') {
+                    if ('\SpojeNET\CSas\Model\GetAccounts200Response' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\SpojeNET\Csas\Model\GetAccounts200Response' !== 'string') {
+                        if ('\SpojeNET\CSas\Model\GetAccounts200Response' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -974,16 +974,16 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\SpojeNET\Csas\Model\GetAccounts200Response', []),
+                        ObjectSerializer::deserialize($content, '\SpojeNET\CSas\Model\GetAccounts200Response', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\SpojeNET\Csas\Model\GetAccounts403Response' === '\SplFileObject') {
+                    if ('\SpojeNET\CSas\Model\GetAccounts403Response' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\SpojeNET\Csas\Model\GetAccounts403Response' !== 'string') {
+                        if ('\SpojeNET\CSas\Model\GetAccounts403Response' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -1001,7 +1001,7 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\SpojeNET\Csas\Model\GetAccounts403Response', []),
+                        ObjectSerializer::deserialize($content, '\SpojeNET\CSas\Model\GetAccounts403Response', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1020,7 +1020,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\SpojeNET\Csas\Model\GetAccounts200Response';
+            $returnType = '\SpojeNET\CSas\Model\GetAccounts200Response';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1053,7 +1053,7 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\SpojeNET\Csas\Model\GetAccounts200Response',
+                        '\SpojeNET\CSas\Model\GetAccounts200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1061,7 +1061,7 @@ class DefaultApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\SpojeNET\Csas\Model\GetAccounts403Response',
+                        '\SpojeNET\CSas\Model\GetAccounts403Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1107,7 +1107,7 @@ class DefaultApi
      */
     public function getAccountsAsyncWithHttpInfo($size = null, $page = null, string $contentType = self::contentTypes['getAccounts'][0])
     {
-        $returnType = '\SpojeNET\Csas\Model\GetAccounts200Response';
+        $returnType = '\SpojeNET\CSas\Model\GetAccounts200Response';
         $request = $this->getAccountsRequest($size, $page, $contentType);
 
         return $this->client
@@ -1263,9 +1263,9 @@ class DefaultApi
      * @param  \DateTime $toDate End date for filtering transactions (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTransactions'] to see the possible values for this operation
      *
-     * @throws \SpojeNET\Csas\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \SpojeNET\CSas\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \SpojeNET\Csas\Model\GetTransactions200Response|\SpojeNET\Csas\Model\GetAccounts403Response
+     * @return \SpojeNET\CSas\Model\GetTransactions200Response|\SpojeNET\CSas\Model\GetAccounts403Response
      */
     public function getTransactions($id, $fromDate = null, $toDate = null, string $contentType = self::contentTypes['getTransactions'][0])
     {
@@ -1283,9 +1283,9 @@ class DefaultApi
      * @param  \DateTime $toDate End date for filtering transactions (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTransactions'] to see the possible values for this operation
      *
-     * @throws \SpojeNET\Csas\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \SpojeNET\CSas\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \SpojeNET\Csas\Model\GetTransactions200Response|\SpojeNET\Csas\Model\GetAccounts403Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpojeNET\CSas\Model\GetTransactions200Response|\SpojeNET\CSas\Model\GetAccounts403Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function getTransactionsWithHttpInfo($id, $fromDate = null, $toDate = null, string $contentType = self::contentTypes['getTransactions'][0])
     {
@@ -1316,11 +1316,11 @@ class DefaultApi
 
             switch ($statusCode) {
                 case 200:
-                    if ('\SpojeNET\Csas\Model\GetTransactions200Response' === '\SplFileObject') {
+                    if ('\SpojeNET\CSas\Model\GetTransactions200Response' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\SpojeNET\Csas\Model\GetTransactions200Response' !== 'string') {
+                        if ('\SpojeNET\CSas\Model\GetTransactions200Response' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -1338,16 +1338,16 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\SpojeNET\Csas\Model\GetTransactions200Response', []),
+                        ObjectSerializer::deserialize($content, '\SpojeNET\CSas\Model\GetTransactions200Response', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\SpojeNET\Csas\Model\GetAccounts403Response' === '\SplFileObject') {
+                    if ('\SpojeNET\CSas\Model\GetAccounts403Response' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\SpojeNET\Csas\Model\GetAccounts403Response' !== 'string') {
+                        if ('\SpojeNET\CSas\Model\GetAccounts403Response' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -1365,7 +1365,7 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\SpojeNET\Csas\Model\GetAccounts403Response', []),
+                        ObjectSerializer::deserialize($content, '\SpojeNET\CSas\Model\GetAccounts403Response', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1384,7 +1384,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\SpojeNET\Csas\Model\GetTransactions200Response';
+            $returnType = '\SpojeNET\CSas\Model\GetTransactions200Response';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1417,7 +1417,7 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\SpojeNET\Csas\Model\GetTransactions200Response',
+                        '\SpojeNET\CSas\Model\GetTransactions200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1425,7 +1425,7 @@ class DefaultApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\SpojeNET\Csas\Model\GetAccounts403Response',
+                        '\SpojeNET\CSas\Model\GetAccounts403Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1473,7 +1473,7 @@ class DefaultApi
      */
     public function getTransactionsAsyncWithHttpInfo($id, $fromDate = null, $toDate = null, string $contentType = self::contentTypes['getTransactions'][0])
     {
-        $returnType = '\SpojeNET\Csas\Model\GetTransactions200Response';
+        $returnType = '\SpojeNET\CSas\Model\GetTransactions200Response';
         $request = $this->getTransactionsRequest($id, $fromDate, $toDate, $contentType);
 
         return $this->client

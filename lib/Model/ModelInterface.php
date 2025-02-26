@@ -6,7 +6,7 @@
  * PHP version 7.4+
  *
  * @category Class
- * @package  SpojeNET\Csas\Model
+ * @package  SpojeNET\CSas\Model
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -28,12 +28,12 @@
  * Do not edit the class manually.
  */
 
-namespace SpojeNET\Csas\Model;
+namespace SpojeNET\CSas\Model;
 
 /**
  * Interface abstracting model access.
  *
- * @package SpojeNET\Csas\Model
+ * @package SpojeNET\CSas\Model
  * @author  OpenAPI Generator team
  */
 interface ModelInterface

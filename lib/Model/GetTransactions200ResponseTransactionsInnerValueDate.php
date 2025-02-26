@@ -6,7 +6,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  SpojeNET\Csas
+ * @package  SpojeNET\CSas
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -28,16 +28,16 @@
  * Do not edit the class manually.
  */
 
-namespace SpojeNET\Csas\Model;
+namespace SpojeNET\CSas\Model;
 
 use \ArrayAccess;
-use \SpojeNET\Csas\ObjectSerializer;
+use \SpojeNET\CSas\ObjectSerializer;
 
 /**
  * GetTransactions200ResponseTransactionsInnerValueDate Class Doc Comment
  *
  * @category Class
- * @package  SpojeNET\Csas
+ * @package  SpojeNET\CSas
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>

@@ -6,7 +6,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  SpojeNET\Csas
+ * @package  SpojeNET\CSas
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -28,16 +28,16 @@
  * Do not edit the class manually.
  */
 
-namespace SpojeNET\Csas\Model;
+namespace SpojeNET\CSas\Model;
 
 use \ArrayAccess;
-use \SpojeNET\Csas\ObjectSerializer;
+use \SpojeNET\CSas\ObjectSerializer;
 
 /**
  * GetAccountBalance200ResponseBalancesInner Class Doc Comment
  *
  * @category Class
- * @package  SpojeNET\Csas
+ * @package  SpojeNET\CSas
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,10 +59,10 @@ class GetAccountBalance200ResponseBalancesInner implements ModelInterface, Array
       * @var string[]
       */
     protected static $openAPITypes = [
-        'type' => '\SpojeNET\Csas\Model\GetAccountBalance200ResponseBalancesInnerType',
-        'amount' => '\SpojeNET\Csas\Model\GetAccountBalance200ResponseBalancesInnerAmount',
+        'type' => '\SpojeNET\CSas\Model\GetAccountBalance200ResponseBalancesInnerType',
+        'amount' => '\SpojeNET\CSas\Model\GetAccountBalance200ResponseBalancesInnerAmount',
         'creditDebitIndicator' => 'string',
-        'date' => '\SpojeNET\Csas\Model\GetAccountBalance200ResponseBalancesInnerDate'
+        'date' => '\SpojeNET\CSas\Model\GetAccountBalance200ResponseBalancesInnerDate'
     ];
 
     /**
@@ -315,7 +315,7 @@ class GetAccountBalance200ResponseBalancesInner implements ModelInterface, Array
     /**
      * Gets type
      *
-     * @return \SpojeNET\Csas\Model\GetAccountBalance200ResponseBalancesInnerType|null
+     * @return \SpojeNET\CSas\Model\GetAccountBalance200ResponseBalancesInnerType|null
      */
     public function getType()
     {
@@ -325,7 +325,7 @@ class GetAccountBalance200ResponseBalancesInner implements ModelInterface, Array
     /**
      * Sets type
      *
-     * @param \SpojeNET\Csas\Model\GetAccountBalance200ResponseBalancesInnerType|null $type type
+     * @param \SpojeNET\CSas\Model\GetAccountBalance200ResponseBalancesInnerType|null $type type
      *
      * @return self
      */
@@ -342,7 +342,7 @@ class GetAccountBalance200ResponseBalancesInner implements ModelInterface, Array
     /**
      * Gets amount
      *
-     * @return \SpojeNET\Csas\Model\GetAccountBalance200ResponseBalancesInnerAmount|null
+     * @return \SpojeNET\CSas\Model\GetAccountBalance200ResponseBalancesInnerAmount|null
      */
     public function getAmount()
     {
@@ -352,7 +352,7 @@ class GetAccountBalance200ResponseBalancesInner implements ModelInterface, Array
     /**
      * Sets amount
      *
-     * @param \SpojeNET\Csas\Model\GetAccountBalance200ResponseBalancesInnerAmount|null $amount amount
+     * @param \SpojeNET\CSas\Model\GetAccountBalance200ResponseBalancesInnerAmount|null $amount amount
      *
      * @return self
      */
@@ -396,7 +396,7 @@ class GetAccountBalance200ResponseBalancesInner implements ModelInterface, Array
     /**
      * Gets date
      *
-     * @return \SpojeNET\Csas\Model\GetAccountBalance200ResponseBalancesInnerDate|null
+     * @return \SpojeNET\CSas\Model\GetAccountBalance200ResponseBalancesInnerDate|null
      */
     public function getDate()
     {
@@ -406,7 +406,7 @@ class GetAccountBalance200ResponseBalancesInner implements ModelInterface, Array
     /**
      * Sets date
      *
-     * @param \SpojeNET\Csas\Model\GetAccountBalance200ResponseBalancesInnerDate|null $date date
+     * @param \SpojeNET\CSas\Model\GetAccountBalance200ResponseBalancesInnerDate|null $date date
      *
      * @return self
      */

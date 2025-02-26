@@ -6,7 +6,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  SpojeNET\Csas
+ * @package  SpojeNET\CSas
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -28,16 +28,16 @@
  * Do not edit the class manually.
  */
 
-namespace SpojeNET\Csas\Model;
+namespace SpojeNET\CSas\Model;
 
 use \ArrayAccess;
-use \SpojeNET\Csas\ObjectSerializer;
+use \SpojeNET\CSas\ObjectSerializer;
 
 /**
  * GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedAgentsCreditorAgent Class Doc Comment
  *
  * @category Class
- * @package  SpojeNET\Csas
+ * @package  SpojeNET\CSas
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsR
       * @var string[]
       */
     protected static $openAPITypes = [
-        'financialInstitutionIdentification' => '\SpojeNET\Csas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedAgentsCreditorAgentFinancialInstitutionIdentification'
+        'financialInstitutionIdentification' => '\SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedAgentsCreditorAgentFinancialInstitutionIdentification'
     ];
 
     /**
@@ -294,7 +294,7 @@ class GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsR
     /**
      * Gets financialInstitutionIdentification
      *
-     * @return \SpojeNET\Csas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedAgentsCreditorAgentFinancialInstitutionIdentification|null
+     * @return \SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedAgentsCreditorAgentFinancialInstitutionIdentification|null
      */
     public function getFinancialInstitutionIdentification()
     {
@@ -304,7 +304,7 @@ class GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsR
     /**
      * Sets financialInstitutionIdentification
      *
-     * @param \SpojeNET\Csas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedAgentsCreditorAgentFinancialInstitutionIdentification|null $financialInstitutionIdentification financialInstitutionIdentification
+     * @param \SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedAgentsCreditorAgentFinancialInstitutionIdentification|null $financialInstitutionIdentification financialInstitutionIdentification
      *
      * @return self
      */

@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * This file is part of the CsasWebApi package
+ * This file is part of the CSasWebApi package
  *
  * https://github.com/Spoje-NET/php-csas-webapi
  *

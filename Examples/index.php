@@ -89,9 +89,9 @@ if (Ease\Shared::cfg('REDIRECT_URI') !== 'http://localhost/redirectedFromBank') 
 }
 
 // Sandbox URLs *******************************************************************************************************
-const CsasSandboxUrl = 'https://webapi.developers.erstegroup.com/api/csas';
-const CsasOAuthUrl = CsasSandboxUrl.'/sandbox/v1/sandbox-idp';
-const CsasAccountsUrl = CsasSandboxUrl.'/public/sandbox/v3/accounts';
+const CSasSandboxUrl = 'https://webapi.developers.erstegroup.com/api/csas';
+const CSasOAuthUrl = CSasSandboxUrl.'/sandbox/v1/sandbox-idp';
+const CSasAccountsUrl = CSasSandboxUrl.'/public/sandbox/v3/accounts';
 
 // Utilities **********************************************************************************************************
 
@@ -292,7 +292,7 @@ function loadAccessToken(): ?string
             'refresh_token' => $refreshToken,
         ];
 
-        $response = sendRequest('POST', CsasOAuthUrl.'/token', $data);
+        $response = sendRequest('POST', CSasOAuthUrl.'/token', $data);
 
         if (!\array_key_exists('access_token', $response)) {
             throw new ResponseException('Missing access token in response from bank', 404, $response);
@@ -328,7 +328,7 @@ function redirectToAuth(): void
 {
     writeLabel('Redirect to authorization');
 
-    $url = CsasOAuthUrl.'/auth?'.http_build_query([
+    $url = CSasOAuthUrl.'/auth?'.http_build_query([
         'client_id' => Ease\Shared::cfg('CLIENT_ID'),
         'response_type' => 'code',
         'redirect_uri' => Ease\Shared::cfg('REDIRECT_URI'),
@@ -364,7 +364,7 @@ function handleRedirectFromBank(): void
         'redirect_uri' => Ease\Shared::cfg('REDIRECT_URI'),
     ];
 
-    $response = sendRequest('POST', CsasOAuthUrl.'/token', $data);
+    $response = sendRequest('POST', CSasOAuthUrl.'/token', $data);
 
     if (!\array_key_exists('refresh_token', $response)) {
         throw new ResponseException('Missing refresh token in response from bank', 404, $response);
@@ -395,7 +395,7 @@ function listAccounts(): void
         'order' => 'asc',
     ];
     $headers = createAuthHeaders();
-    $response = sendRequest('GET', CsasAccountsUrl.'/my/accounts', $data, $headers);
+    $response = sendRequest('GET', CSasAccountsUrl.'/my/accounts', $data, $headers);
 
     class Account
     {
@@ -452,7 +452,7 @@ function accountDetail(): void
     // Balance
     writeLabel('Balance');
     $headers = createAuthHeaders();
-    $response = sendRequest('GET', CsasAccountsUrl."/my/accounts/{$accountId}/balance", null, $headers);
+    $response = sendRequest('GET', CSasAccountsUrl."/my/accounts/{$accountId}/balance", null, $headers);
 
     $balance = array_pop($response['balances']) ?? null;
 
@@ -479,7 +479,7 @@ function accountDetail(): void
         'sort' => 'bookingdate',
         'order' => 'desc',
     ];
-    $response = sendRequest('GET', CsasAccountsUrl."/my/accounts/{$accountId}/transactions", $data, $headers);
+    $response = sendRequest('GET', CSasAccountsUrl."/my/accounts/{$accountId}/transactions", $data, $headers);
 
     class Transaction
     {

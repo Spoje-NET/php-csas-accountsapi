@@ -1,45 +1,47 @@
 {
-  "name": "deb/csas-accountsapi",
-  "description": "An Core of PHP Framework for Ease of writing Applications (debianized)",
-  "version": "0.1.0",
-  "authors": [
-    {
-      "name": "Vítězslav Dvořák",
-      "email": "info@vitexsoftware.cz",
-      "homepage": "https://vitexsoftware.com/"
-    }
-  ],
-  "config": {
-    "vendor-dir": "/var/lib/composer/php-spojenet-csas-accountsapi"
-  },
-  "autoload": {
-    "psr-4": {
-      "VitexSoftware\\Raiffeisenbank\\": "./",
-      "VitexSoftware\\Raiffeisenbank\\Model\\": "./Model/",
-      "VitexSoftware\\Raiffeisenbank\\PremiumAPI\\": "./PremiumAPI/"
-    }
-  },
-  "minimum-stability": "dev",
-  "require": {
-    "php": ">=7.1",
-    "guzzlehttp/guzzle": "^7.3",
-    "deb/ease-core": "*"
-  },
-  "repositories": [
-    {
-      "type": "path",
-      "url": "/usr/share/php/EaseCore"
+    "name": "deb/csas-accountsapi",
+    "description": "An Core of PHP Framework for Ease of writing Applications (debianized)",
+    "version": "0.1.0",
+    "authors": [
+        {
+            "name": "Vítězslav Dvořák",
+            "email": "info@vitexsoftware.cz",
+            "homepage": "https://vitexsoftware.com/"
+        }
+    ],
+    "config": {
+        "vendor-dir": "/var/lib/composer/php-spojenet-csas-accountsapi"
     },
-    {
-      "type": "path",
-      "url": "/usr/share/php/CSas"
+
+    "autoload": {
+        "psr-4": {
+            "SpojeNET\\CSas\\": "./",
+            "SpojeNET\\CSas\\Accounts\\": "./Accounts/",
+            "SpojeNET\\CSas\\Modes\\": "./Model/"
+        }
     },
-    {
-      "type": "path",
-      "url": "/usr/share/php/GuzzleHttp"
-    }
-  ],
-  "type": "library",
-  "homepage": "https://github.com/Spoje-NET/php-csas-accountsapi",
-  "license": "MIT"
+
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=7.1",
+        "guzzlehttp/guzzle": "^7.3",
+        "deb/ease-core": "*"
+    },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "/usr/share/php/EaseCore"
+        },
+        {
+            "type": "path",
+            "url": "/usr/share/php/CSas"
+        },
+        {
+            "type": "path",
+            "url": "/usr/share/php/GuzzleHttp"
+        }
+    ],
+    "type": "library",
+    "homepage": "https://github.com/Spoje-NET/php-csas-accountsapi",
+    "license": "MIT"
 }

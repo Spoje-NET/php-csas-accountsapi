@@ -6,7 +6,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  SpojeNET\Csas
+ * @package  SpojeNET\CSas
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -28,16 +28,16 @@
  * Do not edit the class manually.
  */
 
-namespace SpojeNET\Csas\Model;
+namespace SpojeNET\CSas\Model;
 
 use \ArrayAccess;
-use \SpojeNET\Csas\ObjectSerializer;
+use \SpojeNET\CSas\ObjectSerializer;
 
 /**
  * GetTransactions200ResponseTransactionsInner Class Doc Comment
  *
  * @category Class
- * @package  SpojeNET\Csas
+ * @package  SpojeNET\CSas
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,13 +60,13 @@ class GetTransactions200ResponseTransactionsInner implements ModelInterface, Arr
       */
     protected static $openAPITypes = [
         'entryReference' => 'string',
-        'amount' => '\SpojeNET\Csas\Model\GetTransactions200ResponseTransactionsInnerAmount',
+        'amount' => '\SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerAmount',
         'creditDebitIndicator' => 'string',
         'status' => 'string',
-        'bookingDate' => '\SpojeNET\Csas\Model\GetTransactions200ResponseTransactionsInnerBookingDate',
-        'valueDate' => '\SpojeNET\Csas\Model\GetTransactions200ResponseTransactionsInnerValueDate',
-        'bankTransactionCode' => '\SpojeNET\Csas\Model\GetTransactions200ResponseTransactionsInnerBankTransactionCode',
-        'entryDetails' => '\SpojeNET\Csas\Model\GetTransactions200ResponseTransactionsInnerEntryDetails'
+        'bookingDate' => '\SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerBookingDate',
+        'valueDate' => '\SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerValueDate',
+        'bankTransactionCode' => '\SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerBankTransactionCode',
+        'entryDetails' => '\SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetails'
     ];
 
     /**
@@ -370,7 +370,7 @@ class GetTransactions200ResponseTransactionsInner implements ModelInterface, Arr
     /**
      * Gets amount
      *
-     * @return \SpojeNET\Csas\Model\GetTransactions200ResponseTransactionsInnerAmount|null
+     * @return \SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerAmount|null
      */
     public function getAmount()
     {
@@ -380,7 +380,7 @@ class GetTransactions200ResponseTransactionsInner implements ModelInterface, Arr
     /**
      * Sets amount
      *
-     * @param \SpojeNET\Csas\Model\GetTransactions200ResponseTransactionsInnerAmount|null $amount amount
+     * @param \SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerAmount|null $amount amount
      *
      * @return self
      */
@@ -451,7 +451,7 @@ class GetTransactions200ResponseTransactionsInner implements ModelInterface, Arr
     /**
      * Gets bookingDate
      *
-     * @return \SpojeNET\Csas\Model\GetTransactions200ResponseTransactionsInnerBookingDate|null
+     * @return \SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerBookingDate|null
      */
     public function getBookingDate()
     {
@@ -461,7 +461,7 @@ class GetTransactions200ResponseTransactionsInner implements ModelInterface, Arr
     /**
      * Sets bookingDate
      *
-     * @param \SpojeNET\Csas\Model\GetTransactions200ResponseTransactionsInnerBookingDate|null $bookingDate bookingDate
+     * @param \SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerBookingDate|null $bookingDate bookingDate
      *
      * @return self
      */
@@ -478,7 +478,7 @@ class GetTransactions200ResponseTransactionsInner implements ModelInterface, Arr
     /**
      * Gets valueDate
      *
-     * @return \SpojeNET\Csas\Model\GetTransactions200ResponseTransactionsInnerValueDate|null
+     * @return \SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerValueDate|null
      */
     public function getValueDate()
     {
@@ -488,7 +488,7 @@ class GetTransactions200ResponseTransactionsInner implements ModelInterface, Arr
     /**
      * Sets valueDate
      *
-     * @param \SpojeNET\Csas\Model\GetTransactions200ResponseTransactionsInnerValueDate|null $valueDate valueDate
+     * @param \SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerValueDate|null $valueDate valueDate
      *
      * @return self
      */
@@ -505,7 +505,7 @@ class GetTransactions200ResponseTransactionsInner implements ModelInterface, Arr
     /**
      * Gets bankTransactionCode
      *
-     * @return \SpojeNET\Csas\Model\GetTransactions200ResponseTransactionsInnerBankTransactionCode|null
+     * @return \SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerBankTransactionCode|null
      */
     public function getBankTransactionCode()
     {
@@ -515,7 +515,7 @@ class GetTransactions200ResponseTransactionsInner implements ModelInterface, Arr
     /**
      * Sets bankTransactionCode
      *
-     * @param \SpojeNET\Csas\Model\GetTransactions200ResponseTransactionsInnerBankTransactionCode|null $bankTransactionCode bankTransactionCode
+     * @param \SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerBankTransactionCode|null $bankTransactionCode bankTransactionCode
      *
      * @return self
      */
@@ -532,7 +532,7 @@ class GetTransactions200ResponseTransactionsInner implements ModelInterface, Arr
     /**
      * Gets entryDetails
      *
-     * @return \SpojeNET\Csas\Model\GetTransactions200ResponseTransactionsInnerEntryDetails|null
+     * @return \SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetails|null
      */
     public function getEntryDetails()
     {
@@ -542,7 +542,7 @@ class GetTransactions200ResponseTransactionsInner implements ModelInterface, Arr
     /**
      * Sets entryDetails
      *
-     * @param \SpojeNET\Csas\Model\GetTransactions200ResponseTransactionsInnerEntryDetails|null $entryDetails entryDetails
+     * @param \SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetails|null $entryDetails entryDetails
      *
      * @return self
      */

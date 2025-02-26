@@ -6,7 +6,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  SpojeNET\Csas
+ * @package  SpojeNET\CSas
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -28,16 +28,16 @@
  * Do not edit the class manually.
  */
 
-namespace SpojeNET\Csas\Model;
+namespace SpojeNET\CSas\Model;
 
 use \ArrayAccess;
-use \SpojeNET\Csas\ObjectSerializer;
+use \SpojeNET\CSas\ObjectSerializer;
 
 /**
  * GetTransactions200ResponseTransactionsInnerEntryDetails Class Doc Comment
  *
  * @category Class
- * @package  SpojeNET\Csas
+ * @package  SpojeNET\CSas
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class GetTransactions200ResponseTransactionsInnerEntryDetails implements ModelIn
       * @var string[]
       */
     protected static $openAPITypes = [
-        'transactionDetails' => '\SpojeNET\Csas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetails'
+        'transactionDetails' => '\SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetails'
     ];
 
     /**
@@ -294,7 +294,7 @@ class GetTransactions200ResponseTransactionsInnerEntryDetails implements ModelIn
     /**
      * Gets transactionDetails
      *
-     * @return \SpojeNET\Csas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetails|null
+     * @return \SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetails|null
      */
     public function getTransactionDetails()
     {
@@ -304,7 +304,7 @@ class GetTransactions200ResponseTransactionsInnerEntryDetails implements ModelIn
     /**
      * Sets transactionDetails
      *
-     * @param \SpojeNET\Csas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetails|null $transactionDetails transactionDetails
+     * @param \SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetails|null $transactionDetails transactionDetails
      *
      * @return self
      */

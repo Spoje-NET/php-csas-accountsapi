@@ -6,7 +6,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  SpojeNET\Csas
+ * @package  SpojeNET\CSas
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -28,16 +28,16 @@
  * Do not edit the class manually.
  */
 
-namespace SpojeNET\Csas\Model;
+namespace SpojeNET\CSas\Model;
 
 use \ArrayAccess;
-use \SpojeNET\Csas\ObjectSerializer;
+use \SpojeNET\CSas\ObjectSerializer;
 
 /**
  * GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetails Class Doc Comment
  *
  * @category Class
- * @package  SpojeNET\Csas
+ * @package  SpojeNET\CSas
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,11 +59,11 @@ class GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetails 
       * @var string[]
       */
     protected static $openAPITypes = [
-        'references' => '\SpojeNET\Csas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsReferences',
-        'amountDetails' => '\SpojeNET\Csas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsAmountDetails',
-        'relatedParties' => '\SpojeNET\Csas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedParties',
-        'relatedAgents' => '\SpojeNET\Csas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedAgents',
-        'remittanceInformation' => '\SpojeNET\Csas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRemittanceInformation',
+        'references' => '\SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsReferences',
+        'amountDetails' => '\SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsAmountDetails',
+        'relatedParties' => '\SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedParties',
+        'relatedAgents' => '\SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedAgents',
+        'remittanceInformation' => '\SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRemittanceInformation',
         'additionalTransactionInformation' => 'string',
         'additionalRemittanceInformation' => 'string',
         'additionalTransactionDescription' => 'string'
@@ -343,7 +343,7 @@ class GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetails 
     /**
      * Gets references
      *
-     * @return \SpojeNET\Csas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsReferences|null
+     * @return \SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsReferences|null
      */
     public function getReferences()
     {
@@ -353,7 +353,7 @@ class GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetails 
     /**
      * Sets references
      *
-     * @param \SpojeNET\Csas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsReferences|null $references references
+     * @param \SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsReferences|null $references references
      *
      * @return self
      */
@@ -370,7 +370,7 @@ class GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetails 
     /**
      * Gets amountDetails
      *
-     * @return \SpojeNET\Csas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsAmountDetails|null
+     * @return \SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsAmountDetails|null
      */
     public function getAmountDetails()
     {
@@ -380,7 +380,7 @@ class GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetails 
     /**
      * Sets amountDetails
      *
-     * @param \SpojeNET\Csas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsAmountDetails|null $amountDetails amountDetails
+     * @param \SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsAmountDetails|null $amountDetails amountDetails
      *
      * @return self
      */
@@ -397,7 +397,7 @@ class GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetails 
     /**
      * Gets relatedParties
      *
-     * @return \SpojeNET\Csas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedParties|null
+     * @return \SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedParties|null
      */
     public function getRelatedParties()
     {
@@ -407,7 +407,7 @@ class GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetails 
     /**
      * Sets relatedParties
      *
-     * @param \SpojeNET\Csas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedParties|null $relatedParties relatedParties
+     * @param \SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedParties|null $relatedParties relatedParties
      *
      * @return self
      */
@@ -424,7 +424,7 @@ class GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetails 
     /**
      * Gets relatedAgents
      *
-     * @return \SpojeNET\Csas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedAgents|null
+     * @return \SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedAgents|null
      */
     public function getRelatedAgents()
     {
@@ -434,7 +434,7 @@ class GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetails 
     /**
      * Sets relatedAgents
      *
-     * @param \SpojeNET\Csas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedAgents|null $relatedAgents relatedAgents
+     * @param \SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedAgents|null $relatedAgents relatedAgents
      *
      * @return self
      */
@@ -451,7 +451,7 @@ class GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetails 
     /**
      * Gets remittanceInformation
      *
-     * @return \SpojeNET\Csas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRemittanceInformation|null
+     * @return \SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRemittanceInformation|null
      */
     public function getRemittanceInformation()
     {
@@ -461,7 +461,7 @@ class GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetails 
     /**
      * Sets remittanceInformation
      *
-     * @param \SpojeNET\Csas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRemittanceInformation|null $remittanceInformation remittanceInformation
+     * @param \SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRemittanceInformation|null $remittanceInformation remittanceInformation
      *
      * @return self
      */

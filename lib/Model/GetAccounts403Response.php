@@ -6,7 +6,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  SpojeNET\Csas
+ * @package  SpojeNET\CSas
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -28,16 +28,16 @@
  * Do not edit the class manually.
  */
 
-namespace SpojeNET\Csas\Model;
+namespace SpojeNET\CSas\Model;
 
 use \ArrayAccess;
-use \SpojeNET\Csas\ObjectSerializer;
+use \SpojeNET\CSas\ObjectSerializer;
 
 /**
  * GetAccounts403Response Class Doc Comment
  *
  * @category Class
- * @package  SpojeNET\Csas
+ * @package  SpojeNET\CSas
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class GetAccounts403Response implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static $openAPITypes = [
         'status' => 'int',
-        'errors' => '\SpojeNET\Csas\Model\GetAccounts403ResponseErrorsInner[]'
+        'errors' => '\SpojeNET\CSas\Model\GetAccounts403ResponseErrorsInner[]'
     ];
 
     /**
@@ -328,7 +328,7 @@ class GetAccounts403Response implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets errors
      *
-     * @return \SpojeNET\Csas\Model\GetAccounts403ResponseErrorsInner[]|null
+     * @return \SpojeNET\CSas\Model\GetAccounts403ResponseErrorsInner[]|null
      */
     public function getErrors()
     {
@@ -338,7 +338,7 @@ class GetAccounts403Response implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets errors
      *
-     * @param \SpojeNET\Csas\Model\GetAccounts403ResponseErrorsInner[]|null $errors errors
+     * @param \SpojeNET\CSas\Model\GetAccounts403ResponseErrorsInner[]|null $errors errors
      *
      * @return self
      */

@@ -6,7 +6,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  SpojeNET\Csas
+ * @package  SpojeNET\CSas
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -28,16 +28,16 @@
  * Do not edit the class manually.
  */
 
-namespace SpojeNET\Csas\Model;
+namespace SpojeNET\CSas\Model;
 
 use \ArrayAccess;
-use \SpojeNET\Csas\ObjectSerializer;
+use \SpojeNET\CSas\ObjectSerializer;
 
 /**
  * GetTransactions200ResponseTransactionsInnerBankTransactionCode Class Doc Comment
  *
  * @category Class
- * @package  SpojeNET\Csas
+ * @package  SpojeNET\CSas
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class GetTransactions200ResponseTransactionsInnerBankTransactionCode implements 
       * @var string[]
       */
     protected static $openAPITypes = [
-        'proprietary' => '\SpojeNET\Csas\Model\GetTransactions200ResponseTransactionsInnerBankTransactionCodeProprietary'
+        'proprietary' => '\SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerBankTransactionCodeProprietary'
     ];
 
     /**
@@ -294,7 +294,7 @@ class GetTransactions200ResponseTransactionsInnerBankTransactionCode implements 
     /**
      * Gets proprietary
      *
-     * @return \SpojeNET\Csas\Model\GetTransactions200ResponseTransactionsInnerBankTransactionCodeProprietary|null
+     * @return \SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerBankTransactionCodeProprietary|null
      */
     public function getProprietary()
     {
@@ -304,7 +304,7 @@ class GetTransactions200ResponseTransactionsInnerBankTransactionCode implements 
     /**
      * Sets proprietary
      *
-     * @param \SpojeNET\Csas\Model\GetTransactions200ResponseTransactionsInnerBankTransactionCodeProprietary|null $proprietary proprietary
+     * @param \SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerBankTransactionCodeProprietary|null $proprietary proprietary
      *
      * @return self
      */

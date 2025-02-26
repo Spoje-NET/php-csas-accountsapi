@@ -41,16 +41,16 @@
     },
     "autoload": {
         "psr-4": {
-	    "SpojeNET\\Csas\\" : "lib/",
-	    "SpojeNET\\Csas\\Accounts\\" : "lib/Accounts/",
-	    "SpojeNET\\Csas\\Modes\\" : "lib/Model/"
+	    "SpojeNET\\CSas\\" : "lib/",
+	    "SpojeNET\\CSas\\Accounts\\" : "lib/Accounts/",
+	    "SpojeNET\\CSas\\Modes\\" : "lib/Model/"
 	}
     },
     "autoload-dev": {
         "psr-4": {
-	    "SpojeNET\\Csas\\Test\\" : "test/",
-	    "SpojeNET\\Csas\\Test\\Accounts\\" : "test/Accounts/",
-	    "SpojeNET\\Csas\\Test\\Model\\" : "test/Model/"
+	    "SpojeNET\\CSas\\Test\\" : "test/",
+	    "SpojeNET\\CSas\\Test\\Accounts\\" : "test/Accounts/",
+	    "SpojeNET\\CSas\\Test\\Model\\" : "test/Model/"
 	}
     },
     "scripts": {

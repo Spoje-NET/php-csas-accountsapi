@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  SpojeNET\Csas
+ * @package  SpojeNET\CSas
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,7 +27,7 @@
  * Please update the test case below to test the model.
  */
 
-namespace SpojeNET\Csas\Test\Model;
+namespace SpojeNET\CSas\Test\Model;
 
 use PHPUnit\Framework\TestCase;
 
@@ -36,7 +36,7 @@ use PHPUnit\Framework\TestCase;
  *
  * @category    Class
  * @description GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedPartiesCreditorAccountIdentification
- * @package     SpojeNET\Csas
+ * @package     SpojeNET\CSas
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */

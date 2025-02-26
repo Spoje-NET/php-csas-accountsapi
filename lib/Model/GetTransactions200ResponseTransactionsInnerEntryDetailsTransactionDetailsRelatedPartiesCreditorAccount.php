@@ -6,7 +6,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  SpojeNET\Csas
+ * @package  SpojeNET\CSas
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -28,16 +28,16 @@
  * Do not edit the class manually.
  */
 
-namespace SpojeNET\Csas\Model;
+namespace SpojeNET\CSas\Model;
 
 use \ArrayAccess;
-use \SpojeNET\Csas\ObjectSerializer;
+use \SpojeNET\CSas\ObjectSerializer;
 
 /**
  * GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedPartiesCreditorAccount Class Doc Comment
  *
  * @category Class
- * @package  SpojeNET\Csas
+ * @package  SpojeNET\CSas
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsR
       * @var string[]
       */
     protected static $openAPITypes = [
-        'identification' => '\SpojeNET\Csas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedPartiesCreditorAccountIdentification'
+        'identification' => '\SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedPartiesCreditorAccountIdentification'
     ];
 
     /**
@@ -294,7 +294,7 @@ class GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsR
     /**
      * Gets identification
      *
-     * @return \SpojeNET\Csas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedPartiesCreditorAccountIdentification|null
+     * @return \SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedPartiesCreditorAccountIdentification|null
      */
     public function getIdentification()
     {
@@ -304,7 +304,7 @@ class GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsR
     /**
      * Sets identification
      *
-     * @param \SpojeNET\Csas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedPartiesCreditorAccountIdentification|null $identification identification
+     * @param \SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedPartiesCreditorAccountIdentification|null $identification identification
      *
      * @return self
      */

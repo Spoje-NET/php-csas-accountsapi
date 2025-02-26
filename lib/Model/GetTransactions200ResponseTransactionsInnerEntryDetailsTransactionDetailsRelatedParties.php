@@ -6,7 +6,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  SpojeNET\Csas
+ * @package  SpojeNET\CSas
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -28,16 +28,16 @@
  * Do not edit the class manually.
  */
 
-namespace SpojeNET\Csas\Model;
+namespace SpojeNET\CSas\Model;
 
 use \ArrayAccess;
-use \SpojeNET\Csas\ObjectSerializer;
+use \SpojeNET\CSas\ObjectSerializer;
 
 /**
  * GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedParties Class Doc Comment
  *
  * @category Class
- * @package  SpojeNET\Csas
+ * @package  SpojeNET\CSas
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,10 +59,10 @@ class GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsR
       * @var string[]
       */
     protected static $openAPITypes = [
-        'debtor' => '\SpojeNET\Csas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedPartiesDebtor',
-        'debtorAccount' => '\SpojeNET\Csas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedPartiesDebtorAccount',
-        'creditor' => '\SpojeNET\Csas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedPartiesCreditor',
-        'creditorAccount' => '\SpojeNET\Csas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedPartiesCreditorAccount'
+        'debtor' => '\SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedPartiesDebtor',
+        'debtorAccount' => '\SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedPartiesDebtorAccount',
+        'creditor' => '\SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedPartiesCreditor',
+        'creditorAccount' => '\SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedPartiesCreditorAccount'
     ];
 
     /**
@@ -315,7 +315,7 @@ class GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsR
     /**
      * Gets debtor
      *
-     * @return \SpojeNET\Csas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedPartiesDebtor|null
+     * @return \SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedPartiesDebtor|null
      */
     public function getDebtor()
     {
@@ -325,7 +325,7 @@ class GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsR
     /**
      * Sets debtor
      *
-     * @param \SpojeNET\Csas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedPartiesDebtor|null $debtor debtor
+     * @param \SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedPartiesDebtor|null $debtor debtor
      *
      * @return self
      */
@@ -342,7 +342,7 @@ class GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsR
     /**
      * Gets debtorAccount
      *
-     * @return \SpojeNET\Csas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedPartiesDebtorAccount|null
+     * @return \SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedPartiesDebtorAccount|null
      */
     public function getDebtorAccount()
     {
@@ -352,7 +352,7 @@ class GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsR
     /**
      * Sets debtorAccount
      *
-     * @param \SpojeNET\Csas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedPartiesDebtorAccount|null $debtorAccount debtorAccount
+     * @param \SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedPartiesDebtorAccount|null $debtorAccount debtorAccount
      *
      * @return self
      */
@@ -369,7 +369,7 @@ class GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsR
     /**
      * Gets creditor
      *
-     * @return \SpojeNET\Csas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedPartiesCreditor|null
+     * @return \SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedPartiesCreditor|null
      */
     public function getCreditor()
     {
@@ -379,7 +379,7 @@ class GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsR
     /**
      * Sets creditor
      *
-     * @param \SpojeNET\Csas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedPartiesCreditor|null $creditor creditor
+     * @param \SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedPartiesCreditor|null $creditor creditor
      *
      * @return self
      */
@@ -396,7 +396,7 @@ class GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsR
     /**
      * Gets creditorAccount
      *
-     * @return \SpojeNET\Csas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedPartiesCreditorAccount|null
+     * @return \SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedPartiesCreditorAccount|null
      */
     public function getCreditorAccount()
     {
@@ -406,7 +406,7 @@ class GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsR
     /**
      * Sets creditorAccount
      *
-     * @param \SpojeNET\Csas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedPartiesCreditorAccount|null $creditorAccount creditorAccount
+     * @param \SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedPartiesCreditorAccount|null $creditorAccount creditorAccount
      *
      * @return self
      */

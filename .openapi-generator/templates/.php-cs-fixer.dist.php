@@ -18,7 +18,7 @@ use Ergebnis\PhpCsFixer\Config\Rules;
 use Ergebnis\PhpCsFixer\Config\RuleSet\Php74;
 
 $header = <<<'HEADER'
-This file is part of the CsasWebApi package
+This file is part of the CSasWebApi package
 
 https://github.com/Spoje-NET/php-csas-webapi
 

@@ -6,7 +6,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  SpojeNET\Csas
+ * @package  SpojeNET\CSas
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -28,16 +28,16 @@
  * Do not edit the class manually.
  */
 
-namespace SpojeNET\Csas\Model;
+namespace SpojeNET\CSas\Model;
 
 use \ArrayAccess;
-use \SpojeNET\Csas\ObjectSerializer;
+use \SpojeNET\CSas\ObjectSerializer;
 
 /**
  * StatementList Class Doc Comment
  *
  * @category Class
- * @package  SpojeNET\Csas
+ * @package  SpojeNET\CSas
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -63,7 +63,7 @@ class StatementList implements ModelInterface, ArrayAccess, \JsonSerializable
         'pageCount' => 'float',
         'pageSize' => 'float',
         'nextPage' => 'float',
-        'accountStatements' => '\SpojeNET\Csas\Model\StatementListAccountStatementsInner[]'
+        'accountStatements' => '\SpojeNET\CSas\Model\StatementListAccountStatementsInner[]'
     ];
 
     /**
@@ -430,7 +430,7 @@ class StatementList implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets accountStatements
      *
-     * @return \SpojeNET\Csas\Model\StatementListAccountStatementsInner[]|null
+     * @return \SpojeNET\CSas\Model\StatementListAccountStatementsInner[]|null
      */
     public function getAccountStatements()
     {
@@ -440,7 +440,7 @@ class StatementList implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets accountStatements
      *
-     * @param \SpojeNET\Csas\Model\StatementListAccountStatementsInner[]|null $accountStatements accountStatements
+     * @param \SpojeNET\CSas\Model\StatementListAccountStatementsInner[]|null $accountStatements accountStatements
      *
      * @return self
      */

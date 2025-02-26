@@ -6,7 +6,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  SpojeNET\Csas
+ * @package  SpojeNET\CSas
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -28,16 +28,16 @@
  * Do not edit the class manually.
  */
 
-namespace SpojeNET\Csas\Model;
+namespace SpojeNET\CSas\Model;
 
 use \ArrayAccess;
-use \SpojeNET\Csas\ObjectSerializer;
+use \SpojeNET\CSas\ObjectSerializer;
 
 /**
  * GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedAgents Class Doc Comment
  *
  * @category Class
- * @package  SpojeNET\Csas
+ * @package  SpojeNET\CSas
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,8 +59,8 @@ class GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsR
       * @var string[]
       */
     protected static $openAPITypes = [
-        'creditorAgent' => '\SpojeNET\Csas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedAgentsCreditorAgent',
-        'debtorAgent' => '\SpojeNET\Csas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedAgentsDebtorAgent'
+        'creditorAgent' => '\SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedAgentsCreditorAgent',
+        'debtorAgent' => '\SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedAgentsDebtorAgent'
     ];
 
     /**
@@ -301,7 +301,7 @@ class GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsR
     /**
      * Gets creditorAgent
      *
-     * @return \SpojeNET\Csas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedAgentsCreditorAgent|null
+     * @return \SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedAgentsCreditorAgent|null
      */
     public function getCreditorAgent()
     {
@@ -311,7 +311,7 @@ class GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsR
     /**
      * Sets creditorAgent
      *
-     * @param \SpojeNET\Csas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedAgentsCreditorAgent|null $creditorAgent creditorAgent
+     * @param \SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedAgentsCreditorAgent|null $creditorAgent creditorAgent
      *
      * @return self
      */
@@ -328,7 +328,7 @@ class GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsR
     /**
      * Gets debtorAgent
      *
-     * @return \SpojeNET\Csas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedAgentsDebtorAgent|null
+     * @return \SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedAgentsDebtorAgent|null
      */
     public function getDebtorAgent()
     {
@@ -338,7 +338,7 @@ class GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsR
     /**
      * Sets debtorAgent
      *
-     * @param \SpojeNET\Csas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedAgentsDebtorAgent|null $debtorAgent debtorAgent
+     * @param \SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedAgentsDebtorAgent|null $debtorAgent debtorAgent
      *
      * @return self
      */

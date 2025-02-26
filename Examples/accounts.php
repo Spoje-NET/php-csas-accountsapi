@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * This file is part of the CsasWebApi package
+ * This file is part of the CSasWebApi package
  *
  * https://github.com/Spoje-NET/php-csas-webapi
  *
@@ -19,7 +19,7 @@ require_once \dirname(__DIR__).'/vendor/autoload.php';
 
 Shr::init([], \dirname(__DIR__).'/.env');
 
-$apiInstance = new \SpojeNET\Csas\Accounts\DefaultApi(new SpojeNET\Csas\ApiClient(
+$apiInstance = new \SpojeNET\CSas\Accounts\DefaultApi(new SpojeNET\CSas\ApiClient(
     [
         'apikey' => Shr::cfg('API_KEY'),
         'token' => Shr::cfg('ACCESS_TOKEN'),

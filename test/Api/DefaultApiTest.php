@@ -4,7 +4,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  SpojeNET\Csas
+ * @package  SpojeNET\CSas
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,18 +26,18 @@
  * Please update the test case below to test the endpoint.
  */
 
-namespace SpojeNET\Csas\Test\Api;
+namespace SpojeNET\CSas\Test\Api;
 
-use \SpojeNET\Csas\Configuration;
-use \SpojeNET\Csas\ApiException;
-use \SpojeNET\Csas\ObjectSerializer;
+use \SpojeNET\CSas\Configuration;
+use \SpojeNET\CSas\ApiException;
+use \SpojeNET\CSas\ObjectSerializer;
 use PHPUnit\Framework\TestCase;
 
 /**
  * DefaultApiTest Class Doc Comment
  *
  * @category Class
- * @package  SpojeNET\Csas
+ * @package  SpojeNET\CSas
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */

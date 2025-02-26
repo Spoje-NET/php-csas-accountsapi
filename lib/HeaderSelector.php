@@ -5,7 +5,7 @@
  * PHP version 7.4+
  *
  * @category Class
- * @package  SpojeNET\Csas
+ * @package  SpojeNET\CSas
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,13 +27,13 @@
  * Do not edit the class manually.
  */
 
-namespace SpojeNET\Csas;
+namespace SpojeNET\CSas;
 
 /**
  * HeaderSelector Class Doc Comment
  *
  * @category Class
- * @package  SpojeNET\Csas
+ * @package  SpojeNET\CSas
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */

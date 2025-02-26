@@ -6,7 +6,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  SpojeNET\Csas
+ * @package  SpojeNET\CSas
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -28,16 +28,16 @@
  * Do not edit the class manually.
  */
 
-namespace SpojeNET\Csas\Model;
+namespace SpojeNET\CSas\Model;
 
 use \ArrayAccess;
-use \SpojeNET\Csas\ObjectSerializer;
+use \SpojeNET\CSas\ObjectSerializer;
 
 /**
  * GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsAmountDetailsInstructedAmount Class Doc Comment
  *
  * @category Class
- * @package  SpojeNET\Csas
+ * @package  SpojeNET\CSas
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsA
       * @var string[]
       */
     protected static $openAPITypes = [
-        'amount' => '\SpojeNET\Csas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsAmountDetailsInstructedAmountAmount'
+        'amount' => '\SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsAmountDetailsInstructedAmountAmount'
     ];
 
     /**
@@ -294,7 +294,7 @@ class GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsA
     /**
      * Gets amount
      *
-     * @return \SpojeNET\Csas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsAmountDetailsInstructedAmountAmount|null
+     * @return \SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsAmountDetailsInstructedAmountAmount|null
      */
     public function getAmount()
     {
@@ -304,7 +304,7 @@ class GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsA
     /**
      * Sets amount
      *
-     * @param \SpojeNET\Csas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsAmountDetailsInstructedAmountAmount|null $amount amount
+     * @param \SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsAmountDetailsInstructedAmountAmount|null $amount amount
      *
      * @return self
      */

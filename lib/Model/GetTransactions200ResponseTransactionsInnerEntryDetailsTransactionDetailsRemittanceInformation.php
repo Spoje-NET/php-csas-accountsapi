@@ -6,7 +6,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  SpojeNET\Csas
+ * @package  SpojeNET\CSas
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -28,16 +28,16 @@
  * Do not edit the class manually.
  */
 
-namespace SpojeNET\Csas\Model;
+namespace SpojeNET\CSas\Model;
 
 use \ArrayAccess;
-use \SpojeNET\Csas\ObjectSerializer;
+use \SpojeNET\CSas\ObjectSerializer;
 
 /**
  * GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRemittanceInformation Class Doc Comment
  *
  * @category Class
- * @package  SpojeNET\Csas
+ * @package  SpojeNET\CSas
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsR
       */
     protected static $openAPITypes = [
         'unstructured' => 'string',
-        'structured' => '\SpojeNET\Csas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRemittanceInformationStructured'
+        'structured' => '\SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRemittanceInformationStructured'
     ];
 
     /**
@@ -328,7 +328,7 @@ class GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsR
     /**
      * Gets structured
      *
-     * @return \SpojeNET\Csas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRemittanceInformationStructured|null
+     * @return \SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRemittanceInformationStructured|null
      */
     public function getStructured()
     {
@@ -338,7 +338,7 @@ class GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsR
     /**
      * Sets structured
      *
-     * @param \SpojeNET\Csas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRemittanceInformationStructured|null $structured structured
+     * @param \SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRemittanceInformationStructured|null $structured structured
      *
      * @return self
      */
