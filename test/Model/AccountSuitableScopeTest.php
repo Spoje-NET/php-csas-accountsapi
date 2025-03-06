@@ -1,17 +1,20 @@
 <?php
+
+declare(strict_types=1);
+
 /**
- * AccountSuitableScopeTest
+ * This file is part of the CSasWebApi package
  *
- * PHP version 7.4
+ * https://github.com/Spoje-NET/php-csas-webapi
  *
- * @category Class
- * @package  SpojeNET\CSas
- * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ * (c) SpojeNetIT <http://spoje.net/>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 /**
- * Production Accounts API V3
+ * Production Accounts API V3.
  *
  * API for managing production accounts.
  *
@@ -32,67 +35,68 @@ namespace SpojeNET\CSas\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * AccountSuitableScopeTest Class Doc Comment
+ * AccountSuitableScopeTest Class Doc Comment.
  *
  * @category    Class
+ *
  * @description AccountSuitableScope
- * @package     SpojeNET\CSas
+ *
  * @author      OpenAPI Generator team
- * @link        https://openapi-generator.tech
+ *
+ * @see        https://openapi-generator.tech
  */
 class AccountSuitableScopeTest extends TestCase
 {
-
     /**
-     * Setup before running any test case
+     * Setup before running any test case.
      */
     public static function setUpBeforeClass(): void
     {
     }
 
     /**
-     * Setup before running each test case
-     */
-    public function setUp(): void
-    {
-    }
-
-    /**
-     * Clean up after running each test case
-     */
-    public function tearDown(): void
-    {
-    }
-
-    /**
-     * Clean up after running all test cases
+     * Clean up after running all test cases.
      */
     public static function tearDownAfterClass(): void
     {
     }
 
     /**
-     * Test "AccountSuitableScope"
+     * Setup before running each test case.
      */
-    public function testAccountSuitableScope()
+    protected function setUp(): void
+    {
+    }
+
+    /**
+     * Clean up after running each test case.
+     */
+    protected function tearDown(): void
+    {
+    }
+
+    /**
+     * Test "AccountSuitableScope".
+     */
+    public function testAccountSuitableScope(): void
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "aISP"
+     * Test attribute "aISP".
      */
-    public function testPropertyAISP()
+    public function testPropertyAISP(): void
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "pISP"
+     * Test attribute "pISP".
      */
-    public function testPropertyPISP()
+    public function testPropertyPISP(): void
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

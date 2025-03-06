@@ -1,17 +1,20 @@
 <?php
+
+declare(strict_types=1);
+
 /**
- * GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsTest
+ * This file is part of the CSasWebApi package
  *
- * PHP version 7.4
+ * https://github.com/Spoje-NET/php-csas-webapi
  *
- * @category Class
- * @package  SpojeNET\CSas
- * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ * (c) SpojeNetIT <http://spoje.net/>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 /**
- * Production Accounts API V3
+ * Production Accounts API V3.
  *
  * API for managing production accounts.
  *
@@ -32,121 +35,122 @@ namespace SpojeNET\CSas\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsTest Class Doc Comment
+ * GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsTest Class Doc Comment.
  *
  * @category    Class
+ *
  * @description GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetails
- * @package     SpojeNET\CSas
+ *
  * @author      OpenAPI Generator team
- * @link        https://openapi-generator.tech
+ *
+ * @see        https://openapi-generator.tech
  */
 class GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsTest extends TestCase
 {
-
     /**
-     * Setup before running any test case
+     * Setup before running any test case.
      */
     public static function setUpBeforeClass(): void
     {
     }
 
     /**
-     * Setup before running each test case
-     */
-    public function setUp(): void
-    {
-    }
-
-    /**
-     * Clean up after running each test case
-     */
-    public function tearDown(): void
-    {
-    }
-
-    /**
-     * Clean up after running all test cases
+     * Clean up after running all test cases.
      */
     public static function tearDownAfterClass(): void
     {
     }
 
     /**
-     * Test "GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetails"
+     * Setup before running each test case.
      */
-    public function testGetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetails()
+    protected function setUp(): void
+    {
+    }
+
+    /**
+     * Clean up after running each test case.
+     */
+    protected function tearDown(): void
+    {
+    }
+
+    /**
+     * Test "GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetails".
+     */
+    public function testGetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetails(): void
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "references"
+     * Test attribute "references".
      */
-    public function testPropertyReferences()
+    public function testPropertyReferences(): void
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "amountDetails"
+     * Test attribute "amountDetails".
      */
-    public function testPropertyAmountDetails()
+    public function testPropertyAmountDetails(): void
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "relatedParties"
+     * Test attribute "relatedParties".
      */
-    public function testPropertyRelatedParties()
+    public function testPropertyRelatedParties(): void
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "relatedAgents"
+     * Test attribute "relatedAgents".
      */
-    public function testPropertyRelatedAgents()
+    public function testPropertyRelatedAgents(): void
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "remittanceInformation"
+     * Test attribute "remittanceInformation".
      */
-    public function testPropertyRemittanceInformation()
+    public function testPropertyRemittanceInformation(): void
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "additionalTransactionInformation"
+     * Test attribute "additionalTransactionInformation".
      */
-    public function testPropertyAdditionalTransactionInformation()
+    public function testPropertyAdditionalTransactionInformation(): void
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "additionalRemittanceInformation"
+     * Test attribute "additionalRemittanceInformation".
      */
-    public function testPropertyAdditionalRemittanceInformation()
+    public function testPropertyAdditionalRemittanceInformation(): void
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "additionalTransactionDescription"
+     * Test attribute "additionalTransactionDescription".
      */
-    public function testPropertyAdditionalTransactionDescription()
+    public function testPropertyAdditionalTransactionDescription(): void
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

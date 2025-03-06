@@ -1,17 +1,20 @@
 <?php
 
+declare(strict_types=1);
+
 /**
- * Configuration
- * PHP version 7.4+
+ * This file is part of the CSasWebApi package
  *
- * @category Class
- * @package  SpojeNET\CSas
- * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ * https://github.com/Spoje-NET/php-csas-webapi
+ *
+ * (c) SpojeNetIT <http://spoje.net/>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 /**
- * Production Accounts API V3
+ * Production Accounts API V3.
  *
  * API for managing production accounts.
  *
@@ -31,12 +34,13 @@ namespace SpojeNET\CSas;
 
 /**
  * Configuration Class Doc Comment
- * PHP version 7.4
+ * PHP version 7.4.
  *
  * @category Class
- * @package  SpojeNET\CSas
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class Configuration
 {
@@ -44,89 +48,67 @@ class Configuration
     public const BOOLEAN_FORMAT_STRING = 'string';
 
     /**
-     * @var Configuration
-     */
-    private static $defaultConfiguration;
-
-    /**
-     * Associate array to store API key(s)
+     * Associate array to store API key(s).
      *
      * @var string[]
      */
-    protected $apiKeys = [];
+    protected array $apiKeys = [];
 
     /**
-     * Associate array to store API prefix (e.g. Bearer)
+     * Associate array to store API prefix (e.g. Bearer).
      *
      * @var string[]
      */
-    protected $apiKeyPrefixes = [];
+    protected array $apiKeyPrefixes = [];
 
     /**
-     * Access token for OAuth/Bearer authentication
-     *
-     * @var string
+     * Access token for OAuth/Bearer authentication.
      */
-    protected $accessToken = '';
+    protected string $accessToken = '';
 
     /**
-     * Boolean format for query string
-     *
-     * @var string
+     * Boolean format for query string.
      */
-    protected $booleanFormatForQueryString = self::BOOLEAN_FORMAT_INT;
+    protected string $booleanFormatForQueryString = self::BOOLEAN_FORMAT_INT;
 
     /**
-     * Username for HTTP basic authentication
-     *
-     * @var string
+     * Username for HTTP basic authentication.
      */
-    protected $username = '';
+    protected string $username = '';
 
     /**
-     * Password for HTTP basic authentication
-     *
-     * @var string
+     * Password for HTTP basic authentication.
      */
-    protected $password = '';
+    protected string $password = '';
 
     /**
-     * The host
-     *
-     * @var string
+     * The host.
      */
-    protected $host = 'https://www.csas.cz/webapi/api/v3/accounts';
+    protected string $host = 'https://www.csas.cz/webapi/api/v3/accounts';
 
     /**
-     * User agent of the HTTP request, set to "OpenAPI-Generator/{version}/PHP" by default
-     *
-     * @var string
+     * User agent of the HTTP request, set to "OpenAPI-Generator/{version}/PHP" by default.
      */
-    protected $userAgent = 'SpojeNET\CSas/0.0.0/PHP';
+    protected string $userAgent = 'SpojeNET\CSas/0.0.0/PHP';
 
     /**
-     * Debug switch (default set to false)
-     *
-     * @var bool
+     * Debug switch (default set to false).
      */
-    protected $debug = false;
+    protected bool $debug = false;
 
     /**
-     * Debug file location (log to STDOUT by default)
-     *
-     * @var string
+     * Debug file location (log to STDOUT by default).
      */
-    protected $debugFile = 'php://output';
+    protected string $debugFile = 'php://output';
 
     /**
-     * Debug file location (log to STDOUT by default)
-     *
-     * @var string
+     * Debug file location (log to STDOUT by default).
      */
-    protected $tempFolderPath;
+    protected string $tempFolderPath;
+    private static Configuration $defaultConfiguration;
 
     /**
-     * Constructor
+     * Constructor.
      */
     public function __construct()
     {
@@ -134,7 +116,7 @@ class Configuration
     }
 
     /**
-     * Sets API key
+     * Sets API key.
      *
      * @param string $apiKeyIdentifier API key identifier (authentication scheme)
      * @param string $key              API key or token
@@ -144,11 +126,12 @@ class Configuration
     public function setApiKey($apiKeyIdentifier, $key)
     {
         $this->apiKeys[$apiKeyIdentifier] = $key;
+
         return $this;
     }
 
     /**
-     * Gets API key
+     * Gets API key.
      *
      * @param string $apiKeyIdentifier API key identifier (authentication scheme)
      *
@@ -156,11 +139,11 @@ class Configuration
      */
     public function getApiKey($apiKeyIdentifier)
     {
-        return isset($this->apiKeys[$apiKeyIdentifier]) ? $this->apiKeys[$apiKeyIdentifier] : null;
+        return $this->apiKeys[$apiKeyIdentifier] ?? null;
     }
 
     /**
-     * Sets the prefix for API key (e.g. Bearer)
+     * Sets the prefix for API key (e.g. Bearer).
      *
      * @param string $apiKeyIdentifier API key identifier (authentication scheme)
      * @param string $prefix           API key prefix, e.g. Bearer
@@ -170,11 +153,12 @@ class Configuration
     public function setApiKeyPrefix($apiKeyIdentifier, $prefix)
     {
         $this->apiKeyPrefixes[$apiKeyIdentifier] = $prefix;
+
         return $this;
     }
 
     /**
-     * Gets API key prefix
+     * Gets API key prefix.
      *
      * @param string $apiKeyIdentifier API key identifier (authentication scheme)
      *
@@ -182,11 +166,11 @@ class Configuration
      */
     public function getApiKeyPrefix($apiKeyIdentifier)
     {
-        return isset($this->apiKeyPrefixes[$apiKeyIdentifier]) ? $this->apiKeyPrefixes[$apiKeyIdentifier] : null;
+        return $this->apiKeyPrefixes[$apiKeyIdentifier] ?? null;
     }
 
     /**
-     * Sets the access token for OAuth
+     * Sets the access token for OAuth.
      *
      * @param string $accessToken Token for OAuth
      *
@@ -195,11 +179,12 @@ class Configuration
     public function setAccessToken($accessToken)
     {
         $this->accessToken = $accessToken;
+
         return $this;
     }
 
     /**
-     * Gets the access token for OAuth
+     * Gets the access token for OAuth.
      *
      * @return string Access token for OAuth
      */
@@ -233,7 +218,7 @@ class Configuration
     }
 
     /**
-     * Sets the username for HTTP basic authentication
+     * Sets the username for HTTP basic authentication.
      *
      * @param string $username Username for HTTP basic authentication
      *
@@ -242,11 +227,12 @@ class Configuration
     public function setUsername($username)
     {
         $this->username = $username;
+
         return $this;
     }
 
     /**
-     * Gets the username for HTTP basic authentication
+     * Gets the username for HTTP basic authentication.
      *
      * @return string Username for HTTP basic authentication
      */
@@ -256,7 +242,7 @@ class Configuration
     }
 
     /**
-     * Sets the password for HTTP basic authentication
+     * Sets the password for HTTP basic authentication.
      *
      * @param string $password Password for HTTP basic authentication
      *
@@ -265,11 +251,12 @@ class Configuration
     public function setPassword($password)
     {
         $this->password = $password;
+
         return $this;
     }
 
     /**
-     * Gets the password for HTTP basic authentication
+     * Gets the password for HTTP basic authentication.
      *
      * @return string Password for HTTP basic authentication
      */
@@ -279,7 +266,7 @@ class Configuration
     }
 
     /**
-     * Sets the host
+     * Sets the host.
      *
      * @param string $host Host
      *
@@ -288,11 +275,12 @@ class Configuration
     public function setHost($host)
     {
         $this->host = $host;
+
         return $this;
     }
 
     /**
-     * Gets the host
+     * Gets the host.
      *
      * @return string Host
      */
@@ -302,25 +290,27 @@ class Configuration
     }
 
     /**
-     * Sets the user agent of the api client
+     * Sets the user agent of the api client.
      *
      * @param string $userAgent the user agent of the api client
      *
      * @throws \InvalidArgumentException
+     *
      * @return $this
      */
     public function setUserAgent($userAgent)
     {
-        if (!is_string($userAgent)) {
+        if (!\is_string($userAgent)) {
             throw new \InvalidArgumentException('User-agent must be a string.');
         }
 
         $this->userAgent = $userAgent;
+
         return $this;
     }
 
     /**
-     * Gets the user agent of the api client
+     * Gets the user agent of the api client.
      *
      * @return string user agent
      */
@@ -330,7 +320,7 @@ class Configuration
     }
 
     /**
-     * Sets debug flag
+     * Sets debug flag.
      *
      * @param bool $debug Debug flag
      *
@@ -339,11 +329,12 @@ class Configuration
     public function setDebug($debug)
     {
         $this->debug = $debug;
+
         return $this;
     }
 
     /**
-     * Gets the debug flag
+     * Gets the debug flag.
      *
      * @return bool
      */
@@ -353,7 +344,7 @@ class Configuration
     }
 
     /**
-     * Sets the debug file
+     * Sets the debug file.
      *
      * @param string $debugFile Debug file
      *
@@ -362,11 +353,12 @@ class Configuration
     public function setDebugFile($debugFile)
     {
         $this->debugFile = $debugFile;
+
         return $this;
     }
 
     /**
-     * Gets the debug file
+     * Gets the debug file.
      *
      * @return string
      */
@@ -376,7 +368,7 @@ class Configuration
     }
 
     /**
-     * Sets the temp folder path
+     * Sets the temp folder path.
      *
      * @param string $tempFolderPath Temp folder path
      *
@@ -385,11 +377,12 @@ class Configuration
     public function setTempFolderPath($tempFolderPath)
     {
         $this->tempFolderPath = $tempFolderPath;
+
         return $this;
     }
 
     /**
-     * Gets the temp folder path
+     * Gets the temp folder path.
      *
      * @return string Temp folder path
      */
@@ -399,51 +392,49 @@ class Configuration
     }
 
     /**
-     * Gets the default configuration instance
+     * Gets the default configuration instance.
      *
      * @return Configuration
      */
     public static function getDefaultConfiguration()
     {
         if (isset(self::$defaultConfiguration) === false) {
-            self::$defaultConfiguration = new Configuration();
+            self::$defaultConfiguration = new self();
         }
 
         return self::$defaultConfiguration;
     }
 
     /**
-     * Sets the default configuration instance
+     * Sets the default configuration instance.
      *
      * @param Configuration $config An instance of the Configuration Object
-     *
-     * @return void
      */
-    public static function setDefaultConfiguration(Configuration $config)
+    public static function setDefaultConfiguration(self $config): void
     {
         self::$defaultConfiguration = $config;
     }
 
     /**
-     * Gets the essential information for debugging
+     * Gets the essential information for debugging.
      *
      * @return string The report for debugging
      */
     public static function toDebugReport()
     {
-        $report  = 'PHP SDK (SpojeNET\CSas) Debug Report:' . PHP_EOL;
-        $report .= '    OS: ' . php_uname() . PHP_EOL;
-        $report .= '    PHP Version: ' . PHP_VERSION . PHP_EOL;
-        $report .= '    The version of the OpenAPI document: 1.0.0' . PHP_EOL;
-        $report .= '    Temp Folder Path: ' . self::getDefaultConfiguration()->getTempFolderPath() . PHP_EOL;
+        $report = 'PHP SDK (SpojeNET\CSas) Debug Report:'.\PHP_EOL;
+        $report .= '    OS: '.php_uname().\PHP_EOL;
+        $report .= '    PHP Version: '.\PHP_VERSION.\PHP_EOL;
+        $report .= '    The version of the OpenAPI document: 1.0.0'.\PHP_EOL;
+        $report .= '    Temp Folder Path: '.self::getDefaultConfiguration()->getTempFolderPath().\PHP_EOL;
 
         return $report;
     }
 
     /**
-     * Get API key (with prefix if set)
+     * Get API key (with prefix if set).
      *
-     * @param  string $apiKeyIdentifier name of apikey
+     * @param string $apiKeyIdentifier name of apikey
      *
      * @return null|string API key with the prefix
      */
@@ -459,14 +450,14 @@ class Configuration
         if ($prefix === null) {
             $keyWithPrefix = $apiKey;
         } else {
-            $keyWithPrefix = $prefix . ' ' . $apiKey;
+            $keyWithPrefix = $prefix.' '.$apiKey;
         }
 
         return $keyWithPrefix;
     }
 
     /**
-     * Returns an array of host settings
+     * Returns an array of host settings.
      *
      * @return array an array of host settings
      */
@@ -474,49 +465,50 @@ class Configuration
     {
         return [
             [
-                "url" => "https://www.csas.cz/webapi/api/v3/accounts",
-                "description" => "Production server",
+                'url' => 'https://www.csas.cz/webapi/api/v3/accounts',
+                'description' => 'Production server',
             ],
             [
-                "url" => "https://webapi.developers.erstegroup.com/api/csas/public/sandbox/v3/accounts",
-                "description" => "Sandbox server",
-            ]
+                'url' => 'https://webapi.developers.erstegroup.com/api/csas/public/sandbox/v3/accounts',
+                'description' => 'Sandbox server',
+            ],
         ];
     }
 
     /**
-    * Returns URL based on host settings, index and variables
-    *
-    * @param array      $hostSettings array of host settings, generated from getHostSettings() or equivalent from the API clients
-    * @param int        $hostIndex    index of the host settings
-    * @param array|null $variables    hash of variable and the corresponding value (optional)
-    * @return string URL based on host settings
-    */
-    public static function getHostString(array $hostSettings, $hostIndex, array $variables = null)
+     * Returns URL based on host settings, index and variables.
+     *
+     * @param array      $hostSettings array of host settings, generated from getHostSettings() or equivalent from the API clients
+     * @param int        $hostIndex    index of the host settings
+     * @param null|array $variables    hash of variable and the corresponding value (optional)
+     *
+     * @return string URL based on host settings
+     */
+    public static function getHostString(array $hostSettings, $hostIndex, ?array $variables = null)
     {
         if (null === $variables) {
             $variables = [];
         }
 
         // check array index out of bound
-        if ($hostIndex < 0 || $hostIndex >= count($hostSettings)) {
-            throw new \InvalidArgumentException("Invalid index $hostIndex when selecting the host. Must be less than ".count($hostSettings));
+        if ($hostIndex < 0 || $hostIndex >= \count($hostSettings)) {
+            throw new \InvalidArgumentException("Invalid index {$hostIndex} when selecting the host. Must be less than ".\count($hostSettings));
         }
 
         $host = $hostSettings[$hostIndex];
-        $url = $host["url"];
+        $url = $host['url'];
 
         // go through variable and assign a value
-        foreach ($host["variables"] ?? [] as $name => $variable) {
-            if (array_key_exists($name, $variables)) { // check to see if it's in the variables provided by the user
-                if (!isset($variable['enum_values']) || in_array($variables[$name], $variable["enum_values"], true)) { // check to see if the value is in the enum
-                    $url = str_replace("{".$name."}", $variables[$name], $url);
+        foreach ($host['variables'] ?? [] as $name => $variable) {
+            if (\array_key_exists($name, $variables)) { // check to see if it's in the variables provided by the user
+                if (!isset($variable['enum_values']) || \in_array($variables[$name], $variable['enum_values'], true)) { // check to see if the value is in the enum
+                    $url = str_replace('{'.$name.'}', $variables[$name], $url);
                 } else {
-                    throw new \InvalidArgumentException("The variable `$name` in the host URL has invalid value ".$variables[$name].". Must be ".join(',', $variable["enum_values"]).".");
+                    throw new \InvalidArgumentException("The variable `{$name}` in the host URL has invalid value ".$variables[$name].'. Must be '.implode(',', $variable['enum_values']).'.');
                 }
             } else {
                 // use default value
-                $url = str_replace("{".$name."}", $variable["default_value"], $url);
+                $url = str_replace('{'.$name.'}', $variable['default_value'], $url);
             }
         }
 
@@ -524,10 +516,11 @@ class Configuration
     }
 
     /**
-     * Returns URL based on the index and variables
+     * Returns URL based on the index and variables.
      *
      * @param int        $index     index of the host settings
-     * @param array|null $variables hash of variable and the corresponding value (optional)
+     * @param null|array $variables hash of variable and the corresponding value (optional)
+     *
      * @return string URL based on host settings
      */
     public function getHostFromSettings($index, $variables = null)

@@ -1,17 +1,20 @@
 <?php
+
+declare(strict_types=1);
+
 /**
- * GetAccountBalance200ResponseBalancesInnerDateTest
+ * This file is part of the CSasWebApi package
  *
- * PHP version 7.4
+ * https://github.com/Spoje-NET/php-csas-webapi
  *
- * @category Class
- * @package  SpojeNET\CSas
- * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ * (c) SpojeNetIT <http://spoje.net/>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 /**
- * Production Accounts API V3
+ * Production Accounts API V3.
  *
  * API for managing production accounts.
  *
@@ -32,58 +35,59 @@ namespace SpojeNET\CSas\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * GetAccountBalance200ResponseBalancesInnerDateTest Class Doc Comment
+ * GetAccountBalance200ResponseBalancesInnerDateTest Class Doc Comment.
  *
  * @category    Class
+ *
  * @description GetAccountBalance200ResponseBalancesInnerDate
- * @package     SpojeNET\CSas
+ *
  * @author      OpenAPI Generator team
- * @link        https://openapi-generator.tech
+ *
+ * @see        https://openapi-generator.tech
  */
 class GetAccountBalance200ResponseBalancesInnerDateTest extends TestCase
 {
-
     /**
-     * Setup before running any test case
+     * Setup before running any test case.
      */
     public static function setUpBeforeClass(): void
     {
     }
 
     /**
-     * Setup before running each test case
-     */
-    public function setUp(): void
-    {
-    }
-
-    /**
-     * Clean up after running each test case
-     */
-    public function tearDown(): void
-    {
-    }
-
-    /**
-     * Clean up after running all test cases
+     * Clean up after running all test cases.
      */
     public static function tearDownAfterClass(): void
     {
     }
 
     /**
-     * Test "GetAccountBalance200ResponseBalancesInnerDate"
+     * Setup before running each test case.
      */
-    public function testGetAccountBalance200ResponseBalancesInnerDate()
+    protected function setUp(): void
+    {
+    }
+
+    /**
+     * Clean up after running each test case.
+     */
+    protected function tearDown(): void
+    {
+    }
+
+    /**
+     * Test "GetAccountBalance200ResponseBalancesInnerDate".
+     */
+    public function testGetAccountBalance200ResponseBalancesInnerDate(): void
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "dateTime"
+     * Test attribute "dateTime".
      */
-    public function testPropertyDateTime()
+    public function testPropertyDateTime(): void
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

@@ -3,11 +3,11 @@
 declare(strict_types=1);
 
 /**
- * This file is part of the MultiFlexi package
+ * This file is part of the CSasWebApi package
  *
- * https://multiflexi.eu/
+ * https://github.com/Spoje-NET/php-csas-webapi
  *
- * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ * (c) SpojeNetIT <http://spoje.net/>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.

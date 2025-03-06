@@ -1,18 +1,20 @@
 <?php
 
+declare(strict_types=1);
+
 /**
- * Account
+ * This file is part of the CSasWebApi package
  *
- * PHP version 7.4
+ * https://github.com/Spoje-NET/php-csas-webapi
  *
- * @category Class
- * @package  SpojeNET\CSas
- * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ * (c) SpojeNetIT <http://spoje.net/>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 /**
- * Production Accounts API V3
+ * Production Accounts API V3.
  *
  * API for managing production accounts.
  *
@@ -30,35 +32,36 @@
 
 namespace SpojeNET\CSas\Model;
 
-use \ArrayAccess;
-use \SpojeNET\CSas\ObjectSerializer;
+use SpojeNET\CSas\ObjectSerializer;
 
 /**
- * Account Class Doc Comment
+ * Account Class Doc Comment.
  *
  * @category Class
- * @package  SpojeNET\CSas
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
+ *
  * @implements \ArrayAccess<string, mixed>
  */
-class Account implements ModelInterface, ArrayAccess, \JsonSerializable
+class Account implements \ArrayAccess, \JsonSerializable, ModelInterface
 {
     public const DISCRIMINATOR = null;
+    public const STATUS_BOOK = 'BOOK';
+    public const STATUS_PENDING = 'PENDING';
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
-    protected static $openAPIModelName = 'Account';
+     * The original name of the model.
+     */
+    protected static string $openAPIModelName = 'Account';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
-    protected static $openAPITypes = [
+     * Array of property to type mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     */
+    protected static array $openAPITypes = [
         'id' => 'string',
         'identification' => '\SpojeNET\CSas\Model\AccountIdentification',
         'currency' => 'string',
@@ -70,17 +73,19 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
         'suitableScope' => '\SpojeNET\CSas\Model\AccountSuitableScope',
         'status' => 'string',
         'relatedAgents' => '\SpojeNET\CSas\Model\AccountRelatedAgents',
-        'currencyExchange' => '\SpojeNET\CSas\Model\AccountCurrencyExchange'
+        'currencyExchange' => '\SpojeNET\CSas\Model\AccountCurrencyExchange',
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
-    protected static $openAPIFormats = [
+     * Array of property to format mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     *
+     * @phpstan-var array<string, string|null>
+     *
+     * @psalm-var array<string, string|null>
+     */
+    protected static array $openAPIFormats = [
         'id' => null,
         'identification' => null,
         'currency' => null,
@@ -92,14 +97,14 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
         'suitableScope' => null,
         'status' => null,
         'relatedAgents' => null,
-        'currencyExchange' => null
+        'currencyExchange' => null,
     ];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization.
+     *
+     * @var bool[]
+     */
     protected static array $openAPINullables = [
         'id' => false,
         'identification' => false,
@@ -112,95 +117,23 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
         'suitableScope' => false,
         'status' => false,
         'relatedAgents' => false,
-        'currencyExchange' => false
+        'currencyExchange' => false,
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here.
+     *
+     * @var bool[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @return array
-     */
-    public static function openAPITypes()
-    {
-        return self::$openAPITypes;
-    }
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     *
-     * @return array
-     */
-    public static function openAPIFormats()
-    {
-        return self::$openAPIFormats;
-    }
-
-    /**
-     * Array of nullable properties
-     *
-     * @return array
-     */
-    protected static function openAPINullables(): array
-    {
-        return self::$openAPINullables;
-    }
-
-    /**
-     * Array of nullable field names deliberately set to null
-     *
-     * @return boolean[]
-     */
-    private function getOpenAPINullablesSetToNull(): array
-    {
-        return $this->openAPINullablesSetToNull;
-    }
-
-    /**
-     * Setter - Array of nullable field names deliberately set to null
-     *
-     * @param boolean[] $openAPINullablesSetToNull
-     */
-    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
-    {
-        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
-    }
-
-    /**
-     * Checks if a property is nullable
-     *
-     * @param string $property
-     * @return bool
-     */
-    public static function isNullable(string $property): bool
-    {
-        return self::openAPINullables()[$property] ?? false;
-    }
-
-    /**
-     * Checks if a nullable property is set to null.
-     *
-     * @param string $property
-     * @return bool
-     */
-    public function isNullableSetToNull(string $property): bool
-    {
-        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
-    }
-
-    /**
      * Array of attributes where the key is the local name,
-     * and the value is the original name
+     * and the value is the original name.
      *
      * @var string[]
      */
-    protected static $attributeMap = [
+    protected static array $attributeMap = [
         'id' => 'id',
         'identification' => 'identification',
         'currency' => 'currency',
@@ -212,15 +145,15 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
         'suitableScope' => 'suitableScope',
         'status' => 'status',
         'relatedAgents' => 'relatedAgents',
-        'currencyExchange' => 'currencyExchange'
+        'currencyExchange' => 'currencyExchange',
     ];
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
+     * Array of attributes to setter functions (for deserialization of responses).
      *
      * @var string[]
      */
-    protected static $setters = [
+    protected static array $setters = [
         'id' => 'setId',
         'identification' => 'setIdentification',
         'currency' => 'setCurrency',
@@ -232,15 +165,15 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
         'suitableScope' => 'setSuitableScope',
         'status' => 'setStatus',
         'relatedAgents' => 'setRelatedAgents',
-        'currencyExchange' => 'setCurrencyExchange'
+        'currencyExchange' => 'setCurrencyExchange',
     ];
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
+     * Array of attributes to getter functions (for serialization of requests).
      *
      * @var string[]
      */
-    protected static $getters = [
+    protected static array $getters = [
         'id' => 'getId',
         'identification' => 'getIdentification',
         'currency' => 'getCurrency',
@@ -252,12 +185,90 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
         'suitableScope' => 'getSuitableScope',
         'status' => 'getStatus',
         'relatedAgents' => 'getRelatedAgents',
-        'currencyExchange' => 'getCurrencyExchange'
+        'currencyExchange' => 'getCurrencyExchange',
     ];
 
     /**
+     * Associative array for storing property values.
+     *
+     * @var mixed[]
+     */
+    protected array $container = [];
+
+    /**
+     * Constructor.
+     *
+     * @param mixed[] $data Associated array of property values
+     *                      initializing the model
+     */
+    public function __construct(?array $data = null)
+    {
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('identification', $data ?? [], null);
+        $this->setIfExists('currency', $data ?? [], null);
+        $this->setIfExists('servicer', $data ?? [], null);
+        $this->setIfExists('nameI18N', $data ?? [], null);
+        $this->setIfExists('productI18N', $data ?? [], null);
+        $this->setIfExists('ownersNames', $data ?? [], null);
+        $this->setIfExists('relationship', $data ?? [], null);
+        $this->setIfExists('suitableScope', $data ?? [], null);
+        $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('relatedAgents', $data ?? [], null);
+        $this->setIfExists('currencyExchange', $data ?? [], null);
+    }
+
+    /**
+     * Gets the string presentation of the object.
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return json_encode(
+            ObjectSerializer::sanitizeForSerialization($this),
+            \JSON_PRETTY_PRINT,
+        );
+    }
+
+    /**
+     * Array of property to type mappings. Used for (de)serialization.
+     *
+     * @return array
+     */
+    public static function openAPITypes()
+    {
+        return self::$openAPITypes;
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization.
+     *
+     * @return array
+     */
+    public static function openAPIFormats()
+    {
+        return self::$openAPIFormats;
+    }
+
+    /**
+     * Checks if a property is nullable.
+     */
+    public static function isNullable(string $property): bool
+    {
+        return self::openAPINullables()[$property] ?? false;
+    }
+
+    /**
+     * Checks if a nullable property is set to null.
+     */
+    public function isNullableSetToNull(string $property): bool
+    {
+        return \in_array($property, $this->getOpenAPINullablesSetToNull(), true);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
-     * and the value is the original name
+     * and the value is the original name.
      *
      * @return array
      */
@@ -267,7 +278,7 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
+     * Array of attributes to setter functions (for deserialization of responses).
      *
      * @return array
      */
@@ -277,7 +288,7 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
+     * Array of attributes to getter functions (for serialization of requests).
      *
      * @return array
      */
@@ -296,11 +307,8 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const STATUS_BOOK = 'BOOK';
-    public const STATUS_PENDING = 'PENDING';
-
     /**
-     * Gets allowable values of the enum
+     * Gets allowable values of the enum.
      *
      * @return string[]
      */
@@ -313,53 +321,6 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Associative array for storing property values
-     *
-     * @var mixed[]
-     */
-    protected $container = [];
-
-    /**
-     * Constructor
-     *
-     * @param mixed[] $data Associated array of property values
-     *                      initializing the model
-     */
-    public function __construct(array $data = null)
-    {
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('identification', $data ?? [], null);
-        $this->setIfExists('currency', $data ?? [], null);
-        $this->setIfExists('servicer', $data ?? [], null);
-        $this->setIfExists('nameI18N', $data ?? [], null);
-        $this->setIfExists('productI18N', $data ?? [], null);
-        $this->setIfExists('ownersNames', $data ?? [], null);
-        $this->setIfExists('relationship', $data ?? [], null);
-        $this->setIfExists('suitableScope', $data ?? [], null);
-        $this->setIfExists('status', $data ?? [], null);
-        $this->setIfExists('relatedAgents', $data ?? [], null);
-        $this->setIfExists('currencyExchange', $data ?? [], null);
-    }
-
-    /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
-    private function setIfExists(string $variableName, array $fields, $defaultValue): void
-    {
-        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
-            $this->openAPINullablesSetToNull[] = $variableName;
-        }
-
-        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
-    }
-
-    /**
      * Show all the invalid properties with reasons.
      *
      * @return array invalid properties with reasons
@@ -369,11 +330,12 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
         $invalidProperties = [];
 
         $allowedValues = $this->getStatusAllowableValues();
-        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
+
+        if (null !== $this->container['status'] && !\in_array($this->container['status'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'status', must be one of '%s'",
                 $this->container['status'],
-                implode("', '", $allowedValues)
+                implode("', '", $allowedValues),
             );
         }
 
@@ -382,20 +344,19 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
 
     /**
      * Validate all the properties in the model
-     * return true if all passed
+     * return true if all passed.
      *
      * @return bool True if all properties are valid
      */
     public function valid()
     {
-        return count($this->listInvalidProperties()) === 0;
+        return \count($this->listInvalidProperties()) === 0;
     }
 
-
     /**
-     * Gets id
+     * Gets id.
      *
-     * @return string|null
+     * @return null|string
      */
     public function getId()
     {
@@ -403,26 +364,27 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Sets id
+     * Sets id.
      *
-     * @param string|null $id Unique system ID of the client's account
+     * @param null|string $id Unique system ID of the client's account
      *
      * @return self
      */
     public function setId($id)
     {
-        if (is_null($id)) {
+        if (null === $id) {
             throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
+
         $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets identification
+     * Gets identification.
      *
-     * @return \SpojeNET\CSas\Model\AccountIdentification|null
+     * @return null|\SpojeNET\CSas\Model\AccountIdentification
      */
     public function getIdentification()
     {
@@ -430,26 +392,27 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Sets identification
+     * Sets identification.
      *
-     * @param \SpojeNET\CSas\Model\AccountIdentification|null $identification identification
+     * @param null|\SpojeNET\CSas\Model\AccountIdentification $identification identification
      *
      * @return self
      */
     public function setIdentification($identification)
     {
-        if (is_null($identification)) {
+        if (null === $identification) {
             throw new \InvalidArgumentException('non-nullable identification cannot be null');
         }
+
         $this->container['identification'] = $identification;
 
         return $this;
     }
 
     /**
-     * Gets currency
+     * Gets currency.
      *
-     * @return string|null
+     * @return null|string
      */
     public function getCurrency()
     {
@@ -457,26 +420,27 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Sets currency
+     * Sets currency.
      *
-     * @param string|null $currency Currency of the account
+     * @param null|string $currency Currency of the account
      *
      * @return self
      */
     public function setCurrency($currency)
     {
-        if (is_null($currency)) {
+        if (null === $currency) {
             throw new \InvalidArgumentException('non-nullable currency cannot be null');
         }
+
         $this->container['currency'] = $currency;
 
         return $this;
     }
 
     /**
-     * Gets servicer
+     * Gets servicer.
      *
-     * @return \SpojeNET\CSas\Model\AccountServicer|null
+     * @return null|\SpojeNET\CSas\Model\AccountServicer
      */
     public function getServicer()
     {
@@ -484,26 +448,27 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Sets servicer
+     * Sets servicer.
      *
-     * @param \SpojeNET\CSas\Model\AccountServicer|null $servicer servicer
+     * @param null|\SpojeNET\CSas\Model\AccountServicer $servicer servicer
      *
      * @return self
      */
     public function setServicer($servicer)
     {
-        if (is_null($servicer)) {
+        if (null === $servicer) {
             throw new \InvalidArgumentException('non-nullable servicer cannot be null');
         }
+
         $this->container['servicer'] = $servicer;
 
         return $this;
     }
 
     /**
-     * Gets nameI18N
+     * Gets nameI18N.
      *
-     * @return string|null
+     * @return null|string
      */
     public function getNameI18N()
     {
@@ -511,26 +476,27 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Sets nameI18N
+     * Sets nameI18N.
      *
-     * @param string|null $nameI18N Internationalized name of the account
+     * @param null|string $nameI18N Internationalized name of the account
      *
      * @return self
      */
     public function setNameI18N($nameI18N)
     {
-        if (is_null($nameI18N)) {
+        if (null === $nameI18N) {
             throw new \InvalidArgumentException('non-nullable nameI18N cannot be null');
         }
+
         $this->container['nameI18N'] = $nameI18N;
 
         return $this;
     }
 
     /**
-     * Gets productI18N
+     * Gets productI18N.
      *
-     * @return string|null
+     * @return null|string
      */
     public function getProductI18N()
     {
@@ -538,26 +504,27 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Sets productI18N
+     * Sets productI18N.
      *
-     * @param string|null $productI18N Internationalized product name
+     * @param null|string $productI18N Internationalized product name
      *
      * @return self
      */
     public function setProductI18N($productI18N)
     {
-        if (is_null($productI18N)) {
+        if (null === $productI18N) {
             throw new \InvalidArgumentException('non-nullable productI18N cannot be null');
         }
+
         $this->container['productI18N'] = $productI18N;
 
         return $this;
     }
 
     /**
-     * Gets ownersNames
+     * Gets ownersNames.
      *
-     * @return string[]|null
+     * @return null|string[]
      */
     public function getOwnersNames()
     {
@@ -565,26 +532,27 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Sets ownersNames
+     * Sets ownersNames.
      *
-     * @param string[]|null $ownersNames List of account owners' names
+     * @param null|string[] $ownersNames List of account owners' names
      *
      * @return self
      */
     public function setOwnersNames($ownersNames)
     {
-        if (is_null($ownersNames)) {
+        if (null === $ownersNames) {
             throw new \InvalidArgumentException('non-nullable ownersNames cannot be null');
         }
+
         $this->container['ownersNames'] = $ownersNames;
 
         return $this;
     }
 
     /**
-     * Gets relationship
+     * Gets relationship.
      *
-     * @return \SpojeNET\CSas\Model\AccountRelationship|null
+     * @return null|\SpojeNET\CSas\Model\AccountRelationship
      */
     public function getRelationship()
     {
@@ -592,26 +560,27 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Sets relationship
+     * Sets relationship.
      *
-     * @param \SpojeNET\CSas\Model\AccountRelationship|null $relationship relationship
+     * @param null|\SpojeNET\CSas\Model\AccountRelationship $relationship relationship
      *
      * @return self
      */
     public function setRelationship($relationship)
     {
-        if (is_null($relationship)) {
+        if (null === $relationship) {
             throw new \InvalidArgumentException('non-nullable relationship cannot be null');
         }
+
         $this->container['relationship'] = $relationship;
 
         return $this;
     }
 
     /**
-     * Gets suitableScope
+     * Gets suitableScope.
      *
-     * @return \SpojeNET\CSas\Model\AccountSuitableScope|null
+     * @return null|\SpojeNET\CSas\Model\AccountSuitableScope
      */
     public function getSuitableScope()
     {
@@ -619,26 +588,27 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Sets suitableScope
+     * Sets suitableScope.
      *
-     * @param \SpojeNET\CSas\Model\AccountSuitableScope|null $suitableScope suitableScope
+     * @param null|\SpojeNET\CSas\Model\AccountSuitableScope $suitableScope suitableScope
      *
      * @return self
      */
     public function setSuitableScope($suitableScope)
     {
-        if (is_null($suitableScope)) {
+        if (null === $suitableScope) {
             throw new \InvalidArgumentException('non-nullable suitableScope cannot be null');
         }
+
         $this->container['suitableScope'] = $suitableScope;
 
         return $this;
     }
 
     /**
-     * Gets status
+     * Gets status.
      *
-     * @return string|null
+     * @return null|string
      */
     public function getStatus()
     {
@@ -646,36 +616,39 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Sets status
+     * Sets status.
      *
-     * @param string|null $status Status of the account
+     * @param null|string $status Status of the account
      *
      * @return self
      */
     public function setStatus($status)
     {
-        if (is_null($status)) {
+        if (null === $status) {
             throw new \InvalidArgumentException('non-nullable status cannot be null');
         }
+
         $allowedValues = $this->getStatusAllowableValues();
-        if (!in_array($status, $allowedValues, true)) {
+
+        if (!\in_array($status, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'status', must be one of '%s'",
                     $status,
-                    implode("', '", $allowedValues)
-                )
+                    implode("', '", $allowedValues),
+                ),
             );
         }
+
         $this->container['status'] = $status;
 
         return $this;
     }
 
     /**
-     * Gets relatedAgents
+     * Gets relatedAgents.
      *
-     * @return \SpojeNET\CSas\Model\AccountRelatedAgents|null
+     * @return null|\SpojeNET\CSas\Model\AccountRelatedAgents
      */
     public function getRelatedAgents()
     {
@@ -683,26 +656,27 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Sets relatedAgents
+     * Sets relatedAgents.
      *
-     * @param \SpojeNET\CSas\Model\AccountRelatedAgents|null $relatedAgents relatedAgents
+     * @param null|\SpojeNET\CSas\Model\AccountRelatedAgents $relatedAgents relatedAgents
      *
      * @return self
      */
     public function setRelatedAgents($relatedAgents)
     {
-        if (is_null($relatedAgents)) {
+        if (null === $relatedAgents) {
             throw new \InvalidArgumentException('non-nullable relatedAgents cannot be null');
         }
+
         $this->container['relatedAgents'] = $relatedAgents;
 
         return $this;
     }
 
     /**
-     * Gets currencyExchange
+     * Gets currencyExchange.
      *
-     * @return \SpojeNET\CSas\Model\AccountCurrencyExchange|null
+     * @return null|\SpojeNET\CSas\Model\AccountCurrencyExchange
      */
     public function getCurrencyExchange()
     {
@@ -710,17 +684,18 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Sets currencyExchange
+     * Sets currencyExchange.
      *
-     * @param \SpojeNET\CSas\Model\AccountCurrencyExchange|null $currencyExchange currencyExchange
+     * @param null|\SpojeNET\CSas\Model\AccountCurrencyExchange $currencyExchange currencyExchange
      *
      * @return self
      */
     public function setCurrencyExchange($currencyExchange)
     {
-        if (is_null($currencyExchange)) {
+        if (null === $currencyExchange) {
             throw new \InvalidArgumentException('non-nullable currencyExchange cannot be null');
         }
+
         $this->container['currencyExchange'] = $currencyExchange;
 
         return $this;
@@ -728,9 +703,7 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Returns true if offset exists. False otherwise.
      *
-     * @param integer $offset Offset
-     *
-     * @return boolean
+     * @param int $offset Offset
      */
     public function offsetExists($offset): bool
     {
@@ -740,9 +713,9 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets offset.
      *
-     * @param integer $offset Offset
+     * @param int $offset Offset
      *
-     * @return mixed|null
+     * @return null|mixed
      */
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
@@ -753,14 +726,12 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets value based on offset.
      *
-     * @param int|null $offset Offset
+     * @param null|int $offset Offset
      * @param mixed    $value  Value to be set
-     *
-     * @return void
      */
     public function offsetSet($offset, $value): void
     {
-        if (is_null($offset)) {
+        if (null === $offset) {
             $this->container[] = $value;
         } else {
             $this->container[$offset] = $value;
@@ -770,9 +741,7 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Unsets offset.
      *
-     * @param integer $offset Offset
-     *
-     * @return void
+     * @param int $offset Offset
      */
     public function offsetUnset($offset): void
     {
@@ -781,10 +750,11 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
 
     /**
      * Serializes the object to a value that can be serialized natively by json_encode().
-     * @link https://www.php.net/manual/en/jsonserializable.jsonserialize.php
      *
-     * @return mixed Returns data which can be serialized by json_encode(), which is a value
-     * of any type other than a resource.
+     * @see https://www.php.net/manual/en/jsonserializable.jsonserialize.php
+     *
+     * @return mixed returns data which can be serialized by json_encode(), which is a value
+     *               of any type other than a resource
      */
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
@@ -793,20 +763,7 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets the string presentation of the object
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        return json_encode(
-            ObjectSerializer::sanitizeForSerialization($this),
-            JSON_PRETTY_PRINT
-        );
-    }
-
-    /**
-     * Gets a header-safe presentation of the object
+     * Gets a header-safe presentation of the object.
      *
      * @return string
      */
@@ -814,6 +771,48 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
+
+    /**
+     * Array of nullable properties.
+     */
+    protected static function openAPINullables(): array
+    {
+        return self::$openAPINullables;
+    }
+
+    /**
+     * Array of nullable field names deliberately set to null.
+     *
+     * @return bool[]
+     */
+    private function getOpenAPINullablesSetToNull(): array
+    {
+        return $this->openAPINullablesSetToNull;
+    }
+
+    /**
+     * Setter - Array of nullable field names deliberately set to null.
+     *
+     * @param bool[] $openAPINullablesSetToNull
+     */
+    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
+    {
+        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
+    }
+
+    /**
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array.
+     *
+     * @param mixed $defaultValue
+     */
+    private function setIfExists(string $variableName, array $fields, $defaultValue): void
+    {
+        if (self::isNullable($variableName) && \array_key_exists($variableName, $fields) && null === $fields[$variableName]) {
+            $this->openAPINullablesSetToNull[] = $variableName;
+        }
+
+        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
+    }
 }
-
-

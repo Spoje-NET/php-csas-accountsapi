@@ -1,17 +1,20 @@
 <?php
+
+declare(strict_types=1);
+
 /**
- * AccountServicerTest
+ * This file is part of the CSasWebApi package
  *
- * PHP version 7.4
+ * https://github.com/Spoje-NET/php-csas-webapi
  *
- * @category Class
- * @package  SpojeNET\CSas
- * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ * (c) SpojeNetIT <http://spoje.net/>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 /**
- * Production Accounts API V3
+ * Production Accounts API V3.
  *
  * API for managing production accounts.
  *
@@ -32,76 +35,77 @@ namespace SpojeNET\CSas\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * AccountServicerTest Class Doc Comment
+ * AccountServicerTest Class Doc Comment.
  *
  * @category    Class
+ *
  * @description AccountServicer
- * @package     SpojeNET\CSas
+ *
  * @author      OpenAPI Generator team
- * @link        https://openapi-generator.tech
+ *
+ * @see        https://openapi-generator.tech
  */
 class AccountServicerTest extends TestCase
 {
-
     /**
-     * Setup before running any test case
+     * Setup before running any test case.
      */
     public static function setUpBeforeClass(): void
     {
     }
 
     /**
-     * Setup before running each test case
-     */
-    public function setUp(): void
-    {
-    }
-
-    /**
-     * Clean up after running each test case
-     */
-    public function tearDown(): void
-    {
-    }
-
-    /**
-     * Clean up after running all test cases
+     * Clean up after running all test cases.
      */
     public static function tearDownAfterClass(): void
     {
     }
 
     /**
-     * Test "AccountServicer"
+     * Setup before running each test case.
      */
-    public function testAccountServicer()
+    protected function setUp(): void
+    {
+    }
+
+    /**
+     * Clean up after running each test case.
+     */
+    protected function tearDown(): void
+    {
+    }
+
+    /**
+     * Test "AccountServicer".
+     */
+    public function testAccountServicer(): void
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "bankCode"
+     * Test attribute "bankCode".
      */
-    public function testPropertyBankCode()
+    public function testPropertyBankCode(): void
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "countryCode"
+     * Test attribute "countryCode".
      */
-    public function testPropertyCountryCode()
+    public function testPropertyCountryCode(): void
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "bic"
+     * Test attribute "bic".
      */
-    public function testPropertyBic()
+    public function testPropertyBic(): void
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

@@ -1,17 +1,20 @@
 <?php
+
+declare(strict_types=1);
+
 /**
- * GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedPartiesTest
+ * This file is part of the CSasWebApi package
  *
- * PHP version 7.4
+ * https://github.com/Spoje-NET/php-csas-webapi
  *
- * @category Class
- * @package  SpojeNET\CSas
- * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ * (c) SpojeNetIT <http://spoje.net/>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 /**
- * Production Accounts API V3
+ * Production Accounts API V3.
  *
  * API for managing production accounts.
  *
@@ -32,85 +35,86 @@ namespace SpojeNET\CSas\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedPartiesTest Class Doc Comment
+ * GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedPartiesTest Class Doc Comment.
  *
  * @category    Class
+ *
  * @description GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedParties
- * @package     SpojeNET\CSas
+ *
  * @author      OpenAPI Generator team
- * @link        https://openapi-generator.tech
+ *
+ * @see        https://openapi-generator.tech
  */
 class GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedPartiesTest extends TestCase
 {
-
     /**
-     * Setup before running any test case
+     * Setup before running any test case.
      */
     public static function setUpBeforeClass(): void
     {
     }
 
     /**
-     * Setup before running each test case
-     */
-    public function setUp(): void
-    {
-    }
-
-    /**
-     * Clean up after running each test case
-     */
-    public function tearDown(): void
-    {
-    }
-
-    /**
-     * Clean up after running all test cases
+     * Clean up after running all test cases.
      */
     public static function tearDownAfterClass(): void
     {
     }
 
     /**
-     * Test "GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedParties"
+     * Setup before running each test case.
      */
-    public function testGetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedParties()
+    protected function setUp(): void
+    {
+    }
+
+    /**
+     * Clean up after running each test case.
+     */
+    protected function tearDown(): void
+    {
+    }
+
+    /**
+     * Test "GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedParties".
+     */
+    public function testGetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedParties(): void
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "debtor"
+     * Test attribute "debtor".
      */
-    public function testPropertyDebtor()
+    public function testPropertyDebtor(): void
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "debtorAccount"
+     * Test attribute "debtorAccount".
      */
-    public function testPropertyDebtorAccount()
+    public function testPropertyDebtorAccount(): void
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "creditor"
+     * Test attribute "creditor".
      */
-    public function testPropertyCreditor()
+    public function testPropertyCreditor(): void
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "creditorAccount"
+     * Test attribute "creditorAccount".
      */
-    public function testPropertyCreditorAccount()
+    public function testPropertyCreditorAccount(): void
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

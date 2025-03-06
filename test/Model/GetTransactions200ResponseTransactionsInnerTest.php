@@ -1,17 +1,20 @@
 <?php
+
+declare(strict_types=1);
+
 /**
- * GetTransactions200ResponseTransactionsInnerTest
+ * This file is part of the CSasWebApi package
  *
- * PHP version 7.4
+ * https://github.com/Spoje-NET/php-csas-webapi
  *
- * @category Class
- * @package  SpojeNET\CSas
- * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ * (c) SpojeNetIT <http://spoje.net/>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 /**
- * Production Accounts API V3
+ * Production Accounts API V3.
  *
  * API for managing production accounts.
  *
@@ -32,121 +35,122 @@ namespace SpojeNET\CSas\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * GetTransactions200ResponseTransactionsInnerTest Class Doc Comment
+ * GetTransactions200ResponseTransactionsInnerTest Class Doc Comment.
  *
  * @category    Class
+ *
  * @description GetTransactions200ResponseTransactionsInner
- * @package     SpojeNET\CSas
+ *
  * @author      OpenAPI Generator team
- * @link        https://openapi-generator.tech
+ *
+ * @see        https://openapi-generator.tech
  */
 class GetTransactions200ResponseTransactionsInnerTest extends TestCase
 {
-
     /**
-     * Setup before running any test case
+     * Setup before running any test case.
      */
     public static function setUpBeforeClass(): void
     {
     }
 
     /**
-     * Setup before running each test case
-     */
-    public function setUp(): void
-    {
-    }
-
-    /**
-     * Clean up after running each test case
-     */
-    public function tearDown(): void
-    {
-    }
-
-    /**
-     * Clean up after running all test cases
+     * Clean up after running all test cases.
      */
     public static function tearDownAfterClass(): void
     {
     }
 
     /**
-     * Test "GetTransactions200ResponseTransactionsInner"
+     * Setup before running each test case.
      */
-    public function testGetTransactions200ResponseTransactionsInner()
+    protected function setUp(): void
+    {
+    }
+
+    /**
+     * Clean up after running each test case.
+     */
+    protected function tearDown(): void
+    {
+    }
+
+    /**
+     * Test "GetTransactions200ResponseTransactionsInner".
+     */
+    public function testGetTransactions200ResponseTransactionsInner(): void
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "entryReference"
+     * Test attribute "entryReference".
      */
-    public function testPropertyEntryReference()
+    public function testPropertyEntryReference(): void
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "amount"
+     * Test attribute "amount".
      */
-    public function testPropertyAmount()
+    public function testPropertyAmount(): void
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "creditDebitIndicator"
+     * Test attribute "creditDebitIndicator".
      */
-    public function testPropertyCreditDebitIndicator()
+    public function testPropertyCreditDebitIndicator(): void
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "status"
+     * Test attribute "status".
      */
-    public function testPropertyStatus()
+    public function testPropertyStatus(): void
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "bookingDate"
+     * Test attribute "bookingDate".
      */
-    public function testPropertyBookingDate()
+    public function testPropertyBookingDate(): void
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "valueDate"
+     * Test attribute "valueDate".
      */
-    public function testPropertyValueDate()
+    public function testPropertyValueDate(): void
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "bankTransactionCode"
+     * Test attribute "bankTransactionCode".
      */
-    public function testPropertyBankTransactionCode()
+    public function testPropertyBankTransactionCode(): void
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "entryDetails"
+     * Test attribute "entryDetails".
      */
-    public function testPropertyEntryDetails()
+    public function testPropertyEntryDetails(): void
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
