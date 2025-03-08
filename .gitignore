@@ -1,6 +1,8 @@
 # ref: https://github.com/github/gitignore/blob/master/Composer.gitignore
 # ref: https://mustache.github.io/mustache.5.html
 
+# Generated from .openapi-generator/templates/gitignore.mustache
+
 composer.phar
 /vendor/
 /node_modules/

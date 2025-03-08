@@ -1,8 +1,14 @@
-php-spojenet-csas-accountsapi (0.5.0) UNRELEASED; urgency=medium
+php-spojenet-csas-accountsapi (0.6.0) UNRELEASED; urgency=medium
+
+  * Config prefix CSAS_ used
+
+ -- vitex <info@vitexsoftware.cz>  Sat, 08 Mar 2025 20:52:35 +0100
+
+php-spojenet-csas-accountsapi (0.5.0) noble; urgency=medium
 
   * Debianized
 
- -- vitex <info@vitexsoftware.cz>  Wed, 26 Feb 2025 16:33:24 +0100
+ -- vitex <info@vitexsoftware.cz>  Sat, 08 Mar 2025 20:52:13 +0100
 
 php-spojenet-csas-accountsapi (0.1.0) noble; urgency=low
 
