@@ -37,7 +37,10 @@ class ApiClient extends \GuzzleHttp\Client
      * ClientID obtained from Developer Portal - when you registered your app with us.
      */
     protected string $apiKey;
+<<<<<<< HEAD
 
+=======
+>>>>>>> a993491f1bca20d2887d0d97ad7a7b4de7de8162
     protected string $token;
 
     /**
@@ -52,24 +55,38 @@ class ApiClient extends \GuzzleHttp\Client
      * $config['token'] - your access token
      * $config['sandbox'] = true to use //api/csas/public/sandbox/v3/* endpoints
      *
+<<<<<<< HEAD
      * @throws \Exception CSAS_ACCESS_TOKEN is not set
      * @throws \Exception CSAS_API_KEY is not set
+=======
+     * @throws \Exception ACCESS_TOKEN is not set
+     * @throws \Exception API_KEY is not set
+>>>>>>> a993491f1bca20d2887d0d97ad7a7b4de7de8162
      */
     public function __construct(array $config = [])
     {
         if (\array_key_exists('apikey', $config) === false) {
+<<<<<<< HEAD
             $this->apiKey = \Ease\Shared::cfg('CSAS_API_KEY');
+=======
+            $this->apiKey = \Ease\Shared::cfg('API_KEY');
+>>>>>>> a993491f1bca20d2887d0d97ad7a7b4de7de8162
         } else {
             $this->apiKey = $config['apikey'];
         }
 
         if (\array_key_exists('token', $config) === false) {
+<<<<<<< HEAD
             $this->token = \Ease\Shared::cfg('CSAS_API_TOKEN');
+=======
+            $this->token = \Ease\Shared::cfg('API_TOKEN');
+>>>>>>> a993491f1bca20d2887d0d97ad7a7b4de7de8162
         } else {
             $this->token = $config['token'];
         }
 
         if (\array_key_exists('debug', $config) === false) {
+<<<<<<< HEAD
             $config['debug'] = \Ease\Shared::cfg('CSAS_API_DEBUG', false);
         }
 
@@ -77,6 +94,15 @@ class ApiClient extends \GuzzleHttp\Client
             $this->sandBoxMode = strtolower((string) $config['sandbox']) === 'true';
         } else {
             $this->token = strtolower((string) \Ease\Shared::cfg('CSAS_SANDBOX_MODE', 'false')) === 'true';
+=======
+            $config['debug'] = \Ease\Shared::cfg('API_DEBUG', false);
+        }
+
+        if (\array_key_exists('sandbox', $config)) {
+            $this->sandBoxMode = (bool) $config['sandbox'];
+        } else {
+            $this->token = (bool) \Ease\Shared::cfg('SANDBOX_MODE');
+>>>>>>> a993491f1bca20d2887d0d97ad7a7b4de7de8162
         }
 
         parent::__construct($config);

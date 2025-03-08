@@ -73,6 +73,9 @@ class DefaultApi
             'application/json',
         ],
     ];
+    protected ClientInterface $client;
+    protected Configuration $config;
+    protected HeaderSelector $headerSelector;
 
     protected ClientInterface $client;
 
