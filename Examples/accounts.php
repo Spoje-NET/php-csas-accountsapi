@@ -17,7 +17,7 @@ use Ease\Shared as Shr;
 
 require_once \dirname(__DIR__).'/vendor/autoload.php';
 
-Shr::init([], \dirname(__DIR__).'/.env');
+Shr::init(['CSAS_API_KEY', 'CSAS_ACCESS_TOKEN', 'CSAS_API_DEBUG', 'CSAS_SANDBOX_MODE'], \dirname(__DIR__).'/.env');
 
 $apiInstance = new \SpojeNET\CSas\Accounts\DefaultApi(new SpojeNET\CSas\ApiClient(
     [
@@ -117,15 +117,15 @@ SpojeNET\CSas\Model\GetAccounts200Response Object
 
                                             [container:protected] => Array
                                                 (
-                                                    [aISP] => 
-                                                    [pISP] => 
+                                                    [aISP] =>
+                                                    [pISP] =>
                                                 )
 
                                         )
 
-                                    [status] => 
-                                    [relatedAgents] => 
-                                    [currencyExchange] => 
+                                    [status] =>
+                                    [relatedAgents] =>
+                                    [currencyExchange] =>
                                 )
 
                         )
@@ -184,7 +184,7 @@ SpojeNET\CSas\Model\GetAccounts200Response Object
 
                                             [container:protected] => Array
                                                 (
-                                                    [isOwner] => 
+                                                    [isOwner] =>
                                                 )
 
                                         )
@@ -197,15 +197,15 @@ SpojeNET\CSas\Model\GetAccounts200Response Object
 
                                             [container:protected] => Array
                                                 (
-                                                    [aISP] => 
-                                                    [pISP] => 
+                                                    [aISP] =>
+                                                    [pISP] =>
                                                 )
 
                                         )
 
-                                    [status] => 
-                                    [relatedAgents] => 
-                                    [currencyExchange] => 
+                                    [status] =>
+                                    [relatedAgents] =>
+                                    [currencyExchange] =>
                                 )
 
                         )

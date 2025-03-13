@@ -73,9 +73,6 @@ class DefaultApi
             'application/json',
         ],
     ];
-    protected ClientInterface $client;
-    protected Configuration $config;
-    protected HeaderSelector $headerSelector;
 
     protected ClientInterface $client;
 
@@ -108,7 +105,7 @@ class DefaultApi
         ?ClientInterface $client = null,
         ?Configuration $config = null,
         ?HeaderSelector $selector = null,
-        $hostIndex = 0
+        $hostIndex = 0,
     ) {
         $this->client = $client ?: new ApiClient();
         $this->config = $config ?: Configuration::getDefaultConfiguration();
@@ -508,7 +505,7 @@ class DefaultApi
 
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+            } elseif (str_contains(strtolower($headers['Content-Type']), strtolower('application/json'))) {
                 // if Content-Type contains "application/json", json_encode the form parameters
                 $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
             } else {
@@ -875,7 +872,7 @@ class DefaultApi
 
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+            } elseif (str_contains(strtolower($headers['Content-Type']), strtolower('application/json'))) {
                 // if Content-Type contains "application/json", json_encode the form parameters
                 $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
             } else {
@@ -1250,7 +1247,7 @@ class DefaultApi
 
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+            } elseif (str_contains(strtolower($headers['Content-Type']), strtolower('application/json'))) {
                 // if Content-Type contains "application/json", json_encode the form parameters
                 $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
             } else {
@@ -1646,7 +1643,7 @@ class DefaultApi
 
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+            } elseif (str_contains(strtolower($headers['Content-Type']), strtolower('application/json'))) {
                 // if Content-Type contains "application/json", json_encode the form parameters
                 $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
             } else {

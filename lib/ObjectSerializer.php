@@ -189,7 +189,7 @@ class ObjectSerializer
         string $openApiType = 'string',
         string $style = 'form',
         bool $explode = true,
-        bool $required = true
+        bool $required = true,
     ): array {
         // Check if we should omit this parameter from the query. This should only happen when:
         //  - Parameter is NOT required; AND

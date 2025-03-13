@@ -17,20 +17,23 @@ use Ease\Shared as Shr;
 
 require_once \dirname(__DIR__).'/vendor/autoload.php';
 
-Shr::init([], \dirname(__DIR__).'/.env');
+Shr::init(['CSAS_API_KEY', 'CSAS_ACCESS_TOKEN', 'CSAS_API_DEBUG', 'CSAS_SANDBOX_MODE'], \dirname(__DIR__).'/.env');
 
 $apiInstance = new \SpojeNET\CSas\Accounts\DefaultApi(new SpojeNET\CSas\ApiClient(
     [
-        'apikey' => Shr::cfg('API_KEY'),
-        'token' => Shr::cfg('ACCESS_TOKEN'),
-        'debug' => Shr::cfg('API_DEBUG', false),
-        'sandbox' => Shr::cfg('SANDBOX_MODE'),
+        'apikey' => Shr::cfg('CSAS_API_KEY'),
+        'token' => Shr::cfg('CSAS_ACCESS_TOKEN'),
+        'debug' => Shr::cfg('CSAS_API_DEBUG', false),
+        'sandbox' => Shr::cfg('CSAS_SANDBOX_MODE'),
     ],
 ));
 
 try {
     $toDate = new \DateTime();
     $fromDate = (clone $toDate)->modify('-1 month');
+
+    // See: https://jsapi.apiary.io/apis/eahaccountsapiv3prod/reference/statements/list-of-statements/get-statements-list.html
+
     $result = $apiInstance->getStatements('AA195E7DB499B4D9F48D46C208625FF53F2245F7', $fromDate->format('Y-m-d'), $toDate->format('Y-m-d'));
 
     print_r($result);

@@ -178,7 +178,7 @@ class HeaderSelector
         foreach ($accept as $header) {
             $headerData = $this->getHeaderAndWeight($header);
 
-            if (stripos($headerData['header'], 'application/json') === 0) {
+            if (str_starts_with(strtolower($headerData['header']), strtolower('application/json'))) {
                 $processedHeaders['withApplicationJson'][] = $headerData;
             } elseif (\in_array($header, $headersWithJson, true)) {
                 $processedHeaders['withJson'][] = $headerData;

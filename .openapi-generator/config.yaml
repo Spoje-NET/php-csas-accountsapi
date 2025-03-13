@@ -28,4 +28,7 @@ files:
   ApiClient.mustache:
       folder: lib
       destinationFilename: ApiClient.php
+  Statementor.mustache:
+      folder: lib
+      destinationFilename: Statementor.php
 

@@ -105,10 +105,7 @@ class Configuration
      * Debug file location (log to STDOUT by default).
      */
     protected string $tempFolderPath;
-<<<<<<< HEAD
 
-=======
->>>>>>> a993491f1bca20d2887d0d97ad7a7b4de7de8162
     private static Configuration $defaultConfiguration;
 
     /**

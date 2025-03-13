@@ -45,10 +45,8 @@ class ApiException extends \Exception
 {
     /**
      * The HTTP body of the server response either as Json or string.
-     *
-     * @var null|\stdClass|string
      */
-    protected $responseBody;
+    protected null|\stdClass|string $responseBody;
 
     /**
      * The HTTP header of the server response.
@@ -59,10 +57,8 @@ class ApiException extends \Exception
 
     /**
      * The deserialized response object.
-     *
-     * @var null|\stdClass|string
      */
-    protected $responseObject;
+    protected null|\stdClass|string $responseObject;
 
     /**
      * Constructor.
