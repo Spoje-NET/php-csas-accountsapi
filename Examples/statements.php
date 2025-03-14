@@ -12,21 +12,22 @@ declare(strict_types=1);
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 use Ease\Shared as Shr;
 
-require_once \dirname(__DIR__).'/vendor/autoload.php';
+require_once \dirname(__DIR__) . '/vendor/autoload.php';
 
-Shr::init(['CSAS_API_KEY', 'CSAS_ACCESS_TOKEN', 'CSAS_API_DEBUG', 'CSAS_SANDBOX_MODE'], \dirname(__DIR__).'/.env');
+Shr::init(['CSAS_API_KEY', 'CSAS_ACCESS_TOKEN', 'CSAS_SANDBOX_MODE'], \dirname(__DIR__) . '/.env');
+
+// Keep your tokens fresh using https://github.com/Spoje-NET/csas-authorize.git
 
 $apiInstance = new \SpojeNET\CSas\Accounts\DefaultApi(new SpojeNET\CSas\ApiClient(
-    [
-        'apikey' => Shr::cfg('CSAS_API_KEY'),
-        'token' => Shr::cfg('CSAS_ACCESS_TOKEN'),
-        'debug' => Shr::cfg('CSAS_API_DEBUG', false),
-        'sandbox' => Shr::cfg('CSAS_SANDBOX_MODE'),
-    ],
-));
+                [
+            'apikey' => Shr::cfg('CSAS_API_KEY'),
+            'token' => Shr::cfg('CSAS_ACCESS_TOKEN'),
+            'debug' => Shr::cfg('CSAS_API_DEBUG', false),
+            'sandbox' => Shr::cfg('CSAS_SANDBOX_MODE'),
+                ],
+        ));
 
 try {
     $toDate = new \DateTime();
@@ -34,7 +35,10 @@ try {
 
     // See: https://jsapi.apiary.io/apis/eahaccountsapiv3prod/reference/statements/list-of-statements/get-statements-list.html
 
-    $result = $apiInstance->getStatements('AA195E7DB499B4D9F48D46C208625FF53F2245F7', $fromDate->format('Y-m-d'), $toDate->format('Y-m-d'));
+    $account = Shr::cfg('CSAS_ACCOUNT_IBAN');
+    'AA195E7DB499B4D9F48D46C208625FF53F2245F7';
+            
+    $result = $apiInstance->getStatements($account, $fromDate->format('Y-m-d'), $toDate->format('Y-m-d'));
 
     print_r($result);
 } catch (Exception $e) {

@@ -17,7 +17,9 @@ use Ease\Shared as Shr;
 
 require_once \dirname(__DIR__).'/vendor/autoload.php';
 
-Shr::init(['CSAS_API_KEY', 'CSAS_ACCESS_TOKEN', 'CSAS_API_DEBUG', 'CSAS_SANDBOX_MODE'], \dirname(__DIR__).'/.env');
+Shr::init(['CSAS_API_KEY', 'CSAS_ACCESS_TOKEN', 'CSAS_SANDBOX_MODE'], \dirname(__DIR__).'/.env');
+
+// Keep your tokens fresh using https://github.com/Spoje-NET/csas-authorize.git
 
 $apiInstance = new \SpojeNET\CSas\Accounts\DefaultApi(new SpojeNET\CSas\ApiClient(
     [
