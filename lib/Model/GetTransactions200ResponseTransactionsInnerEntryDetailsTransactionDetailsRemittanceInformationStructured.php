@@ -30,9 +30,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace SpojeNET\CSas\Model;
+namespace SpojeNet\CSas\Model;
 
-use SpojeNET\CSas\ObjectSerializer;
+use SpojeNet\CSas\ObjectSerializer;
 
 /**
  * GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRemittanceInformationStructured Class Doc Comment.
@@ -60,7 +60,7 @@ class GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsR
      * @var string[]
      */
     protected static array $openAPITypes = [
-        'creditorReferenceInformation' => '\SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRemittanceInformationStructuredCreditorReferenceInformation',
+        'creditorReferenceInformation' => '\SpojeNet\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRemittanceInformationStructuredCreditorReferenceInformation',
     ];
 
     /**
@@ -252,7 +252,7 @@ class GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsR
     /**
      * Gets creditorReferenceInformation.
      *
-     * @return null|\SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRemittanceInformationStructuredCreditorReferenceInformation
+     * @return null|\SpojeNet\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRemittanceInformationStructuredCreditorReferenceInformation
      */
     public function getCreditorReferenceInformation()
     {
@@ -262,7 +262,7 @@ class GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsR
     /**
      * Sets creditorReferenceInformation.
      *
-     * @param null|\SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRemittanceInformationStructuredCreditorReferenceInformation $creditorReferenceInformation creditorReferenceInformation
+     * @param null|\SpojeNet\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRemittanceInformationStructuredCreditorReferenceInformation $creditorReferenceInformation creditorReferenceInformation
      *
      * @return self
      */

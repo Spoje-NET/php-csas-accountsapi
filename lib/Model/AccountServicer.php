@@ -30,9 +30,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace SpojeNET\CSas\Model;
+namespace SpojeNet\CSas\Model;
 
-use SpojeNET\CSas\ObjectSerializer;
+use SpojeNet\CSas\ObjectSerializer;
 
 /**
  * AccountServicer Class Doc Comment.

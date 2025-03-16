@@ -30,9 +30,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace SpojeNET\CSas\Model;
+namespace SpojeNet\CSas\Model;
 
-use SpojeNET\CSas\ObjectSerializer;
+use SpojeNet\CSas\ObjectSerializer;
 
 /**
  * GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedPartiesCreditorAccountIdentification Class Doc Comment.
@@ -61,7 +61,7 @@ class GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsR
      */
     protected static array $openAPITypes = [
         'iban' => 'string',
-        'other' => '\SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedPartiesCreditorAccountIdentificationOther',
+        'other' => '\SpojeNet\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedPartiesCreditorAccountIdentificationOther',
     ];
 
     /**
@@ -287,7 +287,7 @@ class GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsR
     /**
      * Gets other.
      *
-     * @return null|\SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedPartiesCreditorAccountIdentificationOther
+     * @return null|\SpojeNet\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedPartiesCreditorAccountIdentificationOther
      */
     public function getOther()
     {
@@ -297,7 +297,7 @@ class GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsR
     /**
      * Sets other.
      *
-     * @param null|\SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedPartiesCreditorAccountIdentificationOther $other other
+     * @param null|\SpojeNet\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedPartiesCreditorAccountIdentificationOther $other other
      *
      * @return self
      */

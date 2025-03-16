@@ -30,9 +30,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace SpojeNET\CSas\Model;
+namespace SpojeNet\CSas\Model;
 
-use SpojeNET\CSas\ObjectSerializer;
+use SpojeNet\CSas\ObjectSerializer;
 
 /**
  * GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsAmountDetailsInstructedAmount Class Doc Comment.
@@ -60,7 +60,7 @@ class GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsA
      * @var string[]
      */
     protected static array $openAPITypes = [
-        'amount' => '\SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsAmountDetailsInstructedAmountAmount',
+        'amount' => '\SpojeNet\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsAmountDetailsInstructedAmountAmount',
     ];
 
     /**
@@ -252,7 +252,7 @@ class GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsA
     /**
      * Gets amount.
      *
-     * @return null|\SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsAmountDetailsInstructedAmountAmount
+     * @return null|\SpojeNet\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsAmountDetailsInstructedAmountAmount
      */
     public function getAmount()
     {
@@ -262,7 +262,7 @@ class GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsA
     /**
      * Sets amount.
      *
-     * @param null|\SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsAmountDetailsInstructedAmountAmount $amount amount
+     * @param null|\SpojeNet\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsAmountDetailsInstructedAmountAmount $amount amount
      *
      * @return self
      */

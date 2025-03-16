@@ -30,9 +30,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace SpojeNET\CSas\Model;
+namespace SpojeNet\CSas\Model;
 
-use SpojeNET\CSas\ObjectSerializer;
+use SpojeNet\CSas\ObjectSerializer;
 
 /**
  * GetTransactions200Response Class Doc Comment.
@@ -63,7 +63,7 @@ class GetTransactions200Response implements \ArrayAccess, \JsonSerializable, Mod
         'pageNumber' => 'int',
         'pageCount' => 'int',
         'pageSize' => 'int',
-        'transactions' => '\SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInner[]',
+        'transactions' => '\SpojeNet\CSas\Model\GetTransactions200ResponseTransactionsInner[]',
     ];
 
     /**
@@ -357,7 +357,7 @@ class GetTransactions200Response implements \ArrayAccess, \JsonSerializable, Mod
     /**
      * Gets transactions.
      *
-     * @return null|\SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInner[]
+     * @return null|\SpojeNet\CSas\Model\GetTransactions200ResponseTransactionsInner[]
      */
     public function getTransactions()
     {
@@ -367,7 +367,7 @@ class GetTransactions200Response implements \ArrayAccess, \JsonSerializable, Mod
     /**
      * Sets transactions.
      *
-     * @param null|\SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInner[] $transactions transactions
+     * @param null|\SpojeNet\CSas\Model\GetTransactions200ResponseTransactionsInner[] $transactions transactions
      *
      * @return self
      */

@@ -4,6 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**balances** | [**\SpojeNET\CSas\Model\GetAccountBalance200ResponseBalancesInner[]**](GetAccountBalance200ResponseBalancesInner.md) |  | [optional]
+**balances** | [**\SpojeNet\CSas\Model\GetAccountBalance200ResponseBalancesInner[]**](GetAccountBalance200ResponseBalancesInner.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

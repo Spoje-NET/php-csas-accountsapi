@@ -30,9 +30,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace SpojeNET\CSas\Model;
+namespace SpojeNet\CSas\Model;
 
-use SpojeNET\CSas\ObjectSerializer;
+use SpojeNet\CSas\ObjectSerializer;
 
 /**
  * GetTransactions200ResponseTransactionsInnerBankTransactionCode Class Doc Comment.
@@ -60,7 +60,7 @@ class GetTransactions200ResponseTransactionsInnerBankTransactionCode implements 
      * @var string[]
      */
     protected static array $openAPITypes = [
-        'proprietary' => '\SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerBankTransactionCodeProprietary',
+        'proprietary' => '\SpojeNet\CSas\Model\GetTransactions200ResponseTransactionsInnerBankTransactionCodeProprietary',
     ];
 
     /**
@@ -252,7 +252,7 @@ class GetTransactions200ResponseTransactionsInnerBankTransactionCode implements 
     /**
      * Gets proprietary.
      *
-     * @return null|\SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerBankTransactionCodeProprietary
+     * @return null|\SpojeNet\CSas\Model\GetTransactions200ResponseTransactionsInnerBankTransactionCodeProprietary
      */
     public function getProprietary()
     {
@@ -262,7 +262,7 @@ class GetTransactions200ResponseTransactionsInnerBankTransactionCode implements 
     /**
      * Sets proprietary.
      *
-     * @param null|\SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerBankTransactionCodeProprietary $proprietary proprietary
+     * @param null|\SpojeNet\CSas\Model\GetTransactions200ResponseTransactionsInnerBankTransactionCodeProprietary $proprietary proprietary
      *
      * @return self
      */

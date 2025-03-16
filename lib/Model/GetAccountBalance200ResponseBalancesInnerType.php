@@ -30,9 +30,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace SpojeNET\CSas\Model;
+namespace SpojeNet\CSas\Model;
 
-use SpojeNET\CSas\ObjectSerializer;
+use SpojeNet\CSas\ObjectSerializer;
 
 /**
  * GetAccountBalance200ResponseBalancesInnerType Class Doc Comment.
@@ -60,7 +60,7 @@ class GetAccountBalance200ResponseBalancesInnerType implements \ArrayAccess, \Js
      * @var string[]
      */
     protected static array $openAPITypes = [
-        'codeOrProprietary' => '\SpojeNET\CSas\Model\GetAccountBalance200ResponseBalancesInnerTypeCodeOrProprietary',
+        'codeOrProprietary' => '\SpojeNet\CSas\Model\GetAccountBalance200ResponseBalancesInnerTypeCodeOrProprietary',
     ];
 
     /**
@@ -252,7 +252,7 @@ class GetAccountBalance200ResponseBalancesInnerType implements \ArrayAccess, \Js
     /**
      * Gets codeOrProprietary.
      *
-     * @return null|\SpojeNET\CSas\Model\GetAccountBalance200ResponseBalancesInnerTypeCodeOrProprietary
+     * @return null|\SpojeNet\CSas\Model\GetAccountBalance200ResponseBalancesInnerTypeCodeOrProprietary
      */
     public function getCodeOrProprietary()
     {
@@ -262,7 +262,7 @@ class GetAccountBalance200ResponseBalancesInnerType implements \ArrayAccess, \Js
     /**
      * Sets codeOrProprietary.
      *
-     * @param null|\SpojeNET\CSas\Model\GetAccountBalance200ResponseBalancesInnerTypeCodeOrProprietary $codeOrProprietary codeOrProprietary
+     * @param null|\SpojeNet\CSas\Model\GetAccountBalance200ResponseBalancesInnerTypeCodeOrProprietary $codeOrProprietary codeOrProprietary
      *
      * @return self
      */

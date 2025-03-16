@@ -30,9 +30,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace SpojeNET\CSas\Model;
+namespace SpojeNet\CSas\Model;
 
-use SpojeNET\CSas\ObjectSerializer;
+use SpojeNet\CSas\ObjectSerializer;
 
 /**
  * GetAccountStatements200ResponseAccountStatementsInner Class Doc Comment.
@@ -67,7 +67,7 @@ class GetAccountStatements200ResponseAccountStatementsInner implements \ArrayAcc
         'period' => 'string',
         'dateFrom' => '\DateTime',
         'dateTo' => '\DateTime',
-        'formats' => '\SpojeNET\CSas\Model\GetAccountStatements200ResponseAccountStatementsInnerFormatsInner[]',
+        'formats' => '\SpojeNet\CSas\Model\GetAccountStatements200ResponseAccountStatementsInnerFormatsInner[]',
     ];
 
     /**
@@ -497,7 +497,7 @@ class GetAccountStatements200ResponseAccountStatementsInner implements \ArrayAcc
     /**
      * Gets formats.
      *
-     * @return null|\SpojeNET\CSas\Model\GetAccountStatements200ResponseAccountStatementsInnerFormatsInner[]
+     * @return null|\SpojeNet\CSas\Model\GetAccountStatements200ResponseAccountStatementsInnerFormatsInner[]
      */
     public function getFormats()
     {
@@ -507,7 +507,7 @@ class GetAccountStatements200ResponseAccountStatementsInner implements \ArrayAcc
     /**
      * Sets formats.
      *
-     * @param null|\SpojeNET\CSas\Model\GetAccountStatements200ResponseAccountStatementsInnerFormatsInner[] $formats formats
+     * @param null|\SpojeNet\CSas\Model\GetAccountStatements200ResponseAccountStatementsInnerFormatsInner[] $formats formats
      *
      * @return self
      */

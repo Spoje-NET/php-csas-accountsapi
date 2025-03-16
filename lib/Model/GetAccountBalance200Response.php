@@ -30,9 +30,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace SpojeNET\CSas\Model;
+namespace SpojeNet\CSas\Model;
 
-use SpojeNET\CSas\ObjectSerializer;
+use SpojeNet\CSas\ObjectSerializer;
 
 /**
  * GetAccountBalance200Response Class Doc Comment.
@@ -60,7 +60,7 @@ class GetAccountBalance200Response implements \ArrayAccess, \JsonSerializable, M
      * @var string[]
      */
     protected static array $openAPITypes = [
-        'balances' => '\SpojeNET\CSas\Model\GetAccountBalance200ResponseBalancesInner[]',
+        'balances' => '\SpojeNet\CSas\Model\GetAccountBalance200ResponseBalancesInner[]',
     ];
 
     /**
@@ -252,7 +252,7 @@ class GetAccountBalance200Response implements \ArrayAccess, \JsonSerializable, M
     /**
      * Gets balances.
      *
-     * @return null|\SpojeNET\CSas\Model\GetAccountBalance200ResponseBalancesInner[]
+     * @return null|\SpojeNet\CSas\Model\GetAccountBalance200ResponseBalancesInner[]
      */
     public function getBalances()
     {
@@ -262,7 +262,7 @@ class GetAccountBalance200Response implements \ArrayAccess, \JsonSerializable, M
     /**
      * Sets balances.
      *
-     * @param null|\SpojeNET\CSas\Model\GetAccountBalance200ResponseBalancesInner[] $balances balances
+     * @param null|\SpojeNet\CSas\Model\GetAccountBalance200ResponseBalancesInner[] $balances balances
      *
      * @return self
      */

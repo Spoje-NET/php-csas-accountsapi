@@ -15,9 +15,9 @@
 
     "autoload": {
         "psr-4": {
-            "SpojeNET\\CSas\\": "./",
-            "SpojeNET\\CSas\\Accounts\\": "./Accounts/",
-            "SpojeNET\\CSas\\Modes\\": "./Model/"
+            "SpojeNet\\CSas\\": "./",
+            "SpojeNet\\CSas\\Accounts\\": "./Accounts/",
+            "SpojeNet\\CSas\\Modes\\": "./Model/"
         }
     },
 

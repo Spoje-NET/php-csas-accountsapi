@@ -30,9 +30,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace SpojeNET\CSas\Model;
+namespace SpojeNet\CSas\Model;
 
-use SpojeNET\CSas\ObjectSerializer;
+use SpojeNet\CSas\ObjectSerializer;
 
 /**
  * GetAccountStatements500Response Class Doc Comment.
@@ -61,7 +61,7 @@ class GetAccountStatements500Response implements \ArrayAccess, \JsonSerializable
      */
     protected static array $openAPITypes = [
         'status' => 'int',
-        'errors' => '\SpojeNET\CSas\Model\GetAccountStatements500ResponseErrorsInner[]',
+        'errors' => '\SpojeNet\CSas\Model\GetAccountStatements500ResponseErrorsInner[]',
     ];
 
     /**
@@ -287,7 +287,7 @@ class GetAccountStatements500Response implements \ArrayAccess, \JsonSerializable
     /**
      * Gets errors.
      *
-     * @return null|\SpojeNET\CSas\Model\GetAccountStatements500ResponseErrorsInner[]
+     * @return null|\SpojeNet\CSas\Model\GetAccountStatements500ResponseErrorsInner[]
      */
     public function getErrors()
     {
@@ -297,7 +297,7 @@ class GetAccountStatements500Response implements \ArrayAccess, \JsonSerializable
     /**
      * Sets errors.
      *
-     * @param null|\SpojeNET\CSas\Model\GetAccountStatements500ResponseErrorsInner[] $errors errors
+     * @param null|\SpojeNet\CSas\Model\GetAccountStatements500ResponseErrorsInner[] $errors errors
      *
      * @return self
      */

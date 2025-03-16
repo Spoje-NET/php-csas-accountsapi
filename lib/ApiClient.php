@@ -24,7 +24,7 @@ declare(strict_types=1);
  * Generator version: 7.10.0
  */
 
-namespace SpojeNET\CSas;
+namespace SpojeNet\CSas;
 
 /**
  * Description of ApiClient.

@@ -30,9 +30,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace SpojeNET\CSas\Model;
+namespace SpojeNet\CSas\Model;
 
-use SpojeNET\CSas\ObjectSerializer;
+use SpojeNet\CSas\ObjectSerializer;
 
 /**
  * GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedAgentsDebtorAgent Class Doc Comment.
@@ -60,7 +60,7 @@ class GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsR
      * @var string[]
      */
     protected static array $openAPITypes = [
-        'financialInstitutionIdentification' => '\SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedAgentsDebtorAgentFinancialInstitutionIdentification',
+        'financialInstitutionIdentification' => '\SpojeNet\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedAgentsDebtorAgentFinancialInstitutionIdentification',
     ];
 
     /**
@@ -252,7 +252,7 @@ class GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsR
     /**
      * Gets financialInstitutionIdentification.
      *
-     * @return null|\SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedAgentsDebtorAgentFinancialInstitutionIdentification
+     * @return null|\SpojeNet\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedAgentsDebtorAgentFinancialInstitutionIdentification
      */
     public function getFinancialInstitutionIdentification()
     {
@@ -262,7 +262,7 @@ class GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsR
     /**
      * Sets financialInstitutionIdentification.
      *
-     * @param null|\SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedAgentsDebtorAgentFinancialInstitutionIdentification $financialInstitutionIdentification financialInstitutionIdentification
+     * @param null|\SpojeNet\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRelatedAgentsDebtorAgentFinancialInstitutionIdentification $financialInstitutionIdentification financialInstitutionIdentification
      *
      * @return self
      */

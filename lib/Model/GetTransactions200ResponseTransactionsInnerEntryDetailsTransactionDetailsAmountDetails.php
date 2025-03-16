@@ -30,9 +30,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace SpojeNET\CSas\Model;
+namespace SpojeNet\CSas\Model;
 
-use SpojeNET\CSas\ObjectSerializer;
+use SpojeNet\CSas\ObjectSerializer;
 
 /**
  * GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsAmountDetails Class Doc Comment.
@@ -60,8 +60,8 @@ class GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsA
      * @var string[]
      */
     protected static array $openAPITypes = [
-        'instructedAmount' => '\SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsAmountDetailsInstructedAmount',
-        'counterValueAmount' => '\SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsAmountDetailsCounterValueAmount',
+        'instructedAmount' => '\SpojeNet\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsAmountDetailsInstructedAmount',
+        'counterValueAmount' => '\SpojeNet\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsAmountDetailsCounterValueAmount',
     ];
 
     /**
@@ -259,7 +259,7 @@ class GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsA
     /**
      * Gets instructedAmount.
      *
-     * @return null|\SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsAmountDetailsInstructedAmount
+     * @return null|\SpojeNet\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsAmountDetailsInstructedAmount
      */
     public function getInstructedAmount()
     {
@@ -269,7 +269,7 @@ class GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsA
     /**
      * Sets instructedAmount.
      *
-     * @param null|\SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsAmountDetailsInstructedAmount $instructedAmount instructedAmount
+     * @param null|\SpojeNet\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsAmountDetailsInstructedAmount $instructedAmount instructedAmount
      *
      * @return self
      */
@@ -287,7 +287,7 @@ class GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsA
     /**
      * Gets counterValueAmount.
      *
-     * @return null|\SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsAmountDetailsCounterValueAmount
+     * @return null|\SpojeNet\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsAmountDetailsCounterValueAmount
      */
     public function getCounterValueAmount()
     {
@@ -297,7 +297,7 @@ class GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsA
     /**
      * Sets counterValueAmount.
      *
-     * @param null|\SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsAmountDetailsCounterValueAmount $counterValueAmount counterValueAmount
+     * @param null|\SpojeNet\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsAmountDetailsCounterValueAmount $counterValueAmount counterValueAmount
      *
      * @return self
      */

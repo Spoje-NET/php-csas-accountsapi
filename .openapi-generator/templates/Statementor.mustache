@@ -13,7 +13,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace SpojeNET\CSas;
+namespace SpojeNet\CSas;
 
 /**
  * Description of Statementor.
@@ -71,7 +71,7 @@ class Statementor extends \Ease\Sand
      */
     public function getStatements($currencyCode = 'CZK', $statementLine = 'MAIN'): array
     {
-        $apiInstance = new \SpojeNET\CSas\Accounts\DefaultApi();
+        $apiInstance = new \SpojeNet\CSas\Accounts\DefaultApi();
         $page = 0;
         $statements = [];
         $this->addStatusMessage(sprintf(_('Request statements from %s to %s'), $this->since->format(self::$dateFormat), $this->until->format(self::$dateFormat)), 'debug');

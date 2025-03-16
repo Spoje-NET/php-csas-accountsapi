@@ -30,9 +30,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace SpojeNET\CSas\Model;
+namespace SpojeNet\CSas\Model;
 
-use SpojeNET\CSas\ObjectSerializer;
+use SpojeNet\CSas\ObjectSerializer;
 
 /**
  * GetAccounts200Response Class Doc Comment.
@@ -63,7 +63,7 @@ class GetAccounts200Response implements \ArrayAccess, \JsonSerializable, ModelIn
         'pageNumber' => 'int',
         'pageCount' => 'int',
         'pageSize' => 'int',
-        'accounts' => '\SpojeNET\CSas\Model\Account[]',
+        'accounts' => '\SpojeNet\CSas\Model\Account[]',
     ];
 
     /**
@@ -357,7 +357,7 @@ class GetAccounts200Response implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets accounts.
      *
-     * @return null|\SpojeNET\CSas\Model\Account[]
+     * @return null|\SpojeNet\CSas\Model\Account[]
      */
     public function getAccounts()
     {
@@ -367,7 +367,7 @@ class GetAccounts200Response implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Sets accounts.
      *
-     * @param null|\SpojeNET\CSas\Model\Account[] $accounts accounts
+     * @param null|\SpojeNet\CSas\Model\Account[] $accounts accounts
      *
      * @return self
      */

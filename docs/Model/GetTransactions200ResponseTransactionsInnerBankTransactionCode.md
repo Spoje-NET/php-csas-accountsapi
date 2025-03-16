@@ -4,6 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**proprietary** | [**\SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerBankTransactionCodeProprietary**](GetTransactions200ResponseTransactionsInnerBankTransactionCodeProprietary.md) |  | [optional]
+**proprietary** | [**\SpojeNet\CSas\Model\GetTransactions200ResponseTransactionsInnerBankTransactionCodeProprietary**](GetTransactions200ResponseTransactionsInnerBankTransactionCodeProprietary.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

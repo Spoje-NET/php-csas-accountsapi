@@ -4,6 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**transactionDetails** | [**\SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetails**](GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetails.md) |  | [optional]
+**transactionDetails** | [**\SpojeNet\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetails**](GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetails.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

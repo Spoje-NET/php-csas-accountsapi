@@ -21,7 +21,7 @@ Shr::init(['CSAS_API_KEY', 'CSAS_ACCESS_TOKEN', 'CSAS_SANDBOX_MODE'], \dirname(_
 
 // Keep your tokens fresh using https://github.com/Spoje-NET/csas-authorize.git
 
-$apiInstance = new \SpojeNET\CSas\Accounts\DefaultApi(new SpojeNET\CSas\ApiClient(
+$apiInstance = new \SpojeNet\CSas\Accounts\DefaultApi(new SpojeNet\CSas\ApiClient(
     [
         'apikey' => Shr::cfg('CSAS_API_KEY'),
         'token' => Shr::cfg('CSAS_ACCESS_TOKEN'),
@@ -39,7 +39,7 @@ try {
 
 /*
 "/usr/bin/php" "/home/vitex/Projects/SpojeNetIT/csas-accountsapi/Examples/accounts.php"
-SpojeNET\CSas\Model\GetAccounts200Response Object
+SpojeNet\CSas\Model\GetAccounts200Response Object
 (
     [openAPINullablesSetToNull:protected] => Array
         (
@@ -52,7 +52,7 @@ SpojeNET\CSas\Model\GetAccounts200Response Object
             [pageSize] => 2
             [accounts] => Array
                 (
-                    [0] => SpojeNET\CSas\Model\Account Object
+                    [0] => SpojeNet\CSas\Model\Account Object
                         (
                             [openAPINullablesSetToNull:protected] => Array
                                 (
@@ -61,7 +61,7 @@ SpojeNET\CSas\Model\GetAccounts200Response Object
                             [container:protected] => Array
                                 (
                                     [id] => AA195E7DB499B4D9F48D46C208625FF53F2245F7
-                                    [identification] => SpojeNET\CSas\Model\AccountIdentification Object
+                                    [identification] => SpojeNet\CSas\Model\AccountIdentification Object
                                         (
                                             [openAPINullablesSetToNull:protected] => Array
                                                 (
@@ -76,7 +76,7 @@ SpojeNET\CSas\Model\GetAccounts200Response Object
                                         )
 
                                     [currency] => CZK
-                                    [servicer] => SpojeNET\CSas\Model\AccountServicer Object
+                                    [servicer] => SpojeNet\CSas\Model\AccountServicer Object
                                         (
                                             [openAPINullablesSetToNull:protected] => Array
                                                 (
@@ -98,7 +98,7 @@ SpojeNET\CSas\Model\GetAccounts200Response Object
                                             [0] => Jiří Spokojený
                                         )
 
-                                    [relationship] => SpojeNET\CSas\Model\AccountRelationship Object
+                                    [relationship] => SpojeNet\CSas\Model\AccountRelationship Object
                                         (
                                             [openAPINullablesSetToNull:protected] => Array
                                                 (
@@ -111,7 +111,7 @@ SpojeNET\CSas\Model\GetAccounts200Response Object
 
                                         )
 
-                                    [suitableScope] => SpojeNET\CSas\Model\AccountSuitableScope Object
+                                    [suitableScope] => SpojeNet\CSas\Model\AccountSuitableScope Object
                                         (
                                             [openAPINullablesSetToNull:protected] => Array
                                                 (
@@ -132,7 +132,7 @@ SpojeNET\CSas\Model\GetAccounts200Response Object
 
                         )
 
-                    [1] => SpojeNET\CSas\Model\Account Object
+                    [1] => SpojeNet\CSas\Model\Account Object
                         (
                             [openAPINullablesSetToNull:protected] => Array
                                 (
@@ -141,7 +141,7 @@ SpojeNET\CSas\Model\GetAccounts200Response Object
                             [container:protected] => Array
                                 (
                                     [id] => DEBCD8673D9A3F3EF3EFE4B799053FD49D2FF59F
-                                    [identification] => SpojeNET\CSas\Model\AccountIdentification Object
+                                    [identification] => SpojeNet\CSas\Model\AccountIdentification Object
                                         (
                                             [openAPINullablesSetToNull:protected] => Array
                                                 (
@@ -156,7 +156,7 @@ SpojeNET\CSas\Model\GetAccounts200Response Object
                                         )
 
                                     [currency] => CZK
-                                    [servicer] => SpojeNET\CSas\Model\AccountServicer Object
+                                    [servicer] => SpojeNet\CSas\Model\AccountServicer Object
                                         (
                                             [openAPINullablesSetToNull:protected] => Array
                                                 (
@@ -178,7 +178,7 @@ SpojeNET\CSas\Model\GetAccounts200Response Object
                                             [0] => Jiří Spokojený
                                         )
 
-                                    [relationship] => SpojeNET\CSas\Model\AccountRelationship Object
+                                    [relationship] => SpojeNet\CSas\Model\AccountRelationship Object
                                         (
                                             [openAPINullablesSetToNull:protected] => Array
                                                 (
@@ -191,7 +191,7 @@ SpojeNET\CSas\Model\GetAccounts200Response Object
 
                                         )
 
-                                    [suitableScope] => SpojeNET\CSas\Model\AccountSuitableScope Object
+                                    [suitableScope] => SpojeNet\CSas\Model\AccountSuitableScope Object
                                         (
                                             [openAPINullablesSetToNull:protected] => Array
                                                 (

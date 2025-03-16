@@ -11,6 +11,6 @@ Name | Type | Description | Notes
 **period** | **string** | Period of the statement | [optional]
 **dateFrom** | **\DateTime** | The start-date of the statement period | [optional]
 **dateTo** | **\DateTime** | The end-date of the statement period | [optional]
-**formats** | [**\SpojeNET\CSas\Model\GetAccountStatements200ResponseAccountStatementsInnerFormatsInner[]**](GetAccountStatements200ResponseAccountStatementsInnerFormatsInner.md) |  | [optional]
+**formats** | [**\SpojeNet\CSas\Model\GetAccountStatements200ResponseAccountStatementsInnerFormatsInner[]**](GetAccountStatements200ResponseAccountStatementsInnerFormatsInner.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

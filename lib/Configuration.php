@@ -30,7 +30,7 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace SpojeNET\CSas;
+namespace SpojeNet\CSas;
 
 /**
  * Configuration Class Doc Comment
@@ -89,7 +89,7 @@ class Configuration
     /**
      * User agent of the HTTP request, set to "OpenAPI-Generator/{version}/PHP" by default.
      */
-    protected string $userAgent = 'SpojeNET\CSas/0.0.0/PHP';
+    protected string $userAgent = 'SpojeNet\CSas/0.0.0/PHP';
 
     /**
      * Debug switch (default set to false).
@@ -423,7 +423,7 @@ class Configuration
      */
     public static function toDebugReport()
     {
-        $report = 'PHP SDK (SpojeNET\CSas) Debug Report:'.\PHP_EOL;
+        $report = 'PHP SDK (SpojeNet\CSas) Debug Report:'.\PHP_EOL;
         $report .= '    OS: '.php_uname().\PHP_EOL;
         $report .= '    PHP Version: '.\PHP_VERSION.\PHP_EOL;
         $report .= '    The version of the OpenAPI document: 1.0.0'.\PHP_EOL;

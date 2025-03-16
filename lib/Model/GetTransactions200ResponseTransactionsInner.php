@@ -30,9 +30,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace SpojeNET\CSas\Model;
+namespace SpojeNet\CSas\Model;
 
-use SpojeNET\CSas\ObjectSerializer;
+use SpojeNet\CSas\ObjectSerializer;
 
 /**
  * GetTransactions200ResponseTransactionsInner Class Doc Comment.
@@ -61,13 +61,13 @@ class GetTransactions200ResponseTransactionsInner implements \ArrayAccess, \Json
      */
     protected static array $openAPITypes = [
         'entryReference' => 'string',
-        'amount' => '\SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerAmount',
+        'amount' => '\SpojeNet\CSas\Model\GetTransactions200ResponseTransactionsInnerAmount',
         'creditDebitIndicator' => 'string',
         'status' => 'string',
-        'bookingDate' => '\SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerBookingDate',
-        'valueDate' => '\SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerValueDate',
-        'bankTransactionCode' => '\SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerBankTransactionCode',
-        'entryDetails' => '\SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetails',
+        'bookingDate' => '\SpojeNet\CSas\Model\GetTransactions200ResponseTransactionsInnerBookingDate',
+        'valueDate' => '\SpojeNet\CSas\Model\GetTransactions200ResponseTransactionsInnerValueDate',
+        'bankTransactionCode' => '\SpojeNet\CSas\Model\GetTransactions200ResponseTransactionsInnerBankTransactionCode',
+        'entryDetails' => '\SpojeNet\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetails',
     ];
 
     /**
@@ -329,7 +329,7 @@ class GetTransactions200ResponseTransactionsInner implements \ArrayAccess, \Json
     /**
      * Gets amount.
      *
-     * @return null|\SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerAmount
+     * @return null|\SpojeNet\CSas\Model\GetTransactions200ResponseTransactionsInnerAmount
      */
     public function getAmount()
     {
@@ -339,7 +339,7 @@ class GetTransactions200ResponseTransactionsInner implements \ArrayAccess, \Json
     /**
      * Sets amount.
      *
-     * @param null|\SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerAmount $amount amount
+     * @param null|\SpojeNet\CSas\Model\GetTransactions200ResponseTransactionsInnerAmount $amount amount
      *
      * @return self
      */
@@ -413,7 +413,7 @@ class GetTransactions200ResponseTransactionsInner implements \ArrayAccess, \Json
     /**
      * Gets bookingDate.
      *
-     * @return null|\SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerBookingDate
+     * @return null|\SpojeNet\CSas\Model\GetTransactions200ResponseTransactionsInnerBookingDate
      */
     public function getBookingDate()
     {
@@ -423,7 +423,7 @@ class GetTransactions200ResponseTransactionsInner implements \ArrayAccess, \Json
     /**
      * Sets bookingDate.
      *
-     * @param null|\SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerBookingDate $bookingDate bookingDate
+     * @param null|\SpojeNet\CSas\Model\GetTransactions200ResponseTransactionsInnerBookingDate $bookingDate bookingDate
      *
      * @return self
      */
@@ -441,7 +441,7 @@ class GetTransactions200ResponseTransactionsInner implements \ArrayAccess, \Json
     /**
      * Gets valueDate.
      *
-     * @return null|\SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerValueDate
+     * @return null|\SpojeNet\CSas\Model\GetTransactions200ResponseTransactionsInnerValueDate
      */
     public function getValueDate()
     {
@@ -451,7 +451,7 @@ class GetTransactions200ResponseTransactionsInner implements \ArrayAccess, \Json
     /**
      * Sets valueDate.
      *
-     * @param null|\SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerValueDate $valueDate valueDate
+     * @param null|\SpojeNet\CSas\Model\GetTransactions200ResponseTransactionsInnerValueDate $valueDate valueDate
      *
      * @return self
      */
@@ -469,7 +469,7 @@ class GetTransactions200ResponseTransactionsInner implements \ArrayAccess, \Json
     /**
      * Gets bankTransactionCode.
      *
-     * @return null|\SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerBankTransactionCode
+     * @return null|\SpojeNet\CSas\Model\GetTransactions200ResponseTransactionsInnerBankTransactionCode
      */
     public function getBankTransactionCode()
     {
@@ -479,7 +479,7 @@ class GetTransactions200ResponseTransactionsInner implements \ArrayAccess, \Json
     /**
      * Sets bankTransactionCode.
      *
-     * @param null|\SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerBankTransactionCode $bankTransactionCode bankTransactionCode
+     * @param null|\SpojeNet\CSas\Model\GetTransactions200ResponseTransactionsInnerBankTransactionCode $bankTransactionCode bankTransactionCode
      *
      * @return self
      */
@@ -497,7 +497,7 @@ class GetTransactions200ResponseTransactionsInner implements \ArrayAccess, \Json
     /**
      * Gets entryDetails.
      *
-     * @return null|\SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetails
+     * @return null|\SpojeNet\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetails
      */
     public function getEntryDetails()
     {
@@ -507,7 +507,7 @@ class GetTransactions200ResponseTransactionsInner implements \ArrayAccess, \Json
     /**
      * Sets entryDetails.
      *
-     * @param null|\SpojeNET\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetails $entryDetails entryDetails
+     * @param null|\SpojeNet\CSas\Model\GetTransactions200ResponseTransactionsInnerEntryDetails $entryDetails entryDetails
      *
      * @return self
      */

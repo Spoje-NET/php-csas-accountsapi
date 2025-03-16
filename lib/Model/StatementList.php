@@ -30,9 +30,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace SpojeNET\CSas\Model;
+namespace SpojeNet\CSas\Model;
 
-use SpojeNET\CSas\ObjectSerializer;
+use SpojeNet\CSas\ObjectSerializer;
 
 /**
  * StatementList Class Doc Comment.
@@ -64,7 +64,7 @@ class StatementList implements \ArrayAccess, \JsonSerializable, ModelInterface
         'pageCount' => 'float',
         'pageSize' => 'float',
         'nextPage' => 'float',
-        'accountStatements' => '\SpojeNET\CSas\Model\GetAccountStatements200ResponseAccountStatementsInner[]',
+        'accountStatements' => '\SpojeNet\CSas\Model\GetAccountStatements200ResponseAccountStatementsInner[]',
     ];
 
     /**
@@ -392,7 +392,7 @@ class StatementList implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets accountStatements.
      *
-     * @return null|\SpojeNET\CSas\Model\GetAccountStatements200ResponseAccountStatementsInner[]
+     * @return null|\SpojeNet\CSas\Model\GetAccountStatements200ResponseAccountStatementsInner[]
      */
     public function getAccountStatements()
     {
@@ -402,7 +402,7 @@ class StatementList implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Sets accountStatements.
      *
-     * @param null|\SpojeNET\CSas\Model\GetAccountStatements200ResponseAccountStatementsInner[] $accountStatements accountStatements
+     * @param null|\SpojeNet\CSas\Model\GetAccountStatements200ResponseAccountStatementsInner[] $accountStatements accountStatements
      *
      * @return self
      */

@@ -30,7 +30,7 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace SpojeNET\CSas;
+namespace SpojeNet\CSas;
 
 /**
  * ApiException Class Doc Comment.

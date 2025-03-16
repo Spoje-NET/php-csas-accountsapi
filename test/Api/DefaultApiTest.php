@@ -30,7 +30,7 @@ declare(strict_types=1);
  * Please update the test case below to test the endpoint.
  */
 
-namespace SpojeNET\CSas\Test\Api;
+namespace SpojeNet\CSas\Test\Api;
 
 use PHPUnit\Framework\TestCase;
 

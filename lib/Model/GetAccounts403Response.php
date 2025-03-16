@@ -30,9 +30,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace SpojeNET\CSas\Model;
+namespace SpojeNet\CSas\Model;
 
-use SpojeNET\CSas\ObjectSerializer;
+use SpojeNet\CSas\ObjectSerializer;
 
 /**
  * GetAccounts403Response Class Doc Comment.
@@ -61,7 +61,7 @@ class GetAccounts403Response implements \ArrayAccess, \JsonSerializable, ModelIn
      */
     protected static array $openAPITypes = [
         'status' => 'int',
-        'errors' => '\SpojeNET\CSas\Model\GetAccounts403ResponseErrorsInner[]',
+        'errors' => '\SpojeNet\CSas\Model\GetAccounts403ResponseErrorsInner[]',
     ];
 
     /**
@@ -287,7 +287,7 @@ class GetAccounts403Response implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Gets errors.
      *
-     * @return null|\SpojeNET\CSas\Model\GetAccounts403ResponseErrorsInner[]
+     * @return null|\SpojeNet\CSas\Model\GetAccounts403ResponseErrorsInner[]
      */
     public function getErrors()
     {
@@ -297,7 +297,7 @@ class GetAccounts403Response implements \ArrayAccess, \JsonSerializable, ModelIn
     /**
      * Sets errors.
      *
-     * @param null|\SpojeNET\CSas\Model\GetAccounts403ResponseErrorsInner[] $errors errors
+     * @param null|\SpojeNet\CSas\Model\GetAccounts403ResponseErrorsInner[] $errors errors
      *
      * @return self
      */

@@ -30,9 +30,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace SpojeNET\CSas\Model;
+namespace SpojeNet\CSas\Model;
 
-use SpojeNET\CSas\ObjectSerializer;
+use SpojeNet\CSas\ObjectSerializer;
 
 /**
  * GetAccountBalance200ResponseBalancesInner Class Doc Comment.
@@ -60,10 +60,10 @@ class GetAccountBalance200ResponseBalancesInner implements \ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static array $openAPITypes = [
-        'type' => '\SpojeNET\CSas\Model\GetAccountBalance200ResponseBalancesInnerType',
-        'amount' => '\SpojeNET\CSas\Model\GetAccountBalance200ResponseBalancesInnerAmount',
+        'type' => '\SpojeNet\CSas\Model\GetAccountBalance200ResponseBalancesInnerType',
+        'amount' => '\SpojeNet\CSas\Model\GetAccountBalance200ResponseBalancesInnerAmount',
         'creditDebitIndicator' => 'string',
-        'date' => '\SpojeNET\CSas\Model\GetAccountBalance200ResponseBalancesInnerDate',
+        'date' => '\SpojeNet\CSas\Model\GetAccountBalance200ResponseBalancesInnerDate',
     ];
 
     /**
@@ -273,7 +273,7 @@ class GetAccountBalance200ResponseBalancesInner implements \ArrayAccess, \JsonSe
     /**
      * Gets type.
      *
-     * @return null|\SpojeNET\CSas\Model\GetAccountBalance200ResponseBalancesInnerType
+     * @return null|\SpojeNet\CSas\Model\GetAccountBalance200ResponseBalancesInnerType
      */
     public function getType()
     {
@@ -283,7 +283,7 @@ class GetAccountBalance200ResponseBalancesInner implements \ArrayAccess, \JsonSe
     /**
      * Sets type.
      *
-     * @param null|\SpojeNET\CSas\Model\GetAccountBalance200ResponseBalancesInnerType $type type
+     * @param null|\SpojeNet\CSas\Model\GetAccountBalance200ResponseBalancesInnerType $type type
      *
      * @return self
      */
@@ -301,7 +301,7 @@ class GetAccountBalance200ResponseBalancesInner implements \ArrayAccess, \JsonSe
     /**
      * Gets amount.
      *
-     * @return null|\SpojeNET\CSas\Model\GetAccountBalance200ResponseBalancesInnerAmount
+     * @return null|\SpojeNet\CSas\Model\GetAccountBalance200ResponseBalancesInnerAmount
      */
     public function getAmount()
     {
@@ -311,7 +311,7 @@ class GetAccountBalance200ResponseBalancesInner implements \ArrayAccess, \JsonSe
     /**
      * Sets amount.
      *
-     * @param null|\SpojeNET\CSas\Model\GetAccountBalance200ResponseBalancesInnerAmount $amount amount
+     * @param null|\SpojeNet\CSas\Model\GetAccountBalance200ResponseBalancesInnerAmount $amount amount
      *
      * @return self
      */
@@ -357,7 +357,7 @@ class GetAccountBalance200ResponseBalancesInner implements \ArrayAccess, \JsonSe
     /**
      * Gets date.
      *
-     * @return null|\SpojeNET\CSas\Model\GetAccountBalance200ResponseBalancesInnerDate
+     * @return null|\SpojeNet\CSas\Model\GetAccountBalance200ResponseBalancesInnerDate
      */
     public function getDate()
     {
@@ -367,7 +367,7 @@ class GetAccountBalance200ResponseBalancesInner implements \ArrayAccess, \JsonSe
     /**
      * Sets date.
      *
-     * @param null|\SpojeNET\CSas\Model\GetAccountBalance200ResponseBalancesInnerDate $date date
+     * @param null|\SpojeNet\CSas\Model\GetAccountBalance200ResponseBalancesInnerDate $date date
      *
      * @return self
      */

@@ -30,10 +30,10 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace SpojeNET\CSas;
+namespace SpojeNet\CSas;
 
 use GuzzleHttp\Psr7\Utils;
-use SpojeNET\CSas\Model\ModelInterface;
+use SpojeNet\CSas\Model\ModelInterface;
 
 /**
  * ObjectSerializer Class Doc Comment.
@@ -504,7 +504,7 @@ class ObjectSerializer
         $discriminator = $class::DISCRIMINATOR;
 
         if (!empty($discriminator) && isset($data->{$discriminator}) && \is_string($data->{$discriminator})) {
-            $subclass = '\SpojeNET\CSas\Model\\'.$data->{$discriminator};
+            $subclass = '\SpojeNet\CSas\Model\\'.$data->{$discriminator};
 
             if (is_subclass_of($subclass, $class)) {
                 $class = $subclass;

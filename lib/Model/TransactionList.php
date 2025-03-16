@@ -30,9 +30,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace SpojeNET\CSas\Model;
+namespace SpojeNet\CSas\Model;
 
-use SpojeNET\CSas\ObjectSerializer;
+use SpojeNet\CSas\ObjectSerializer;
 
 /**
  * TransactionList Class Doc Comment.
@@ -60,7 +60,7 @@ class TransactionList implements \ArrayAccess, \JsonSerializable, ModelInterface
      * @var string[]
      */
     protected static array $openAPITypes = [
-        'transactions' => '\SpojeNET\CSas\Model\TransactionListTransactionsInner[]',
+        'transactions' => '\SpojeNet\CSas\Model\TransactionListTransactionsInner[]',
     ];
 
     /**
@@ -252,7 +252,7 @@ class TransactionList implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets transactions.
      *
-     * @return null|\SpojeNET\CSas\Model\TransactionListTransactionsInner[]
+     * @return null|\SpojeNet\CSas\Model\TransactionListTransactionsInner[]
      */
     public function getTransactions()
     {
@@ -262,7 +262,7 @@ class TransactionList implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Sets transactions.
      *
-     * @param null|\SpojeNET\CSas\Model\TransactionListTransactionsInner[] $transactions transactions
+     * @param null|\SpojeNet\CSas\Model\TransactionListTransactionsInner[] $transactions transactions
      *
      * @return self
      */

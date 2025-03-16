@@ -30,9 +30,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace SpojeNET\CSas\Model;
+namespace SpojeNet\CSas\Model;
 
-use SpojeNET\CSas\ObjectSerializer;
+use SpojeNet\CSas\ObjectSerializer;
 
 /**
  * Account Class Doc Comment.
@@ -63,17 +63,17 @@ class Account implements \ArrayAccess, \JsonSerializable, ModelInterface
      */
     protected static array $openAPITypes = [
         'id' => 'string',
-        'identification' => '\SpojeNET\CSas\Model\AccountIdentification',
+        'identification' => '\SpojeNet\CSas\Model\AccountIdentification',
         'currency' => 'string',
-        'servicer' => '\SpojeNET\CSas\Model\AccountServicer',
+        'servicer' => '\SpojeNet\CSas\Model\AccountServicer',
         'nameI18N' => 'string',
         'productI18N' => 'string',
         'ownersNames' => 'string[]',
-        'relationship' => '\SpojeNET\CSas\Model\AccountRelationship',
-        'suitableScope' => '\SpojeNET\CSas\Model\AccountSuitableScope',
+        'relationship' => '\SpojeNet\CSas\Model\AccountRelationship',
+        'suitableScope' => '\SpojeNet\CSas\Model\AccountSuitableScope',
         'status' => 'string',
-        'relatedAgents' => '\SpojeNET\CSas\Model\AccountRelatedAgents',
-        'currencyExchange' => '\SpojeNET\CSas\Model\AccountCurrencyExchange',
+        'relatedAgents' => '\SpojeNet\CSas\Model\AccountRelatedAgents',
+        'currencyExchange' => '\SpojeNet\CSas\Model\AccountCurrencyExchange',
     ];
 
     /**
@@ -384,7 +384,7 @@ class Account implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets identification.
      *
-     * @return null|\SpojeNET\CSas\Model\AccountIdentification
+     * @return null|\SpojeNet\CSas\Model\AccountIdentification
      */
     public function getIdentification()
     {
@@ -394,7 +394,7 @@ class Account implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Sets identification.
      *
-     * @param null|\SpojeNET\CSas\Model\AccountIdentification $identification identification
+     * @param null|\SpojeNet\CSas\Model\AccountIdentification $identification identification
      *
      * @return self
      */
@@ -440,7 +440,7 @@ class Account implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets servicer.
      *
-     * @return null|\SpojeNET\CSas\Model\AccountServicer
+     * @return null|\SpojeNet\CSas\Model\AccountServicer
      */
     public function getServicer()
     {
@@ -450,7 +450,7 @@ class Account implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Sets servicer.
      *
-     * @param null|\SpojeNET\CSas\Model\AccountServicer $servicer servicer
+     * @param null|\SpojeNet\CSas\Model\AccountServicer $servicer servicer
      *
      * @return self
      */
@@ -552,7 +552,7 @@ class Account implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets relationship.
      *
-     * @return null|\SpojeNET\CSas\Model\AccountRelationship
+     * @return null|\SpojeNet\CSas\Model\AccountRelationship
      */
     public function getRelationship()
     {
@@ -562,7 +562,7 @@ class Account implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Sets relationship.
      *
-     * @param null|\SpojeNET\CSas\Model\AccountRelationship $relationship relationship
+     * @param null|\SpojeNet\CSas\Model\AccountRelationship $relationship relationship
      *
      * @return self
      */
@@ -580,7 +580,7 @@ class Account implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets suitableScope.
      *
-     * @return null|\SpojeNET\CSas\Model\AccountSuitableScope
+     * @return null|\SpojeNet\CSas\Model\AccountSuitableScope
      */
     public function getSuitableScope()
     {
@@ -590,7 +590,7 @@ class Account implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Sets suitableScope.
      *
-     * @param null|\SpojeNET\CSas\Model\AccountSuitableScope $suitableScope suitableScope
+     * @param null|\SpojeNet\CSas\Model\AccountSuitableScope $suitableScope suitableScope
      *
      * @return self
      */
@@ -648,7 +648,7 @@ class Account implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets relatedAgents.
      *
-     * @return null|\SpojeNET\CSas\Model\AccountRelatedAgents
+     * @return null|\SpojeNet\CSas\Model\AccountRelatedAgents
      */
     public function getRelatedAgents()
     {
@@ -658,7 +658,7 @@ class Account implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Sets relatedAgents.
      *
-     * @param null|\SpojeNET\CSas\Model\AccountRelatedAgents $relatedAgents relatedAgents
+     * @param null|\SpojeNet\CSas\Model\AccountRelatedAgents $relatedAgents relatedAgents
      *
      * @return self
      */
@@ -676,7 +676,7 @@ class Account implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets currencyExchange.
      *
-     * @return null|\SpojeNET\CSas\Model\AccountCurrencyExchange
+     * @return null|\SpojeNet\CSas\Model\AccountCurrencyExchange
      */
     public function getCurrencyExchange()
     {
@@ -686,7 +686,7 @@ class Account implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Sets currencyExchange.
      *
-     * @param null|\SpojeNET\CSas\Model\AccountCurrencyExchange $currencyExchange currencyExchange
+     * @param null|\SpojeNet\CSas\Model\AccountCurrencyExchange $currencyExchange currencyExchange
      *
      * @return self
      */

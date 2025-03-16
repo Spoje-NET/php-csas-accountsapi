@@ -21,7 +21,7 @@ Shr::init(['CSAS_API_KEY', 'CSAS_ACCESS_TOKEN', 'CSAS_SANDBOX_MODE'], \dirname(_
 
 // Keep your tokens fresh using https://github.com/Spoje-NET/csas-authorize.git
 
-$apiInstance = new \SpojeNET\CSas\Accounts\DefaultApi(new SpojeNET\CSas\ApiClient(
+$apiInstance = new \SpojeNet\CSas\Accounts\DefaultApi(new SpojeNet\CSas\ApiClient(
     [
         'apikey' => Shr::cfg('CSAS_API_KEY'),
         'token' => Shr::cfg('CSAS_ACCESS_TOKEN'),
@@ -39,7 +39,7 @@ try {
 
 /*
 "/usr/bin/php" "/home/vitex/Projects/SpojeNetIT/csas-accountsapi/Examples/balance.php"
-SpojeNET\CSas\Model\GetAccountBalance200Response Object
+SpojeNet\CSas\Model\GetAccountBalance200Response Object
 (
     [openAPINullablesSetToNull:protected] => Array
         (
@@ -49,7 +49,7 @@ SpojeNET\CSas\Model\GetAccountBalance200Response Object
         (
             [balances] => Array
                 (
-                    [0] => SpojeNET\CSas\Model\GetAccountBalance200ResponseBalancesInner Object
+                    [0] => SpojeNet\CSas\Model\GetAccountBalance200ResponseBalancesInner Object
                         (
                             [openAPINullablesSetToNull:protected] => Array
                                 (
@@ -57,7 +57,7 @@ SpojeNET\CSas\Model\GetAccountBalance200Response Object
 
                             [container:protected] => Array
                                 (
-                                    [type] => SpojeNET\CSas\Model\GetAccountBalance200ResponseBalancesInnerType Object
+                                    [type] => SpojeNet\CSas\Model\GetAccountBalance200ResponseBalancesInnerType Object
                                         (
                                             [openAPINullablesSetToNull:protected] => Array
                                                 (
@@ -65,7 +65,7 @@ SpojeNET\CSas\Model\GetAccountBalance200Response Object
 
                                             [container:protected] => Array
                                                 (
-                                                    [codeOrProprietary] => SpojeNET\CSas\Model\GetAccountBalance200ResponseBalancesInnerTypeCodeOrProprietary Object
+                                                    [codeOrProprietary] => SpojeNet\CSas\Model\GetAccountBalance200ResponseBalancesInnerTypeCodeOrProprietary Object
                                                         (
                                                             [openAPINullablesSetToNull:protected] => Array
                                                                 (
@@ -82,7 +82,7 @@ SpojeNET\CSas\Model\GetAccountBalance200Response Object
 
                                         )
 
-                                    [amount] => SpojeNET\CSas\Model\GetAccountBalance200ResponseBalancesInnerAmount Object
+                                    [amount] => SpojeNet\CSas\Model\GetAccountBalance200ResponseBalancesInnerAmount Object
                                         (
                                             [openAPINullablesSetToNull:protected] => Array
                                                 (
@@ -97,7 +97,7 @@ SpojeNET\CSas\Model\GetAccountBalance200Response Object
                                         )
 
                                     [creditDebitIndicator] => DBIT
-                                    [date] => SpojeNET\CSas\Model\GetAccountBalance200ResponseBalancesInnerDate Object
+                                    [date] => SpojeNet\CSas\Model\GetAccountBalance200ResponseBalancesInnerDate Object
                                         (
                                             [openAPINullablesSetToNull:protected] => Array
                                                 (

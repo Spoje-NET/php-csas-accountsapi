@@ -12,9 +12,9 @@ additionalProperties:
   appDescription: PHP API client for CSAS Premium Accounts WebAPI
   apiVersion: 3.0.0
   allowUnicodeIdentifiers: true
-  invokerPackage: SpojeNET\CSas
+  invokerPackage: SpojeNet\CSas
   modelPackage: Model
-  developerOrganization: SpojeNET
+  developerOrganization: SpojeNet
   developerOrganizationUrl: https://spojenet.cz
   variableNamingConvention: camelCase
   composerPackageName: spojenet/csas-accountsapi
