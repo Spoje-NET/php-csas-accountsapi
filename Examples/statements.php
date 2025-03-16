@@ -38,7 +38,7 @@ try {
     $account = Shr::cfg('CSAS_ACCOUNT_IBAN');
     'AA195E7DB499B4D9F48D46C208625FF53F2245F7';
             
-    $result = $apiInstance->getStatements($account, $fromDate->format('Y-m-d'), $toDate->format('Y-m-d'));
+    $result = $apiInstance->getAccountStatements($account, $fromDate->format('Y-m-d'), $toDate->format('Y-m-d'));
 
     print_r($result);
 } catch (Exception $e) {
