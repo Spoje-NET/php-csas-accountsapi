@@ -25,6 +25,7 @@ class Statementor extends \Ease\Sand
     use \Ease\Logger\Logging;
     public \DateTime $since;
     public \DateTime $until;
+    private string $scope;
 
     /**
      * DateTime Formating eg. 2021-08-01T10:00:00.0Z.
@@ -209,6 +210,18 @@ class Statementor extends \Ease\Sand
             $this->since = $this->since->setTime(0, 0);
             $this->until = $this->until->setTime(23, 59, 59, 999);
         }
+        $this->scope = $scope;
+        return $this->getScope();
+    }
+
+    public function getScopeSymbolic(): string
+    {
+        return $this->scope;
+    }
+
+    public function getScope(): \DatePeriod
+    {
+        return new \DatePeriod($this->since, new \DateInterval('P1D'), $this->until);
     }
 
     /**
@@ -264,4 +277,9 @@ class Statementor extends \Ease\Sand
     {
         return $this->until;
     }
+
+    public function getAccountNumber(): string {
+        return $this->accountNumber;
+    }
+
 }
