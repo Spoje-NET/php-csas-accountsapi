@@ -35,7 +35,7 @@ namespace SpojeNET\CSas\Model;
 use SpojeNET\CSas\ObjectSerializer;
 
 /**
- * StatementListAccountStatementsInner Class Doc Comment.
+ * GetAccountStatements200ResponseAccountStatementsInnerFormatsInner Class Doc Comment.
  *
  * @category Class
  *
@@ -45,24 +45,24 @@ use SpojeNET\CSas\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class StatementListAccountStatementsInner implements \ArrayAccess, \JsonSerializable, ModelInterface
+class GetAccountStatements200ResponseAccountStatementsInnerFormatsInner implements \ArrayAccess, \JsonSerializable, ModelInterface
 {
     public const DISCRIMINATOR = null;
-    public const FORMATS_PDF = 'pdf';
-    public const FORMATS_XML = 'xml';
-    public const FORMATS_XML_DATA = 'xml-data';
-    public const FORMATS_ABO_STANDARD = 'abo-standard';
-    public const FORMATS_ABO_INTERNAL = 'abo-internal';
-    public const FORMATS_ABO_STANDARD_EXTENDED = 'abo-standard-extended';
-    public const FORMATS_ABO_INTERNAL_EXTENDED = 'abo-internal-extended';
-    public const FORMATS_CSV_COMMA = 'csv-comma';
-    public const FORMATS_CSV_SEMICOLON = 'csv-semicolon';
-    public const FORMATS_MT940 = 'mt940';
+    public const FORMAT_PDF = 'pdf';
+    public const FORMAT_XML = 'xml';
+    public const FORMAT_XML_DATA = 'xml-data';
+    public const FORMAT_ABO_STANDARD = 'abo-standard';
+    public const FORMAT_ABO_INTERNAL = 'abo-internal';
+    public const FORMAT_ABO_STANDARD_EXTENDED = 'abo-standard-extended';
+    public const FORMAT_ABO_INTERNAL_EXTENDED = 'abo-internal-extended';
+    public const FORMAT_CSV_COMMA = 'csv-comma';
+    public const FORMAT_CSV_SEMICOLON = 'csv-semicolon';
+    public const FORMAT_MT940 = 'mt940';
 
     /**
      * The original name of the model.
      */
-    protected static string $openAPIModelName = 'StatementList_accountStatements_inner';
+    protected static string $openAPIModelName = 'getAccountStatements_200_response_accountStatements_inner_formats_inner';
 
     /**
      * Array of property to type mappings. Used for (de)serialization.
@@ -70,12 +70,8 @@ class StatementListAccountStatementsInner implements \ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static array $openAPITypes = [
-        'accountStatementId' => 'string',
-        'year' => 'float',
-        'month' => 'float',
-        'sequenceNumber' => 'float',
-        'period' => '\SpojeNET\CSas\Model\GetAccountStatements200ResponseStatementsInnerPeriod',
-        'formats' => 'string[]',
+        'availability' => 'string',
+        'format' => 'string',
     ];
 
     /**
@@ -88,12 +84,8 @@ class StatementListAccountStatementsInner implements \ArrayAccess, \JsonSerializ
      * @psalm-var array<string, string|null>
      */
     protected static array $openAPIFormats = [
-        'accountStatementId' => null,
-        'year' => null,
-        'month' => null,
-        'sequenceNumber' => null,
-        'period' => null,
-        'formats' => null,
+        'availability' => null,
+        'format' => null,
     ];
 
     /**
@@ -102,12 +94,8 @@ class StatementListAccountStatementsInner implements \ArrayAccess, \JsonSerializ
      * @var bool[]
      */
     protected static array $openAPINullables = [
-        'accountStatementId' => false,
-        'year' => false,
-        'month' => false,
-        'sequenceNumber' => false,
-        'period' => false,
-        'formats' => false,
+        'availability' => false,
+        'format' => false,
     ];
 
     /**
@@ -124,12 +112,8 @@ class StatementListAccountStatementsInner implements \ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static array $attributeMap = [
-        'accountStatementId' => 'accountStatementId',
-        'year' => 'year',
-        'month' => 'month',
-        'sequenceNumber' => 'sequenceNumber',
-        'period' => 'period',
-        'formats' => 'formats',
+        'availability' => 'availability',
+        'format' => 'format',
     ];
 
     /**
@@ -138,12 +122,8 @@ class StatementListAccountStatementsInner implements \ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static array $setters = [
-        'accountStatementId' => 'setAccountStatementId',
-        'year' => 'setYear',
-        'month' => 'setMonth',
-        'sequenceNumber' => 'setSequenceNumber',
-        'period' => 'setPeriod',
-        'formats' => 'setFormats',
+        'availability' => 'setAvailability',
+        'format' => 'setFormat',
     ];
 
     /**
@@ -152,12 +132,8 @@ class StatementListAccountStatementsInner implements \ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static array $getters = [
-        'accountStatementId' => 'getAccountStatementId',
-        'year' => 'getYear',
-        'month' => 'getMonth',
-        'sequenceNumber' => 'getSequenceNumber',
-        'period' => 'getPeriod',
-        'formats' => 'getFormats',
+        'availability' => 'getAvailability',
+        'format' => 'getFormat',
     ];
 
     /**
@@ -175,12 +151,8 @@ class StatementListAccountStatementsInner implements \ArrayAccess, \JsonSerializ
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('accountStatementId', $data ?? [], null);
-        $this->setIfExists('year', $data ?? [], null);
-        $this->setIfExists('month', $data ?? [], null);
-        $this->setIfExists('sequenceNumber', $data ?? [], null);
-        $this->setIfExists('period', $data ?? [], null);
-        $this->setIfExists('formats', $data ?? [], null);
+        $this->setIfExists('availability', $data ?? [], null);
+        $this->setIfExists('format', $data ?? [], null);
     }
 
     /**
@@ -278,19 +250,19 @@ class StatementListAccountStatementsInner implements \ArrayAccess, \JsonSerializ
      *
      * @return string[]
      */
-    public function getFormatsAllowableValues()
+    public function getFormatAllowableValues()
     {
         return [
-            self::FORMATS_PDF,
-            self::FORMATS_XML,
-            self::FORMATS_XML_DATA,
-            self::FORMATS_ABO_STANDARD,
-            self::FORMATS_ABO_INTERNAL,
-            self::FORMATS_ABO_STANDARD_EXTENDED,
-            self::FORMATS_ABO_INTERNAL_EXTENDED,
-            self::FORMATS_CSV_COMMA,
-            self::FORMATS_CSV_SEMICOLON,
-            self::FORMATS_MT940,
+            self::FORMAT_PDF,
+            self::FORMAT_XML,
+            self::FORMAT_XML_DATA,
+            self::FORMAT_ABO_STANDARD,
+            self::FORMAT_ABO_INTERNAL,
+            self::FORMAT_ABO_STANDARD_EXTENDED,
+            self::FORMAT_ABO_INTERNAL_EXTENDED,
+            self::FORMAT_CSV_COMMA,
+            self::FORMAT_CSV_SEMICOLON,
+            self::FORMAT_MT940,
         ];
     }
 
@@ -301,7 +273,19 @@ class StatementListAccountStatementsInner implements \ArrayAccess, \JsonSerializ
      */
     public function listInvalidProperties()
     {
-        return [];
+        $invalidProperties = [];
+
+        $allowedValues = $this->getFormatAllowableValues();
+
+        if (null !== $this->container['format'] && !\in_array($this->container['format'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'format', must be one of '%s'",
+                $this->container['format'],
+                implode("', '", $allowedValues),
+            );
+        }
+
+        return $invalidProperties;
     }
 
     /**
@@ -316,180 +300,69 @@ class StatementListAccountStatementsInner implements \ArrayAccess, \JsonSerializ
     }
 
     /**
-     * Gets accountStatementId.
+     * Gets availability.
      *
      * @return null|string
      */
-    public function getAccountStatementId()
+    public function getAvailability()
     {
-        return $this->container['accountStatementId'];
+        return $this->container['availability'];
     }
 
     /**
-     * Sets accountStatementId.
+     * Sets availability.
      *
-     * @param null|string $accountStatementId Unique identifier of the account statement
+     * @param null|string $availability Availability of the format
      *
      * @return self
      */
-    public function setAccountStatementId($accountStatementId)
+    public function setAvailability($availability)
     {
-        if (null === $accountStatementId) {
-            throw new \InvalidArgumentException('non-nullable accountStatementId cannot be null');
+        if (null === $availability) {
+            throw new \InvalidArgumentException('non-nullable availability cannot be null');
         }
 
-        $this->container['accountStatementId'] = $accountStatementId;
+        $this->container['availability'] = $availability;
 
         return $this;
     }
 
     /**
-     * Gets year.
+     * Gets format.
      *
-     * @return null|float
+     * @return null|string
      */
-    public function getYear()
+    public function getFormat()
     {
-        return $this->container['year'];
+        return $this->container['format'];
     }
 
     /**
-     * Sets year.
+     * Sets format.
      *
-     * @param null|float $year Year of the statement
+     * @param null|string $format Format of the statement
      *
      * @return self
      */
-    public function setYear($year)
+    public function setFormat($format)
     {
-        if (null === $year) {
-            throw new \InvalidArgumentException('non-nullable year cannot be null');
+        if (null === $format) {
+            throw new \InvalidArgumentException('non-nullable format cannot be null');
         }
 
-        $this->container['year'] = $year;
+        $allowedValues = $this->getFormatAllowableValues();
 
-        return $this;
-    }
-
-    /**
-     * Gets month.
-     *
-     * @return null|float
-     */
-    public function getMonth()
-    {
-        return $this->container['month'];
-    }
-
-    /**
-     * Sets month.
-     *
-     * @param null|float $month Month of the statement
-     *
-     * @return self
-     */
-    public function setMonth($month)
-    {
-        if (null === $month) {
-            throw new \InvalidArgumentException('non-nullable month cannot be null');
-        }
-
-        $this->container['month'] = $month;
-
-        return $this;
-    }
-
-    /**
-     * Gets sequenceNumber.
-     *
-     * @return null|float
-     */
-    public function getSequenceNumber()
-    {
-        return $this->container['sequenceNumber'];
-    }
-
-    /**
-     * Sets sequenceNumber.
-     *
-     * @param null|float $sequenceNumber The account statement's sequence number
-     *
-     * @return self
-     */
-    public function setSequenceNumber($sequenceNumber)
-    {
-        if (null === $sequenceNumber) {
-            throw new \InvalidArgumentException('non-nullable sequenceNumber cannot be null');
-        }
-
-        $this->container['sequenceNumber'] = $sequenceNumber;
-
-        return $this;
-    }
-
-    /**
-     * Gets period.
-     *
-     * @return null|\SpojeNET\CSas\Model\GetAccountStatements200ResponseStatementsInnerPeriod
-     */
-    public function getPeriod()
-    {
-        return $this->container['period'];
-    }
-
-    /**
-     * Sets period.
-     *
-     * @param null|\SpojeNET\CSas\Model\GetAccountStatements200ResponseStatementsInnerPeriod $period period
-     *
-     * @return self
-     */
-    public function setPeriod($period)
-    {
-        if (null === $period) {
-            throw new \InvalidArgumentException('non-nullable period cannot be null');
-        }
-
-        $this->container['period'] = $period;
-
-        return $this;
-    }
-
-    /**
-     * Gets formats.
-     *
-     * @return null|string[]
-     */
-    public function getFormats()
-    {
-        return $this->container['formats'];
-    }
-
-    /**
-     * Sets formats.
-     *
-     * @param null|string[] $formats Available formats of the statement
-     *
-     * @return self
-     */
-    public function setFormats($formats)
-    {
-        if (null === $formats) {
-            throw new \InvalidArgumentException('non-nullable formats cannot be null');
-        }
-
-        $allowedValues = $this->getFormatsAllowableValues();
-
-        if (array_diff($formats, $allowedValues)) {
+        if (!\in_array($format, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value for 'formats', must be one of '%s'",
+                    "Invalid value '%s' for 'format', must be one of '%s'",
+                    $format,
                     implode("', '", $allowedValues),
                 ),
             );
         }
 
-        $this->container['formats'] = $formats;
+        $this->container['format'] = $format;
 
         return $this;
     }

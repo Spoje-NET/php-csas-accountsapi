@@ -35,17 +35,17 @@ namespace SpojeNET\CSas\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * GetAccountStatements200ResponseTest Class Doc Comment.
+ * GetAccountStatements500ResponseTest Class Doc Comment.
  *
  * @category    Class
  *
- * @description GetAccountStatements200Response
+ * @description GetAccountStatements500Response
  *
  * @author      OpenAPI Generator team
  *
  * @see        https://openapi-generator.tech
  */
-class GetAccountStatements200ResponseTest extends TestCase
+class GetAccountStatements500ResponseTest extends TestCase
 {
     /**
      * Setup before running any test case.
@@ -76,54 +76,27 @@ class GetAccountStatements200ResponseTest extends TestCase
     }
 
     /**
-     * Test "GetAccountStatements200Response".
+     * Test "GetAccountStatements500Response".
      */
-    public function testGetAccountStatements200Response(): void
+    public function testGetAccountStatements500Response(): void
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "pageNumber".
+     * Test attribute "status".
      */
-    public function testPropertyPageNumber(): void
+    public function testPropertyStatus(): void
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "pageCount".
+     * Test attribute "errors".
      */
-    public function testPropertyPageCount(): void
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "pageSize".
-     */
-    public function testPropertyPageSize(): void
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "nextPage".
-     */
-    public function testPropertyNextPage(): void
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "accountStatements".
-     */
-    public function testPropertyAccountStatements(): void
+    public function testPropertyErrors(): void
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

@@ -35,17 +35,17 @@ namespace SpojeNET\CSas\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * GetAccountStatements200ResponseStatementsInnerPeriodTest Class Doc Comment.
+ * GetAccountStatements200ResponseAccountStatementsInnerFormatsInnerTest Class Doc Comment.
  *
  * @category    Class
  *
- * @description GetAccountStatements200ResponseStatementsInnerPeriod
+ * @description GetAccountStatements200ResponseAccountStatementsInnerFormatsInner
  *
  * @author      OpenAPI Generator team
  *
  * @see        https://openapi-generator.tech
  */
-class GetAccountStatements200ResponseStatementsInnerPeriodTest extends TestCase
+class GetAccountStatements200ResponseAccountStatementsInnerFormatsInnerTest extends TestCase
 {
     /**
      * Setup before running any test case.
@@ -76,27 +76,27 @@ class GetAccountStatements200ResponseStatementsInnerPeriodTest extends TestCase
     }
 
     /**
-     * Test "GetAccountStatements200ResponseStatementsInnerPeriod".
+     * Test "GetAccountStatements200ResponseAccountStatementsInnerFormatsInner".
      */
-    public function testGetAccountStatements200ResponseStatementsInnerPeriod(): void
+    public function testGetAccountStatements200ResponseAccountStatementsInnerFormatsInner(): void
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "dateFrom".
+     * Test attribute "availability".
      */
-    public function testPropertyDateFrom(): void
+    public function testPropertyAvailability(): void
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "dateTo".
+     * Test attribute "format".
      */
-    public function testPropertyDateTo(): void
+    public function testPropertyFormat(): void
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

@@ -35,7 +35,7 @@ namespace SpojeNET\CSas\Model;
 use SpojeNET\CSas\ObjectSerializer;
 
 /**
- * GetAccountStatements200Response Class Doc Comment.
+ * GetAccountStatements404ResponseErrorsInner Class Doc Comment.
  *
  * @category Class
  *
@@ -45,14 +45,14 @@ use SpojeNET\CSas\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class GetAccountStatements200Response implements \ArrayAccess, \JsonSerializable, ModelInterface
+class GetAccountStatements404ResponseErrorsInner implements \ArrayAccess, \JsonSerializable, ModelInterface
 {
     public const DISCRIMINATOR = null;
 
     /**
      * The original name of the model.
      */
-    protected static string $openAPIModelName = 'getAccountStatements_200_response';
+    protected static string $openAPIModelName = 'getAccountStatements_404_response_errors_inner';
 
     /**
      * Array of property to type mappings. Used for (de)serialization.
@@ -60,11 +60,7 @@ class GetAccountStatements200Response implements \ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static array $openAPITypes = [
-        'pageNumber' => 'int',
-        'pageCount' => 'int',
-        'pageSize' => 'int',
-        'nextPage' => 'int',
-        'accountStatements' => '\SpojeNET\CSas\Model\GetAccountStatements200ResponseAccountStatementsInner[]',
+        'error' => 'string',
     ];
 
     /**
@@ -77,11 +73,7 @@ class GetAccountStatements200Response implements \ArrayAccess, \JsonSerializable
      * @psalm-var array<string, string|null>
      */
     protected static array $openAPIFormats = [
-        'pageNumber' => null,
-        'pageCount' => null,
-        'pageSize' => null,
-        'nextPage' => null,
-        'accountStatements' => null,
+        'error' => null,
     ];
 
     /**
@@ -90,11 +82,7 @@ class GetAccountStatements200Response implements \ArrayAccess, \JsonSerializable
      * @var bool[]
      */
     protected static array $openAPINullables = [
-        'pageNumber' => false,
-        'pageCount' => false,
-        'pageSize' => false,
-        'nextPage' => false,
-        'accountStatements' => false,
+        'error' => false,
     ];
 
     /**
@@ -111,11 +99,7 @@ class GetAccountStatements200Response implements \ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static array $attributeMap = [
-        'pageNumber' => 'pageNumber',
-        'pageCount' => 'pageCount',
-        'pageSize' => 'pageSize',
-        'nextPage' => 'nextPage',
-        'accountStatements' => 'accountStatements',
+        'error' => 'error',
     ];
 
     /**
@@ -124,11 +108,7 @@ class GetAccountStatements200Response implements \ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static array $setters = [
-        'pageNumber' => 'setPageNumber',
-        'pageCount' => 'setPageCount',
-        'pageSize' => 'setPageSize',
-        'nextPage' => 'setNextPage',
-        'accountStatements' => 'setAccountStatements',
+        'error' => 'setError',
     ];
 
     /**
@@ -137,11 +117,7 @@ class GetAccountStatements200Response implements \ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static array $getters = [
-        'pageNumber' => 'getPageNumber',
-        'pageCount' => 'getPageCount',
-        'pageSize' => 'getPageSize',
-        'nextPage' => 'getNextPage',
-        'accountStatements' => 'getAccountStatements',
+        'error' => 'getError',
     ];
 
     /**
@@ -159,11 +135,7 @@ class GetAccountStatements200Response implements \ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('pageNumber', $data ?? [], null);
-        $this->setIfExists('pageCount', $data ?? [], null);
-        $this->setIfExists('pageSize', $data ?? [], null);
-        $this->setIfExists('nextPage', $data ?? [], null);
-        $this->setIfExists('accountStatements', $data ?? [], null);
+        $this->setIfExists('error', $data ?? [], null);
     }
 
     /**
@@ -278,141 +250,29 @@ class GetAccountStatements200Response implements \ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets pageNumber.
+     * Gets error.
      *
-     * @return null|int
+     * @return null|string
      */
-    public function getPageNumber()
+    public function getError()
     {
-        return $this->container['pageNumber'];
+        return $this->container['error'];
     }
 
     /**
-     * Sets pageNumber.
+     * Sets error.
      *
-     * @param null|int $pageNumber Current page number
+     * @param null|string $error error
      *
      * @return self
      */
-    public function setPageNumber($pageNumber)
+    public function setError($error)
     {
-        if (null === $pageNumber) {
-            throw new \InvalidArgumentException('non-nullable pageNumber cannot be null');
+        if (null === $error) {
+            throw new \InvalidArgumentException('non-nullable error cannot be null');
         }
 
-        $this->container['pageNumber'] = $pageNumber;
-
-        return $this;
-    }
-
-    /**
-     * Gets pageCount.
-     *
-     * @return null|int
-     */
-    public function getPageCount()
-    {
-        return $this->container['pageCount'];
-    }
-
-    /**
-     * Sets pageCount.
-     *
-     * @param null|int $pageCount Total number of pages
-     *
-     * @return self
-     */
-    public function setPageCount($pageCount)
-    {
-        if (null === $pageCount) {
-            throw new \InvalidArgumentException('non-nullable pageCount cannot be null');
-        }
-
-        $this->container['pageCount'] = $pageCount;
-
-        return $this;
-    }
-
-    /**
-     * Gets pageSize.
-     *
-     * @return null|int
-     */
-    public function getPageSize()
-    {
-        return $this->container['pageSize'];
-    }
-
-    /**
-     * Sets pageSize.
-     *
-     * @param null|int $pageSize Number of entries per page
-     *
-     * @return self
-     */
-    public function setPageSize($pageSize)
-    {
-        if (null === $pageSize) {
-            throw new \InvalidArgumentException('non-nullable pageSize cannot be null');
-        }
-
-        $this->container['pageSize'] = $pageSize;
-
-        return $this;
-    }
-
-    /**
-     * Gets nextPage.
-     *
-     * @return null|int
-     */
-    public function getNextPage()
-    {
-        return $this->container['nextPage'];
-    }
-
-    /**
-     * Sets nextPage.
-     *
-     * @param null|int $nextPage Next page number
-     *
-     * @return self
-     */
-    public function setNextPage($nextPage)
-    {
-        if (null === $nextPage) {
-            throw new \InvalidArgumentException('non-nullable nextPage cannot be null');
-        }
-
-        $this->container['nextPage'] = $nextPage;
-
-        return $this;
-    }
-
-    /**
-     * Gets accountStatements.
-     *
-     * @return null|\SpojeNET\CSas\Model\GetAccountStatements200ResponseAccountStatementsInner[]
-     */
-    public function getAccountStatements()
-    {
-        return $this->container['accountStatements'];
-    }
-
-    /**
-     * Sets accountStatements.
-     *
-     * @param null|\SpojeNET\CSas\Model\GetAccountStatements200ResponseAccountStatementsInner[] $accountStatements accountStatements
-     *
-     * @return self
-     */
-    public function setAccountStatements($accountStatements)
-    {
-        if (null === $accountStatements) {
-            throw new \InvalidArgumentException('non-nullable accountStatements cannot be null');
-        }
-
-        $this->container['accountStatements'] = $accountStatements;
+        $this->container['error'] = $error;
 
         return $this;
     }

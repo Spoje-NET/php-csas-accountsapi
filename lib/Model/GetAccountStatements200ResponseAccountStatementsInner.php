@@ -35,7 +35,7 @@ namespace SpojeNET\CSas\Model;
 use SpojeNET\CSas\ObjectSerializer;
 
 /**
- * GetAccountStatements200Response Class Doc Comment.
+ * GetAccountStatements200ResponseAccountStatementsInner Class Doc Comment.
  *
  * @category Class
  *
@@ -45,14 +45,14 @@ use SpojeNET\CSas\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class GetAccountStatements200Response implements \ArrayAccess, \JsonSerializable, ModelInterface
+class GetAccountStatements200ResponseAccountStatementsInner implements \ArrayAccess, \JsonSerializable, ModelInterface
 {
     public const DISCRIMINATOR = null;
 
     /**
      * The original name of the model.
      */
-    protected static string $openAPIModelName = 'getAccountStatements_200_response';
+    protected static string $openAPIModelName = 'getAccountStatements_200_response_accountStatements_inner';
 
     /**
      * Array of property to type mappings. Used for (de)serialization.
@@ -60,11 +60,14 @@ class GetAccountStatements200Response implements \ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static array $openAPITypes = [
-        'pageNumber' => 'int',
-        'pageCount' => 'int',
-        'pageSize' => 'int',
-        'nextPage' => 'int',
-        'accountStatements' => '\SpojeNET\CSas\Model\GetAccountStatements200ResponseAccountStatementsInner[]',
+        'accountStatementId' => 'string',
+        'year' => 'float',
+        'month' => 'float',
+        'sequenceNumber' => 'float',
+        'period' => 'string',
+        'dateFrom' => '\DateTime',
+        'dateTo' => '\DateTime',
+        'formats' => '\SpojeNET\CSas\Model\GetAccountStatements200ResponseAccountStatementsInnerFormatsInner[]',
     ];
 
     /**
@@ -77,11 +80,14 @@ class GetAccountStatements200Response implements \ArrayAccess, \JsonSerializable
      * @psalm-var array<string, string|null>
      */
     protected static array $openAPIFormats = [
-        'pageNumber' => null,
-        'pageCount' => null,
-        'pageSize' => null,
-        'nextPage' => null,
-        'accountStatements' => null,
+        'accountStatementId' => null,
+        'year' => null,
+        'month' => null,
+        'sequenceNumber' => null,
+        'period' => null,
+        'dateFrom' => 'date',
+        'dateTo' => 'date',
+        'formats' => null,
     ];
 
     /**
@@ -90,11 +96,14 @@ class GetAccountStatements200Response implements \ArrayAccess, \JsonSerializable
      * @var bool[]
      */
     protected static array $openAPINullables = [
-        'pageNumber' => false,
-        'pageCount' => false,
-        'pageSize' => false,
-        'nextPage' => false,
-        'accountStatements' => false,
+        'accountStatementId' => false,
+        'year' => false,
+        'month' => false,
+        'sequenceNumber' => false,
+        'period' => false,
+        'dateFrom' => false,
+        'dateTo' => false,
+        'formats' => false,
     ];
 
     /**
@@ -111,11 +120,14 @@ class GetAccountStatements200Response implements \ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static array $attributeMap = [
-        'pageNumber' => 'pageNumber',
-        'pageCount' => 'pageCount',
-        'pageSize' => 'pageSize',
-        'nextPage' => 'nextPage',
-        'accountStatements' => 'accountStatements',
+        'accountStatementId' => 'accountStatementId',
+        'year' => 'year',
+        'month' => 'month',
+        'sequenceNumber' => 'sequenceNumber',
+        'period' => 'period',
+        'dateFrom' => 'dateFrom',
+        'dateTo' => 'dateTo',
+        'formats' => 'formats',
     ];
 
     /**
@@ -124,11 +136,14 @@ class GetAccountStatements200Response implements \ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static array $setters = [
-        'pageNumber' => 'setPageNumber',
-        'pageCount' => 'setPageCount',
-        'pageSize' => 'setPageSize',
-        'nextPage' => 'setNextPage',
-        'accountStatements' => 'setAccountStatements',
+        'accountStatementId' => 'setAccountStatementId',
+        'year' => 'setYear',
+        'month' => 'setMonth',
+        'sequenceNumber' => 'setSequenceNumber',
+        'period' => 'setPeriod',
+        'dateFrom' => 'setDateFrom',
+        'dateTo' => 'setDateTo',
+        'formats' => 'setFormats',
     ];
 
     /**
@@ -137,11 +152,14 @@ class GetAccountStatements200Response implements \ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static array $getters = [
-        'pageNumber' => 'getPageNumber',
-        'pageCount' => 'getPageCount',
-        'pageSize' => 'getPageSize',
-        'nextPage' => 'getNextPage',
-        'accountStatements' => 'getAccountStatements',
+        'accountStatementId' => 'getAccountStatementId',
+        'year' => 'getYear',
+        'month' => 'getMonth',
+        'sequenceNumber' => 'getSequenceNumber',
+        'period' => 'getPeriod',
+        'dateFrom' => 'getDateFrom',
+        'dateTo' => 'getDateTo',
+        'formats' => 'getFormats',
     ];
 
     /**
@@ -159,11 +177,14 @@ class GetAccountStatements200Response implements \ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('pageNumber', $data ?? [], null);
-        $this->setIfExists('pageCount', $data ?? [], null);
-        $this->setIfExists('pageSize', $data ?? [], null);
-        $this->setIfExists('nextPage', $data ?? [], null);
-        $this->setIfExists('accountStatements', $data ?? [], null);
+        $this->setIfExists('accountStatementId', $data ?? [], null);
+        $this->setIfExists('year', $data ?? [], null);
+        $this->setIfExists('month', $data ?? [], null);
+        $this->setIfExists('sequenceNumber', $data ?? [], null);
+        $this->setIfExists('period', $data ?? [], null);
+        $this->setIfExists('dateFrom', $data ?? [], null);
+        $this->setIfExists('dateTo', $data ?? [], null);
+        $this->setIfExists('formats', $data ?? [], null);
     }
 
     /**
@@ -278,141 +299,225 @@ class GetAccountStatements200Response implements \ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets pageNumber.
+     * Gets accountStatementId.
      *
-     * @return null|int
+     * @return null|string
      */
-    public function getPageNumber()
+    public function getAccountStatementId()
     {
-        return $this->container['pageNumber'];
+        return $this->container['accountStatementId'];
     }
 
     /**
-     * Sets pageNumber.
+     * Sets accountStatementId.
      *
-     * @param null|int $pageNumber Current page number
+     * @param null|string $accountStatementId Unique identifier of the account statement
      *
      * @return self
      */
-    public function setPageNumber($pageNumber)
+    public function setAccountStatementId($accountStatementId)
     {
-        if (null === $pageNumber) {
-            throw new \InvalidArgumentException('non-nullable pageNumber cannot be null');
+        if (null === $accountStatementId) {
+            throw new \InvalidArgumentException('non-nullable accountStatementId cannot be null');
         }
 
-        $this->container['pageNumber'] = $pageNumber;
+        $this->container['accountStatementId'] = $accountStatementId;
 
         return $this;
     }
 
     /**
-     * Gets pageCount.
+     * Gets year.
      *
-     * @return null|int
+     * @return null|float
      */
-    public function getPageCount()
+    public function getYear()
     {
-        return $this->container['pageCount'];
+        return $this->container['year'];
     }
 
     /**
-     * Sets pageCount.
+     * Sets year.
      *
-     * @param null|int $pageCount Total number of pages
+     * @param null|float $year Year of the statement
      *
      * @return self
      */
-    public function setPageCount($pageCount)
+    public function setYear($year)
     {
-        if (null === $pageCount) {
-            throw new \InvalidArgumentException('non-nullable pageCount cannot be null');
+        if (null === $year) {
+            throw new \InvalidArgumentException('non-nullable year cannot be null');
         }
 
-        $this->container['pageCount'] = $pageCount;
+        $this->container['year'] = $year;
 
         return $this;
     }
 
     /**
-     * Gets pageSize.
+     * Gets month.
      *
-     * @return null|int
+     * @return null|float
      */
-    public function getPageSize()
+    public function getMonth()
     {
-        return $this->container['pageSize'];
+        return $this->container['month'];
     }
 
     /**
-     * Sets pageSize.
+     * Sets month.
      *
-     * @param null|int $pageSize Number of entries per page
+     * @param null|float $month Month of the statement
      *
      * @return self
      */
-    public function setPageSize($pageSize)
+    public function setMonth($month)
     {
-        if (null === $pageSize) {
-            throw new \InvalidArgumentException('non-nullable pageSize cannot be null');
+        if (null === $month) {
+            throw new \InvalidArgumentException('non-nullable month cannot be null');
         }
 
-        $this->container['pageSize'] = $pageSize;
+        $this->container['month'] = $month;
 
         return $this;
     }
 
     /**
-     * Gets nextPage.
+     * Gets sequenceNumber.
      *
-     * @return null|int
+     * @return null|float
      */
-    public function getNextPage()
+    public function getSequenceNumber()
     {
-        return $this->container['nextPage'];
+        return $this->container['sequenceNumber'];
     }
 
     /**
-     * Sets nextPage.
+     * Sets sequenceNumber.
      *
-     * @param null|int $nextPage Next page number
+     * @param null|float $sequenceNumber The account statement's sequence number
      *
      * @return self
      */
-    public function setNextPage($nextPage)
+    public function setSequenceNumber($sequenceNumber)
     {
-        if (null === $nextPage) {
-            throw new \InvalidArgumentException('non-nullable nextPage cannot be null');
+        if (null === $sequenceNumber) {
+            throw new \InvalidArgumentException('non-nullable sequenceNumber cannot be null');
         }
 
-        $this->container['nextPage'] = $nextPage;
+        $this->container['sequenceNumber'] = $sequenceNumber;
 
         return $this;
     }
 
     /**
-     * Gets accountStatements.
+     * Gets period.
      *
-     * @return null|\SpojeNET\CSas\Model\GetAccountStatements200ResponseAccountStatementsInner[]
+     * @return null|string
      */
-    public function getAccountStatements()
+    public function getPeriod()
     {
-        return $this->container['accountStatements'];
+        return $this->container['period'];
     }
 
     /**
-     * Sets accountStatements.
+     * Sets period.
      *
-     * @param null|\SpojeNET\CSas\Model\GetAccountStatements200ResponseAccountStatementsInner[] $accountStatements accountStatements
+     * @param null|string $period Period of the statement
      *
      * @return self
      */
-    public function setAccountStatements($accountStatements)
+    public function setPeriod($period)
     {
-        if (null === $accountStatements) {
-            throw new \InvalidArgumentException('non-nullable accountStatements cannot be null');
+        if (null === $period) {
+            throw new \InvalidArgumentException('non-nullable period cannot be null');
         }
 
-        $this->container['accountStatements'] = $accountStatements;
+        $this->container['period'] = $period;
+
+        return $this;
+    }
+
+    /**
+     * Gets dateFrom.
+     *
+     * @return null|\DateTime
+     */
+    public function getDateFrom()
+    {
+        return $this->container['dateFrom'];
+    }
+
+    /**
+     * Sets dateFrom.
+     *
+     * @param null|\DateTime $dateFrom The start-date of the statement period
+     *
+     * @return self
+     */
+    public function setDateFrom($dateFrom)
+    {
+        if (null === $dateFrom) {
+            throw new \InvalidArgumentException('non-nullable dateFrom cannot be null');
+        }
+
+        $this->container['dateFrom'] = $dateFrom;
+
+        return $this;
+    }
+
+    /**
+     * Gets dateTo.
+     *
+     * @return null|\DateTime
+     */
+    public function getDateTo()
+    {
+        return $this->container['dateTo'];
+    }
+
+    /**
+     * Sets dateTo.
+     *
+     * @param null|\DateTime $dateTo The end-date of the statement period
+     *
+     * @return self
+     */
+    public function setDateTo($dateTo)
+    {
+        if (null === $dateTo) {
+            throw new \InvalidArgumentException('non-nullable dateTo cannot be null');
+        }
+
+        $this->container['dateTo'] = $dateTo;
+
+        return $this;
+    }
+
+    /**
+     * Gets formats.
+     *
+     * @return null|\SpojeNET\CSas\Model\GetAccountStatements200ResponseAccountStatementsInnerFormatsInner[]
+     */
+    public function getFormats()
+    {
+        return $this->container['formats'];
+    }
+
+    /**
+     * Sets formats.
+     *
+     * @param null|\SpojeNET\CSas\Model\GetAccountStatements200ResponseAccountStatementsInnerFormatsInner[] $formats formats
+     *
+     * @return self
+     */
+    public function setFormats($formats)
+    {
+        if (null === $formats) {
+            throw new \InvalidArgumentException('non-nullable formats cannot be null');
+        }
+
+        $this->container['formats'] = $formats;
 
         return $this;
     }

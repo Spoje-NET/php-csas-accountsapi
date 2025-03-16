@@ -35,7 +35,7 @@ namespace SpojeNET\CSas\Model;
 use SpojeNET\CSas\ObjectSerializer;
 
 /**
- * GetAccountStatements200ResponseStatementsInner Class Doc Comment.
+ * GetAccountStatements503Response Class Doc Comment.
  *
  * @category Class
  *
@@ -45,24 +45,14 @@ use SpojeNET\CSas\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class GetAccountStatements200ResponseStatementsInner implements \ArrayAccess, \JsonSerializable, ModelInterface
+class GetAccountStatements503Response implements \ArrayAccess, \JsonSerializable, ModelInterface
 {
     public const DISCRIMINATOR = null;
-    public const FORMATS_PDF = 'pdf';
-    public const FORMATS_XML = 'xml';
-    public const FORMATS_XML_DATA = 'xml-data';
-    public const FORMATS_ABO_STANDARD = 'abo-standard';
-    public const FORMATS_ABO_INTERNAL = 'abo-internal';
-    public const FORMATS_ABO_STANDARD_EXTENDED = 'abo-standard-extended';
-    public const FORMATS_ABO_INTERNAL_EXTENDED = 'abo-internal-extended';
-    public const FORMATS_CSV_COMMA = 'csv-comma';
-    public const FORMATS_CSV_SEMICOLON = 'csv-semicolon';
-    public const FORMATS_MT940 = 'mt940';
 
     /**
      * The original name of the model.
      */
-    protected static string $openAPIModelName = 'getAccountStatements_200_response_statements_inner';
+    protected static string $openAPIModelName = 'getAccountStatements_503_response';
 
     /**
      * Array of property to type mappings. Used for (de)serialization.
@@ -70,12 +60,8 @@ class GetAccountStatements200ResponseStatementsInner implements \ArrayAccess, \J
      * @var string[]
      */
     protected static array $openAPITypes = [
-        'id' => 'string',
-        'year' => 'float',
-        'month' => 'float',
-        'sequenceNumber' => 'float',
-        'period' => '\SpojeNET\CSas\Model\GetAccountStatements200ResponseStatementsInnerPeriod',
-        'formats' => 'string[]',
+        'status' => 'int',
+        'errors' => '\SpojeNET\CSas\Model\GetAccountStatements503ResponseErrorsInner[]',
     ];
 
     /**
@@ -88,12 +74,8 @@ class GetAccountStatements200ResponseStatementsInner implements \ArrayAccess, \J
      * @psalm-var array<string, string|null>
      */
     protected static array $openAPIFormats = [
-        'id' => null,
-        'year' => null,
-        'month' => null,
-        'sequenceNumber' => null,
-        'period' => null,
-        'formats' => null,
+        'status' => null,
+        'errors' => null,
     ];
 
     /**
@@ -102,12 +84,8 @@ class GetAccountStatements200ResponseStatementsInner implements \ArrayAccess, \J
      * @var bool[]
      */
     protected static array $openAPINullables = [
-        'id' => false,
-        'year' => false,
-        'month' => false,
-        'sequenceNumber' => false,
-        'period' => false,
-        'formats' => false,
+        'status' => false,
+        'errors' => false,
     ];
 
     /**
@@ -124,12 +102,8 @@ class GetAccountStatements200ResponseStatementsInner implements \ArrayAccess, \J
      * @var string[]
      */
     protected static array $attributeMap = [
-        'id' => 'id',
-        'year' => 'year',
-        'month' => 'month',
-        'sequenceNumber' => 'sequenceNumber',
-        'period' => 'period',
-        'formats' => 'formats',
+        'status' => 'status',
+        'errors' => 'errors',
     ];
 
     /**
@@ -138,12 +112,8 @@ class GetAccountStatements200ResponseStatementsInner implements \ArrayAccess, \J
      * @var string[]
      */
     protected static array $setters = [
-        'id' => 'setId',
-        'year' => 'setYear',
-        'month' => 'setMonth',
-        'sequenceNumber' => 'setSequenceNumber',
-        'period' => 'setPeriod',
-        'formats' => 'setFormats',
+        'status' => 'setStatus',
+        'errors' => 'setErrors',
     ];
 
     /**
@@ -152,12 +122,8 @@ class GetAccountStatements200ResponseStatementsInner implements \ArrayAccess, \J
      * @var string[]
      */
     protected static array $getters = [
-        'id' => 'getId',
-        'year' => 'getYear',
-        'month' => 'getMonth',
-        'sequenceNumber' => 'getSequenceNumber',
-        'period' => 'getPeriod',
-        'formats' => 'getFormats',
+        'status' => 'getStatus',
+        'errors' => 'getErrors',
     ];
 
     /**
@@ -175,12 +141,8 @@ class GetAccountStatements200ResponseStatementsInner implements \ArrayAccess, \J
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('year', $data ?? [], null);
-        $this->setIfExists('month', $data ?? [], null);
-        $this->setIfExists('sequenceNumber', $data ?? [], null);
-        $this->setIfExists('period', $data ?? [], null);
-        $this->setIfExists('formats', $data ?? [], null);
+        $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('errors', $data ?? [], null);
     }
 
     /**
@@ -274,27 +236,6 @@ class GetAccountStatements200ResponseStatementsInner implements \ArrayAccess, \J
     }
 
     /**
-     * Gets allowable values of the enum.
-     *
-     * @return string[]
-     */
-    public function getFormatsAllowableValues()
-    {
-        return [
-            self::FORMATS_PDF,
-            self::FORMATS_XML,
-            self::FORMATS_XML_DATA,
-            self::FORMATS_ABO_STANDARD,
-            self::FORMATS_ABO_INTERNAL,
-            self::FORMATS_ABO_STANDARD_EXTENDED,
-            self::FORMATS_ABO_INTERNAL_EXTENDED,
-            self::FORMATS_CSV_COMMA,
-            self::FORMATS_CSV_SEMICOLON,
-            self::FORMATS_MT940,
-        ];
-    }
-
-    /**
      * Show all the invalid properties with reasons.
      *
      * @return array invalid properties with reasons
@@ -316,180 +257,57 @@ class GetAccountStatements200ResponseStatementsInner implements \ArrayAccess, \J
     }
 
     /**
-     * Gets id.
+     * Gets status.
      *
-     * @return null|string
+     * @return null|int
      */
-    public function getId()
+    public function getStatus()
     {
-        return $this->container['id'];
+        return $this->container['status'];
     }
 
     /**
-     * Sets id.
+     * Sets status.
      *
-     * @param null|string $id Unique identifier of the account statement
+     * @param null|int $status status
      *
      * @return self
      */
-    public function setId($id)
+    public function setStatus($status)
     {
-        if (null === $id) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        if (null === $status) {
+            throw new \InvalidArgumentException('non-nullable status cannot be null');
         }
 
-        $this->container['id'] = $id;
+        $this->container['status'] = $status;
 
         return $this;
     }
 
     /**
-     * Gets year.
+     * Gets errors.
      *
-     * @return null|float
+     * @return null|\SpojeNET\CSas\Model\GetAccountStatements503ResponseErrorsInner[]
      */
-    public function getYear()
+    public function getErrors()
     {
-        return $this->container['year'];
+        return $this->container['errors'];
     }
 
     /**
-     * Sets year.
+     * Sets errors.
      *
-     * @param null|float $year Year of the statement
+     * @param null|\SpojeNET\CSas\Model\GetAccountStatements503ResponseErrorsInner[] $errors errors
      *
      * @return self
      */
-    public function setYear($year)
+    public function setErrors($errors)
     {
-        if (null === $year) {
-            throw new \InvalidArgumentException('non-nullable year cannot be null');
+        if (null === $errors) {
+            throw new \InvalidArgumentException('non-nullable errors cannot be null');
         }
 
-        $this->container['year'] = $year;
-
-        return $this;
-    }
-
-    /**
-     * Gets month.
-     *
-     * @return null|float
-     */
-    public function getMonth()
-    {
-        return $this->container['month'];
-    }
-
-    /**
-     * Sets month.
-     *
-     * @param null|float $month Month of the statement
-     *
-     * @return self
-     */
-    public function setMonth($month)
-    {
-        if (null === $month) {
-            throw new \InvalidArgumentException('non-nullable month cannot be null');
-        }
-
-        $this->container['month'] = $month;
-
-        return $this;
-    }
-
-    /**
-     * Gets sequenceNumber.
-     *
-     * @return null|float
-     */
-    public function getSequenceNumber()
-    {
-        return $this->container['sequenceNumber'];
-    }
-
-    /**
-     * Sets sequenceNumber.
-     *
-     * @param null|float $sequenceNumber The account statement's sequence number
-     *
-     * @return self
-     */
-    public function setSequenceNumber($sequenceNumber)
-    {
-        if (null === $sequenceNumber) {
-            throw new \InvalidArgumentException('non-nullable sequenceNumber cannot be null');
-        }
-
-        $this->container['sequenceNumber'] = $sequenceNumber;
-
-        return $this;
-    }
-
-    /**
-     * Gets period.
-     *
-     * @return null|\SpojeNET\CSas\Model\GetAccountStatements200ResponseStatementsInnerPeriod
-     */
-    public function getPeriod()
-    {
-        return $this->container['period'];
-    }
-
-    /**
-     * Sets period.
-     *
-     * @param null|\SpojeNET\CSas\Model\GetAccountStatements200ResponseStatementsInnerPeriod $period period
-     *
-     * @return self
-     */
-    public function setPeriod($period)
-    {
-        if (null === $period) {
-            throw new \InvalidArgumentException('non-nullable period cannot be null');
-        }
-
-        $this->container['period'] = $period;
-
-        return $this;
-    }
-
-    /**
-     * Gets formats.
-     *
-     * @return null|string[]
-     */
-    public function getFormats()
-    {
-        return $this->container['formats'];
-    }
-
-    /**
-     * Sets formats.
-     *
-     * @param null|string[] $formats Available formats of the statement
-     *
-     * @return self
-     */
-    public function setFormats($formats)
-    {
-        if (null === $formats) {
-            throw new \InvalidArgumentException('non-nullable formats cannot be null');
-        }
-
-        $allowedValues = $this->getFormatsAllowableValues();
-
-        if (array_diff($formats, $allowedValues)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'formats', must be one of '%s'",
-                    implode("', '", $allowedValues),
-                ),
-            );
-        }
-
-        $this->container['formats'] = $formats;
+        $this->container['errors'] = $errors;
 
         return $this;
     }

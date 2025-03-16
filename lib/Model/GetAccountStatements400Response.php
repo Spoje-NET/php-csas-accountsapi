@@ -35,7 +35,7 @@ namespace SpojeNET\CSas\Model;
 use SpojeNET\CSas\ObjectSerializer;
 
 /**
- * GetAccountStatements200ResponseStatementsInnerPeriod Class Doc Comment.
+ * GetAccountStatements400Response Class Doc Comment.
  *
  * @category Class
  *
@@ -45,14 +45,14 @@ use SpojeNET\CSas\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class GetAccountStatements200ResponseStatementsInnerPeriod implements \ArrayAccess, \JsonSerializable, ModelInterface
+class GetAccountStatements400Response implements \ArrayAccess, \JsonSerializable, ModelInterface
 {
     public const DISCRIMINATOR = null;
 
     /**
      * The original name of the model.
      */
-    protected static string $openAPIModelName = 'getAccountStatements_200_response_statements_inner_period';
+    protected static string $openAPIModelName = 'getAccountStatements_400_response';
 
     /**
      * Array of property to type mappings. Used for (de)serialization.
@@ -60,8 +60,8 @@ class GetAccountStatements200ResponseStatementsInnerPeriod implements \ArrayAcce
      * @var string[]
      */
     protected static array $openAPITypes = [
-        'dateFrom' => '\DateTime',
-        'dateTo' => '\DateTime',
+        'status' => 'int',
+        'errors' => '\SpojeNET\CSas\Model\GetAccountStatements400ResponseErrorsInner[]',
     ];
 
     /**
@@ -74,8 +74,8 @@ class GetAccountStatements200ResponseStatementsInnerPeriod implements \ArrayAcce
      * @psalm-var array<string, string|null>
      */
     protected static array $openAPIFormats = [
-        'dateFrom' => 'date',
-        'dateTo' => 'date',
+        'status' => null,
+        'errors' => null,
     ];
 
     /**
@@ -84,8 +84,8 @@ class GetAccountStatements200ResponseStatementsInnerPeriod implements \ArrayAcce
      * @var bool[]
      */
     protected static array $openAPINullables = [
-        'dateFrom' => false,
-        'dateTo' => false,
+        'status' => false,
+        'errors' => false,
     ];
 
     /**
@@ -102,8 +102,8 @@ class GetAccountStatements200ResponseStatementsInnerPeriod implements \ArrayAcce
      * @var string[]
      */
     protected static array $attributeMap = [
-        'dateFrom' => 'dateFrom',
-        'dateTo' => 'dateTo',
+        'status' => 'status',
+        'errors' => 'errors',
     ];
 
     /**
@@ -112,8 +112,8 @@ class GetAccountStatements200ResponseStatementsInnerPeriod implements \ArrayAcce
      * @var string[]
      */
     protected static array $setters = [
-        'dateFrom' => 'setDateFrom',
-        'dateTo' => 'setDateTo',
+        'status' => 'setStatus',
+        'errors' => 'setErrors',
     ];
 
     /**
@@ -122,8 +122,8 @@ class GetAccountStatements200ResponseStatementsInnerPeriod implements \ArrayAcce
      * @var string[]
      */
     protected static array $getters = [
-        'dateFrom' => 'getDateFrom',
-        'dateTo' => 'getDateTo',
+        'status' => 'getStatus',
+        'errors' => 'getErrors',
     ];
 
     /**
@@ -141,8 +141,8 @@ class GetAccountStatements200ResponseStatementsInnerPeriod implements \ArrayAcce
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('dateFrom', $data ?? [], null);
-        $this->setIfExists('dateTo', $data ?? [], null);
+        $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('errors', $data ?? [], null);
     }
 
     /**
@@ -257,57 +257,57 @@ class GetAccountStatements200ResponseStatementsInnerPeriod implements \ArrayAcce
     }
 
     /**
-     * Gets dateFrom.
+     * Gets status.
      *
-     * @return null|\DateTime
+     * @return null|int
      */
-    public function getDateFrom()
+    public function getStatus()
     {
-        return $this->container['dateFrom'];
+        return $this->container['status'];
     }
 
     /**
-     * Sets dateFrom.
+     * Sets status.
      *
-     * @param null|\DateTime $dateFrom The start-date of the statement period
+     * @param null|int $status status
      *
      * @return self
      */
-    public function setDateFrom($dateFrom)
+    public function setStatus($status)
     {
-        if (null === $dateFrom) {
-            throw new \InvalidArgumentException('non-nullable dateFrom cannot be null');
+        if (null === $status) {
+            throw new \InvalidArgumentException('non-nullable status cannot be null');
         }
 
-        $this->container['dateFrom'] = $dateFrom;
+        $this->container['status'] = $status;
 
         return $this;
     }
 
     /**
-     * Gets dateTo.
+     * Gets errors.
      *
-     * @return null|\DateTime
+     * @return null|\SpojeNET\CSas\Model\GetAccountStatements400ResponseErrorsInner[]
      */
-    public function getDateTo()
+    public function getErrors()
     {
-        return $this->container['dateTo'];
+        return $this->container['errors'];
     }
 
     /**
-     * Sets dateTo.
+     * Sets errors.
      *
-     * @param null|\DateTime $dateTo The end-date of the statement period
+     * @param null|\SpojeNET\CSas\Model\GetAccountStatements400ResponseErrorsInner[] $errors errors
      *
      * @return self
      */
-    public function setDateTo($dateTo)
+    public function setErrors($errors)
     {
-        if (null === $dateTo) {
-            throw new \InvalidArgumentException('non-nullable dateTo cannot be null');
+        if (null === $errors) {
+            throw new \InvalidArgumentException('non-nullable errors cannot be null');
         }
 
-        $this->container['dateTo'] = $dateTo;
+        $this->container['errors'] = $errors;
 
         return $this;
     }

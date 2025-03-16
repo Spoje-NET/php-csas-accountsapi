@@ -64,7 +64,7 @@ class StatementList implements \ArrayAccess, \JsonSerializable, ModelInterface
         'pageCount' => 'float',
         'pageSize' => 'float',
         'nextPage' => 'float',
-        'accountStatements' => '\SpojeNET\CSas\Model\StatementListAccountStatementsInner[]',
+        'accountStatements' => '\SpojeNET\CSas\Model\GetAccountStatements200ResponseAccountStatementsInner[]',
     ];
 
     /**
@@ -392,7 +392,7 @@ class StatementList implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Gets accountStatements.
      *
-     * @return null|\SpojeNET\CSas\Model\StatementListAccountStatementsInner[]
+     * @return null|\SpojeNET\CSas\Model\GetAccountStatements200ResponseAccountStatementsInner[]
      */
     public function getAccountStatements()
     {
@@ -402,7 +402,7 @@ class StatementList implements \ArrayAccess, \JsonSerializable, ModelInterface
     /**
      * Sets accountStatements.
      *
-     * @param null|\SpojeNET\CSas\Model\StatementListAccountStatementsInner[] $accountStatements accountStatements
+     * @param null|\SpojeNET\CSas\Model\GetAccountStatements200ResponseAccountStatementsInner[] $accountStatements accountStatements
      *
      * @return self
      */

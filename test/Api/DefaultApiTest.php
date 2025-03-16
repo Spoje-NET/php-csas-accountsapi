@@ -74,6 +74,17 @@ class DefaultApiTest extends TestCase
     }
 
     /**
+     * Test case for downloadAccountStatement.
+     *
+     * Download account statement.
+     */
+    public function testDownloadAccountStatement(): void
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for getAccountBalance.
      *
      * Get account balance.

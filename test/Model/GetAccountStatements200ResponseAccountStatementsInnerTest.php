@@ -35,17 +35,17 @@ namespace SpojeNET\CSas\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * GetAccountStatements200ResponseTest Class Doc Comment.
+ * GetAccountStatements200ResponseAccountStatementsInnerTest Class Doc Comment.
  *
  * @category    Class
  *
- * @description GetAccountStatements200Response
+ * @description GetAccountStatements200ResponseAccountStatementsInner
  *
  * @author      OpenAPI Generator team
  *
  * @see        https://openapi-generator.tech
  */
-class GetAccountStatements200ResponseTest extends TestCase
+class GetAccountStatements200ResponseAccountStatementsInnerTest extends TestCase
 {
     /**
      * Setup before running any test case.
@@ -76,54 +76,81 @@ class GetAccountStatements200ResponseTest extends TestCase
     }
 
     /**
-     * Test "GetAccountStatements200Response".
+     * Test "GetAccountStatements200ResponseAccountStatementsInner".
      */
-    public function testGetAccountStatements200Response(): void
+    public function testGetAccountStatements200ResponseAccountStatementsInner(): void
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "pageNumber".
+     * Test attribute "accountStatementId".
      */
-    public function testPropertyPageNumber(): void
+    public function testPropertyAccountStatementId(): void
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "pageCount".
+     * Test attribute "year".
      */
-    public function testPropertyPageCount(): void
+    public function testPropertyYear(): void
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "pageSize".
+     * Test attribute "month".
      */
-    public function testPropertyPageSize(): void
+    public function testPropertyMonth(): void
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "nextPage".
+     * Test attribute "sequenceNumber".
      */
-    public function testPropertyNextPage(): void
+    public function testPropertySequenceNumber(): void
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "accountStatements".
+     * Test attribute "period".
      */
-    public function testPropertyAccountStatements(): void
+    public function testPropertyPeriod(): void
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "dateFrom".
+     */
+    public function testPropertyDateFrom(): void
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "dateTo".
+     */
+    public function testPropertyDateTo(): void
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "formats".
+     */
+    public function testPropertyFormats(): void
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

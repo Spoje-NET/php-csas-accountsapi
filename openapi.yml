@@ -397,7 +397,14 @@ paths:
   /my/accounts/{id}/statements:
     get:
       summary: Get account statements
-      description: Get a list of statements for a specific account by ID.
+      description: >
+        Get a list of statements for a specific account by ID. Resource for obtaining a list of statements for an account and downloading a statement in available formats.
+
+        Supported statement formats:
+
+        - George: PDF, ABO, CSV (more details about data statements structure: https://www.csas.cz/cs/dokumenty-ke-stazeni#/995/George)
+        - Business 24: PDF, XML, MT940, ABO (more details about data statements structure: https://www.csas.cz/cs/dokumenty-ke-stazeni#/175/BUSINESS-24)
+        - George Business: PDF, XML, MT940, ABO, CSV (more details about data statements structure: https://www.csas.cz/cs/dokumenty-ke-stazeni#/1478/George-Business)
       operationId: getAccountStatements
       parameters:
         - name: id
@@ -405,7 +412,46 @@ paths:
           required: true
           schema:
             type: string
-          description: The ID of the account
+          description: Unique system identification of the client account
+          example: D2C8C1DCC51A3738538A40A4863CA288E0225E52
+        - name: fromDate
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date
+          description: Date from which the statement history should be obtained
+          example: 2022-03-07
+        - name: toDate
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date
+          description: Date to which the statement history should be obtained (including this moment in time)
+          example: 2022-04-07
+        - name: format
+          in: query
+          required: false
+          schema:
+            type: string
+            enum: [pdf, xml, xml-data, abo-standard, abo-internal, abo-standard-extended, abo-internal-extended, csv-comma, csv-semicolon, mt940]
+          description: Selected statement format
+          example: pdf
+        - name: size
+          in: query
+          required: false
+          schema:
+            type: integer
+          description: Pagination - Number of entries per page (max. 100)
+          example: 10
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: integer
+          description: Pagination - The desired page (indexed from zero)
+          example: 0
       responses:
         '200':
           description: A list of account statements
@@ -414,12 +460,24 @@ paths:
               schema:
                 type: object
                 properties:
-                  statements:
+                  pageNumber:
+                    type: integer
+                    description: Current page number
+                  pageCount:
+                    type: integer
+                    description: Total number of pages
+                  pageSize:
+                    type: integer
+                    description: Number of entries per page
+                  nextPage:
+                    type: integer
+                    description: Next page number
+                  accountStatements:
                     type: array
                     items:
                       type: object
                       properties:
-                        id:
+                        accountStatementId:
                           type: string
                           description: Unique identifier of the account statement
                         year:
@@ -432,24 +490,50 @@ paths:
                           type: number
                           description: The account statement's sequence number
                         period:
-                          type: object
-                          properties:
-                            dateFrom:
-                              type: string
-                              format: date
-                              description: The start-date of the statement period
-                            dateTo:
-                              type: string
-                              format: date
-                              description: The end-date of the statement period
+                          type: string
+                          description: Period of the statement
+                          example: MONTH
+                        dateFrom:
+                          type: string
+                          format: date
+                          description: The start-date of the statement period
+                        dateTo:
+                          type: string
+                          format: date
+                          description: The end-date of the statement period
                         formats:
                           type: array
                           items:
-                            type: string
-                            enum: [pdf, xml, xml-data, abo-standard, abo-internal, abo-standard-extended, abo-internal-extended, csv-comma, csv-semicolon, mt940]
-                          description: Available formats of the statement
+                            type: object
+                            properties:
+                              availability:
+                                type: string
+                                description: Availability of the format
+                                example: IMMEDIATE
+                              format:
+                                type: string
+                                enum: [pdf, xml, xml-data, abo-standard, abo-internal, abo-standard-extended, abo-internal-extended, csv-comma, csv-semicolon, mt940]
+                                description: Format of the statement
+        '400':
+          description: Invalid date value or format
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 400
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        error:
+                          type: string
+                          example: DT01
         '403':
-          description: Forbidden
+          description: Invalid/expired access token = user is not authenticated
           content:
             application/json:
               schema:
@@ -466,6 +550,141 @@ paths:
                         error:
                           type: string
                           example: TOKEN_INVALID
+        '404':
+          description: Invalid/unknown account id or user has no valid rights
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 404
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        error:
+                          type: string
+                          example: ID_NOT_FOUND
+        '429':
+          description: Exceeded hourly quota of allowed calls
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 429
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        error:
+                          type: string
+                          example: REQUEST_QUOTA_EXCEEDED
+        '500':
+          description: General error on server side
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 500
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        error:
+                          type: string
+                          example: INTERNAL_SERVER_ERROR
+        '503':
+          description: Connection timeout, service is not available
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 503
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        error:
+                          type: string
+                          example: SERVICE_UNAVAILABLE
+  /my/accounts/{id}/statements/{accountStatementId}/download:
+    get:
+      summary: Download account statement
+      description: Download a specific account statement by ID.
+      operationId: downloadAccountStatement
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Unique system identification of the client account
+          example: D2C8C1DCC51A3738538A40A4863CA288E0225E52
+        - name: accountStatementId
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Unique identifier of the account statement
+          example: 002498aa881201c7
+        - name: format
+          in: query
+          required: true
+          schema:
+            type: string
+            enum: [pdf, xml, xml-data, abo-standard, abo-internal, abo-standard-extended, abo-internal-extended, csv-comma, csv-semicolon, mt940]
+          description: Selected statement format
+          example: pdf
+      responses:
+        '200':
+          description: Account statement file
+          content:
+            application/pdf:
+              schema:
+                type: string
+                format: binary
+            application/xml:
+              schema:
+                type: string
+                format: binary
+            text/csv:
+              schema:
+                type: string
+                format: binary
+        '403':
+          description: Invalid/expired access token = user is not authenticated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 403
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        error:
+                          type: string
+                          example: TOKEN_INVALID
+
 
 components:
   securitySchemes:
@@ -627,22 +846,30 @@ components:
                 type: number
                 description: The account statement's sequence number
               period:
-                type: object
-                properties:
-                  dateFrom:
-                    type: string
-                    format: date
-                    description: The start-date of the statement period
-                  dateTo:
-                    type: string
-                    format: date
-                    description: The end-date of the statement period
+                type: string
+                description: Period of the statement
+                example: MONTH
+              dateFrom:
+                type: string
+                format: date
+                description: The start-date of the statement period
+              dateTo:
+                type: string
+                format: date
+                description: The end-date of the statement period
               formats:
                 type: array
                 items:
-                  type: string
-                  enum: [pdf, xml, xml-data, abo-standard, abo-internal, abo-standard-extended, abo-internal-extended, csv-comma, csv-semicolon, mt940]
-                description: Available formats of the statement
+                  type: object
+                  properties:
+                    availability:
+                      type: string
+                      description: Availability of the format
+                      example: IMMEDIATE
+                    format:
+                      type: string
+                      enum: [pdf, xml, xml-data, abo-standard, abo-internal, abo-standard-extended, abo-internal-extended, csv-comma, csv-semicolon, mt940]
+                      description: Format of the statement
 
 security:
   - bearerAuth: []

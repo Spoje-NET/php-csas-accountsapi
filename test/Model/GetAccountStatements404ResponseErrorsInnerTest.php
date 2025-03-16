@@ -35,17 +35,17 @@ namespace SpojeNET\CSas\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * StatementListAccountStatementsInnerTest Class Doc Comment.
+ * GetAccountStatements404ResponseErrorsInnerTest Class Doc Comment.
  *
  * @category    Class
  *
- * @description StatementListAccountStatementsInner
+ * @description GetAccountStatements404ResponseErrorsInner
  *
  * @author      OpenAPI Generator team
  *
  * @see        https://openapi-generator.tech
  */
-class StatementListAccountStatementsInnerTest extends TestCase
+class GetAccountStatements404ResponseErrorsInnerTest extends TestCase
 {
     /**
      * Setup before running any test case.
@@ -76,63 +76,18 @@ class StatementListAccountStatementsInnerTest extends TestCase
     }
 
     /**
-     * Test "StatementListAccountStatementsInner".
+     * Test "GetAccountStatements404ResponseErrorsInner".
      */
-    public function testStatementListAccountStatementsInner(): void
+    public function testGetAccountStatements404ResponseErrorsInner(): void
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "accountStatementId".
+     * Test attribute "error".
      */
-    public function testPropertyAccountStatementId(): void
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "year".
-     */
-    public function testPropertyYear(): void
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "month".
-     */
-    public function testPropertyMonth(): void
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "sequenceNumber".
-     */
-    public function testPropertySequenceNumber(): void
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "period".
-     */
-    public function testPropertyPeriod(): void
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "formats".
-     */
-    public function testPropertyFormats(): void
+    public function testPropertyError(): void
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

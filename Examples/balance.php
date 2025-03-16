@@ -37,7 +37,7 @@ try {
     echo 'Exception when calling DefaultApi->getAccountBalance: ', $e->getMessage(), \PHP_EOL;
 }
 
-/* 
+/*
 "/usr/bin/php" "/home/vitex/Projects/SpojeNetIT/csas-accountsapi/Examples/balance.php"
 SpojeNET\CSas\Model\GetAccountBalance200Response Object
 (
@@ -125,4 +125,4 @@ SpojeNET\CSas\Model\GetAccountBalance200Response Object
         )
 
 )
-*/
+ */

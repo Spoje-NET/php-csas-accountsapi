@@ -65,13 +65,15 @@ $apiInstance = new SpojeNET\CSas\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$id = 'id_example'; // string | The ID of the account
+$id = D2C8C1DCC51A3738538A40A4863CA288E0225E52; // string | Unique system identification of the client account
+$accountStatementId = 002498aa881201c7; // string | Unique identifier of the account statement
+$format = pdf; // string | Selected statement format
 
 try {
-    $result = $apiInstance->getAccountBalance($id);
+    $result = $apiInstance->downloadAccountStatement($id, $accountStatementId, $format);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling DefaultApi->getAccountBalance: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling DefaultApi->downloadAccountStatement: ', $e->getMessage(), PHP_EOL;
 }
 
 ```
@@ -82,6 +84,7 @@ All URIs are relative to *https://www.csas.cz/webapi/api/v3/accounts*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*DefaultApi* | [**downloadAccountStatement**](docs/Api/DefaultApi.md#downloadaccountstatement) | **GET** /my/accounts/{id}/statements/{accountStatementId}/download | Download account statement
 *DefaultApi* | [**getAccountBalance**](docs/Api/DefaultApi.md#getaccountbalance) | **GET** /my/accounts/{id}/balance | Get account balance
 *DefaultApi* | [**getAccountStatements**](docs/Api/DefaultApi.md#getaccountstatements) | **GET** /my/accounts/{id}/statements | Get account statements
 *DefaultApi* | [**getAccounts**](docs/Api/DefaultApi.md#getaccounts) | **GET** /my/accounts | Get account details
@@ -104,8 +107,18 @@ Class | Method | HTTP request | Description
 - [GetAccountBalance200ResponseBalancesInnerType](docs/Model/GetAccountBalance200ResponseBalancesInnerType.md)
 - [GetAccountBalance200ResponseBalancesInnerTypeCodeOrProprietary](docs/Model/GetAccountBalance200ResponseBalancesInnerTypeCodeOrProprietary.md)
 - [GetAccountStatements200Response](docs/Model/GetAccountStatements200Response.md)
-- [GetAccountStatements200ResponseStatementsInner](docs/Model/GetAccountStatements200ResponseStatementsInner.md)
-- [GetAccountStatements200ResponseStatementsInnerPeriod](docs/Model/GetAccountStatements200ResponseStatementsInnerPeriod.md)
+- [GetAccountStatements200ResponseAccountStatementsInner](docs/Model/GetAccountStatements200ResponseAccountStatementsInner.md)
+- [GetAccountStatements200ResponseAccountStatementsInnerFormatsInner](docs/Model/GetAccountStatements200ResponseAccountStatementsInnerFormatsInner.md)
+- [GetAccountStatements400Response](docs/Model/GetAccountStatements400Response.md)
+- [GetAccountStatements400ResponseErrorsInner](docs/Model/GetAccountStatements400ResponseErrorsInner.md)
+- [GetAccountStatements404Response](docs/Model/GetAccountStatements404Response.md)
+- [GetAccountStatements404ResponseErrorsInner](docs/Model/GetAccountStatements404ResponseErrorsInner.md)
+- [GetAccountStatements429Response](docs/Model/GetAccountStatements429Response.md)
+- [GetAccountStatements429ResponseErrorsInner](docs/Model/GetAccountStatements429ResponseErrorsInner.md)
+- [GetAccountStatements500Response](docs/Model/GetAccountStatements500Response.md)
+- [GetAccountStatements500ResponseErrorsInner](docs/Model/GetAccountStatements500ResponseErrorsInner.md)
+- [GetAccountStatements503Response](docs/Model/GetAccountStatements503Response.md)
+- [GetAccountStatements503ResponseErrorsInner](docs/Model/GetAccountStatements503ResponseErrorsInner.md)
 - [GetAccounts200Response](docs/Model/GetAccounts200Response.md)
 - [GetAccounts403Response](docs/Model/GetAccounts403Response.md)
 - [GetAccounts403ResponseErrorsInner](docs/Model/GetAccounts403ResponseErrorsInner.md)
@@ -143,7 +156,6 @@ Class | Method | HTTP request | Description
 - [GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRemittanceInformationStructuredCreditorReferenceInformation](docs/Model/GetTransactions200ResponseTransactionsInnerEntryDetailsTransactionDetailsRemittanceInformationStructuredCreditorReferenceInformation.md)
 - [GetTransactions200ResponseTransactionsInnerValueDate](docs/Model/GetTransactions200ResponseTransactionsInnerValueDate.md)
 - [StatementList](docs/Model/StatementList.md)
-- [StatementListAccountStatementsInner](docs/Model/StatementListAccountStatementsInner.md)
 - [TransactionList](docs/Model/TransactionList.md)
 - [TransactionListTransactionsInner](docs/Model/TransactionListTransactionsInner.md)
 
