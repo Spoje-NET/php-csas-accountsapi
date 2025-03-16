@@ -64,7 +64,7 @@ class ApiClient extends \GuzzleHttp\Client
         }
 
         if (\array_key_exists('token', $config) === false) {
-            $this->token = \Ease\Shared::cfg('CSAS_API_TOKEN');
+            $this->token = \Ease\Shared::cfg('CSAS_ACCESS_TOKEN');
         } else {
             $this->token = $config['token'];
         }
@@ -76,7 +76,7 @@ class ApiClient extends \GuzzleHttp\Client
         if (\array_key_exists('sandbox', $config)) {
             $this->sandBoxMode = strtolower((string) $config['sandbox']) === 'true';
         } else {
-            $this->token = strtolower((string) \Ease\Shared::cfg('CSAS_SANDBOX_MODE', 'false')) === 'true';
+            $this->sandBoxMode = strtolower((string) \Ease\Shared::cfg('CSAS_SANDBOX_MODE', 'false')) === 'true';
         }
 
         parent::__construct($config);

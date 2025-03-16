@@ -58,7 +58,7 @@ SpojeNet\CSas\Model\GetAccountStatements200Response Object
             [pageNumber] => 0
             [pageCount] => 1
             [pageSize] => 7
-            [nextPage] => 
+            [nextPage] =>
             [accountStatements] => Array
                 (
                     [0] => SpojeNet\CSas\Model\GetAccountStatements200ResponseAccountStatementsInner Object
@@ -164,4 +164,4 @@ SpojeNet\CSas\Model\GetAccountStatements200Response Object
         )
 
 )
-*/
+ */

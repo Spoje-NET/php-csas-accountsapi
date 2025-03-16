@@ -25,7 +25,6 @@ class Statementor extends \Ease\Sand
     use \Ease\Logger\Logging;
     public \DateTime $since;
     public \DateTime $until;
-    private string $scope;
 
     /**
      * DateTime Formating eg. 2021-08-01T10:00:00.0Z.
@@ -36,6 +35,7 @@ class Statementor extends \Ease\Sand
      * DateTime Formating eg. 2021-08-01T10:00:00.0Z.
      */
     public static string $dateFormat = 'Y-m-d';
+    private string $scope;
     private string $accountNumber = '';
 
     public function __construct(string $accountNumber = '', string $scope = '')
@@ -65,12 +65,11 @@ class Statementor extends \Ease\Sand
     }
 
     /**
-     * Obtain Statements from RB.
+     * Obtain Statements from ČSas.
      *
-     * @param string $currencyCode  CZK,USD etc
-     * @param string $statementLine
+     * @param string $format pdf, xml, xml-data, abo-standard, abo-internal, abo-standard-extended, abo-internal-extended, csv-comma, csv-semicolon, mt940
      */
-    public function getStatements($currencyCode = 'CZK', $statementLine = 'MAIN'): array
+    public function getStatements($format = 'pdf'): array
     {
         $apiInstance = new \SpojeNet\CSas\Accounts\DefaultApi();
         $page = 0;
@@ -79,16 +78,7 @@ class Statementor extends \Ease\Sand
 
         try {
             do {
-                $requestBody = new Model\GetStatementsRequest([
-                    'accountNumber' => $this->accountNumber,
-                    'page' => ++$page,
-                    'size' => 60,
-                    'currency' => $currencyCode,
-                    'statementLine' => $statementLine,
-                    'dateFrom' => $this->since->format(self::$dateFormat),
-                    'dateTo' => $this->until->format(self::$dateFormat)]);
-
-                $result = $apiInstance->getAccountStatements($requestBody, $page);
+                $result = $apiInstance->getAccountStatements($this->getAccountNumber(), $this->getSince()->format('Y-m-d'), $this->getUntil()->format('Y-m-d'), $format);
 
                 if (empty($result)) {
                     $this->addStatusMessage(sprintf(_('No transactions from %s to %s'), $this->since->format(self::$dateFormat), $this->until->format(self::$dateFormat)));
@@ -210,7 +200,9 @@ class Statementor extends \Ease\Sand
             $this->since = $this->since->setTime(0, 0);
             $this->until = $this->until->setTime(23, 59, 59, 999);
         }
+
         $this->scope = $scope;
+
         return $this->getScope();
     }
 
@@ -278,8 +270,8 @@ class Statementor extends \Ease\Sand
         return $this->until;
     }
 
-    public function getAccountNumber(): string {
+    public function getAccountNumber(): string
+    {
         return $this->accountNumber;
     }
-
 }

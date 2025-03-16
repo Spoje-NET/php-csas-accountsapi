@@ -65,12 +65,11 @@ class Statementor extends \Ease\Sand
     }
 
     /**
-     * Obtain Statements from RB.
+     * Obtain Statements from ČSas.
      *
-     * @param string $currencyCode  CZK,USD etc
-     * @param string $statementLine
+     * @param string $format        pdf, xml, xml-data, abo-standard, abo-internal, abo-standard-extended, abo-internal-extended, csv-comma, csv-semicolon, mt940
      */
-    public function getStatements($currencyCode = 'CZK', $statementLine = 'MAIN'): array
+    public function getStatements($format = 'pdf'): array
     {
         $apiInstance = new \SpojeNet\CSas\Accounts\DefaultApi();
         $page = 0;
@@ -79,17 +78,9 @@ class Statementor extends \Ease\Sand
 
         try {
             do {
-                $requestBody = new Model\GetStatementsRequest([
-                    'accountNumber' => $this->accountNumber,
-                    'page' => ++$page,
-                    'size' => 60,
-                    'currency' => $currencyCode,
-                    'statementLine' => $statementLine,
-                    'dateFrom' => $this->since->format(self::$dateFormat),
-                    'dateTo' => $this->until->format(self::$dateFormat)]);
 
-                $result = $apiInstance->getAccountStatements($requestBody, $page);
-
+                $result = $apiInstance->getAccountStatements($this->getAccountNumber(), $this->getSince()->format('Y-m-d'), $this->getUntil()->format('Y-m-d'),$format);
+                
                 if (empty($result)) {
                     $this->addStatusMessage(sprintf(_('No transactions from %s to %s'), $this->since->format(self::$dateFormat), $this->until->format(self::$dateFormat)));
                     $result['lastPage'] = true;
