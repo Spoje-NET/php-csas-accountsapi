@@ -25,6 +25,7 @@ class Statementor extends \Ease\Sand
     use \Ease\Logger\Logging;
     public \DateTime $since;
     public \DateTime $until;
+    public string $currency = 'CZK';
 
     /**
      * DateTime Formating eg. 2021-08-01T10:00:00.0Z.
@@ -37,9 +38,12 @@ class Statementor extends \Ease\Sand
     public static string $dateFormat = 'Y-m-d';
     private string $scope;
     private string $accountNumber = '';
+    private string $accountUuid = '';
 
-    public function __construct(string $accountNumber = '', string $scope = '')
+    public function __construct(string $accountUuid, string $accountNumber = '', string $scope = '')
     {
+        $this->setAccountUuid($accountUuid);
+
         if ($accountNumber) {
             $this->setAccountNumber($accountNumber);
         }
@@ -80,18 +84,12 @@ class Statementor extends \Ease\Sand
             do {
                 $result = $apiInstance->getAccountStatements($this->getAccountNumber(), $this->getSince()->format('Y-m-d'), $this->getUntil()->format('Y-m-d'), $format);
 
-                if (empty($result)) {
+                if ($result->getAccountStatements()) {
+                    $statements = array_merge($statements, $result->getAccountStatements());
+                } else {
                     $this->addStatusMessage(sprintf(_('No transactions from %s to %s'), $this->since->format(self::$dateFormat), $this->until->format(self::$dateFormat)));
-                    $result['lastPage'] = true;
-                    $result['last'] = true;
                 }
-
-                if (\array_key_exists('statements', $result)) {
-                    $statements = array_merge($statements, $result['statements']);
-                }
-
-                sleep(1);
-            } while ($result['last'] === false);
+            } while ($result->getNextPage());
         } catch (\Ease\Exception $e) {
             echo 'Exception when calling GetTransactionListApi->getTransactionList: ', $e->getMessage(), \PHP_EOL;
         }
@@ -225,21 +223,26 @@ class Statementor extends \Ease\Sand
     public function download(string $saveTo, array $statements, string $format = 'pdf', string $currencyCode = 'CZK'): array
     {
         $saved = [];
-        $apiInstance = new PremiumAPI\DownloadStatementApi();
+        $apiInstance = new \SpojeNet\CSas\Accounts\DefaultApi();
         $success = 0;
 
         foreach ($statements as $statement) {
-            $statementFilename = str_replace('/', '_', $statement->statementNumber).'_'.
-                    $statement->accountNumber.'_'.
-                    $statement->accountId.'_'.
-                    $statement->currency.'_'.$statement->dateFrom.'.'.$format;
-            $requestBody = new \VitexSoftware\Raiffeisenbank\Model\DownloadStatementRequest([
-                'accountNumber' => $this->accountNumber,
-                'currency' => $currencyCode,
-                'statementId' => $statement->statementId,
-                'statementFormat' => $format]);
-            $pdfStatementRaw = $apiInstance->downloadStatement(ApiClient::getxRequestId(), 'cs', $requestBody);
-            sleep(1);
+            //        'accountStatementId' => 'getAccountStatementId',
+            //        'year' => 'getYear',
+            //        'month' => 'getMonth',
+            //        'sequenceNumber' => 'getSequenceNumber',
+            //        'period' => 'getPeriod',
+            //        'dateFrom' => 'getDateFrom',
+            //        'dateTo' => 'getDateTo',
+            //        'formats' => 'getFormats',
+
+            $statementFilename =
+                    $statement->getSequenceNumber().'_'.
+                    $this->getAccountNumber().'_'.
+                    $statement->getAccountStatementId().'_'.
+                    $this->currency.'_'.$statement->getDateFrom()->format('Y-m-d').'.'.$format;
+
+            $pdfStatementRaw = $apiInstance->downloadAccountStatement($this->getAccountUuid(), $statement->getAccountStatementId(), $format);
 
             if (file_put_contents($saveTo.'/'.$statementFilename, $pdfStatementRaw->fread($pdfStatementRaw->getSize()))) {
                 $saved[$statementFilename] = $saveTo.'/'.$statementFilename;
@@ -273,5 +276,15 @@ class Statementor extends \Ease\Sand
     public function getAccountNumber(): string
     {
         return $this->accountNumber;
+    }
+
+    public function setAccountUuid($accountUuid): void
+    {
+        $this->accountUuid = $accountUuid;
+    }
+
+    public function getAccountUuid(): string
+    {
+        return $this->accountUuid;
     }
 }

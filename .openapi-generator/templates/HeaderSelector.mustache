@@ -2,7 +2,7 @@
 
 /**
  * HeaderSelector
- * PHP version 7.4+
+ * PHP version 8.1+
  *
  * @category Class
  * @package  {{invokerPackage}}
@@ -192,7 +192,7 @@ class HeaderSelector
      * @param bool    $hasMoreThan28Headers
      * @return string[] array of adjusted "Accept" headers
      */
-    private function adjustWeight(array $headers, float &$currentWeight, bool $hasMoreThan28Headers): array
+    private function adjustWeight(array $headers, int &$currentWeight, bool $hasMoreThan28Headers): array
     {
         usort($headers, function (array $a, array $b) {
             return $b['weight'] - $a['weight'];
@@ -260,6 +260,6 @@ class HeaderSelector
             return $currentWeight - 1;
         }
 
-        return $currentWeight - 10 ** floor(log10($currentWeight - 1));
+        return (int)($currentWeight - 10 ** floor(log10($currentWeight - 1)));
     }
 }

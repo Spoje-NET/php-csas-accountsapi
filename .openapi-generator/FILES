@@ -13,6 +13,11 @@ docs/Model/AccountRelatedAgents.md
 docs/Model/AccountRelationship.md
 docs/Model/AccountServicer.md
 docs/Model/AccountSuitableScope.md
+docs/Model/DownloadAccountStatement200Response.md
+docs/Model/DownloadAccountStatement200Response1.md
+docs/Model/DownloadAccountStatement200Response2.md
+docs/Model/DownloadAccountStatement400Response.md
+docs/Model/DownloadAccountStatement400ResponseErrorsInner.md
 docs/Model/GetAccountBalance200Response.md
 docs/Model/GetAccountBalance200ResponseBalancesInner.md
 docs/Model/GetAccountBalance200ResponseBalancesInnerAmount.md
@@ -85,6 +90,11 @@ lib/Model/AccountRelatedAgents.php
 lib/Model/AccountRelationship.php
 lib/Model/AccountServicer.php
 lib/Model/AccountSuitableScope.php
+lib/Model/DownloadAccountStatement200Response.php
+lib/Model/DownloadAccountStatement200Response1.php
+lib/Model/DownloadAccountStatement200Response2.php
+lib/Model/DownloadAccountStatement400Response.php
+lib/Model/DownloadAccountStatement400ResponseErrorsInner.php
 lib/Model/GetAccountBalance200Response.php
 lib/Model/GetAccountBalance200ResponseBalancesInner.php
 lib/Model/GetAccountBalance200ResponseBalancesInnerAmount.php
@@ -156,6 +166,11 @@ test/Model/AccountRelationshipTest.php
 test/Model/AccountServicerTest.php
 test/Model/AccountSuitableScopeTest.php
 test/Model/AccountTest.php
+test/Model/DownloadAccountStatement200Response1Test.php
+test/Model/DownloadAccountStatement200Response2Test.php
+test/Model/DownloadAccountStatement200ResponseTest.php
+test/Model/DownloadAccountStatement400ResponseErrorsInnerTest.php
+test/Model/DownloadAccountStatement400ResponseTest.php
 test/Model/GetAccountBalance200ResponseBalancesInnerAmountTest.php
 test/Model/GetAccountBalance200ResponseBalancesInnerDateTest.php
 test/Model/GetAccountBalance200ResponseBalancesInnerTest.php

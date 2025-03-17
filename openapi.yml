@@ -658,14 +658,84 @@ paths:
               schema:
                 type: string
                 format: binary
+                description: Account statement file in the pdf format
             application/xml:
               schema:
                 type: string
                 format: binary
+                description: Account statement file in the xml format
+            application/xml-data:
+              schema:
+                type: string
+                format: binary
+                description: Account statement file in the xml-data format
+            application/abo-standard:
+              schema:
+                type: string
+                format: binary
+                description: Account statement file in the abo-standard format
+            application/abo-internal:
+              schema:
+                type: string
+                format: binary
+                description: Account statement file in the abo-internal format
+            application/abo-standard-extended:
+              schema:
+                type: string
+                format: binary
+                description: Account statement file in the abo-standard-extended format
+            application/abo-internal-extended:
+              schema:
+                type: string
+                format: binary
+                description: Account statement file in the abo-internal-extended format
             text/csv:
               schema:
                 type: string
                 format: binary
+                description: Account statement file in the csv format
+            text/csv-comma:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: string
+                    format: binary
+                    description: Account statement file in the csv-comma format
+            text/csv-semicolon:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: string
+                    format: binary
+                    description: Account statement file in the csv-semicolon format
+            application/mt940:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: string
+                    format: binary
+                    description: Account statement file in the mt940 format
+        '400':
+          description: Parameter value is not valid or format is not found or unsupported
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 400
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        error:
+                          type: string
+                          example: PARAMETER_INVALID
         '403':
           description: Invalid/expired access token = user is not authenticated
           content:
@@ -684,7 +754,78 @@ paths:
                         error:
                           type: string
                           example: TOKEN_INVALID
-
+        '404':
+          description: Missing parameter, e.g., format is not selected or Invalid/unknown account id, account statement id or user has no valid rights
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 404
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        error:
+                          type: string
+                          example: ID_NOT_FOUND
+        '429':
+          description: Exceeded hourly quota of allowed calls
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 429
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        error:
+                          type: string
+                          example: REQUEST_QUOTA_EXCEEDED
+        '500':
+          description: General error on server side
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 500
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        error:
+                          type: string
+                          example: INTERNAL_SERVER_ERROR
+        '503':
+          description: Connection timeout, service is not available
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 503
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        error:
+                          type: string
+                          example: SERVICE_UNAVAILABLE
 
 components:
   securitySchemes:

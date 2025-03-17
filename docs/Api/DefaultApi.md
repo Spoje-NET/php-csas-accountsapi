@@ -74,7 +74,7 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/pdf`, `application/xml`, `text/csv`, `application/json`
+- **Accept**: `application/pdf`, `application/xml`, `application/xml-data`, `application/abo-standard`, `application/abo-internal`, `application/abo-standard-extended`, `application/abo-internal-extended`, `text/csv`, `text/csv-comma`, `text/csv-semicolon`, `application/mt940`, `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

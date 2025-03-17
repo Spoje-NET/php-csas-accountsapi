@@ -321,7 +321,9 @@ use {{invokerPackage}}\ObjectSerializer;
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('{{{dataType}}}' !== 'string') {
+                        $contentType = $response->getHeaderLine('Content-Type');
+
+                        if ($contentType == 'application/json') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -634,7 +636,7 @@ use {{invokerPackage}}\ObjectSerializer;
         // verify the required parameter '{{paramName}}' is set
         if (${{paramName}} === null || (is_array(${{paramName}}) && count(${{paramName}}) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter ${{paramName}} when calling {{operationId}}'
+                'Missing the required parameter ${{paramName}} when calling {{operationId}}',
             );
         }
         {{/required}}
@@ -746,7 +748,7 @@ use {{invokerPackage}}\ObjectSerializer;
         $headers = $this->headerSelector->selectHeaders(
             [{{#produces}}'{{{mediaType}}}', {{/produces}}],
             $contentType,
-            $multipart
+            $multipart,
         );
 
         // for model (json/xml)
@@ -770,7 +772,7 @@ use {{invokerPackage}}\ObjectSerializer;
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
@@ -804,19 +806,20 @@ use {{invokerPackage}}\ObjectSerializer;
         {{#isBasicBearer}}
         // this endpoint requires Bearer{{#bearerFormat}} ({{{.}}}){{/bearerFormat}} authentication (access token)
         if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+            $headers['Authorization'] = 'Bearer '.$this->config->getAccessToken();
         }
         {{/isBasicBearer}}
         {{/isBasic}}
         {{#isOAuth}}
         // this endpoint requires OAuth (access token)
         if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+            $headers['Authorization'] = 'Bearer '.$this->config->getAccessToken();
         }
         {{/isOAuth}}
         {{/authMethods}}
 
         $defaultHeaders = [];
+
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
@@ -824,7 +827,7 @@ use {{invokerPackage}}\ObjectSerializer;
         $headers = array_merge(
             $defaultHeaders,
             $headerParams,
-            $headers
+            $headers,
         );
 
         {{#servers.0}}
@@ -844,11 +847,12 @@ use {{invokerPackage}}\ObjectSerializer;
         $operationHost = $this->config->getHost();
         {{/servers.0}}
         $query = ObjectSerializer::buildQuery($queryParams);
+
         return new Request(
             '{{httpMethod}}',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost.$resourcePath.($query ? "?{$query}" : ''),
             $headers,
-            $httpBody
+            $httpBody,
         );
     }
 
@@ -894,18 +898,21 @@ use {{invokerPackage}}\ObjectSerializer;
     {{/servers.0}}
     {{/operation}}
     /**
-     * Create http client option
+     * Create http client option.
      *
      * @throws \RuntimeException on file opening failure
+     *
      * @return array of http client options
      */
     protected function createHttpClientOption()
     {
         $options = [];
+
         if ($this->config->getDebug()) {
-            $options[RequestOptions::DEBUG] = fopen($this->config->getDebugFile(), 'a');
+            $options[RequestOptions::DEBUG] = fopen($this->config->getDebugFile(), 'ab');
+
             if (!$options[RequestOptions::DEBUG]) {
-                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
+                throw new \RuntimeException('Failed to open the debug file: '.$this->config->getDebugFile());
             }
         }
 

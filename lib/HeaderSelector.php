@@ -107,7 +107,7 @@ class HeaderSelector
             return $currentWeight - 1;
         }
 
-        return $currentWeight - 10 ** floor(log10($currentWeight - 1));
+        return (int) ($currentWeight - 10 ** floor(log10($currentWeight - 1)));
     }
 
     /**
@@ -230,10 +230,11 @@ class HeaderSelector
 
     /**
      * @param array[] $headers
+     * @param float   $currentWeight
      *
      * @return string[] array of adjusted "Accept" headers
      */
-    private function adjustWeight(array $headers, float &$currentWeight, bool $hasMoreThan28Headers): array
+    private function adjustWeight(array $headers, int &$currentWeight, bool $hasMoreThan28Headers): array
     {
         usort($headers, static function (array $a, array $b) {
             return $b['weight'] - $a['weight'];
