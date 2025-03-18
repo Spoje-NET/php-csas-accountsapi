@@ -50,7 +50,7 @@ class ApiException extends Exception
      *
      * @var \stdClass|string|null
      */
-    protected $responseObject;
+    protected /* null|\stdClass|string|ModelInterface */ mixed $responseObject;
 
     /**
      * Constructor

@@ -57,8 +57,11 @@ class ApiException extends \Exception
 
     /**
      * The deserialized response object.
+     *
+     * @var null|\stdClass|string
      */
-    protected null|\stdClass|string $responseObject;
+    /* null|\stdClass|string|ModelInterface */
+    protected mixed $responseObject;
 
     /**
      * Constructor.
