@@ -287,4 +287,57 @@ class Statementor extends \Ease\Sand
     {
         return $this->accountUuid;
     }
+
+    /**
+     * IBAN=>UUID listing of accounts
+     * 
+     * @param Accounts\DefaultApi $apiInstance
+     * 
+     * @return array<string,string>
+     */
+    public static function getAccountIDs(Accounts\DefaultApi $apiInstance): array
+    {
+        $accounts = [];
+        $accountsRaw = $apiInstance->getAccounts()->getAccounts();
+
+        if (isset($accountsRaw) && \is_array($accountsRaw)) {
+            foreach ($accountsRaw as $account) {
+                $accounts[$account->getIdentification()->getIban()] = $account->getId();
+            }
+        }
+
+        return $accounts;
+    }
+
+    // Helper function to map IBAN to account ID
+    public static function getAccountIdByIban(Accounts\DefaultApi $apiInstance, string $iban): ?string
+    {
+        $accountsRaw = $apiInstance->getAccounts()->getAccounts();
+        $accId = null;
+        if (isset($accountsRaw) && \is_array($accountsRaw)) {
+            foreach ($accountsRaw as $account) {
+                if ($account->getIdentification()->getIban() === $iban) {
+                    $accId = $account->getId();
+                    break;
+                }
+            }
+        }
+
+        return $accId;
+    }
+
+    public static function getAccountByIban(Accounts\DefaultApi $apiInstance, string $iban): ?\SpojeNet\CSas\Model\Account 
+    {
+        $accountsRaw = $apiInstance->getAccounts()->getAccounts();
+        $account = null;
+        if (isset($accountsRaw) && \is_array($accountsRaw)) {
+            foreach ($accountsRaw as $account) {
+                if ($account->getIdentification()->getIban() === $iban) {
+                    break;
+                }
+            }
+        }
+
+        return $account;
+    }
 }

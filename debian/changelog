@@ -1,8 +1,9 @@
-php-spojenet-csas-accountsapi (0.7.1) UNRELEASED; urgency=medium
+php-spojenet-csas-accountsapi (0.7.1) noble; urgency=medium
 
+  [ vitex ]
   * beta version
 
- -- vitex <info@vitexsoftware.cz>  Tue, 18 Mar 2025 18:07:33 +0100
+ -- Vitex <vitezslav.dvorak@spojenet.cz>  Fri, 11 Jul 2025 21:32:07 +0200
 
 php-spojenet-csas-accountsapi (0.7.0) noble; urgency=medium
 
