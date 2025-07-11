@@ -30,6 +30,8 @@ namespace SpojeNet\CSas;
  * Description of ApiClient.
  *
  * @author vitex
+ *
+ * @no-named-arguments
  */
 class ApiClient extends \GuzzleHttp\Client
 {

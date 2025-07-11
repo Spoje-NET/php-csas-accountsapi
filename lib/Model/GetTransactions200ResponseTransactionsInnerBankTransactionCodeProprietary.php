@@ -44,6 +44,8 @@ use SpojeNet\CSas\ObjectSerializer;
  * @see     https://openapi-generator.tech
  *
  * @implements \ArrayAccess<string, mixed>
+ *
+ * @no-named-arguments
  */
 class GetTransactions200ResponseTransactionsInnerBankTransactionCodeProprietary implements \ArrayAccess, \JsonSerializable, ModelInterface
 {

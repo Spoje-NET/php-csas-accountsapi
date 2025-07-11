@@ -44,6 +44,8 @@ use SpojeNet\CSas\ObjectSerializer;
  * @see     https://openapi-generator.tech
  *
  * @implements \ArrayAccess<string, mixed>
+ *
+ * @no-named-arguments
  */
 class AccountRelatedAgents implements \ArrayAccess, \JsonSerializable, ModelInterface
 {

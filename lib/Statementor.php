@@ -19,6 +19,8 @@ namespace SpojeNet\CSas;
  * Description of Statementor.
  *
  * @author vitex
+ *
+ * @no-named-arguments
  */
 class Statementor extends \Ease\Sand
 {
@@ -289,11 +291,9 @@ class Statementor extends \Ease\Sand
     }
 
     /**
-     * IBAN=>UUID listing of accounts
-     * 
-     * @param Accounts\DefaultApi $apiInstance
-     * 
-     * @return array<string,string>
+     * IBAN=>UUID listing of accounts.
+     *
+     * @return array<string, string>
      */
     public static function getAccountIDs(Accounts\DefaultApi $apiInstance): array
     {
@@ -314,10 +314,12 @@ class Statementor extends \Ease\Sand
     {
         $accountsRaw = $apiInstance->getAccounts()->getAccounts();
         $accId = null;
+
         if (isset($accountsRaw) && \is_array($accountsRaw)) {
             foreach ($accountsRaw as $account) {
                 if ($account->getIdentification()->getIban() === $iban) {
                     $accId = $account->getId();
+
                     break;
                 }
             }
@@ -326,10 +328,11 @@ class Statementor extends \Ease\Sand
         return $accId;
     }
 
-    public static function getAccountByIban(Accounts\DefaultApi $apiInstance, string $iban): ?\SpojeNet\CSas\Model\Account 
+    public static function getAccountByIban(Accounts\DefaultApi $apiInstance, string $iban): ?\SpojeNet\CSas\Model\Account
     {
         $accountsRaw = $apiInstance->getAccounts()->getAccounts();
         $account = null;
+
         if (isset($accountsRaw) && \is_array($accountsRaw)) {
             foreach ($accountsRaw as $account) {
                 if ($account->getIdentification()->getIban() === $iban) {

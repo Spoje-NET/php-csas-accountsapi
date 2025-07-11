@@ -41,6 +41,8 @@ namespace SpojeNet\CSas;
  * @author   OpenAPI Generator team
  *
  * @see     https://openapi-generator.tech
+ *
+ * @no-named-arguments
  */
 class Configuration
 {
