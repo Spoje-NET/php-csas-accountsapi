@@ -343,4 +343,22 @@ class Statementor extends \Ease\Sand
 
         return $account;
     }
+
+    public static function getAccountById(Accounts\DefaultApi $apiInstance, string $uuid): ?\SpojeNet\CSas\Model\Account
+    {
+        $accountsRaw = $apiInstance->getAccounts()->getAccounts();
+        $account = null;
+
+        if (isset($accountsRaw) && \is_array($accountsRaw)) {
+            foreach ($accountsRaw as $account) {
+                if ($account->getIdentification()->getId() === $uuid) {
+                    break;
+                }
+            }
+        }
+
+        return $account;
+    }
+
+
 }

@@ -289,12 +289,12 @@ class Statementor extends \Ease\Sand
     {
         return $this->accountUuid;
     }
-    
+
     /**
      * IBAN=>UUID listing of accounts
-     * 
+     *
      * @param Accounts\DefaultApi $apiInstance
-     * 
+     *
      * @return array<string,string>
      */
     public static function getAccountIDs(Accounts\DefaultApi $apiInstance): array
@@ -342,5 +342,21 @@ class Statementor extends \Ease\Sand
 
         return $account;
     }
-    
+
+    public static function getAccountById(Accounts\DefaultApi $apiInstance, string $uuid): ?\SpojeNet\CSas\Model\Account
+    {
+        $accountsRaw = $apiInstance->getAccounts()->getAccounts();
+        $account = null;
+
+        if (isset($accountsRaw) && \is_array($accountsRaw)) {
+            foreach ($accountsRaw as $account) {
+                if ($account->getIdentification()->getId() === $uuid) {
+                    break;
+                }
+            }
+        }
+
+        return $account;
+    }
+
 }
