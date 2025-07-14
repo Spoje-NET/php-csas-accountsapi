@@ -80,11 +80,11 @@ class Statementor extends \Ease\Sand
         $apiInstance = new \SpojeNet\CSas\Accounts\DefaultApi();
         $page = 0;
         $statements = [];
-        $this->addStatusMessage(sprintf(_('Request statements from %s to %s'), $this->since->format(self::$dateFormat), $this->until->format(self::$dateFormat)), 'debug');
+        $this->addStatusMessage(sprintf(_('Request %s statements from %s to %s'), $format, $this->since->format(self::$dateFormat), $this->until->format(self::$dateFormat)), 'debug');
 
         try {
             do {
-                $result = $apiInstance->getAccountStatements($this->getAccountNumber(), $this->getSince()->format('Y-m-d'), $this->getUntil()->format('Y-m-d'), $format);
+                $result = $apiInstance->getAccountStatements($this->getAccountUuid(), $this->getSince()->format('Y-m-d'), $this->getUntil()->format('Y-m-d'), $format);
 
                 if ($result->getAccountStatements()) {
                     $statements = array_merge($statements, $result->getAccountStatements());
