@@ -29,7 +29,7 @@
         "ext-mbstring": "*",
         "guzzlehttp/guzzle": "^7.9",
         "guzzlehttp/psr7": "^1.7 || ^2.0",
-        "vitexsoftware/ease-core": "^1.48"
+        "vitexsoftware/ease-core": "^1.49"
     },
     "require-dev": {
         "phpunit/phpunit": "*",
