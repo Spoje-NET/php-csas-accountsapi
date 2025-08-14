@@ -50,7 +50,9 @@ class Statementor extends \Ease\Sand
         }
 
         if ($scope) {
-            $this->setScope($scope);
+            if($this->setScope($scope)){
+                $this->scope = $scope;
+            }
         }
     }
 

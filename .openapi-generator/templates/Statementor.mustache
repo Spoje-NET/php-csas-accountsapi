@@ -51,7 +51,9 @@ class Statementor extends \Ease\Sand
         }
 
         if ($scope) {
-            $this->setScope($scope);
+            if($this->setScope($scope)){
+                $this->scope = $scope;
+            }
         }
     }
 
@@ -98,9 +100,6 @@ class Statementor extends \Ease\Sand
 
         return $statements;
     }
-
-
-
 
     public function getScopeSymbolic(): string
     {
