@@ -2,7 +2,7 @@ Source: php-spojenet-csas-accountsapi
 Section: unknown
 Priority: optional
 Maintainer: Vítězslav Dvořák <info@vitexsoftware.cz>
-Build-Depends: debhelper-compat (= 13)
+Build-Depends: debhelper-compat (= 13), jq, moreutils
 Standards-Version: 4.6.1
 Homepage: https://github.com/Spoje-NET/pohoda-csas
 Rules-Requires-Root: no
