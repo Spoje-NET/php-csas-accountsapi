@@ -36,7 +36,7 @@
         "phpstan/phpstan": "*",
         "friendsofphp/php-cs-fixer": "^3.91",
         "ergebnis/composer-normalize": "^2.47",
-        "ergebnis/php-cs-fixer-config": "^6.57",
+        "ergebnis/php-cs-fixer-config": "^6.58",
         "phpstan/phpstan-phpunit": "^2.0"
     },
     "autoload": {
