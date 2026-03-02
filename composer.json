@@ -41,17 +41,17 @@
     },
     "autoload": {
         "psr-4": {
-	    "SpojeNet\\CSas\\" : "lib/",
-	    "SpojeNet\\CSas\\Accounts\\" : "lib/Accounts/",
-	    "SpojeNet\\CSas\\Modes\\" : "lib/Model/"
-	}
+            "SpojeNet\\CSas\\": "lib/",
+            "SpojeNet\\CSas\\Accounts\\": "lib/Accounts/",
+            "SpojeNet\\CSas\\Modes\\": "lib/Model/"
+        }
     },
     "autoload-dev": {
         "psr-4": {
-	    "SpojeNet\\CSas\\Test\\" : "test/",
-	    "SpojeNet\\CSas\\Test\\Accounts\\" : "test/Accounts/",
-	    "SpojeNet\\CSas\\Test\\Model\\" : "test/Model/"
-	}
+            "SpojeNet\\CSas\\Test\\": "test/",
+            "SpojeNet\\CSas\\Test\\Accounts\\": "test/Accounts/",
+            "SpojeNet\\CSas\\Test\\Model\\": "test/Model/"
+        }
     },
     "scripts": {
         "regenerate": [
@@ -63,5 +63,6 @@
         "allow-plugins": {
             "ergebnis/composer-normalize": true
         }
-    }
+    },
+    "type": "library"
 }

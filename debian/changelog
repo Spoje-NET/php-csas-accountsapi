@@ -1,6 +1,7 @@
-php-spojenet-csas-accountsapi (0.7.2) UNRELEASED; urgency=medium
+php-spojenet-csas-accountsapi (0.7.2) unstable; urgency=medium
 
   * Adds account mapping utilities and updates dependencies
+  * Remove composer-debian dependency
 
  -- Vitex <vitezslav.dvorak@spojenet.cz>  Fri, 11 Jul 2025 21:32:40 +0200
 
