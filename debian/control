@@ -2,15 +2,15 @@ Source: php-spojenet-csas-accountsapi
 Section: unknown
 Priority: optional
 Maintainer: Vítězslav Dvořák <info@vitexsoftware.cz>
-Build-Depends: debhelper-compat (= 13), jq, moreutils
+Build-Depends: debhelper-compat (= 13), pkg-php-tools, jq, moreutils
 Standards-Version: 4.6.1
-Homepage: https://github.com/Spoje-NET/pohoda-csas
+Homepage: https://github.com/Spoje-NET/php-csas-webapi
 Rules-Requires-Root: no
-Vcs-Git: git@github.com:Spoje-NET/pohoda-csas.git
-Vcs-Browser: https://github.com/Spoje-NET/pohoda-csas
+Vcs-Git: git@github.com:Spoje-NET/php-csas-webapi.git
+Vcs-Browser: https://github.com/Spoje-NET/php-csas-webapi
 
 Package: php-spojenet-csas-accountsapi
-Depends: ${misc:Depends}, php-guzzlehttp-psr7, php-vitexsoftware-ease-core (>=1.49)
+Depends: ${misc:Depends}, php-guzzlehttp-guzzle, php-guzzlehttp-psr7, php-vitexsoftware-ease-core (>=1.49)
 Architecture: all
 Suggests: abraflexi-csas
 Section: office

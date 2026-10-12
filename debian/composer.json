@@ -9,10 +9,6 @@
             "homepage": "https://vitexsoftware.com/"
         }
     ],
-    "config": {
-        "vendor-dir": "/var/lib/composer/php-spojenet-csas-accountsapi"
-    },
-
     "autoload": {
         "psr-4": {
             "SpojeNet\\CSas\\": "./",
