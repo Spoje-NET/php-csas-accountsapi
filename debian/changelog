@@ -1,3 +1,11 @@
+php-spojenet-csas-accountsapi (0.7.3) unstable; urgency=medium
+
+  * Debian autoloader (debian/autoload.php) is now shipped and registered for pkg-php-tools
+  * Added missing php-guzzlehttp-guzzle dependency
+  * Removed composer vendor-dir leftovers from the package
+
+ -- Vítězslav Vitex Dvořák <info@vitexsoftware.cz>  Mon, 12 Oct 2026 15:03:58 +0200
+
 php-spojenet-csas-accountsapi (0.7.2) unstable; urgency=medium
 
   * Adds account mapping utilities and updates dependencies
