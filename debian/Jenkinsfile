@@ -51,6 +51,7 @@ distributions.each { distro ->
         node {
             ansiColor('xterm') {
                 stage("Checkout ${distro}") {
+                    deleteDir() // shared checkout workspace has read-only git packs
                     unstash 'src'
                     buildImage = docker.image(imageName)
 
