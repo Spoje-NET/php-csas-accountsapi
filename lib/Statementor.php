@@ -209,32 +209,36 @@ class Statementor extends \Ease\Sand
     public static function getAccountByIban(Accounts\DefaultApi $apiInstance, string $iban): ?\SpojeNet\CSas\Model\Account
     {
         $accountsRaw = $apiInstance->getAccounts()->getAccounts();
-        $account = null;
+        $found = null;
 
         if (isset($accountsRaw) && \is_array($accountsRaw)) {
-            foreach ($accountsRaw as $account) {
-                if ($account->getIdentification()->getIban() === $iban) {
+            foreach ($accountsRaw as $candidate) {
+                if ($candidate->getIdentification()->getIban() === $iban) {
+                    $found = $candidate;
+
                     break;
                 }
             }
         }
 
-        return $account;
+        return $found;
     }
 
     public static function getAccountById(Accounts\DefaultApi $apiInstance, string $uuid): ?\SpojeNet\CSas\Model\Account
     {
         $accountsRaw = $apiInstance->getAccounts()->getAccounts();
-        $account = null;
+        $found = null;
 
         if (isset($accountsRaw) && \is_array($accountsRaw)) {
-            foreach ($accountsRaw as $account) {
-                if ($account->getId() === $uuid) {
+            foreach ($accountsRaw as $candidate) {
+                if ($candidate->getId() === $uuid) {
+                    $found = $candidate;
+
                     break;
                 }
             }
         }
 
-        return $account;
+        return $found;
     }
 }
